@@ -1,0 +1,10 @@
+[
+    {
+        "src": "https://cdn.kontextflux.io/ai-image/ai-product-photo/camera-photo.webp",
+        "alt": "The camera is captured mid-motion as a splash of vibrant",
+        "prompt": "The camera is captured mid-motion as a splash of vibrant, colorful paint envelops it. The paint is frozen in time, creating a dynamic and energetic sculpture around the camera. The background is a clean, white studio space, which makes the colors of the paint pop. The photo should be sharp and high-contrast, capturing the energy of the moment.",
+        "name": "Frozen Burst: Paint in Motion",
+        "slug": "frozen-burst-paint-in-motion",
+        "model": "FLUX.1 Krea dev"
+    }
+]
