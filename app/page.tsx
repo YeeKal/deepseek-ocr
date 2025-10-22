@@ -1,5 +1,6 @@
 import Hero from "@/components/home/hero-section-column";
 import Playground from "@/components/home/playground";
+import TaskAbilities from "@/components/home/task-abilities";
 import { Features } from "@/components/home/features";
 import { CTA } from "@/components/home/call-to-action";
 import FAQ from "@/components/home/faq";
@@ -26,6 +27,7 @@ export default function HomePage() {
     <main>
       <Hero />
       <Playground/>
+      <TaskAbilities/>
       <UseCases/>
       {/* <ImageGallery /> */}
       <Features  />

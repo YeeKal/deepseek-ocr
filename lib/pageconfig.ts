@@ -19,7 +19,7 @@ export const pageConfig: PageConfig = {
     creator: "@yeekal"
   },
   hero: {
-    eyebrow: "A BREAKTHROUGH IN OPTICAL COMPRESSION",
+    eyebrow: "OCR reimagined as text generation",
     title: "Beyond OCR: The Future of Document Understanding.",
     tagline: "DeepSeek-OCR uses contexts optical compression to analyze complex documents with unparalleled speed and efficiency. Go from page to data, 10x faster.",
     ctaButton: {
@@ -40,6 +40,57 @@ export const pageConfig: PageConfig = {
     title: "Try the Interactive Demo",
     tagline: "Drag and drop a document or image into the window below to see the power of optical compression in action. No sign-up required.",
     iframeUrl: "https://axiilay-deepseek-ocr-demo.hf.space/"
+  },
+  taskAbilities: {
+    title: "One Tool, Multiple Abilities",
+    description: "DeepSeek-OCR is more than just a text extractor. It's a versatile vision model capable of performing a wide range of document and image intelligence tasks.",
+    tasks: [
+      {
+        icon: "📝",
+        title: "Free OCR",
+        description: "Extracts raw, unformatted text from any image or document page. Perfect for quick digitization and content extraction.",
+        images: {
+          input: "https://cdn.deepseekocr.io/home/wiki-free-ocr.webp",
+          output: "https://cdn.deepseekocr.io/home/wiki-free-ocr-res.webp"
+        }
+      },
+      {
+        icon: "📄",
+        title: "Convert to Markdown",
+        description: "Preserves the document's structure, including headings, lists, and tables, by converting it into clean, readable Markdown.",
+        images: {
+          input: "https://cdn.deepseekocr.io/home/doc_markdown.webp",
+          output: "https://cdn.deepseekocr.io/home/doc_markdown_layout.webp"
+        }
+      },
+      {
+        icon: "📈",
+        title: "Parse Figure",
+        description: "Goes beyond text to extract structured data from charts and graphs, turning visual information into usable data tables.",
+        images: {
+          input: "https://cdn.deepseekocr.io/home/2010_homicide_rates.webp",
+          output: "https://cdn.deepseekocr.io/home/2010_homicide_rates_-ocr.webp"
+        }
+      },
+      {
+        icon: "🔍",
+        title: "Locate Object (Grounding)",
+        description: "Finds specific text or elements within an image based on your prompt, providing precise bounding box coordinates.",
+        images: {
+          input: "https://cdn.deepseekocr.io/home/industrial-revolution.webp",
+          output: "https://cdn.deepseekocr.io/home/industrial-revolution-locate.webp"
+        }
+      },
+      {
+        icon: "🖼️",
+        title: "Detailed Image Description",
+        description: "Functions as a powerful Vision-Language Model, providing rich, detailed captions and descriptions for any image.",
+        images: {
+          input: "https://cdn.deepseekocr.io/home/annisa.webp",
+          output: "https://cdn.deepseekocr.io/home/image-describe.webp"
+        }
+      }
+    ]
   },
   features: {
     title: "A Breakthrough in Efficiency and Accuracy",

@@ -324,6 +324,19 @@ export interface PageConfig {
     tagline: string;
     iframeUrl: string;
   };
+  taskAbilities: {
+    title: string;
+    description: string;
+    tasks: {
+      icon: string;
+      title: string;
+      description: string;
+      images: {
+        input: string;
+        output: string;
+      };
+    }[];
+  };
   features: {
     title: string;
     description: string;
