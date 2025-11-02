@@ -3,6 +3,8 @@ export const LOGO_URL =   "https://cdn.deepseekocr.io/visual-logo/logo-gradient.
 export const BRAND_NAME = "Deepseek Ocr"
 export const SUPPORT_EMAIL = "yee@deepseekocr.io"
 
+export const GPU_API_URL = process.env.GPU_API_BASE_URL || 'https://fcebf0e7d6a5.ngrok-free.app';
+
 
 //  twcr onup vszt skue
 
@@ -11,6 +13,14 @@ export const MONTH_IN_MILLISECONDS = 30 * 24 * 60 * 60 * 1000;
 export const  itemsPerPage = 28
 export const MaxUploadImageSize = 5 ; // 5 MB
 export const Megapixels = 1_000_000;
+export const RUNPOD_MAX_EXECUTION_TIME = 3* 60; // 15 minutes in seconds
+
+export const THEME_COLOR = {
+  PRIMARY: "#4f46e5",
+  PRIMARY_HOVER: "#4338ca",
+  PRIMARY_LIGHT: "#e0e7ff",
+  PRIMARY_DARK: "#312e81",
+}
 
 export const callbackLink = "/account"
 export const DefaultCustomSign = "flux-kontext"

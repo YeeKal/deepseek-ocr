@@ -39,7 +39,9 @@ export const pageConfig: PageConfig = {
   playground: {
     title: "Try the Interactive Demo",
     tagline: "Drag and drop a document or image into the window below to see the power of optical compression in action. No sign-up required.",
-    iframeUrl: "https://axiilay-deepseek-ocr-demo.hf.space/"
+    // iframeUrl: "https://axiilay-deepseek-ocr-demo.hf.space/"
+    iframeUrl: "https://huggingface.co/spaces/axiilay/DeepSeek-OCR-Demo"
+    // iframeUrl: "https://huggingface.co/spaces/khang119966/DeepSeek-OCR-DEMO"
   },
   taskAbilities: {
     title: "One Tool, Multiple Abilities",
