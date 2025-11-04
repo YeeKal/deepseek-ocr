@@ -15,7 +15,6 @@ type ResultDisplayProps = {
 }
 
 export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: ResultDisplayProps) {
-  console.log("Rendering ResultDisplay with:", { result, error, isProcessing })
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -70,7 +69,6 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: 
     )
   }
 
-  console.log("OCR Result:", result)
 
   return (
     <div className="space-y-6">

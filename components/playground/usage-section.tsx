@@ -50,9 +50,9 @@ export function UsageSection() {
     <section id="how-to-use" className="min-h-screen px-4 py-20 bg-muted/30">
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">How to Use</h2>
+          <h2 className="text-4xl md:text-5xl font-bold">From Image to Insight: A Guide to Our OCR Toolkit</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get started with DeepSeek-OCR in four simple steps
+            Learn how to convert any image, PDF, or document into structured, usable data in just a few clicks.
           </p>
         </div>
 

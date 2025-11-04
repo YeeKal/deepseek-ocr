@@ -2,8 +2,8 @@ import { PageConfig } from "@/lib/types";
 
 export const pageConfig: PageConfig = {
   seo: {
-    title: "Free DeepSeek-OCR: High-Compression OCR for Efficient Document Analysis",
-    description: "Experience DeepSeek-OCR, the new standard in contexts optical compression. Achieve 97% accuracy with 10x less data. Analyze PDFs, charts, and more.",
+    title: "Free DeepSeek-OCR: High-Accuracy Text & Table Extraction | DeepSeekOCR.io",
+    description: "Experience DeepSeek-OCR, convert scanned notes, reports, and charts into editable text with incredible accuracy. Free to use, no sign-up required",
     keywords: [
       "deepseekocr",
       "deepseek ocr",
@@ -19,15 +19,15 @@ export const pageConfig: PageConfig = {
     creator: "@yeekal"
   },
   hero: {
-    eyebrow: "OCR reimagined as text generation",
-    title: "Beyond OCR: The Future of Document Understanding.",
-    tagline: "DeepSeek-OCR uses contexts optical compression to analyze complex documents with unparalleled speed and efficiency. Go from page to data, 10x faster.",
+    eyebrow: "Experience a Leading Document Understanding Technology",
+    title: "DeepSeek-OCR Playground",
+    tagline: "Next-Gen Contextual OCR: Accurately Recognize Complex Documents & Images",
     ctaButton: {
-      text: "Try the Live Demo",
+      text: "Try for Free Now",
       link: "playground"
     },
      waitlistButton: {
-      text: "Join the Waitlist",
+      text: "Join Pro features Waitlist",
       link: "/waitlist"
     },
     features:{
@@ -259,7 +259,7 @@ export const pageConfig: PageConfig = {
         link: "playground"
       }
   },
-    waitlist: {
+  waitlist: {
     title: "Be the First to Know",
     description: "We are developing an enhanced suite of tools built on DeepSeek-OCR, including API access and advanced features. Join the waitlist to get notified when we launch.",
     placeholder: "Enter your email address",

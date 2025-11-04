@@ -1,5 +1,4 @@
 import Hero from "@/components/home/hero-section-column";
-import Playground from "@/components/home/playground";
 import TaskAbilities from "@/components/home/task-abilities";
 import { Features } from "@/components/home/features";
 import { CTA } from "@/components/home/call-to-action";
@@ -9,6 +8,7 @@ import DiveDeeper from "@/components/home/dive-deeper";
 import  Waitlist  from "@/components/home/waitlist";
 import { DemoSection } from "@/components/playground/demo-section"
 import { UsageSection } from "@/components/playground/usage-section"
+import RoadmapSection from "@/components/home/roadmap";
 
 export default function HomePage() {
   // const jsonLd = {
@@ -30,10 +30,10 @@ export default function HomePage() {
       <Hero />
       <DemoSection />
       <UsageSection />
-      <Playground/>
+      <RoadmapSection/>
+
       <TaskAbilities/>
       <UseCases/>
-      {/* <ImageGallery /> */}
       <Features  />
       <DiveDeeper />
       <FAQ />

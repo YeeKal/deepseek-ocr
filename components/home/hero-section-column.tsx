@@ -35,9 +35,9 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-primary/10 text-primary mb-4">
+            {/* <div className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-primary/10 text-primary mb-4">
               {content.eyebrow}
-            </div>
+            </div> */}
 
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               {content.title}
@@ -63,13 +63,13 @@ export default function Hero() {
                 onClick={() => {
                   router.push(`${content.waitlistButton.link}`);
                 }}
-                className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium border border-border text-foreground hover:bg-muted rounded-md transition-colors"
+                className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium border border-border text-foreground hover:bg-muted rounded-md transition-colors bg-background shadow-lg"
               >
                 {content.waitlistButton.text}
               </button>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -89,7 +89,7 @@ export default function Hero() {
                 <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                 {content.features.f3}
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

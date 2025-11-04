@@ -86,7 +86,7 @@ export function ParameterSettings({
               className={cn(
                 "flex flex-col items-start gap-0.5 rounded-md border p-2.5 text-left transition-all hover:scale-[1.02]",
                 taskType === task.value
-                  ? "border-primary bg-primary text-primary-foreground shadow-sm"
+                  ? "border-primary bg-indigo-100 text-indigo-700 shadow-sm"
                   : "border-border bg-background hover:bg-accent",
               )}
               style={{

@@ -16,6 +16,23 @@ others blog：
 
 https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/: 这个人的博客一直排名都很高，写的内容确实都是自己的实际操作和真是见解，参考其用一个统一的仓库管理平时的脚本和技术文档， 主要写了自己用显卡部署deepseekocr，并尝试了官方推荐的不同任务的提示词，并给出不同任务的适用场景
 
+## todo
+
+- 小屏幕 点击生成结果 raw text 会改变ui布局
+- 添加roadmap
+- 提取turnstile
+
+## pro features
+comming soon / roadmap
+Get early-bird discounts on upcoming Pro features
+
+- Higher Priority Queue: 付费用户将享受更快的处理速度，无需排队。
+- Batch Processing: 支持一次上传并处理多个文件。
+- 更多OCR模型: 
+- Advanced Formats: 支持PDF文档识别，并保留格式。
+- API Access: 为开发者提供接口，按量计费。
+
+
 ## tools
 
 image describer
@@ -54,3 +71,7 @@ tail words:
 - https://www.reddit.com/r/LaTeX/comments/1klp0ks/good_mathpix_alternative_with_handwritten_support/
 - https://www.reddit.com/r/LaTeX/comments/1b1e3km/all_you_need_is_a_better_opensourced_latexocr/
 - https://www.reddit.com/r/MLQuestions/comments/1hlj2vc/ultimate_solution_for_ocr_of_maths_textbooks/
+
+## technology
+
+turnstile error code : https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/
