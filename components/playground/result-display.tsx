@@ -3,18 +3,20 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Copy, Check, FileText } from "lucide-react"
+import { Copy, Check, FileText, Sparkles } from "lucide-react"
 import ReactMarkdown from "react-markdown"
 import type { OCRResult } from "./demo-section"
+import OcrMDResult from "./ocr-markdown"
 
 type ResultDisplayProps = {
   result: OCRResult | null
   error: string | null
   isProcessing: boolean
   elapsedTime?: number
+  runningWorkerNumber: number
 }
 
-export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: ResultDisplayProps) {
+export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0,runningWorkerNumber = 0 }: ResultDisplayProps) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -24,6 +26,8 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: 
       setTimeout(() => setCopied(false), 2000)
     }
   }
+
+  
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
@@ -37,6 +41,12 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: 
         <div className="text-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
           <p className="text-muted-foreground">Processing your image...</p>
+           {/* Conditional message for long waits (cold starts) */}
+        {runningWorkerNumber ===0  && (
+           <div className="text-xs text-amber-800 bg-amber-50 p-3 rounded-lg border border-amber-200">
+             <p><strong>Server is warming up!</strong> This can take a moment on the first run. Thanks for your patience.</p>
+           </div>
+        )}
           <p className="text-sm text-muted-foreground">
             Elapsed time: {formatTime(elapsedTime)}
           </p>
@@ -60,11 +70,18 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: 
   if (!result) {
     return (
       <div className="h-full flex items-center justify-center min-h-[400px]">
-        <div className="text-center space-y-2 text-muted-foreground">
-          <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-          <p>Results will appear here</p>
-          <p className="text-sm">Upload an image and click Process to begin</p>
-        </div>
+        <div className="text-center space-y-3 text-muted-foreground p-4">
+        <Sparkles className="h-12 w-12 mx-auto mb-4 text-primary opacity-60" />
+        <h3 className="text-lg font-semibold text-foreground">
+          Ready to See the Magic?
+        </h3>
+        <p>
+          Upload your own image, or select one of our examples to get started.
+        </p>
+        <p className="text-sm pt-2">
+          <strong>Tip:</strong> Try different models and task types to see how the results change!
+        </p>
+      </div>
       </div>
     )
   }
@@ -122,9 +139,10 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0 }: 
         </TabsList>
 
         <TabsContent value="rendered" className="mt-4">
-          <div className="prose prose-sm max-w-none dark:prose-invert bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-y-auto">
+          <OcrMDResult content = {result.text_content} />
+          {/* <div className="prose prose-sm max-w-none dark:prose-invert bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-y-auto">
             <ReactMarkdown>{result.text_content.replace(/<\|[^|]+\|>/g, "").trim()}</ReactMarkdown>
-          </div>
+          </div> */}
         </TabsContent>
 
         <TabsContent value="raw" className="mt-4">

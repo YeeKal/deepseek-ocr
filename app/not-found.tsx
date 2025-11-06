@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { headers } from 'next/headers'
-import MoreTools from "@/components/tool/MoreTools"
-import ToolsCarousel from "@/components/tool/ToolsCarousel"
 import { Button } from '@/components/ui/button'
 import {ArrowLeft} from "lucide-react"
 import Image from 'next/image'
@@ -39,8 +37,6 @@ export default async function NotFound() {
         </div>
       </div>
 
-      <ToolsCarousel/>
-      <MoreTools />
     </div>
   )
 }

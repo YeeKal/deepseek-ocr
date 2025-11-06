@@ -61,10 +61,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    return NextResponse.json(
-        { error: "Force Fail" },
-        { status: 400 }
-      )
+    // return NextResponse.json(
+    //     { error: "Force Fail" },
+    //     { status: 400 }
+    //   )
 
     const response = await fetch(
       `https://api.runpod.ai/v2/${RUNPOD_ENDPOINT_ID}/run`,

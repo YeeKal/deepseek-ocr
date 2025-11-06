@@ -86,7 +86,7 @@ export default function RoadmapSection() {
             The Future of DeepSeek OCR
           </h2>
           <p className="mt-4 text-lg leading-8 text-gray-600">
-            We're just getting started. Here’s a look at what we’re building next to make document understanding even more powerful.
+                {`We're just getting started. Here’s a look at what we’re building next to make document understanding even more powerful.`}
           </p>
         </div>
 

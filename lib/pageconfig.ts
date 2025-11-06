@@ -298,7 +298,7 @@ export const pageConfig: PageConfig = {
       {
         title: "FRIENDS",
         links:[
-            {text: "Flux Kontext", href: "https://kontextflux.io"},
+            {text: "Runpod", href: "https://runpod.io?ref=5kdp9mps"},
         ]
       }
     ],

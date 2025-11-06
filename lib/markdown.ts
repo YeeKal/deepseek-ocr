@@ -4,6 +4,8 @@ import remarkRehype from "remark-rehype"
 import rehypeStringify from "rehype-stringify"
 import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { visit } from "unist-util-visit"
 
 export interface TocItem {
@@ -68,6 +70,24 @@ export async function parseMarkdown(content: string): Promise<ParsedContent> {
 
   return {
     html: String(file),
+    toc: file.data.toc as TocItem[],
+  }
+}
+
+export async function parseMarkdownWithMath(content: string): Promise<ParsedContent> {
+  const file = await unified()
+    .use(remarkParse) // Parse markdown
+    .use(remarkGfm) // GitHub Flavored Markdown
+    .use(remarkMath)   
+    .use(extractToc) // Extract TOC
+    .use(remarkRehype) // Convert to HTML AST
+    .use(rehypeKatex, { output: 'html' }) // Render LaTeX math
+    .use(rehypeSlug) // Add IDs to headings
+    .use(rehypeStringify) // Convert to HTML string
+    .process(content)
+
+  return {
+    html: String(file.value),
     toc: file.data.toc as TocItem[],
   }
 }

@@ -348,6 +348,14 @@ export function DemoSection() {
                 </svg>
                 <span className="font-semibold">No Login Required</span>
               </div>
+              <a href="https://runpod.io?ref=5kdp9mps" target="_blank">
+              <div className="inline-flex items-center px-4 py-2 hover:bg-none hover:bg-purple-400 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg">
+                <svg className="w-5 h-5 mr-2" fill="none"  viewBox="0 0 24 24" stroke="currentColor" >
+                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/>
+                </svg>
+                <span className="font-semibold">Support by Runpod</span>
+              </div>
+              </a>
             </div>
           </div>
           
@@ -374,17 +382,10 @@ export function DemoSection() {
                   onTaskTypeChange={setTaskType}
                   onPromptChange={setPrompt}
                 />
-                {jobId && (
-                  <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                    <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
-                      Task ID: {jobId}
-                    </p>
-                  </div>
-                )}
               </div>
             </Card>
             <Card className="p-6">
-              <ResultDisplay result={result} error={error} isProcessing={isProcessing} elapsedTime={elapsedTime} />
+              <ResultDisplay result={result} error={error} isProcessing={isProcessing} elapsedTime={elapsedTime} runningWorkerNumber={healthStatus?.workers.running || 0} />
             </Card>
           </div>
 

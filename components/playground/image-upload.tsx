@@ -8,6 +8,28 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
+const sampleImages = [
+  {
+    id: 1,
+    url: "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp", // 去掉空格
+    title: "Grocery Receipt", // Fold Receipt
+    description: "Works well even with crumpled or folded receipts."
+  },
+  {
+    id: 2,
+    url: "https://cdn.deepseekocr.io/home/2010_homicide_rates.webp",  // 去掉空格
+    title: "Financial Table",
+    description: "Accurately extracts data and numbers from tables."
+  },
+  {
+    id: 3,
+    url: "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp", // 去掉空格
+    title: "Complex Document",
+    description: "Showcases performance on documents with complex layouts."
+  }
+]
 
 type ImageUploadProps = {
   onImageChange: (source: { type: "url" | "base64"; value: string } | null) => void
@@ -71,6 +93,13 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
 
     setPreview(urlInput)
     onImageChange({ type: "url", value: urlInput })
+  }
+
+   const handleSampleImageClick = (sample: typeof sampleImages[0]) => {
+    // 1. 直接设置预览
+    setPreview(sample.url)
+    // 2. 直接通知父组件，并附上示例标题
+    onImageChange({ type: "url", value: sample.url,  })
   }
 
   const clearImage = () => {
@@ -163,6 +192,38 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
           </TabsContent>
         </Tabs>
       )}
+
+        <div className="">
+            <h3 className="text-center text-sm font-medium text-muted-foreground mb-4">
+              Or try an example
+            </h3>
+            <div className="grid grid-cols-3 gap-4">
+              {sampleImages.map((sample) => (
+                <TooltipProvider key={sample.id} delayDuration={100}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        className="cursor-pointer group block text-center"
+                        onClick={() => handleSampleImageClick(sample)} // 确保调用的是修复后的函数
+                      >
+                        <div className="aspect-video rounded-lg overflow-hidden border bg-muted relative transition-all group-hover:shadow-lg group-hover:border-primary">
+                          <img 
+                            src={sample.url} 
+                            alt={sample.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        </div>
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{sample.description}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              ))}
+            </div>
+          </div>
     </div>
   )
 }
