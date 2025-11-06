@@ -81,7 +81,7 @@ export async function parseMarkdownWithMath(content: string): Promise<ParsedCont
     .use(remarkMath)   
     .use(extractToc) // Extract TOC
     .use(remarkRehype) // Convert to HTML AST
-    .use(rehypeKatex, { output: 'html' }) // Render LaTeX math
+    .use(rehypeKatex) // Render LaTeX math
     .use(rehypeSlug) // Add IDs to headings
     .use(rehypeStringify) // Convert to HTML string
     .process(content)

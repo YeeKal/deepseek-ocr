@@ -38,6 +38,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background py-4 ">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"></link>
       <div className="container px-4 sm:px-6 flex items-center justify-between mx-auto">
         <div className="flex items-center gap-2">
           <Image

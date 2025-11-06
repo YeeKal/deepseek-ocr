@@ -2,24 +2,33 @@ import { useState, useEffect } from 'react';
 import { parseMarkdownWithMath } from '@/lib/markdown';
 
 
-function preprocessLaTeXDelimiters(markdown: string): string {
-  const pattern = /<\|ref\|>.*?<\|\/ref\|><\|det\|\>\[\[\d+,\s*\d+,\s*\d+,\s*\d+\]\]<\|\/det\|>/g;
+/**
+ * 把 Markdown 中的 LaTeX 标记统一成标准形式
+ *   - 删除 DeepSeeLOCR 产生的 <||ref||>…<||/ref||><||det||>[[x,y,w,h]]<||/det||>
+ *   - \[ … \]  →  $$ … $$
+ *   - \( … \)  →  $ … $
+ */
+export function preprocessLaTeXDelimiters(markdown: string): string {
+  // 1. 删除 DeepSeeLOCR 位置标记
+  const DEEPSEELOCR_PATTERN =
+    /<\|ref\|>.*?<\|\/ref\|><\|det\|\>\[\[\d+,\s*\d+,\s*\d+,\s*\d+\]\]<\|\/det\|>/g;
+
+  // 2. 块级公式 \[ … \]
+  const BLOCK_LATEX_PATTERN = /\\\[([\s\S]*?)\\\]/g;
+
+  // 3. 行内公式 \( … \)
+  const INLINE_LATEX_PATTERN = /\\\(([\s\S]*?)\\\)/g;
 
   return markdown
-    .replace(pattern, '')
-    // Use [\s\S] instead of . to match newlines without 's' flag
-    .replace(/\\\[[\s\S]*?\\\]/g, (_, match) => {
-      // Extract content between \[ and \]
-      const content = match.slice(2, -2).trim();
-      return `$$${content}$$`;
-    })
-    .replace(/\\\([\s\S]*?\\\)/g, (_, match) => {
-      // Extract content between \( and \)
-      const content = match.slice(2, -2).trim();
-      return `$${content}$`;
-    })
-    .trim();
+    .replace(DEEPSEELOCR_PATTERN, '')               // 删除定位信息
+    .replace(BLOCK_LATEX_PATTERN, (_, content) =>   // 块级 → $$
+      `$$${content.replace(/^\s+|\s+$/g, '')}$$`
+    )
+    .replace(INLINE_LATEX_PATTERN, (_, content) =>  // 行内 → $
+      `$${content.replace(/^\s+|\s+$/g, '')}$`
+    );
 }
+
 
 export default function OcrMDResult({ content }: { content: string }) {
   const [html, setHtml] = useState<string>('');
