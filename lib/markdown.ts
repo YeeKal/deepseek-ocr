@@ -80,10 +80,10 @@ export async function parseMarkdownWithMath(content: string): Promise<ParsedCont
     .use(remarkGfm) // GitHub Flavored Markdown
     .use(remarkMath)   
     .use(extractToc) // Extract TOC
-    .use(remarkRehype) // Convert to HTML AST
+    .use(remarkRehype,  { allowDangerousHtml: true }) // Convert to HTML AST
     .use(rehypeKatex) // Render LaTeX math
     .use(rehypeSlug) // Add IDs to headings
-    .use(rehypeStringify) // Convert to HTML string
+    .use(rehypeStringify,  { allowDangerousHtml: true }) // Convert to HTML string
     .process(content)
 
   return {

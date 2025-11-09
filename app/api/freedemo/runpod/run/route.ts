@@ -1,37 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server"
-
+import {verifyTurnstileToken} from '@/lib/ocr/turnstile';
 const RUNPOD_ENDPOINT_ID = "r3wlvfad7k5hgv"
 const RUNPOD_API_KEY = process.env.RUNPOD_API_KEY
 
-async function verifyTurnstileToken(token: string): Promise<boolean> {
-  try {
-    const verifyResponse = await fetch(
-      `${process.env.BASE_URL || 'http://localhost:3000'}/api/turnstile/verify`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token }),
-      }
-    )
 
-    if (!verifyResponse.ok) {
-      const errorText = await verifyResponse.text()
-      console.error("Failed to verify token with internal API:", verifyResponse.status, errorText)
-      return false
-    }
-
-    const verifyResult = await verifyResponse.json()
-    if (!verifyResult.success) {
-      console.error("Turnstile verification failed:", verifyResult.error, verifyResult.details)
-    }
-    return verifyResult.success === true
-  } catch (error) {
-    console.error("Error verifying Turnstile token:", error)
-    return false
-  }
-}
 
 export async function POST(request: NextRequest) {
   try {

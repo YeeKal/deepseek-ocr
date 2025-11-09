@@ -7,8 +7,15 @@ import { ParameterSettings } from "@/components/playground/parameter-settings"
 import { ResultDisplay } from "@/components/playground/result-display"
 import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants"
 import { THEME_COLOR } from "@/lib/constants"
-import type { OCRResult } from "@/lib/types"
 
+// TypeScript types (no changes)
+export type OCRResult = {
+  text_content: string
+  bounding_boxes?: Array<{ text: string; box: number[] }>
+  visualization_b64?: string | string[]
+  delayTime?: number
+  executionTime?: number
+}
 
 export type HealthStatus = {
   jobs: {
@@ -25,9 +32,7 @@ export type HealthStatus = {
 }
 
 export function DemoSection() {
-  const [ocrEngine, setOcrEngine] = useState<"paddleocrvl" | "deepseekocr">("paddleocrvl")
   const [imageSource, setImageSource] = useState<{ type: "url" | "base64"; value: string } | null>(null)
-  const [fileType, setFileType] = useState<"image" | "pdf">("image")
   const [modelSize, setModelSize] = useState<string>("Gundam")
   const [taskType, setTaskType] = useState<string>("doc_to_markdown")
   const [prompt, setPrompt] = useState<string>("")
@@ -198,151 +203,99 @@ export function DemoSection() {
       }
   }, [turnstileToken]); // Dependency array ensures this only runs when turnstileToken changes.
 
-  // Auto-detect file type when image source changes (for URL)
-  useEffect(() => {
-    if (imageSource?.type === "url" && imageSource.value) {
-      // Detect from URL
-      const url = imageSource.value.toLowerCase()
-      if (url.includes(".pdf") || url.includes("%2epdf")) {
-        setFileType("pdf")
-      } else {
-        setFileType("image")
-      }
-    }
-  }, [imageSource])
-
-  // Handle file type change from ImageUpload component
-  const handleFileTypeChange = (detectedType: "image" | "pdf") => {
-    setFileType(detectedType)
-  }
-
   const handleProcess = async () => {
     if (!imageSource) {
-      handleError("Please upload a file first")
+      handleError("Please upload an image first")
       return
     }
-
-    // Check prompt requirement only for DeepSeekOCR
-    if (ocrEngine === "deepseekocr" && (taskType === "custom" || taskType === "text_localization") && !prompt.trim()) {
+    if ((taskType === "custom" || taskType === "text_localization") && !prompt.trim()) {
       handleError("Prompt is required for this task type")
       return
     }
-
     if (isVerifying || isProcessing) return
 
-    // Both engines need Turnstile verification
     setIsVerifying(true)
+    // Simply show the Turnstile modal. The rest of the flow is now handled by useEffect.
     setShowTurnstile(true)
   }
   
   const handleProcessWithToken = async (token: string) => {
     // --- MODIFIED: Reset token immediately to prevent reuse ---
     setTurnstileToken(null);
-
+    
     setIsProcessing(true)
     setError(null)
     setResult(null)
     setJobId(null)
 
     try {
-      if (ocrEngine === "paddleocrvl") {
-        // PaddleOCRVL - Direct API call
-        const response = await fetch("/api/ocr/paddleocrvl", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fileBase64: imageSource?.type === "base64" ? imageSource.value : undefined,
-            fileUrl: imageSource?.type === "url" ? imageSource.value : undefined,
-            fileType: fileType,
-            turnstileToken: token,
-          }),
-        })
-
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || "Failed to process file")
-        }
-
-        const data = await response.json()
-        // Convert PaddleOCRVL response to OCRResult format
-        const ocrResult: OCRResult = {
-          text_content: data.processedMarkdown,
-          visualization_b64: data.layoutImageUrl,
-          delayTime: data.delayTime,
-          executionTime: data.executionTime,
-        }
-        setResult(ocrResult)
-        setIsProcessing(false)
-      } else {
-        // DeepSeekOCR - RunPod with polling
-        const runResponse = await fetch("/api/freedemo/runpod/run", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            input: {
-              input_source: imageSource,
-              task_type: taskType,
-              prompt: prompt.trim() || "",
-              model_size: modelSize,
-              output_options: {
-                include_bounding_boxes: true,
-                include_visualization: true,
-              },
+      const runResponse = await fetch("/api/freedemo/runpod/run", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          input: {
+            input_source: imageSource,
+            task_type: taskType,
+            prompt: prompt.trim() || "",
+            model_size: modelSize,
+            output_options: {
+              include_bounding_boxes: true,
+              include_visualization: true,
             },
-            turnstileToken: token, // Use the passed token
-          }),
-        })
+          },
+          turnstileToken: token, // Use the passed token
+        }),
+      })
 
-        if (!runResponse.ok) {
-          const errorData = await runResponse.json()
-          throw new Error(errorData.error || "Failed to submit task")
-        }
+      if (!runResponse.ok) {
+        const errorData = await runResponse.json()
+        throw new Error(errorData.error || "Failed to submit task")
+      }
 
-        const runData = await runResponse.json()
-        const { id: submittedJobId } = runData
-        setJobId(submittedJobId)
+      const runData = await runResponse.json()
+      const { id: submittedJobId } = runData
+      setJobId(submittedJobId)
 
-        // Polling logic remains the same...
-        const pollStatus = async (jobId: string) => {
-          const maxAttempts = RUNPOD_MAX_EXECUTION_TIME
-          let attempts = 0
-          const poll = async () => {
-            attempts++
-            try {
-              const statusResponse = await fetch(
-                `/api/freedemo/runpod/status?job_id=${encodeURIComponent(jobId)}`
-              )
-              if (!statusResponse.ok) {
-                const errorData = await statusResponse.json()
-                throw new Error(errorData.error || "Failed to check status")
-              }
-              const statusData = await statusResponse.json()
-              if (statusData.status === "COMPLETED") {
-                const output = statusData.output
-                const result: OCRResult = { ...output, delayTime: statusData.delayTime, executionTime: statusData.executionTime }
-                setResult(result)
-                setIsProcessing(false)
-                setJobId(null)
-                return
-              }
-              if (statusData.status === "FAILED") {
-                throw new Error("Task failed to complete")
-              }
-              if (attempts < maxAttempts) {
-                setTimeout(poll, 1000)
-              } else {
-                throw new Error("Task timeout - maximum wait time exceeded")
-              }
-            } catch (err) {
+      // Polling logic remains the same...
+      const pollStatus = async (jobId: string) => {
+        const maxAttempts = RUNPOD_MAX_EXECUTION_TIME
+        let attempts = 0
+        const poll = async () => {
+          attempts++
+          try {
+            const statusResponse = await fetch(
+              `/api/freedemo/runpod/status?job_id=${encodeURIComponent(jobId)}`
+            )
+            if (!statusResponse.ok) {
+              const errorData = await statusResponse.json()
+              throw new Error(errorData.error || "Failed to check status")
+            }
+            const statusData = await statusResponse.json()
+            if (statusData.status === "COMPLETED") {
+              const output = statusData.output
+              const result: OCRResult = { ...output, delayTime: statusData.delayTime, executionTime: statusData.executionTime }
+              setResult(result)
               setIsProcessing(false)
               setJobId(null)
-              handleError(err instanceof Error ? err.message : "An unexpected error occurred")
+              return
             }
+            if (statusData.status === "FAILED") {
+              throw new Error("Task failed to complete")
+            }
+            if (attempts < maxAttempts) {
+              setTimeout(poll, 1000)
+            } else {
+              throw new Error("Task timeout - maximum wait time exceeded")
+            }
+          } catch (err) {
+            setIsProcessing(false)
+            setJobId(null)
+            handleError(err instanceof Error ? err.message : "An unexpected error occurred")
           }
-          poll()
         }
-        pollStatus(submittedJobId)
+        poll()
       }
+      pollStatus(submittedJobId)
     } catch (err) {
       setIsProcessing(false)
       setJobId(null)
@@ -380,47 +333,8 @@ export function DemoSection() {
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold"> Drag, Drop, and Understand</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {ocrEngine === "paddleocrvl"
-                ? "Upload an image or PDF and experience the power of PaddleOCR-VL technology"
-                : "Upload an image and experience the power of DeepSeek-OCR technology"
-              }
+              Upload an image and experience the power of DeepSeek-OCR technology
             </p>
-
-            {/* OCR Engine Toggle */}
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <div className="flex items-center gap-2 px-1 py-1 bg-muted rounded-lg">
-                <button
-                  onClick={() => {
-                    setOcrEngine("paddleocrvl")
-                    setResult(null)
-                    setError(null)
-                    setPrompt("")
-                  }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                    ocrEngine === "paddleocrvl"
-                      ? "bg-background shadow-sm text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  PaddleOCR-VL
-                </button>
-                <button
-                  onClick={() => {
-                    setOcrEngine("deepseekocr")
-                    setResult(null)
-                    setError(null)
-                  }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                    ocrEngine === "deepseekocr"
-                      ? "bg-background shadow-sm text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  DeepSeek-OCR
-                </button>
-              </div>
-            </div>
-
             <div className="flex items-center justify-center gap-3 mt-4">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -434,63 +348,21 @@ export function DemoSection() {
                 </svg>
                 <span className="font-semibold">No Login Required</span>
               </div>
-                <a href="https://runpod.io?ref=5kdp9mps" target="_blank">
-                <div className="inline-flex items-center px-4 py-2 hover:bg-none hover:bg-purple-400 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg">
-                  <svg className="w-5 h-5 mr-2" fill="none"  viewBox="0 0 24 24" stroke="currentColor" >
-                    <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/>
-                  </svg>
-                  <span className="font-semibold">Support by Runpod</span>
-                </div>
-                </a>
+              <a href="https://runpod.io?ref=5kdp9mps" target="_blank">
+              <div className="inline-flex items-center px-4 py-2 hover:bg-none hover:bg-purple-400 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg">
+                <svg className="w-5 h-5 mr-2" fill="none"  viewBox="0 0 24 24" stroke="currentColor" >
+                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/>
+                </svg>
+                <span className="font-semibold">Support by Runpod</span>
+              </div>
+              </a>
             </div>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-6">
             <Card className="p-6 space-y-4">
               <div className="space-y-4">
-                  <ImageUpload
-                    onImageChange={setImageSource}
-                    onFileTypeChange={handleFileTypeChange}
-                    ocrEngine={ocrEngine}
-                  />
-
-                  {/* File Type Selection for PaddleOCRVL */}
-                  {ocrEngine === "paddleocrvl" && (
-                    <div className="space-y-2 space-x-2">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                        File Type
-                      </label>
-                         <label className="text-xs text-muted-foreground">
-                        (Automatically detected. Override if needed.)
-                      </label>
-                      <div className="flex gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setFileType("image")}
-                          className={`flex-1 py-2 px-4 rounded-md border text-sm font-medium transition-all ${
-                            fileType === "image"
-                              ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                              : "border-border bg-background hover:bg-accent"
-                          }`}
-                        >
-                          Image
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setFileType("pdf")}
-                          className={`flex-1 py-2 px-4 rounded-md border text-sm font-medium transition-all ${
-                            fileType === "pdf"
-                              ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                              : "border-border bg-background hover:bg-accent"
-                          }`}
-                        >
-                          PDF
-                        </button>
-                      </div>
-                   
-                    </div>
-                  )}
-
+                  <ImageUpload onImageChange={setImageSource} />
                 <button
                   onClick={handleProcess}
                   disabled={!imageSource || isProcessing || isVerifying}
@@ -502,17 +374,14 @@ export function DemoSection() {
                 >
                   {isProcessing ? 'Processing...' : (isVerifying ? 'Verifying...' : 'Extract Text')}
                 </button>
-                {/* Only show parameter settings for DeepSeekOCR */}
-                {ocrEngine === "deepseekocr" && (
-                  <ParameterSettings
-                    modelSize={modelSize}
-                    taskType={taskType}
-                    prompt={prompt}
-                    onModelSizeChange={setModelSize}
-                    onTaskTypeChange={setTaskType}
-                    onPromptChange={setPrompt}
-                  />
-                )}
+                <ParameterSettings
+                  modelSize={modelSize}
+                  taskType={taskType}
+                  prompt={prompt}
+                  onModelSizeChange={setModelSize}
+                  onTaskTypeChange={setTaskType}
+                  onPromptChange={setPrompt}
+                />
               </div>
             </Card>
             <Card className="p-6">
@@ -520,8 +389,7 @@ export function DemoSection() {
             </Card>
           </div>
 
-          {/* Only show health status for DeepSeekOCR */}
-          {ocrEngine === "deepseekocr" && healthStatus && (
+          {healthStatus && (
             <Card className="grid lg:grid-cols-2 gap-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
               <div>
                 <div className="flex items-center gap-x-10 mb-2">

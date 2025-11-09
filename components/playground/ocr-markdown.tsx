@@ -34,7 +34,6 @@ export default function OcrMDResult({ content }: { content: string }) {
   const [html, setHtml] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const pureContent = preprocessLaTeXDelimiters(content);
-  console.log('Preprocessed Markdown Content:', pureContent);
 
   useEffect(() => {
     if (!pureContent) {
@@ -46,8 +45,6 @@ export default function OcrMDResult({ content }: { content: string }) {
     setLoading(true);
     parseMarkdownWithMath(pureContent)
       .then((result) => {
-  console.log('Preprocessed html Content:', result.html);
-
         setHtml(result.html);
       })
       .catch((err) => {
@@ -63,7 +60,7 @@ export default function OcrMDResult({ content }: { content: string }) {
 
   return (
 
-    <article className="prose prose-sm max-w-none dark:prose-invert bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-y-auto" dangerouslySetInnerHTML={{ __html: html }}>
+    <article className="prose prose-md max-w-none dark:prose-invert bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-y-auto" dangerouslySetInnerHTML={{ __html: html }}>
               </article>
 
   );

@@ -3,9 +3,8 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Copy, Check, FileText, Sparkles } from "lucide-react"
-import ReactMarkdown from "react-markdown"
-import type { OCRResult } from "./demo-section"
+import { Copy, Check, Sparkles } from "lucide-react"
+import type { OCRResult } from "@/lib/types"
 import OcrMDResult from "./ocr-markdown"
 
 type ResultDisplayProps = {
@@ -42,7 +41,7 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0,run
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
           <p className="text-muted-foreground">Processing your image...</p>
            {/* Conditional message for long waits (cold starts) */}
-        {runningWorkerNumber ===0  && (
+        {runningWorkerNumber ===0 && elapsedTime > 15  && (
            <div className="text-xs text-amber-800 bg-amber-50 p-3 rounded-lg border border-amber-200">
              <p><strong>Server is warming up!</strong> This can take a moment on the first run. Thanks for your patience.</p>
            </div>
@@ -174,7 +173,7 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0,run
                 </div>
               ) : (
                 <img
-                  src={result.visualization_b64.startsWith('data:') ? result.visualization_b64 : `data:image/png;base64,${result.visualization_b64}`}
+                  src={result.visualization_b64.startsWith('data:') || result.visualization_b64.startsWith('http') ? result.visualization_b64 : `data:image/png;base64,${result.visualization_b64}`}
                   alt="Visualization with bounding boxes"
                   className="w-full h-auto"
                 />
@@ -184,9 +183,6 @@ export function ResultDisplay({ result, error, isProcessing, elapsedTime = 0,run
         )}
       </Tabs>
 
-      {result.bounding_boxes && result.bounding_boxes.length > 0 && (
-        <div className="text-xs text-muted-foreground">Detected {result.bounding_boxes.length} text regions</div>
-      )}
     </div>
   )
 }

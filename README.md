@@ -1,13 +1,41 @@
 # deepseek-ocr
 
-recently deepseek has released a new technology “DeepSeek-OCR: Contexts Optical Compression”。 now i want to create a website for this, the domain is deepseekocr.io
-the github source code page: https://github.com/deepseek-ai/DeepSeek-OCR
-paper Link: https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
-我在开发一个deepseek ocr的网站，
-技术栈采用 nextjs + tailwildcss
-我已经做出了一个demo，用户可以免登录在线上传图片，然后识别文本。
-为了防止用户恶意高频请求，我还增加了cloudflare turnstile进行防护
-当前模型部署在runpod上，现在人数比较少，请求一次在10s-20s左右，如果遇上冷启动，冷启动会额外增加60s左右
+我在开发一个ocr工具网站，网站主要使用开源的paddleocr vl模型，辅助使用 DeepSeek OCR 。其中paddleocr vl模型由于其较小的参数量，较快的启动速度以及相当的准确度会作为大部分任务的处理引擎。但是首页的体验会结合DeepSeek OCR和paddleocr vl，以吸引用户。DeepSeek OCR: 作为“明星产品”和“技术展示”，负责吸引对精度要求极高的用户，制造话题性，提升网站的专业形象。PaddleOCR: 作为“主力产品”，负责处理大部分免费流量，其低成本的 API 能极大降低你的运营开销，保证免费服务的可持续性。结合使用 DeepSeek OCR（高精度、高成本）和 PaddleOCR（高性价比）两个模型，形成一个既能吸引眼球又能控制成本的产品矩阵。
+
+基本背景信息：
+- 网站域名： deepseekocr.io， 借助 DeepSeek OCR 的热度进行冷启动，吸引第一波流量
+- 技术栈采用 nextjs + tailwildcss
+
+技术支持：
+- DeepSeek OCR 没有找到合适的api提供商，当前模型部署在runpod上，现在人数比较少，请求一次在10s-20s左右，如果遇上冷启动，冷启动会额外增加60s左右，单次0.03$左右，耗费较高，维护成本高
+- PaddleOCR VL：https://aistudio.baidu.com/ 有提供api服务，根据token计费，单次耗费较低，预测0.001$左右,维护成本低，接入方便
+- DeepSeek OCR参考信息
+    - 开源代码： https://github.com/deepseek-ai/DeepSeek-OCR
+    - 技术报告： https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf
+- paddle ocr
+    - 技术报告： https://arxiv.org/pdf/2510.14528
+    - 开源代码：https://github.com/PaddlePaddle/PaddleOCR
+    - huggingface 页面：https://huggingface.co/PaddlePaddle/PaddleOCR-VL
+
+网站布局：
+- /： hero部分-> 免费试用playground ...
+- /models/[model]: 模型详细页面，后续可能添加更多的ocr模型
+- /tools/[tool]: 分类工具页面， passport ocr/text scanner/ocr invoice/receipt ocr 等等，瞄准更多相关词汇
+
+盈利模式：
+- googole adsense 广告
+- 高级会员订阅
+- 借助Rapidapi或者apify的API服务
+
+开发阶段
+- step1(0-1week): 主页 + 模型页 + 工具页，开始在社交媒体宣传
+- step2(1-2week): 添加订阅+支付系统， 逐步添加外链
+- step3(2-3week): rappidapi 和apify 开发api服务，网页内添加api相关页面（介绍+开发接口+ 定价信息），进一步添加外联
+- step4(3-4week): 申请google adsense 广告，网站内部署广告位置，添加更多模型或者工具页，进一步完善seo
+- 添加多语言
+
+
+
 
 ## reference
 
@@ -42,18 +70,8 @@ $$\begin{aligned}
 - 小屏幕 点击生成结果 raw text 会改变ui布局
 - ~~添加roadmap~~
 - 提取turnstile
-- 左侧面板
-    - 提供示例图片 (Provide Samples): 用户第一次来，可能手头没有合适的图片。在上传区域下方提供2-3张预设的、能体现技术优势的示例图片（比如：复杂的论文截图、带表格的财务报表、手写笔记照片）。用户点击一下就能立即看到识别结果，极大降低了使用门OT
-    - 明确状态反馈: 这是当前最需要优化的体验。当用户上传图片后，右侧的结果区域不能只是空白。必须要有明确的加载状态，比如一个loading spinner，并配上文字：
-        “正在上传...”
-        “排队中，当前排在第2位...”
-        “模型启动中，大约需要60秒...”
-        “正在识别中...”
-    - 优化任务类型选项 (Task Type): 每个选项下面可以加一小行灰色的说明文字，解释这个选项的用途。例如：
-    Document to Markdown: (适合转换文章、笔记)
-    Figure Parse: (从图表中提取结构化数据)
-- 右侧面板
-    - 状态一：初始欢迎状态 (Initial Welcome State)
+- paddleocr: https://aistudio.baidu.com/account/accessToken
+    - https://ai.baidu.com/ai-doc/AISTUDIO/2mh4okm66 api
 
 ## pro features
 comming soon / roadmap
@@ -72,12 +90,36 @@ image describer
 - https://imagedescriber.online/
 
 公式识别
+latex ocr
 image ocr
 pdf ocr
 batch ocr
 document ocr
 free mathpix alternative
 free-online-math-equation-ocr
+
+image into text generator
+image into text converter
+convert pdf into text
+handwriting ocr
+
+passport ocr
+ocr receipt scanner
+ocr scanner online
+scan text to word
+text scanner
+ocr invoice scanning
+receipt ocr
+
+image to text 1M
+picture to text
+photo to text
+
+## 域名
+
+- mathpix free
+- ai ocr
+
 ## ocr tools
 
 - olmocr: https://github.com/allenai/olmocr

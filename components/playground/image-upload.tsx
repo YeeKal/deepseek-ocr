@@ -1,21 +1,21 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useCallback } from "react"
+import { useState, useCallback,useRef } from "react"
 import { Upload, LinkIcon, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { MaxUploadImageSize } from "@/lib/constants"
 
 const sampleImages = [
   {
     id: 1,
     url: "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp", // 去掉空格
-    title: "Grocery Receipt", // Fold Receipt
-    description: "Works well even with crumpled or folded receipts."
+    title: "Grocery Invoice", // Fold Receipt
+    description: "Works well even with crumpled or folded invoices."
   },
   {
     id: 2,
@@ -33,21 +33,49 @@ const sampleImages = [
 
 type ImageUploadProps = {
   onImageChange: (source: { type: "url" | "base64"; value: string } | null) => void
+  onFileTypeChange?: (fileType: "image" | "pdf") => void
+  ocrEngine?: "paddleocrvl" | "deepseekocr"
 }
 
-export function ImageUpload({ onImageChange }: ImageUploadProps) {
+export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deepseekocr" }: ImageUploadProps) {
   const [preview, setPreview] = useState<string | null>(null)
   const [urlInput, setUrlInput] = useState("")
   const [isDragging, setIsDragging] = useState(false)
+  const [showFileSizeDialog, setShowFileSizeDialog] = useState(false)
+  const [fileSizeError, setFileSizeError] = useState("")
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileUpload = useCallback(
     (file: File) => {
-      if (!file.type.startsWith("image/")) {
-        alert("Please upload an image file")
+      // Check file size (in MB)
+      const fileSizeInMB = file.size / (1024 * 1024)
+      if (fileSizeInMB > MaxUploadImageSize) {
+        setFileSizeError(`Your file is ${fileSizeInMB.toFixed(2)} MB, but the current limit is ${MaxUploadImageSize} MB`)
+        setShowFileSizeDialog(true)
+        if (fileInputRef.current) {
+    fileInputRef.current.value = ""  // 这是被允许的：清空当前选中，但不能设特定值
+  }
         return
       }
 
-      const reader = new FileReader() 
+      // For DeepSeekOCR, only accept images
+      if (ocrEngine === "deepseekocr" && !file.type.startsWith("image/")) {
+        alert("Please upload an image file")
+        return
+      }
+      // For PaddleOCRVL, accept both images and PDFs
+      if (ocrEngine === "paddleocrvl" && !file.type.startsWith("image/") && file.type !== "application/pdf") {
+        alert("Please upload an image or PDF file")
+        return
+      }
+
+      // Auto-detect file type
+      const detectedType: "image" | "pdf" = file.type === "application/pdf" ? "pdf" : "image"
+      if (onFileTypeChange) {
+        onFileTypeChange(detectedType)
+      }
+
+      const reader = new FileReader()
       reader.onload = (e) => {
         const base64 = e.target?.result as string
         const base64Data = base64.split(",")[1]
@@ -56,7 +84,7 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
       }
       reader.readAsDataURL(file)
     },
-    [onImageChange],
+    [onImageChange, onFileTypeChange, ocrEngine],
   )
 
   const handleDrop = useCallback( 
@@ -106,12 +134,15 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
     setPreview(null)
     setUrlInput("")
     onImageChange(null)
+     if (fileInputRef.current) {
+    fileInputRef.current.value = ""
+  }
   }
 
   return (
     <div className="space-y-4">
       <div className="flex gap-2 items-center">
-      <Label>Image Upload</Label>
+      <Label>{ocrEngine === "paddleocrvl" ? "File Upload (Image or PDF)" : "Image Upload"}</Label>
       <a
         href="#how-to-use"
         className="inline-flex items-center  shadow-sm transition-all hover:shadow-md"
@@ -154,10 +185,16 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
               onPaste={handlePaste}
             >
               <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              <p className="text-sm text-muted-foreground mb-2">Drag & drop, paste, or click to upload</p>
+              <p className="text-sm text-muted-foreground mb-1">
+                Drag & drop, paste, or click to upload {ocrEngine === "paddleocrvl" ? "an image or PDF" : "an image"}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Maximum file size: {MaxUploadImageSize} MB
+              </p>
               <Input
+                ref={fileInputRef}
                 type="file"
-                accept="image/*"
+                accept={ocrEngine === "deepseekocr" ? "image/*" : "image/*,.pdf"}
                 className="hidden"
                 id="file-upload"
                 onChange={(e) => {
@@ -224,6 +261,46 @@ export function ImageUpload({ onImageChange }: ImageUploadProps) {
               ))}
             </div>
           </div>
+
+      {/* File Size Error Dialog */}
+      <Dialog open={showFileSizeDialog} onOpenChange={setShowFileSizeDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl text-rose-500">File Size Exceeded</DialogTitle>
+            <DialogDescription className="text-sm text-muted-foreground mt-2">
+              {fileSizeError}
+            </DialogDescription>
+            <DialogDescription className="text-sm text-muted-foreground mt-4 pt-2">
+              <strong>Pro Features Coming Soon!</strong>
+            </DialogDescription>
+            <DialogDescription className="text-sm text-muted-foreground mt-4 pb-2">
+              Get notified when we launch higher file size limits, batch processing, and more premium OCR features.
+            </DialogDescription>
+
+          </DialogHeader>
+          <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShowFileSizeDialog(false)}}
+              className="sm:mr-auto"
+            >
+              Try Again
+            </Button>
+            <Button
+              onClick={() => {
+                clearImage()
+                setShowFileSizeDialog(false)
+                // Open waitlist in new tab
+                window.open("/waitlist", "_blank")
+              }}
+              className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
+            >
+              Join Pro Features Waitlist
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

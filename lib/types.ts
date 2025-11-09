@@ -1,6 +1,12 @@
 
 
-
+export type OCRResult = {
+  text_content: string
+  bounding_boxes?: Array<{ text: string; box: number[] }>
+  visualization_b64?: string | string[]
+  delayTime?: number
+  executionTime?: number
+}
 // --- DATA TYPES ---
 export interface ImageDetail {
   prompt: string; // Used for alt text or internal notes

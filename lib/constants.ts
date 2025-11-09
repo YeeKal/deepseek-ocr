@@ -4,8 +4,7 @@ export const BRAND_NAME = "Deepseek Ocr"
 export const SUPPORT_EMAIL = "yee@deepseekocr.io"
 
 export const GPU_API_URL = process.env.GPU_API_BASE_URL || 'https://fcebf0e7d6a5.ngrok-free.app';
-
-
+export const BAIDU_AI_STUDIO_API_URL = `https://85q8t7p8g4t3r5r2.aistudio-app.com/layout-parsing`
 //  twcr onup vszt skue
 
 export const DEFAULT_CREDITS = 20

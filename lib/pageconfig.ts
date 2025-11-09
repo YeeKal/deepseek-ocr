@@ -20,8 +20,8 @@ export const pageConfig: PageConfig = {
   },
   hero: {
     eyebrow: "Experience a Leading Document Understanding Technology",
-    title: "DeepSeek-OCR Playground",
-    tagline: "Next-Gen Contextual OCR: Accurately Recognize Complex Documents & Images",
+    title: "Free OCR Playground",
+    tagline: "Experience a Leading Document Understanding Technology. Powered by DeepSeek OCR and PaddleOCR",
     ctaButton: {
       text: "Try for Free Now",
       link: "playground"
