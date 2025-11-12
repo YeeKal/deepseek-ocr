@@ -13,6 +13,27 @@ export const  itemsPerPage = 28
 export const MaxUploadImageSize = 5 ; // 5 MB
 export const Megapixels = 1_000_000;
 export const RUNPOD_MAX_EXECUTION_TIME = 3* 60; // 15 minutes in seconds
+export const PLAYGROUND_SECTION_ID = "toolplayground"
+export const HOW_TO_USE_SECTION_ID = "how-to-use"
+
+
+export const SEO_DEFAULT =  {
+    title: "Free DeepSeek-OCR: High-Accuracy Text & Table Extraction | DeepSeekOCR.io",
+    description: "Experience DeepSeek-OCR, convert scanned notes, reports, and charts into editable text with incredible accuracy. Free to use, no sign-up required",
+    keywords: [
+      "deepseekocr",
+      "deepseek ocr",
+      "contexts optical compression",
+      "efficient ocr",
+      "document parsing",
+      "vision language model",
+      "long-context compression",
+      "ocr api",
+      "deepseek ocr paper"
+    ],
+    ogImage: "https://cdn.deepseekocr.io/visual-logo/og-image.webp",
+    creator: "@yeekal"
+  }
 
 export const THEME_COLOR = {
   PRIMARY: "#4f46e5",

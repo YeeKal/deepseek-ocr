@@ -6,15 +6,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Copy, Check, Sparkles, Download } from "lucide-react"
 import type { OCRResult } from "@/lib/types"
 import OcrMDResult from "./ocr-markdown"
+import type { ToolConfig } from "@/lib/config/tool-types"
+
+type GuideProps = ToolConfig["playground"]["guide"]
 
 type ResultDisplayProps = {
   result: OCRResult | null
   error: string | null
   isProcessing: boolean
-  runningWorkerNumber: number
+  guide: GuideProps
 }
 
-export function ResultDisplay({ result, error, isProcessing, runningWorkerNumber = 0 }: ResultDisplayProps) {
+export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisplayProps) {
   const [copied, setCopied] = useState(false)
   const [elapsedTime, setElapsedTime] = useState(0)
 
@@ -79,11 +82,6 @@ export function ResultDisplay({ result, error, isProcessing, runningWorkerNumber
         <div className="text-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
           <p className="text-muted-foreground">Processing your image...</p>
-          {runningWorkerNumber === 0 && elapsedTime > 15 && (
-            <div className="text-xs text-amber-800 bg-amber-50 p-3 rounded-lg border border-amber-200">
-              <p><strong>Server is warming up!</strong> This can take a moment on the first run. Thanks for your patience.</p>
-            </div>
-          )}
           <p className="text-sm text-muted-foreground">
             Elapsed time: {formatTime(elapsedTime)}
           </p>
@@ -105,51 +103,49 @@ export function ResultDisplay({ result, error, isProcessing, runningWorkerNumber
   }
 
   if (!result) {
+    //  guidance area
     return (
       <div className="h-full flex items-center justify-center min-h-[400px]">
-  <div className="text-center space-y-3 text-muted-foreground p-4 max-w-sm"> {/* 限制最大宽度，让文本更易读 */}
-    <Sparkles className="h-12 w-12 mx-auto mb-4 text-primary opacity-60" />
-    
-    <h3 className="text-xl font-bold text-foreground"> {/* 强化标题 */}
-      Ready to See the Magic?
-    </h3>
-    
-    <p className="text-base"> {/* 强化主行动 */}
-      Upload your own file, or select one of our examples to get started.
-    </p>
+        <div className="text-center space-y-3 text-muted-foreground p-4 max-w-sm"> {/* 增加 max-w-sm 限制宽度，让文字不至于太散 */}
+          <Sparkles className="h-12 w-12 mx-auto mb-4 text-primary opacity-60" />
 
-    {/* 第一组：核心价值和模型引导 */}
-    <div className="pt-4 space-y-2 text-sm text-left mx-auto">
-      <p className="text-foreground font-semibold">
-        💡 <strong>Quick Tip:</strong> Choose the right engine!
-      </p>
-      <ul className="list-disc list-inside space-y-1 pl-4 text-gray-600">
-        <li>Select <strong>PaddleOCR</strong> for speed and most common documents.</li>
-        <li>Switch to <strong>DeepSeek OCR</strong> for maximum accuracy on complex layouts.</li>
-      </ul>
-    </div>
+          {/* 1. 优化主标题：更具行动力 */}
+          <h3 className="text-xl font-bold text-foreground">
+            {guide.title}
+          </h3>
 
-    {/* 第二组：性能和文件优化建议 */}
-    <div className="pt-4 space-y-2 text-sm text-left mx-auto">
-      <p className="text-foreground font-semibold">
-        ⚡️ Performance Tips
-      </p>
-      <ul className="list-disc list-inside space-y-1 pl-4 text-gray-600">
-        <li>Smaller files process <strong>faster</strong> (keep resolution reasonable).</li>
-        <li>Try different task types (e.g., Markdown) to see the results change!</li>
-        <li>
-                <strong>Free PDFs</strong>: First page only. Multi-page support is a coming Pro feature.
+          {/* 2. 核心价值描述：突出免费和无门槛 */}
+          <p className="text-sm">
+            {guide.description}
+          </p>
+
+
+          <div className="pt-4 space-y-2 text-sm text-left mx-auto">
+            <p className="text-foreground font-semibold">
+              ⚡️ Performance Tips:
+            </p>
+            <ul className="list-disc list-inside space-y-1 pl-4">
+              <li>Smaller files process <strong>faster</strong> (keep resolution reasonable)</li>
+
+              {/* -- 新增/替换的提示 -- */}
+              <li>
+                PDF uploads are limited to the <strong>first page</strong>. Multi-page support is a coming Pro feature.
                 {/* 假设你的链接样式是主色+下划线 */}
                 <a href="/waitlist" className="text-primary font-medium underline ml-1">
                   Join the waitlist!
                 </a>
               </li>
-      </ul>
-    </div>
-    
-  </div>
-</div>
+              <li>Ensure the image has good lighting and is in focus</li>
+              <li>For handwritten notes, clear and distinct writing works best</li>
+
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
     )
+   
   }
 
 
@@ -225,9 +221,9 @@ export function ResultDisplay({ result, error, isProcessing, runningWorkerNumber
             <div className="bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-auto">
               {Array.isArray(result.visualization_b64) ? (
                 <div className={`grid gap-4 ${result.visualization_b64.length === 1 ? 'grid-cols-1' :
-                    result.visualization_b64.length === 2 ? 'grid-cols-2' :
-                      result.visualization_b64.length === 3 ? 'grid-cols-3' :
-                        result.visualization_b64.length >= 4 ? 'grid-cols-2' : 'grid-cols-1'
+                  result.visualization_b64.length === 2 ? 'grid-cols-2' :
+                    result.visualization_b64.length === 3 ? 'grid-cols-3' :
+                      result.visualization_b64.length >= 4 ? 'grid-cols-2' : 'grid-cols-1'
                   }`}>
                   {result.visualization_b64.map((viz, index) => (
                     <div key={index} className="space-y-2">

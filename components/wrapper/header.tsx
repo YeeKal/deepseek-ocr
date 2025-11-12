@@ -3,17 +3,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { StickyNote, ChevronDownIcon, Box, Blocks } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu'
-import ThemeToggle from "../common/ThemeToggle";
+import {Box, Blocks, Radical } from "lucide-react";
 import { PageContent, LOGO_URL, BRAND_NAME } from "@/lib/constants";
 import Image from "next/image";
-import { allThemeMiniConfig, textToIcon } from "@/lib/ai-tools/config-utils";
 import AccountWrapper from "./account";
 import { useSession } from "next-auth/react";
 
@@ -33,6 +25,11 @@ export function Header() {
       href: "/waitlist",
       icon: <Blocks className="mr-2 h-4 w-4"></Blocks>,
     },
+    {
+      label: "Formula OCR",
+      href: "/tools/formula-ocr",
+      icon: <Radical className="mr-2 h-4 w-4"></Radical>,
+    },
   ];
 
 
@@ -50,9 +47,7 @@ export function Header() {
 
           <Link
             href="/"
-            className="font-bold text-xl bg-gradient-to-r from-[#5182ED]  to-[#D56575]
-                bg-clip-text
-                text-transparent"
+            className="font-bold text-xl bg-gradient-to-r from-[#5182ED]  to-[#D56575] bg-clip-text text-transparent no-underline"
           >
             {BRAND_NAME}
           </Link>

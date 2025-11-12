@@ -31,9 +31,9 @@ export const pageConfig: PageConfig = {
       link: "/waitlist"
     },
     features:{
-        f1: "Free to try",
-        f2: "Instant generation",
-        f3: "High accuracy"
+        f1: "High accuracy",
+        f2: "Structured Markdown",
+        f3: "Layout Aware"
     }
   },
   playground: {

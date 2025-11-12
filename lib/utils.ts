@@ -7,6 +7,16 @@ export function cn(...inputs: ClassValue[]) {
 export function isDev() {
   return process.env.NODE_ENV === "development";
 }
+
+export const scrollToPlayground = (id:string) => {
+  console.log("Scrolling to:", id);
+    const el = document.getElementById(id);
+    if (el) {
+  console.log("find:", id);
+
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 export function getBadgeColor(index: number) {
   const colors = [
     "text-blue-800",

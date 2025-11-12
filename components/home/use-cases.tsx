@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
-import {practicalScenarios} from "@/lib/ai-tools/scenarioData"
 import { getBadgeColor } from "@/lib/utils"
 import {ImageDetail} from "@/lib/types"
 import { pageConfig } from "@/lib/pageconfig";

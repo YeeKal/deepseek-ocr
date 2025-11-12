@@ -4,7 +4,6 @@ import { Features } from "@/components/home/features";
 import { CTA } from "@/components/home/call-to-action";
 import FAQ from "@/components/home/faq";
 import UseCases from "@/components/home/use-cases"
-import DiveDeeper from "@/components/home/dive-deeper";
 import  Waitlist  from "@/components/home/waitlist";
 import { DemoSection } from "@/components/playground/demo-section"
 import { UsageSection } from "@/components/playground/usage-section"
@@ -35,7 +34,7 @@ export default function HomePage() {
       <TaskAbilities/>
       <UseCases/>
       <Features  />
-      <DiveDeeper />
+      {/* <DiveDeeper /> */}
       <FAQ />
       <CTA />
       <Waitlist/>

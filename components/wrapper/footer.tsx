@@ -1,3 +1,6 @@
+'use client';
+import { useState, useEffect } from 'react';
+
 import {
   BRAND_NAME,
   DOMAIN_NAME,
@@ -16,7 +19,11 @@ type HelpfulLinkTypes = {
 
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = useState<number>(2025); // 默认值无所谓
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 border-t py-8">

@@ -69,7 +69,7 @@ export default function Hero() {
               </button>
             </motion.div>
 
-            {/* <motion.div
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -89,7 +89,7 @@ export default function Hero() {
                 <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
                 {content.features.f3}
               </div>
-            </motion.div> */}
+            </motion.div>
           </motion.div>
         </div>
       </div>

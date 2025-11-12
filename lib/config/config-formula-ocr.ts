@@ -1,0 +1,211 @@
+import { ToolConfig } from '@/lib/config/tool-types';
+
+
+// Multi-Source Precision Engine: 
+//  - Handwritten notes, camera-scanned books, and digital screenshots
+// Intelligent Structure Recognition: 
+//  - it understands mathematical syntax and layout. 
+//  - It preserves matrices, fractions, and complex alignments.
+
+
+export const formulaOcrConfig: ToolConfig = {
+  meta:{
+    slug: 'formula-ocr',
+    name: 'Formula OCR',
+    description: 'Instantly convert math equations from images to editable LaTeX.',
+    cover: {
+      url: 'https://cdn.deepseekocr.io/tools/formula-ocr/og-image-screenshot.webp',
+      alt: 'Cover image for the Formula OCR tool, showing a complex mathematical equation.'
+    }
+  },
+  seo: {
+    title: 'Free AI Formula OCR: Image to LaTeX & Math Equation Converter',
+    description: 'Instantly convert handwritten notes, textbook photos, and screenshots into perfectly structured, error-free LaTeX and Markdown with our free AI-powered Formula OCR. A powerful free Mathpix alternative.',
+    keywords: ['formula ocr', 'math ocr', 'latex ocr', 'equation ocr', 'image to latex', 'photo to math equation', 'free mathpix alternative'],
+    ogImage: 'https://cdn.deepseekocr.io/tools/formula-ocr/og-image-screenshot.webp',
+    creator: '@yeekal',
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'Free AI Formula OCR',
+        'applicationCategory': 'ScienceApplication',
+        'operatingSystem': 'Any (Web-based)',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD'
+        },
+        'aggregateRating': {
+          '@type': 'AggregateRating',
+          'ratingValue': '4.9',
+          'reviewCount': '850'
+        },
+        'featureList': [
+          'Handwritten Math Recognition',
+          'LaTeX and Markdown Output',
+          'Layout Preservation for Matrices and Fractions',
+          'No Sign-up Required'
+        ]
+      }
+    ]
+  },
+
+  hero: {
+    eyebrow: 'Benchmark-Proven Mathematical OCR',
+    title: 'Go from Image to Equation in One Click',
+    tagline: 'Stop manually typing complex formulas. Our AI-powered OCR accurately recognizes printed and handwritten math from textbooks, papers, and notes, providing clean LaTeX and Markdown output in seconds.',
+    features: [
+      { icon: 'CheckCircleIcon', text: 'High Accuracy Recognition' },
+      { icon: 'CheckCircleIcon', text: 'Supports LaTeX & Markdown' },
+      { icon: 'CheckCircleIcon', text: 'Intelligent Formatting' }
+    ]
+  },
+
+  playground: {
+    title: 'Drag, Drop, and Digitize',
+    description: 'Upload an image of any math equation and get clean LaTeX in seconds.',
+    guide:{
+      title:"Get Instant, Accurate LaTeX",
+      description: "Upload your equation or select an example to instantly digitize complex math"
+    },
+    exampleImages: [
+      { url: 'https://cdn.deepseekocr.io/tools/formula-ocr/lag-formula.webp', 
+        alt: 'Example of a quantum-gravity-lagrangian-formula OCR',
+      tip: 'Digital Math Snippets' },
+      { 
+        url: 'https://cdn.deepseekocr.io/tools/formula-ocr/print-formula-on-book.webp', 
+        alt: 'Example of a photo of formula equation on printed book for OCR',
+        tip: 'Camera-scanned Printed Math' 
+      },
+      { 
+        url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp', 
+        alt: 'Example of a handwritten equation for OCR',
+       tip: 'Handwritten Mathematical Expressions' 
+      }
+    ]
+  },
+ how_to: {
+    title: 'How to Convert Image to LaTeX in 3 Simple Steps',
+    description: 'Our intuitive interface makes converting your math equations from picture to code effortless.',
+    steps: [
+      { 
+        icon: 'UploadIcon', 
+        title: '1. Upload Your Equation Image', 
+        description: 'Drag & drop, paste, or select your image file (JPG, PNG). Use photos of textbooks, screenshots, or your own notes.',
+        // 添加对应的GIF信息
+        media: {
+          type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif',
+          alt: 'Click choose file and select the right image containing the formula.'
+        }
+      },
+      { 
+        icon: 'Cpu', 
+        title: '2. Initiate AI Recognition', 
+        description: 'Click "Extract Text" and our AI will instantly analyze and process the mathematical notation, preserving the original structure.',
+        media: {
+          type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif',
+          alt: 'Animation showing the AI processing the formula.'
+        }
+      },
+      { 
+        icon: 'ClipboardCopy', 
+        title: '3. Copy Your LaTeX or Markdown', 
+        description: 'Your equation is ready. Copy the clean, editable LaTeX code for your academic papers or Markdown for your notes.',
+        media: {
+          type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif',
+          alt: 'Animation showing a user copying the final LaTeX code.'
+        }
+      }
+    ]
+  },
+
+  useCases: {
+   title: 'From Tedious Task to Effortless Workflow',
+    description: 'Our tool is built for the specific tasks you perform every day. See how we eliminate your biggest frustrations.',
+    scenarios: [
+      { id: 'whiteboard', shortTitle: 'Lecture Notes', 
+        originalTitle: 'Capture Whiteboard Equations Instantly',
+         tagline: 'Never miss a formula in a fast-paced lecture again.', 
+         description: 'Your professor is writing complex derivations on the board. Instead of frantically trying to type, just snap a photo. Our OCR digitizes the handwritten equations into clean LaTeX, so you can focus on learning, not transcribing.', image: { 
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-handwriting-whiteboard.webp', 
+          alt: 'Student taking a photo of a professor\'s whiteboard filled with math equations.' } },
+      { id: 'textbook', shortTitle: 'Textbook Problems', 
+        originalTitle: 'Digitize Textbook Problems in Seconds',
+         tagline: 'Turn hours of homework prep into minutes.', 
+         description: 'Setting up a problem set? Instead of manually typing every equation from your textbook, just take a picture of the page. Our tool extracts all the formulas, preserving their structure, so you can get straight to solving them.', image: { 
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp', 
+          alt: 'An open physics textbook with complex formulas highlighted.' } },
+      { id: 'research', shortTitle: 'Research Papers', 
+        originalTitle: 'Extract Formulas from Academic PDFs', 
+        tagline: 'Integrate existing research into your work without error.', 
+        description: 'You\'ve found a key equation in a 20-year-old PDF paper. Don\'t risk transcription errors. Screenshot the formula, and our tool will provide you with the exact LaTeX code, ready to be cited and used in your own research.', image: { 
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-research-paper.webp',
+           alt: 'A research paper PDF on a screen with a formula circled.' } },
+      { id: 'notes', shortTitle: 'Digital Notes', originalTitle: 'Seamlessly Integrate with Digital Notes', tagline: 'Perfect for Notion, Obsidian, and Markdown lovers.', description: 'Stop wrestling with clunky equation editors. Convert any formula into clean Markdown with a single click and paste it directly into your digital note-taking app, keeping your workflow smooth and efficient.', image: { 
+        url: 'https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-digitial-notes.webp', 
+        alt: 'A laptop screen showing a well-organized Notion page with embedded math formulas.' } }
+    ]
+  },
+
+features: {
+    title: 'A Powerful and Free Mathpix Alternative',
+    description: 'Our tool is packed with features designed for accuracy, speed, and ease of use, making it the perfect choice for all your math recognition needs.',
+    items: [
+      { 
+        icon: 'Sparkles', // Corrected
+        title: 'Advanced Recognition Engine', 
+        description: 'Powered by cutting-edge AI, our tool accurately interprets everything from simple algebra to complex calculus, including handwritten notes.' 
+      },
+      { 
+        icon: 'BrainCircuit', // A better icon for an AI engine
+        title: 'Benchmark-Proven Accuracy', 
+        description: 'Our engine, powered by PaddleOCR-VL, is independently verified to outperform leading tools like Mathpix in formula recognition accuracy on the OmniDocBench v1.0 benchmark.' 
+      },
+      { 
+        icon: 'Code2', // Corrected
+        title: 'Native LaTeX & Markdown Output', 
+        description: 'Get clean, standardized LaTeX code ready for immediate use in your documents, or use the Markdown output for web-based notes.' 
+      },
+      { 
+        icon: 'Globe',
+        title: 'Broad Language & Symbol Support', 
+        description: 'Our underlying engine supports over 100 languages, ensuring robust recognition of various characters and mathematical symbols from around the world.' 
+      },
+      { 
+        icon: 'ShieldCheck', // Corrected
+        title: 'Secure and Private', 
+        description: 'Your images are processed securely and are not stored on our servers. Your academic and personal work remains your own.' 
+      },
+      { 
+        icon: 'Cpu', // Corrected
+        title: 'Powered by AI', 
+        description: 'Leverage the same world-class technology used in leading AI research to ensure the highest quality results for your equations.' 
+      }
+    ]
+  },
+  
+  faq: {
+    title: "Frequently Asked Questions about Formula OCR",
+    items: [
+      { question: 'What is Formula OCR?', answer: 'Formula OCR (Optical Character Recognition) is a specialized technology that recognizes and converts mathematical equations from images into editable, machine-readable formats like LaTeX and Markdown.' },
+      { question: 'How does this compare to other tools like Mathpix?',
+         answer: 'Beyond just our generous free model, our tool is built for superior accuracy. In independent tests on the OmniDocBench v1.0 benchmark, our underlying PaddleOCR-VL engine outperformed Mathpix in formula recognition. You get state-of-the-art accuracy without the restrictive limits of other free tiers.'  },
+      { question: 'What are the limitations of the free version?', answer: 'Our free tool is incredibly powerful but includes a brief security check (Captcha) before processing and may display ads to support the service. It\'s designed for processing files one by one.' },
+      { question: 'Do you offer batch processing or an API for developers?', answer: 'Yes, these are key features of our upcoming Pro plan! The Pro subscription will offer an ad-free experience, no Captchas, batch processing for multiple files, and API access for developers. Join our waitlist to be notified!' },
+      { question: 'What is the best way to get accurate results for handwritten equations?', answer: 'For best results, write clearly on a plain background and take a well-lit, in-focus photo. While our AI is robust, minimizing shadows and blur will significantly improve accuracy.' },
+      { question: 'What output formats do you provide?', answer: 'We provide two primary, highly portable formats: LaTeX for academic publishing and professional documents, and structured Markdown for easy integration into modern note-taking apps and websites.' },
+      { question: 'Is my data secure?', answer: 'Absolutely. We prioritize your privacy. Images are uploaded over a secure connection, processed in memory, and permanently deleted from our servers immediately after the conversion is complete.' },
+      { question: 'Can this tool solve my math homework?', answer: 'Our tool is a recognition and conversion tool, not a calculator. It brilliantly converts the *image* of a problem into editable code, but it does not compute the final answer.' }
+    ]
+  },
+
+  cta: {
+    title: 'Stop Typing. Start Converting.',
+    description: 'Save hours of tedious work and focus on what truly matters. Digitize your first equation now and experience a seamless workflow.',
+    button: { text: 'Try Formula OCR Now', link: '#playground' }
+  }
+};

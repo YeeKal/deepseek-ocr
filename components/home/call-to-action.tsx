@@ -1,27 +1,3 @@
-// import { Button } from "@/components/ui/button";
-// import Link from "next/link";
-
-// import { PenTool } from "lucide-react";
-
-// export function CallToAction() {
-//   return (
-//     <section className="container mx-auto max-w-4xl py-12 px-4">
-//       <Link
-//         href="/image-generator"
-//         prefetch={false}
-//         className="flex items-center justify-center"
-//       >
-//         <Button className="bg-primary hover:bg-primary/90 text-primary-foreground p-4">
-//           <span className="w-4 h-4 text-red-400">
-//             <PenTool />
-//           </span>
-//           <span className="text-2xl">{`Try Flux Kontext`}</span>
-//         </Button>
-//       </Link>
-//     </section>
-//   );
-// }
-
 'use client'
 
 import Link from "next/link";
@@ -52,7 +28,7 @@ export function CTA() {
           </h2>
           
           {/* Descriptive Text */}
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+          <p className="mt-4 max-w-2xl text-lg text-foreground">
             {content.description}
           </p>
           

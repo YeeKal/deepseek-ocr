@@ -36,8 +36,7 @@ export function DemoSection() {
   const [error, setError] = useState<string | null>(null)
   const [jobId, setJobId] = useState<string | null>(null)
   const [healthStatus, setHealthStatus] = useState<HealthStatus | null>(null)
-  const [elapsedTime, setElapsedTime] = useState<number>(0)
-  
+
   // --- Turnstile State ---
   const [showTurnstile, setShowTurnstile] = useState<boolean>(false)
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
@@ -62,12 +61,12 @@ export function DemoSection() {
             setTurnstileLoaded(true);
           }
         }, 100);
-        
+
         const timeout = setTimeout(() => {
           clearInterval(checkInterval);
           setTurnstileLoaded(false);
         }, 5000);
-        
+
         return () => {
           clearInterval(checkInterval);
           clearTimeout(timeout);
@@ -88,13 +87,13 @@ export function DemoSection() {
         clearTimeout(timeout);
         setTurnstileLoaded(true);
       };
-      
+
       script.onerror = () => {
         clearTimeout(timeout);
         console.error('Turnstile script failed to load');
         setTurnstileLoaded(false);
       };
-      
+
       document.head.appendChild(script);
 
       return () => {
@@ -105,25 +104,25 @@ export function DemoSection() {
       };
     }
   }, []);
-  
+
   // Render/cleanup Turnstile widget when modal is shown/hidden
   useEffect(() => {
     let widgetId: string | null = null;
-    
+
     if (showTurnstile && turnstileLoaded && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
       // Clear container first
       const container = document.getElementById('turnstile-container');
       if (container) {
         container.innerHTML = '';
-        
+
         try {
           widgetId = window.turnstile.render('#turnstile-container', {
             sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
             size: 'normal',
-            callback: (token:string) => {
+            callback: (token: string) => {
               handleTurnstileSuccess(token);
             },
-            'error-callback': (errorCode:string) => {
+            'error-callback': (errorCode: string) => {
               console.error("Turnstile verification error with code:", errorCode);
               handleTurnstileError();
             },
@@ -142,7 +141,7 @@ export function DemoSection() {
         }
       }
     }
-    
+
     // Cleanup function
     return () => {
       if (widgetId && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
@@ -173,29 +172,13 @@ export function DemoSection() {
     return () => clearInterval(interval)
   }, [])
 
-  // Timer for processing (no changes)
+  // --- Logic to handle submission after token is received ---
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null
-    if (isProcessing) {
-      setElapsedTime(0)
-      interval = setInterval(() => {
-        setElapsedTime((prev) => prev + 1)
-      }, 1000)
-    } else {
-      setElapsedTime(0)
+    // This effect triggers when a new token is received from the Turnstile callback.
+    if (turnstileToken) {
+      // Immediately start the process with the new token.
+      handleProcessWithToken(turnstileToken);
     }
-    return () => {
-      if (interval) clearInterval(interval)
-    }
-  }, [isProcessing])
-
-  // --- MODIFIED: Logic to handle submission after token is received ---
-  useEffect(() => {
-      // This effect triggers when a new token is received from the Turnstile callback.
-      if (turnstileToken) {
-          // Immediately start the process with the new token.
-          handleProcessWithToken(turnstileToken);
-      }
   }, [turnstileToken]); // Dependency array ensures this only runs when turnstileToken changes.
 
   // Auto-detect file type when image source changes (for URL)
@@ -234,7 +217,7 @@ export function DemoSection() {
     setIsVerifying(true)
     setShowTurnstile(true)
   }
-  
+
   const handleProcessWithToken = async (token: string) => {
     // --- MODIFIED: Reset token immediately to prevent reuse ---
     setTurnstileToken(null);
@@ -396,11 +379,10 @@ export function DemoSection() {
                     setError(null)
                     setPrompt("")
                   }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                    ocrEngine === "paddleocrvl"
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "paddleocrvl"
                       ? "bg-background shadow-sm text-foreground"
                       : "text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   PaddleOCR-VL
                 </button>
@@ -410,95 +392,92 @@ export function DemoSection() {
                     setResult(null)
                     setError(null)
                   }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                    ocrEngine === "deepseekocr"
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "deepseekocr"
                       ? "bg-background shadow-sm text-foreground"
                       : "text-muted-foreground hover:text-foreground"
-                  }`}
+                    }`}
                 >
                   DeepSeek-OCR
                 </button>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3 mt-4">
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center justify-center gap-2 md:gap-4 mt-4 text-sm">
+              <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <span className="font-semibold">Unlimited Free</span>
               </div>
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 <span className="font-semibold">No Login Required</span>
               </div>
-                <a href="https://runpod.io?ref=5kdp9mps" target="_blank">
-                <div className="inline-flex items-center px-4 py-2 hover:bg-none hover:bg-purple-400 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg">
-                  <svg className="w-5 h-5 mr-2" fill="none"  viewBox="0 0 24 24" stroke="currentColor" >
-                    <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/>
-                  </svg>
-                  <span className="font-semibold">Support by Runpod</span>
-                </div>
-                </a>
+              <a
+                href="https://runpod.io?ref=5kdp9mps"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-2 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-200">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+                </svg>
+                <span className="font-semibold text-sm">Support by Runpod</span>
+              </a>
             </div>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-6">
             <Card className="p-6 space-y-4">
               <div className="space-y-4">
-                  <ImageUpload
-                    onImageChange={setImageSource}
-                    onFileTypeChange={handleFileTypeChange}
-                    ocrEngine={ocrEngine}
-                  />
+                <ImageUpload
+                  onImageChange={setImageSource}
+                  onFileTypeChange={handleFileTypeChange}
+                  ocrEngine={ocrEngine}
+                />
 
-                  {/* File Type Selection for PaddleOCRVL */}
-                  {ocrEngine === "paddleocrvl" && (
-                    <div className="space-y-2 space-x-2">
-                      <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                {/* File Type Selection for PaddleOCRVL */}
+                {ocrEngine === "paddleocrvl" && (
+                  <div className="flex items-center gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-semibold uppercase tracking-wider block">
                         File Type
                       </label>
-                         <label className="text-xs text-muted-foreground">
-                        (Automatically detected. Override if needed.)
-                      </label>
-                      <div className="flex gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setFileType("image")}
-                          className={`flex-1 py-2 px-4 rounded-md border text-sm font-medium transition-all ${
-                            fileType === "image"
-                              ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                              : "border-border bg-background hover:bg-accent"
-                          }`}
-                        >
-                          Image
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => setFileType("pdf")}
-                          className={`flex-1 py-2 px-4 rounded-md border text-sm font-medium transition-all ${
-                            fileType === "pdf"
-                              ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                              : "border-border bg-background hover:bg-accent"
-                          }`}
-                        >
-                          PDF
-                        </button>
-                      </div>
-                   
+
                     </div>
-                  )}
+                    <div className="flex flex-1 flex-row justify-center space-x-6">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="fileType"
+                          value="image"
+                          checked={fileType === "image"}
+                          onChange={() => setFileType("image")}
+                          className="h-4 w-4 text-primary focus:ring-primary"
+                        />
+                        <span className="text-sm font-medium">Image</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="fileType"
+                          value="pdf"
+                          checked={fileType === "pdf"}
+                          onChange={() => setFileType("pdf")}
+                          className="h-4 w-4 text-primary focus:ring-primary"
+                        />
+                        <span className="text-sm font-medium">PDF</span>
+                      </label>
+                    </div>
+                  </div>
+                )}
 
                 <button
                   onClick={handleProcess}
                   disabled={!imageSource || isProcessing || isVerifying}
-                  className="w-full py-3 px-4 rounded-lg font-medium text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{
-                    backgroundColor: THEME_COLOR.PRIMARY,
-                    color: 'white',
-                  }}
+                  className="w-full py-3 px-4 rounded-lg font-medium bg-primary text-primary-foreground  text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isProcessing ? 'Processing...' : (isVerifying ? 'Verifying...' : 'Extract Text')}
                 </button>
@@ -516,7 +495,7 @@ export function DemoSection() {
               </div>
             </Card>
             <Card className="p-6">
-              <ResultDisplay result={result} error={error} isProcessing={isProcessing} elapsedTime={elapsedTime} runningWorkerNumber={healthStatus?.workers.running || 0} />
+              <ResultDisplay result={result} error={error} isProcessing={isProcessing} runningWorkerNumber={healthStatus?.workers.running || 0} />
             </Card>
           </div>
 
@@ -535,7 +514,7 @@ export function DemoSection() {
                     ⚡️ System is cooling down. First request may take ~40 seconds to start.
                   </div>
                 )}
-             </div>
+              </div>
               <div className="flex gap-3 text-center">
                 <div className="flex-1">
                   <div className="text-lg font-bold text-emerald-500">

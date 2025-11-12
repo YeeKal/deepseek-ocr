@@ -1,5 +1,4 @@
 import { type NextRequest, NextResponse } from "next/server"
-import {GPU_API_URL} from '@/lib/constants';
 import {OCRRequest, processOCR} from '@/lib/deepseek-ocr';
 
 

@@ -1,48 +1,20 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react" // Import useCallback
+import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { ImageUpload } from "@/components/playground/image-upload"
-import { ParameterSettings } from "@/components/playground/parameter-settings"
 import { ResultDisplay } from "@/components/playground/result-display"
-import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants"
 import { THEME_COLOR } from "@/lib/constants"
+import type { OCRResult } from "@/lib/types"
+import {PLAYGROUND_SECTION_ID} from "@/lib/constants"
 
-// TypeScript types (no changes)
-export type OCRResult = {
-  text_content: string
-  bounding_boxes?: Array<{ text: string; box: number[] }>
-  visualization_b64?: string | string[]
-  delayTime?: number
-  executionTime?: number
-}
-
-export type HealthStatus = {
-  jobs: {
-    completed: number
-    failed: number
-    inProgress: number
-    inQueue: number
-    retried: number
-  }
-  workers: {
-    idle: number
-    running: number
-  }
-}
-
-export function DemoSection() {
+export function ToolPlayground() {
   const [imageSource, setImageSource] = useState<{ type: "url" | "base64"; value: string } | null>(null)
-  const [modelSize, setModelSize] = useState<string>("Gundam")
-  const [taskType, setTaskType] = useState<string>("doc_to_markdown")
-  const [prompt, setPrompt] = useState<string>("")
+  const [fileType, setFileType] = useState<"image" | "pdf">("image")
   const [isProcessing, setIsProcessing] = useState(false)
   const [result, setResult] = useState<OCRResult | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [jobId, setJobId] = useState<string | null>(null)
-  const [healthStatus, setHealthStatus] = useState<HealthStatus | null>(null)
-  const [elapsedTime, setElapsedTime] = useState<number>(0)
-  
+
   // --- Turnstile State ---
   const [showTurnstile, setShowTurnstile] = useState<boolean>(false)
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
@@ -67,12 +39,12 @@ export function DemoSection() {
             setTurnstileLoaded(true);
           }
         }, 100);
-        
+
         const timeout = setTimeout(() => {
           clearInterval(checkInterval);
           setTurnstileLoaded(false);
         }, 5000);
-        
+
         return () => {
           clearInterval(checkInterval);
           clearTimeout(timeout);
@@ -93,13 +65,13 @@ export function DemoSection() {
         clearTimeout(timeout);
         setTurnstileLoaded(true);
       };
-      
+
       script.onerror = () => {
         clearTimeout(timeout);
         console.error('Turnstile script failed to load');
         setTurnstileLoaded(false);
       };
-      
+
       document.head.appendChild(script);
 
       return () => {
@@ -110,25 +82,25 @@ export function DemoSection() {
       };
     }
   }, []);
-  
+
   // Render/cleanup Turnstile widget when modal is shown/hidden
   useEffect(() => {
     let widgetId: string | null = null;
-    
+
     if (showTurnstile && turnstileLoaded && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
       // Clear container first
       const container = document.getElementById('turnstile-container');
       if (container) {
         container.innerHTML = '';
-        
+
         try {
           widgetId = window.turnstile.render('#turnstile-container', {
             sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
             size: 'normal',
-            callback: (token:string) => {
+            callback: (token: string) => {
               handleTurnstileSuccess(token);
             },
-            'error-callback': (errorCode:string) => {
+            'error-callback': (errorCode: string) => {
               console.error("Turnstile verification error with code:", errorCode);
               handleTurnstileError();
             },
@@ -147,7 +119,7 @@ export function DemoSection() {
         }
       }
     }
-    
+
     // Cleanup function
     return () => {
       if (widgetId && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
@@ -160,145 +132,81 @@ export function DemoSection() {
     };
   }, [showTurnstile, turnstileLoaded]);
 
-  // Fetch health status (no changes)
+  // Auto-detect file type when image source changes (for URL)
   useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const response = await fetch("/api/freedemo/runpod/health")
-        if (response.ok) {
-          const data = await response.json()
-          setHealthStatus(data)
-        }
-      } catch (err) {
-        console.error("Failed to fetch health status:", err)
+    if (imageSource?.type === "url" && imageSource.value) {
+      // Detect from URL
+      const url = imageSource.value.toLowerCase()
+      if (url.includes(".pdf") || url.includes("%2epdf")) {
+        setFileType("pdf")
+      } else {
+        setFileType("image")
       }
     }
-    fetchHealth()
-    const interval = setInterval(fetchHealth, 10000)
-    return () => clearInterval(interval)
-  }, [])
+  }, [imageSource])
 
-  // Timer for processing (no changes)
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null
-    if (isProcessing) {
-      setElapsedTime(0)
-      interval = setInterval(() => {
-        setElapsedTime((prev) => prev + 1)
-      }, 1000)
-    } else {
-      setElapsedTime(0)
-    }
-    return () => {
-      if (interval) clearInterval(interval)
-    }
-  }, [isProcessing])
+  // Handle file type change from ImageUpload component
+  const handleFileTypeChange = (detectedType: "image" | "pdf") => {
+    setFileType(detectedType)
+  }
 
-  // --- MODIFIED: Logic to handle submission after token is received ---
+  // Logic to handle submission after token is received
   useEffect(() => {
-      // This effect triggers when a new token is received from the Turnstile callback.
-      if (turnstileToken) {
-          // Immediately start the process with the new token.
-          handleProcessWithToken(turnstileToken);
-      }
-  }, [turnstileToken]); // Dependency array ensures this only runs when turnstileToken changes.
+    if (turnstileToken) {
+      handleProcessWithToken(turnstileToken);
+    }
+  }, [turnstileToken]);
 
   const handleProcess = async () => {
     if (!imageSource) {
-      handleError("Please upload an image first")
+      handleError("Please upload a file first")
       return
     }
-    if ((taskType === "custom" || taskType === "text_localization") && !prompt.trim()) {
-      handleError("Prompt is required for this task type")
-      return
-    }
+
     if (isVerifying || isProcessing) return
 
+    // PaddleOCRVL needs Turnstile verification
     setIsVerifying(true)
-    // Simply show the Turnstile modal. The rest of the flow is now handled by useEffect.
     setShowTurnstile(true)
   }
   
   const handleProcessWithToken = async (token: string) => {
-    // --- MODIFIED: Reset token immediately to prevent reuse ---
     setTurnstileToken(null);
-    
+
     setIsProcessing(true)
     setError(null)
     setResult(null)
-    setJobId(null)
 
     try {
-      const runResponse = await fetch("/api/freedemo/runpod/run", {
+      // PaddleOCRVL - Direct API call
+      const response = await fetch("/api/ocr/paddleocrvl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          input: {
-            input_source: imageSource,
-            task_type: taskType,
-            prompt: prompt.trim() || "",
-            model_size: modelSize,
-            output_options: {
-              include_bounding_boxes: true,
-              include_visualization: true,
-            },
-          },
-          turnstileToken: token, // Use the passed token
+          fileBase64: imageSource?.type === "base64" ? imageSource.value : undefined,
+          fileUrl: imageSource?.type === "url" ? imageSource.value : undefined,
+          fileType: fileType,
+          turnstileToken: token,
         }),
       })
 
-      if (!runResponse.ok) {
-        const errorData = await runResponse.json()
-        throw new Error(errorData.error || "Failed to submit task")
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || "Failed to process file")
       }
 
-      const runData = await runResponse.json()
-      const { id: submittedJobId } = runData
-      setJobId(submittedJobId)
-
-      // Polling logic remains the same...
-      const pollStatus = async (jobId: string) => {
-        const maxAttempts = RUNPOD_MAX_EXECUTION_TIME
-        let attempts = 0
-        const poll = async () => {
-          attempts++
-          try {
-            const statusResponse = await fetch(
-              `/api/freedemo/runpod/status?job_id=${encodeURIComponent(jobId)}`
-            )
-            if (!statusResponse.ok) {
-              const errorData = await statusResponse.json()
-              throw new Error(errorData.error || "Failed to check status")
-            }
-            const statusData = await statusResponse.json()
-            if (statusData.status === "COMPLETED") {
-              const output = statusData.output
-              const result: OCRResult = { ...output, delayTime: statusData.delayTime, executionTime: statusData.executionTime }
-              setResult(result)
-              setIsProcessing(false)
-              setJobId(null)
-              return
-            }
-            if (statusData.status === "FAILED") {
-              throw new Error("Task failed to complete")
-            }
-            if (attempts < maxAttempts) {
-              setTimeout(poll, 1000)
-            } else {
-              throw new Error("Task timeout - maximum wait time exceeded")
-            }
-          } catch (err) {
-            setIsProcessing(false)
-            setJobId(null)
-            handleError(err instanceof Error ? err.message : "An unexpected error occurred")
-          }
-        }
-        poll()
+      const data = await response.json()
+      // Convert PaddleOCRVL response to OCRResult format
+      const ocrResult: OCRResult = {
+        text_content: data.processedMarkdown,
+        visualization_b64: data.layoutImageUrl,
+        delayTime: data.delayTime,
+        executionTime: data.executionTime,
       }
-      pollStatus(submittedJobId)
+      setResult(ocrResult)
+      setIsProcessing(false)
     } catch (err) {
       setIsProcessing(false)
-      setJobId(null)
       handleError(err instanceof Error ? err.message : "An unexpected error occurred")
     }
   }
@@ -310,31 +218,29 @@ export function DemoSection() {
     setShowErrorDialog(true)
   }
 
-  // --- MODIFIED: handleTurnstileSuccess is now simpler ---
   const handleTurnstileSuccess = (token: string) => {
     console.log("Turnstile verification successful:", token.slice(0, 10) + "...");
     setIsVerifying(false);
-    setShowTurnstile(false); // Close the modal
-    setTurnstileToken(token); // Set the token, which will trigger the useEffect for submission
+    setShowTurnstile(false);
+    setTurnstileToken(token);
   }
 
   const handleTurnstileError = () => {
     setIsVerifying(false);
-    setShowTurnstile(false); // Close the modal on error
+    setShowTurnstile(false);
     handleError("Verification failed. Please check your connection and try again.")
   }
 
-  // The rest of the component's JSX remains exactly the same...
   return (
     <>
-      <section id="playground" className="min-h-screen px-4 py-20">
+      <section id={PLAYGROUND_SECTION_ID} className="min-h-screen px-4 py-20">
         <div className="max-w-7xl mx-auto space-y-8">
-          {/* ... (all your existing JSX for the page layout, cards, etc.) ... */}
           <div className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold"> Drag, Drop, and Understand</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Upload an image and experience the power of DeepSeek-OCR technology
+              Upload an image or PDF and experience the power of PaddleOCR-VL technology
             </p>
+
             <div className="flex items-center justify-center gap-3 mt-4">
               <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -348,25 +254,56 @@ export function DemoSection() {
                 </svg>
                 <span className="font-semibold">No Login Required</span>
               </div>
-              <a href="https://runpod.io?ref=5kdp9mps" target="_blank">
-              <div className="inline-flex items-center px-4 py-2 hover:bg-none hover:bg-purple-400 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg">
-                <svg className="w-5 h-5 mr-2" fill="none"  viewBox="0 0 24 24" stroke="currentColor" >
-                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/>
-                </svg>
-                <span className="font-semibold">Support by Runpod</span>
-              </div>
-              </a>
             </div>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-6">
             <Card className="p-6 space-y-4">
               <div className="space-y-4">
-                  <ImageUpload onImageChange={setImageSource} />
+                  <ImageUpload
+                    onImageChange={setImageSource}
+                    onFileTypeChange={handleFileTypeChange}
+                    ocrEngine="paddleocrvl"
+                  />
+
+                  {/* File Type Selection */}
+                  <div className="flex items-center gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-semibold uppercase tracking-wider block">
+                        File Type
+                      </label>
+                    </div>
+                    <div className="flex flex-1 flex-row justify-center space-x-6">
+
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="fileType"
+                          value="image"
+                          checked={fileType === "image"}
+                          onChange={() => setFileType("image")}
+                          className="h-4 w-4 text-primary focus:ring-primary"
+                        />
+                        <span className="text-sm font-medium">Image</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="fileType"
+                          value="pdf"
+                          checked={fileType === "pdf"}
+                          onChange={() => setFileType("pdf")}
+                          className="h-4 w-4 text-primary focus:ring-primary"
+                        />
+                        <span className="text-sm font-medium">PDF</span>
+                      </label>
+                    </div>
+                  </div>
+
                 <button
                   onClick={handleProcess}
                   disabled={!imageSource || isProcessing || isVerifying}
-                  className="w-full py-3 px-4 rounded-lg font-medium text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 px-4 rounded-lg font-medium text-sm bg-primary text-primary-foreground transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     backgroundColor: THEME_COLOR.PRIMARY,
                     color: 'white',
@@ -374,63 +311,17 @@ export function DemoSection() {
                 >
                   {isProcessing ? 'Processing...' : (isVerifying ? 'Verifying...' : 'Extract Text')}
                 </button>
-                <ParameterSettings
-                  modelSize={modelSize}
-                  taskType={taskType}
-                  prompt={prompt}
-                  onModelSizeChange={setModelSize}
-                  onTaskTypeChange={setTaskType}
-                  onPromptChange={setPrompt}
-                />
               </div>
             </Card>
             <Card className="p-6">
-              <ResultDisplay result={result} error={error} isProcessing={isProcessing} elapsedTime={elapsedTime} runningWorkerNumber={healthStatus?.workers.running || 0} />
+              <ResultDisplay result={result} error={error} isProcessing={isProcessing} runningWorkerNumber={0} />
             </Card>
           </div>
-
-          {healthStatus && (
-            <Card className="grid lg:grid-cols-2 gap-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
-              <div>
-                <div className="flex items-center gap-x-10 mb-2">
-                  <h3 className="text-sm font-semibold">Server status</h3>
-                  {healthStatus.workers.running === 0 && (
-                    <span className="text-xs text-rose-500">⚡️ Cooling down</span>
-                  )}
-                </div>
-                {healthStatus.workers.running === 0 && (
-                  <div className="mb-3 p-2  rounded text-xs text-purple-800 dark:text-amber-200">
-                    ⚡️ System is cooling down. First request may take ~40 seconds to start.
-                  </div>
-                )}
-             </div>
-              <div className="flex gap-3 text-center">
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-emerald-500">
-                    {(healthStatus.jobs.completed + 1024).toLocaleString()}
-                  </div>
-                  <div className="text-xs text-muted-foreground">Completed</div>
-                </div>
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-blue-500">
-                    {healthStatus.jobs.inProgress}
-                  </div>
-                  <div className="text-xs text-muted-foreground">In Progress</div>
-                </div>
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-amber-500">
-                    {healthStatus.jobs.inQueue}
-                  </div>
-                  <div className="text-xs text-muted-foreground">In Queue</div>
-                </div>
-              </div>
-            </Card>
-          )}
 
         </div>
       </section>
 
-      {/* Turnstile Verification Dialog (JSX remains the same) */}
+      {/* Turnstile Verification Dialog */}
       {showTurnstile && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
@@ -460,7 +351,7 @@ export function DemoSection() {
         </div>
       )}
 
-      {/* Error Dialog (no changes) */}
+      {/* Error Dialog */}
       {showErrorDialog && error && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
@@ -489,10 +380,9 @@ export function DemoSection() {
   )
 }
 
-// Ensure window types are declared globally if you haven't already
+// Window types for Turnstile
 declare global {
   interface Window {
     turnstile: any;
-    onTurnstileLoaded?: () => void;
   }
 }
