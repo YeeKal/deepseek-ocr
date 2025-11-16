@@ -1,0 +1,246 @@
+import { ToolConfig } from '@/lib/config/tool-types';
+
+export const imageOcrConfig: ToolConfig = {
+  meta: {
+    slug: 'image-ocr',
+    name: 'Image OCR',
+    description: 'Instantly convert any image to text',
+    cover: {
+      url: 'https://cdn.deepseekocr.io/tools/image-ocr/image-ocr-cover.webp',
+      alt: 'An image file icon transforming into a text document icon, symbolizing the image-to-text conversion process.',
+    },
+  },
+  seo: {
+    title: 'Free Image to Text Converter | DeepSeekOCR.io',
+    description: 'Instantly convert any image to text with our free online OCR tool. Accurately extract text from JPG, PNG, photos, and pictures while preserving formatting. No sign-up needed.',
+    keywords: ['Image OCR', 'image to text', 'picture to text', 'photo to text', 'jpg to text', 'pic to text', 'image to text converter', 'image to text generator', 'ocr scanner'],
+    ogImage: 'https://cdn.deepseekocr.io/tools/image-ocr/image-ocr-og.webp',
+    creator: '@yeekal',
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': 'Image to Text Converter',
+        'applicationCategory': 'Utilities',
+        'operatingSystem': 'Web',
+        'description': 'A free online image OCR tool that accurately converts pictures (JPG, PNG, etc.) into editable text, preserving the original layout.',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+        },
+        'creator': {
+            '@type': 'Organization',
+            'name': 'DeepSeekOCR.io'
+        },
+        'aggregateRating': {
+            '@type': 'AggregateRating',
+            'ratingValue': '4.9',
+            'reviewCount': '879'
+        }
+      },
+    ],
+  },
+  hero: {
+    eyebrow: 'Image to Text, Instantly',
+    title: 'Image to Text with Pinpoint Accuracy',
+    tagline: 'Our free Image OCR tool extracts text from any picture—JPG, PNG, screenshots—and transforms it into editable text or structured Markdown while preserving the original layout.',
+    features: [
+      { icon: 'Scan', text: 'Unmatched OCR Accuracy' },
+      { icon: 'LayoutTemplate', text: 'Preserves Original Formatting' },
+      { icon: 'FileImage', text: 'Supports All Major Image Formats' },
+    ],
+  },
+  playground: {
+    title: 'Try the Image to Text Converter Now',
+    description: 'Drag and drop your JPG, PNG, or photo. No registration, no hassle.',
+    guide:{
+        title: "How It Works",
+        description: "Upload any image file. Our AI engine analyzes the visual data, recognizes characters and structure, and outputs clean, editable text in seconds."
+    },
+    exampleImages: [
+        {
+    url: "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp", // 去掉空格
+    tip: "Grocery Invoice", // Fold Receipt
+    alt: "Works well even with crumpled or folded invoices."
+  },
+      { url: "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp", 
+        alt: 'documents with complex layouts.',
+         tip: 'Research Paper Snippet'},
+      { url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp', 
+        alt: 'Example of a handwritten equation for OCR',
+       tip: 'Handwritten Mathematical Expressions'},
+    ],
+  },
+  how_to: {
+    title: 'How to Convert an Image to Text in 3 Simple Steps',
+    description: 'From a picture to editable text in under 30 seconds. It’s that easy.',
+    steps: [
+      {
+        icon: 'UploadCloud',
+        title: 'Step 1: Upload Your Image',
+        description: 'Click the upload button or drag and drop your image file (JPG, PNG, WEBP, etc.) directly into the designated area.',
+        media: {
+          type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif',
+          alt: 'A user dragging a JPG file into the upload box of the Image OCR tool.',
+        }
+      },
+      {
+        icon: 'ScanLine',
+        title: 'Step 2: Start the OCR Conversion',
+        description: 'Our AI will automatically scan the image, identify the characters, and process the text and structure.',
+         media: {
+           type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif',
+          alt: 'Animation showing a scan line moving across an image and text appearing on the other side.',
+        }
+      },
+      {
+        icon: 'ClipboardCopy',
+        title: 'Step 3: Copy Your Text',
+        description: 'Your extracted text will appear instantly. Click the copy button to grab it for use in any editor or application.',
+         media: {
+           type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif',
+          alt: 'The output text box with a highlighted "Copy Text" button.',
+        }
+      },
+    ],
+  },
+  useCases: {
+  title: 'Real-World Image OCR Scenarios',
+  description: 'Discover how professionals and everyday users leverage accurate text extraction to save time and boost productivity.',
+  scenarios: [
+    {
+      id: 'student-notes-digitization',
+      shortTitle: 'Digitize Lecture Notes',
+      originalTitle: 'From Whiteboard to Digital Notes',
+      tagline: 'Transform classroom photos into searchable study materials',
+      description: 'Convert whiteboard photos and handwritten notes into structured Markdown for searchable, editable study guides in Notion or Obsidian.',
+      image: {
+        url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp',
+        alt: 'Student photographing lecture whiteboard',
+      },
+    },
+    {
+      id: 'freelancer-invoice-processing',
+      shortTitle: 'Automate Invoice Data Entry',
+      originalTitle: 'Receipts to Spreadsheet in One Click',
+      tagline: 'Extract key details from bills for effortless accounting',
+      description: 'Extract dates, amounts, and vendors from receipt photos into tabular Markdown for instant import into spreadsheets and tax tools.',
+      image: {
+        url: 'https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp',
+        alt: 'Freelancer scanning receipts with phone',
+      },
+    },
+    {
+      id: 'pdf-research-recognition',
+      shortTitle: 'Unlock Scanned Research PDFs',
+      originalTitle: 'From Paper to Searchable Literature',
+      tagline: 'Digitize academic papers for citation and analysis',
+      description: 'Extract text from scanned journal articles and theses into structured Markdown to enable keyword search and reference management.',
+      image: {
+            url: 'https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp',
+        alt: 'Researcher working with scanned academic papers',
+      },
+    },
+    {
+      id: 'legal-document-archiving',
+      shortTitle: 'Digitize Case Files',
+      originalTitle: 'Scanned Papers to Searchable Archives',
+      tagline: 'Unlock old records for compliance and research',
+      description: 'Convert scanned legal documents and contracts into searchable text layers, enabling fast keyword search and digital compliance archiving.',
+      image: {
+        url: 'https://cdn.deepseekocr.io/tools/image-ocr/contract-doc.webp',
+        alt: 'Paralegal scanning old legal documents',
+      },
+    },
+  ],
+},
+  features: {
+    title: 'The Smartest Way to Convert Images to Text',
+    description: 'Our features are designed to solve the biggest headaches in text extraction, delivering clean results every time.',
+    items: [
+      {
+        icon: 'CheckCircle2',
+        title: 'Pinpoint Accuracy',
+        description: 'Leveraging advanced AI models, our tool minimizes errors and correctly interprets characters, context, and punctuation, reducing your need for manual edits.',
+      },
+      {
+        icon: 'FileImage',
+        title: 'Broad Image Format Support',
+        description: 'We handle all the common formats. Whether it’s a high-resolution PNG, a standard JPG, or a modern WEBP, just upload it and we’ll do the rest.',
+      },
+      {
+        icon: 'LayoutTemplate',
+        title: 'Intelligent Formatting Retention',
+        description: 'Don\'t lose the structure of your original document. Our tool recognizes lists, paragraphs, and spacing to deliver text that is organized and easy to read.',
+      },
+      {
+        icon: 'WalletCards',
+        title: 'Truly Free, No Strings Attached',
+        description: 'This is not a limited trial. Our image-to-text converter is free for everyone. No sign-up, no credit card, and no watermarks on your output.',
+      },
+      {
+        icon: 'Languages',
+        title: 'Multi-Language Recognition',
+        description: 'Our OCR engine is trained on a massive dataset, enabling it to accurately recognize and transcribe text in over 100 different languages automatically.',
+      },
+       {
+        icon: 'GaugeCircle',
+        title: 'Fast Processing Speeds',
+        description: 'Your time is valuable. Our optimized process ensures your image is uploaded, scanned, and converted in just a few seconds, even for high-resolution photos.',
+      },
+    ],
+  },
+  faq: {
+    title: 'Your Image OCR Questions Answered',
+    items: [
+      {
+        question: 'What image formats can I upload to convert to text?',
+        answer: 'You can upload most standard image formats, including JPG, JPEG, PNG, BMP, and WEBP. If you have a different format, try converting it to one of these first.',
+      },
+      {
+        question: 'Is it really free to convert an image to text?',
+        answer: 'Yes, our online Image OCR tool is 100% free. We plan to introduce premium features for heavy users in the future, but the core functionality will remain free.',
+      },
+      {
+        question: 'How accurate is the text extraction from a photo?',
+        answer: 'For clear, high-quality images with standard fonts, the accuracy is extremely high. Results for blurry photos, complex backgrounds, or highly stylized fonts may vary.',
+      },
+      {
+        question: 'Will the OCR tool maintain the original formatting from my image?',
+        answer: 'Our tool is designed to be layout-aware. It recognizes paragraph breaks, lists, and general structure to provide an output that is much cleaner than a simple "wall of text". For complex layouts, we recommend our structured Markdown output.',
+      },
+      {
+        question: 'Is there a limit to the file size I can upload?',
+        answer: 'For our free service, the image file size is limited to 5MB to ensure fast processing for all users. This is sufficient for the vast majority of images and screenshots.',
+      },
+      {
+        question: 'Do I need to sign up or provide an email?',
+        answer: 'No. We believe in providing immediate value. You can use our image-to-text converter without any registration or personal information required.',
+      },
+      {
+        question: 'Can I use this to convert a picture of a table to text?',
+        answer: 'Yes, our AI can recognize tables within an image. It will attempt to extract the data in a structured format, which you can then easily copy into spreadsheet software like Excel or Google Sheets.',
+      },
+      {
+        question: 'Are my uploaded images safe?',
+        answer: 'Absolutely. We respect your privacy. Your images are securely processed and are automatically deleted from our servers shortly after the OCR conversion is complete.',
+      },
+      {
+        question: 'Can I process multi-page PDFs?',
+        answer: 'Free tier supports single-page PDFs. Pro users can process up to 10 pages with batch extraction and priority processing.',
+      },
+    ],
+  },
+  cta: {
+    title: 'Ready to Unlock Text from Your Images?',
+    description: 'Stop retyping and start converting. Drag and drop your image now to get fast, accurate, and perfectly formatted text in seconds.',
+    button: {
+      text: 'Convert Image to Text for Free',
+      link: '#playground',
+    },
+  },
+};

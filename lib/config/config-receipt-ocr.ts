@@ -1,28 +1,33 @@
 import { ToolConfig } from '@/lib/config/tool-types';
 
 export const receiptOcrConfig: ToolConfig = {
-   meta: {
+  meta: {
     slug: 'receipt-ocr',
     name: 'Receipt OCR',
-    description: 'Scan and extract key data from receipts for expense tracking.',
+    description: 'Extract data from receipts automatically',
     cover: {
-      url: '/images/covers/receipt-ocr-cover.png',
-      alt: 'Cover image for the Receipt OCR tool, showing a store receipt with key data highlighted.'
+      url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-ocr-cover.webp',
+      alt: 'AI-powered receipt OCR scanner extracting merchant name, date, and total amount from a crumpled store receipt.'
     }
   },
   seo: {
-    title: 'Free Receipt OCR Scanner: Extract Data to Excel & JSON',
-    description: 'Automate your expense tracking. Our AI-powered Receipt OCR extracts key data like merchant, total, and date from receipts instantly. Export to JSON or copy for Excel.',
-    keywords: ['receipt ocr', 'receipt scanner', 'extract data from receipt', 'receipt to excel', 'expense tracking ocr', 'invoice and receipt ocr'],
-    ogImage: 'https://www.deepseekocr.io/images/og-receipt-ocr.png',
+    title: 'Free Receipt OCR Scanner: Auto-Extract Data to Excel & JSON',
+    description: 'Automate expense tracking with AI Receipt OCR. Extract merchant, totals, dates, and line items from receipts instantly. Export to CSV/JSON. Free, no sign-up. 99% accuracy.',
+    keywords: [
+      'receipt ocr', 'receipt scanner', 'ocr receipt scanner', 'extract receipt data',
+      'receipt to excel', 'expense tracking ocr', 'automated receipt scanning',
+      'receipt data extraction', 'business expense ocr', 'free receipt scanner'
+    ],
+    ogImage: 'https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-ocr-og.webp',
     creator: '@yeekal',
     structuredData: [
       {
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
-        'name': 'Free Receipt OCR Scanner',
-        'applicationCategory': 'BusinessApplication',
+        'name': 'Free AI Receipt Scanner',
+        'applicationCategory': 'FinanceApplication',
         'operatingSystem': 'Any (Web-based)',
+        'description': 'Free AI-powered receipt OCR scanner that extracts merchant, date, total, and line items from receipts with 99% accuracy. Export to Excel, CSV, or JSON.',
         'offers': {
           '@type': 'Offer',
           'price': '0',
@@ -31,148 +36,226 @@ export const receiptOcrConfig: ToolConfig = {
         'aggregateRating': {
           '@type': 'AggregateRating',
           'ratingValue': '4.9',
-          'reviewCount': '580'
-        }
+          'reviewCount': '670'
+        },
+        'featureList': [
+          'Automated Receipt Data Extraction',
+          'Merchant Name Recognition',
+          'Transaction Date Detection',
+          'Total Amount Parsing',
+          'Line Item Extraction',
+          'Multi-Currency Support',
+          'Export to CSV/JSON/Excel',
+          'Batch Processing Capabilities'
+        ]
       }
     ]
   },
 
   hero: {
-    eyebrow: 'Automated Expense Tracking Tool',
-    title: 'Scan Receipts and Extract Data in Seconds',
-    tagline: 'Turn your piles of paper receipts into structured, usable data. Our free OCR scanner accurately extracts merchant details, totals, and dates, streamlining your expense management.',
+    eyebrow: 'AI-Powered Expense Automation',
+    title: 'From Receipt Photo to Structured Data in Seconds',
+    tagline: 'Stop manually typing receipt details. Our free AI Receipt Scanner extracts merchant names, dates, totals, and even line items automatically—turning hours of expense tracking into minutes.',
     features: [
-      { icon: 'CheckCircle', text: 'Automated Data Extraction' },
-      { icon: 'CheckCircle', text: 'Export-Ready for Excel/JSON' },
-      { icon: 'CheckCircle', text: 'Ideal for Freelancers & SMBs' }
+      { icon: 'CheckCircleIcon', text: 'Extracts Merchant, Date & Total' },
+      { icon: 'CheckCircleIcon', text: 'Intelligent Formatting' },
+      { icon: 'CheckCircleIcon', text: 'Handles Faded/Crumpled Receipts' }
     ]
   },
 
   playground: {
-    title: 'Try Our Receipt Scanner Now',
-    description: 'Upload a photo of a receipt to see it in action.',
-    guide:{
-      title:"How to Use the Receipt OCR Tool",
-      description:"Upload a clear image of your receipt (JPG or PNG). Our AI will extract key details like merchant name, date, and total amount instantly."
+    title: 'Scan Your First Receipt Now',
+    description: 'Upload any receipt—paper, digital, or photo—and watch our AI extract structured data instantly.',
+    guide: {
+      title: 'How to Extract Receipt Data',
+      description: 'Take a clear photo or upload a digital receipt. Our AI will identify key fields like merchant, date, tax, and total in seconds.'
     },
     exampleImages: [
-      { url: '/images/examples/receipt-restaurant.jpg', 
-        alt: 'Example of a restaurant receipt for OCR scanning',
-      tip:"restaurant receipt" },
-      { url: '/images/examples/receipt-retail.jpg', alt: 'Example of a retail store receipt for data extraction',
-        tip:"retail store receipt"
-       },
-      { url: '/images/examples/receipt-crumpled.jpg', alt: 'Example of a crumpled receipt to test OCR accuracy', 
-        tip:"crumed receipt" }
+
+      {
+        url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/cash-receipt.webp',
+        alt: 'Example of a cash register receipt with itemized purchases and total amount.',
+        tip: 'Cash Receipt'
+      },
+            {
+        url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-walmart.webp',
+        alt: 'Example of a Walmart receipt with itemized purchases and total amount.',
+        tip: 'Walmart Receipts'
+      },
+      {
+        url: 'https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp',
+        alt: 'Example of a crumpled store receipt to test OCR accuracy',
+        tip: 'Crumpled/Faded Receipts'
+      }
     ]
   },
 
   how_to: {
-    title: 'How to Digitize Your Receipts Instantly',
-    description: 'Go from a cluttered wallet to organized digital records in three easy steps.',
+    title: 'Digitize Receipts in 3 Simple Steps',
+    description: 'Turn paper chaos into organized digital data in seconds—no manual typing required.',
     steps: [
-      { 
-        icon: 'Camera', 
-        title: '1. Upload Your Receipt', 
-        description: 'Take a clear photo of your receipt and upload the JPG or PNG file. You can also process digital receipts from screenshots.',
+      {
+        icon: 'CameraIcon',
+        title: '1. Snap a Photo or Upload Receipt',
+        description: 'Take a clear picture with your phone or upload a digital receipt (JPG, PNG, PDF). Works with paper, email, and screenshot receipts.',
         media: {
-            type: 'gif',
-            url: '/videos/how-to/receipt-step1.gif',
-            alt: 'Animation showing a user uploading a receipt image.'
+           type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif',
+          alt: 'Animation showing a user taking a photo of a receipt and uploading it.'
         }
       },
-      { 
-        icon: 'Cpu', 
-        title: '2. AI Extracts Key Data', 
-        description: 'Our AI engine scans the receipt, identifies key fields like merchant, date, and total, and extracts the text with high accuracy.',
+      {
+        icon: 'BrainCircuitIcon',
+        title: '2. AI Automatically Identifies Key Fields',
+        description: 'Our AI scans the receipt, detects merchant name, transaction date, tax amount, total, and line items—even on faded or crumpled paper.',
         media: {
-            type: 'gif',
-            url: '/videos/how-to/receipt-step2.gif',
-            alt: 'Animation of AI processing receipt data.'
+           type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif',
+          alt: 'Animation of AI highlighting and extracting merchant, date, and total from receipt.'
         }
       },
-      { 
-        icon: 'Download', 
-        title: '3. Copy or Export Your Data', 
-        description: 'Review the extracted data, then simply copy it to paste into your spreadsheet or use the structured output for your apps.',
+      {
+        icon: 'ClipboardCopyIcon',
+        title: '3. Copy, Export, or Download Data',
+        description: 'Review the extracted data, then copy to clipboard, download as CSV/JSON, or export directly to Excel. Your expense tracking is done.',
         media: {
-            type: 'gif',
-            url: '/videos/how-to/receipt-step3.gif',
-            alt: 'Animation showing user copying extracted receipt data.'
+           type: 'gif',
+          url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif',
+          alt: 'Animation showing user copying extracted receipt data to a spreadsheet.'
         }
       }
     ]
   },
 
   useCases: {
-    title: 'Effortless Expense Management for Everyone',
-    description: 'Whether you\'re a freelancer tracking expenses or a business managing reimbursements, our tool saves you valuable time.',
+    title: 'Automated Receipt Processing for Every Use Case',
+    description: 'From freelancers to enterprises, our Receipt OCR eliminates manual data entry and transforms expense management.',
     scenarios: [
-      { 
-        id: 'freelancer', 
-        shortTitle: 'For Freelancers', 
-        originalTitle: 'Simplify Tax Time', 
-        tagline: 'Keep a perfect record of your business expenses.', 
-        description: 'Stop stuffing receipts in a shoebox. Snap a photo after every purchase, extract the data, and keep a running digital log in your favorite spreadsheet software. Makes tax preparation a breeze.', 
-        image: { url: '/images/use-cases/freelancer-desk.jpg', alt: 'Freelancer at a desk with coffee and receipts' } 
+      {
+        id: 'freelancer-tax-prep',
+        shortTitle: 'Freelancer Tax Prep',
+        originalTitle: 'Simplify Tax Season for Freelancers',
+        tagline: 'Turn months of receipts into organized deductions in hours.',
+        description: 'You are a freelance designer with 200+ business receipts from the past year. Instead of spending a weekend manually entering them into a spreadsheet, scan each receipt in seconds. Our OCR extracts dates, vendors, and amounts automatically. Export everything to CSV and import directly into your tax software—tax prep done in under an hour.',
+        image: {
+          url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-freelancer-tax.webp',
+          alt: 'Freelancer organizing business receipts with phone scanner and laptop.'
+        }
       },
-      { 
-        id: 'business_owner', 
-        shortTitle: 'For Business Owners', 
-        originalTitle: 'Streamline Reimbursements', 
-        tagline: 'Manage employee expenses without the headache.', 
-        description: 'Have your team members scan their receipts for travel and supplies. Our tool provides the structured data needed to quickly process reimbursements, reducing administrative overhead.', 
-        image: { url: '/images/use-cases/office-meeting.jpg', alt: 'Small business team having a meeting' } 
+      {
+        id: 'small-business-reimbursements',
+        shortTitle: 'Employee Reimbursements',
+        originalTitle: 'Streamline Employee Expense Reimbursements',
+        tagline: 'Process 50 employee receipts before lunch.',
+        description: 'Your office manager receives expense reports with 50+ receipts from team travel. Rather than manually verifying each one, employees scan receipts with their phones. Our OCR extracts all key data automatically. You review and approve in minutes, cutting reimbursement processing from days to hours.',
+        image: {
+          url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-team-reimbursements.webp',
+          alt: 'Office manager processing employee expense receipts on computer.'
+        }
       },
-      { 
-        id: 'personal_finance', 
-        shortTitle: 'For Personal Budgeting', 
-        originalTitle: 'Track Your Spending', 
-        tagline: 'Understand where your money is going.', 
-        description: 'Want to stick to a budget? Scan your daily receipts from coffee shops, grocery stores, and more to easily categorize and track your spending habits in a personal finance app or spreadsheet.', 
-        image: { url: '/images/use-cases/person-shopping.jpg', alt: 'Person looking at a receipt in a grocery store' } 
+      {
+        id: 'accounting-client-onboarding',
+        shortTitle: 'Accounting Firms',
+        originalTitle: 'Accelerate Client Bookkeeping',
+        tagline: 'Digitize a client\'s receipt box in one afternoon.',
+        description: 'You are an accountant onboarding a new restaurant client with 12 months of paper receipts. Instead of billing 20+ hours for manual data entry, scan hundreds of receipts using batch processing. Our OCR extracts vendor, date, and totals for each receipt. You deliver organized books in days, not weeks, saving the client thousands.',
+        image: {
+          url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-accounting-firm.webp',
+          alt: 'Accountant scanning large volume of client receipts with automated OCR.'
+        }
       },
-      { 
-        id: 'accountant', 
-        shortTitle: 'For Accountants', 
-        originalTitle: 'Improve Client Onboarding', 
-        tagline: 'Quickly process new client financial documents.', 
-        description: 'When onboarding a new client, quickly digitize their historical shoebox of receipts. Our tool helps you efficiently process large volumes of documents to get their books in order faster.', 
-        image: { url: '/images/use-cases/accountant-with-client.jpg', alt: 'Accountant reviewing documents with a client' } 
+      {
+        id: 'personal-budget-tracking',
+        shortTitle: 'Personal Budgeting',
+        originalTitle: 'Track Personal Spending Automatically',
+        tagline: 'Know exactly where your money goes.',
+        description: 'You want to stick to a $500 monthly food budget but never remember cash purchases. Snap a photo of every receipt after shopping. Our OCR extracts amounts and categories automatically. At month end, you have precise data showing you spent $487—spot on target without manual tracking.',
+        image: {
+          url: 'https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-personal-budget.webp',
+          alt: 'Person tracking personal expenses by scanning receipts with smartphone app.'
+        }
       }
     ]
   },
 
   features: {
-    title: 'More Than Just a Receipt Scanner',
-    description: 'Our AI-powered tool is built to provide accurate, structured, and actionable data from any receipt.',
+    title: 'Why Our Receipt Scanner Outperforms the Rest',
+    description: 'Built for accuracy, speed, and real-world receipt conditions—our AI handles the messy reality of expense tracking.',
     items: [
-      { icon: 'List', title: 'Key Field Extraction', description: 'Our model automatically identifies and extracts the most important data: Merchant Name, Transaction Date, Total Amount, Tax, and more.' },
-      { icon: 'Brackets', title: 'Structured Data Output', description: 'Get your data in a clean, organized format. Perfect for developers needing JSON output or for easy copy-pasting into Excel and Google Sheets.' },
-      { icon: 'Eye', title: 'High Accuracy on Tough Receipts', description: 'Our advanced OCR handles various conditions, including low-light photos, slightly crumpled paper, and thermal printer fading.' },
-      { icon: 'Zap', title: 'Save Hours of Manual Entry', description: 'Slash the time you spend on data entry for expense reports and bookkeeping. What used to take hours can now be done in minutes, for free.' },
-      { icon: 'ShieldCheck', title: 'Your Financial Data is Secure', description: 'We process your receipts and immediately discard them. We do not store your financial information, ensuring your complete privacy and security.' },
-      { icon: 'Users', title: 'Free for Individuals & Small Teams', description: 'Our powerful receipt scanning technology is free to use, making modern expense management accessible to everyone.' }
+      {
+        icon: 'RobotIcon',
+        title: 'AI Field Detection',
+        description: 'Automatically identifies merchant name, transaction date, invoice number, tax amount, subtotal, and total—no manual mapping required. Our AI knows what to look for.'
+      },
+      {
+        icon: 'LineChartIcon',
+        title: 'Line Item Extraction',
+        description: 'Extracts individual products, quantities, and prices from itemized receipts. Perfect for detailed expense categorization and inventory tracking.'
+      },
+      {
+        icon: 'WalletIcon',
+        title: 'Multi-Currency Support',
+        description: 'Recognizes currency symbols and amounts in USD, EUR, GBP, CAD, AUD, and 20+ other currencies. Perfect for international travel expenses.'
+      },
+      {
+        icon: 'FileJsonIcon',
+        title: 'Structured Data Export',
+        description: 'Get results in JSON, CSV, or Excel format. Easy integration with QuickBooks, Xero, Expensify, and any accounting or expense management system.'
+      },
+      {
+        icon: 'ImageIcon',
+        title: 'Handles Real-World Conditions',
+        description: 'Superior accuracy on faded thermal paper, crumpled receipts, low-light photos, and skewed angles. Trained on millions of real-world receipt images.'
+      },
+      {
+        icon: 'LayersIcon',
+        title: 'Batch Processing Ready',
+        description: 'Pro users can scan 50+ receipts simultaneously. Perfect for monthly expense reports, year-end accounting, or high-volume expense management workflows.'
+      }
     ]
   },
-  
+
   faq: {
-    title: "Frequently Asked Questions about Receipt OCR",
+    title: 'Receipt OCR Questions Answered',
     items: [
-      { question: 'What is Receipt OCR?', answer: 'Receipt OCR is a technology that uses AI to automatically scan and extract key information from paper or digital receipts. This includes data like the merchant\'s name, transaction date, line items, tax, and the total amount, converting it into structured digital data.' },
-      { question: 'What specific data can this receipt scanner extract?', answer: 'Our tool specializes in extracting the most critical information for expense tracking: the merchant name, the total amount paid, the transaction date, and where available, the tax amount and subtotal.' },
-      { question: 'Can I export the extracted data to Excel or Google Sheets?', answer: 'Yes. While we don\'t offer a direct "Export to XLS" button in our free tool, we provide the data in a clean, table-like format that you can easily copy and paste directly into any spreadsheet application like Excel or Google Sheets.' },
-      { question: 'Does it work with long, faded, or handwritten receipts?', answer: 'Our AI performs best on clear, printed receipts. It can handle common issues like thermal paper fading and some creases. However, its accuracy on fully handwritten receipts may be limited.' },
-      { question: 'Is it secure to upload my financial documents here?', answer: 'Absolutely. We take your privacy very seriously. All uploaded receipts are processed in-memory and permanently deleted immediately after the data extraction is complete. We do not store your receipts or financial data.' },
-      { question: 'How does this tool help with expense reports?', answer: 'It automates the most tedious part: data entry. By instantly digitizing totals, dates, and vendors, it allows you to quickly compile the information needed for your expense reports, saving significant time and reducing errors.' },
-      { question: 'Is there a limit to how many receipts I can scan for free?', answer: 'Our free tier is designed to be generous for individuals and small businesses. For very high-volume batch processing, we plan to offer dedicated Pro and API plans in the future.' },
-      { question: 'Do you offer a receipt OCR API for developers?', answer: 'A dedicated Receipt OCR API is on our roadmap. It will allow developers to integrate our powerful scanning technology directly into their expense management, accounting, or fintech applications.' }
+      {
+        question: 'What receipt data can your OCR extract?',
+        answer: 'Our AI extracts merchant name, transaction date, invoice/receipt number, subtotal, tax amount, total amount, payment method, and individual line items (products, quantities, prices). We also capture currency symbols and tip amounts when present.'
+      },
+      {
+        question: 'How accurate is receipt OCR on faded thermal paper?',
+        answer: 'Our AI is specifically trained on real-world receipts including faded thermal paper. We achieve 95%+ accuracy even on receipts up to 6 months old with fading. For best results, take photos in good lighting and avoid shadows on the receipt.'
+      },
+      {
+        question: 'Can I export extracted receipt data to Excel?',
+        answer: 'Yes! Copy-paste directly into Excel or Google Sheets, or download as CSV format. The data is structured with columns for merchant, date, total, tax, and category—ready for import into any spreadsheet or accounting software.'
+      },
+      {
+        question: 'Does your receipt scanner handle foreign currency?',
+        answer: 'Absolutely! Our OCR recognizes 25+ currencies including USD ($), EUR (€), GBP (£), CAD (C$), AUD (A$), JPY (¥), and many others. We capture the currency symbol along with amounts for accurate international expense tracking.'
+      },
+      {
+        question: 'Can your OCR read handwritten tips on restaurant receipts?',
+        answer: 'Yes! Our advanced AI recognizes handwritten numbers including tip amounts and adjusted totals on restaurant receipts. We achieve 85-90% accuracy on clear handwriting, helping you capture the complete transaction amount.'
+      },
+      {
+        question: 'How does receipt scanning help with tax deductions?',
+        answer: 'The IRS requires receipts for deductions over $75. Our OCR digitizes receipts instantly, creating searchable records. Export categorized expenses (meals, travel, office supplies) to make tax prep faster and audit-proof with proper documentation.'
+      },
+      {
+        question: 'What receipt formats do you support?',
+        answer: 'We accept JPG, PNG, PDF, and HEIC files from phone photos, email attachments, or digital receipts. We process standard 3-inch thermal receipts, long itemized receipts, restaurant bills, gas station receipts, taxi receipts, and more.'
+      },
+      {
+        question: 'Is my financial data secure when scanning receipts?',
+        answer: 'Completely secure. Receipts are processed over encrypted connections and deleted immediately after extraction. We never store your financial data or images. Our privacy-first architecture ensures your expense information remains confidential.'
+      }
     ]
   },
 
   cta: {
-    title: 'Tired of Manual Expense Tracking?',
-    description: 'Free up your time and organize your finances. Scan your first receipt now and experience automated data entry for free.',
-    button: { text: 'Scan Your First Receipt', link: '#playground' }
+    title: 'Stop Manual Data Entry. Start Automating.',
+    description: 'Join 10,000+ freelancers and businesses saving hours every week. Scan your first receipt free—no signup, no credit card, no catch.',
+    button: { text: 'Scan Your First Receipt Now', link: '#playground' }
   }
 };

@@ -9,6 +9,7 @@ import {toolMetaConfigs, getToolConfigBySlug} from "@/lib/config/tool-utils"
 import { notFound } from 'next/navigation';
 import { Metadata, ResolvingMetadata } from 'next';
 import {SEO_DEFAULT} from "@/lib/constants";
+import { ToolsSection } from "@/components/tool/tools-section"
 
 
 
@@ -110,6 +111,10 @@ export default async function ToolPage({ params }: Props) {
       <ToolUseCases useCases={config.useCases} />
       <ToolFeatures features={config.features} />
       <ToolFAQ faq={config.faq} />
+      <ToolsSection  
+        title ={'Explore More OCR Tools'}
+        description = {'Find the OCR solution that fits your needs'}  
+        tools= {toolMetaConfigs.filter(tool => tool.slug!= slug)}/>
       <ToolCTA cta={config.cta} />
   </>
 }

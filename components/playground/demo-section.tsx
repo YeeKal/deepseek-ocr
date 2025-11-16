@@ -6,7 +6,6 @@ import { ImageUpload } from "@/components/playground/image-upload"
 import { ParameterSettings } from "@/components/playground/parameter-settings"
 import { ResultDisplay } from "@/components/playground/result-display"
 import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants"
-import { THEME_COLOR } from "@/lib/constants"
 import type { OCRResult } from "@/lib/types"
 
 

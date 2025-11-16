@@ -8,6 +8,7 @@ import  Waitlist  from "@/components/home/waitlist";
 import { DemoSection } from "@/components/playground/demo-section"
 import { UsageSection } from "@/components/playground/usage-section"
 import RoadmapSection from "@/components/home/roadmap";
+import {ToolsSection} from "@/components/tool/tools-section";
 
 export default function HomePage() {
   // const jsonLd = {
@@ -34,8 +35,8 @@ export default function HomePage() {
       <TaskAbilities/>
       <UseCases/>
       <Features  />
-      {/* <DiveDeeper /> */}
       <FAQ />
+      <ToolsSection/>
       <CTA />
       <Waitlist/>
     </main>

@@ -19,9 +19,9 @@ const sampleImages = [
   },
   {
     id: 2,
-    url: "https://cdn.deepseekocr.io/home/2010_homicide_rates.webp",  // 去掉空格
-    title: "Financial Table",
-    description: "Accurately extracts data and numbers from tables."
+    url: "https://cdn.deepseekocr.io/tools/formula-ocr/lag-formula.webp",  // 去掉空格
+    title: "Digital Math Snippets",
+    description: "Accurately extracts latex from complex math equations."
   },
   {
     id: 3,

@@ -14,7 +14,7 @@ export const formulaOcrConfig: ToolConfig = {
     name: 'Formula OCR',
     description: 'Instantly convert math equations from images to editable LaTeX.',
     cover: {
-      url: 'https://cdn.deepseekocr.io/tools/formula-ocr/og-image-screenshot.webp',
+      url: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-cover.webp',
       alt: 'Cover image for the Formula OCR tool, showing a complex mathematical equation.'
     }
   },
@@ -22,7 +22,7 @@ export const formulaOcrConfig: ToolConfig = {
     title: 'Free AI Formula OCR: Image to LaTeX & Math Equation Converter',
     description: 'Instantly convert handwritten notes, textbook photos, and screenshots into perfectly structured, error-free LaTeX and Markdown with our free AI-powered Formula OCR. A powerful free Mathpix alternative.',
     keywords: ['formula ocr', 'math ocr', 'latex ocr', 'equation ocr', 'image to latex', 'photo to math equation', 'free mathpix alternative'],
-    ogImage: 'https://cdn.deepseekocr.io/tools/formula-ocr/og-image-screenshot.webp',
+    ogImage: 'https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-og.webp',
     creator: '@yeekal',
     structuredData: [
       {

@@ -15,7 +15,7 @@ export const pageConfig: PageConfig = {
       "ocr api",
       "deepseek ocr paper"
     ],
-    ogImage: "https://cdn.deepseekocr.io/visual-logo/og-image.webp",
+    ogImage: "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
     creator: "@yeekal"
   },
   hero: {

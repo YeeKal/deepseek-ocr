@@ -3,16 +3,18 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import {Box, Blocks, Radical } from "lucide-react";
+import {Box, Blocks, Radical, Scan } from "lucide-react";
 import { PageContent, LOGO_URL, BRAND_NAME } from "@/lib/constants";
 import Image from "next/image";
 import AccountWrapper from "./account";
 import { useSession } from "next-auth/react";
-
+import { toolMetaConfigs } from "@/lib/config/tool-utils";
+import DropdownMenu from "@/components/wrapper/custom-dropdown";
 export function Header() {
   const headerData = PageContent.header;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {data:session } = useSession();
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const navText = [
     {
@@ -31,7 +33,13 @@ export function Header() {
       icon: <Radical className="mr-2 h-4 w-4"></Radical>,
     },
   ];
-
+  const randomEmojis = ['🛠️', '🎨', '✨', '🤖', '🎯', '🗑️', '🎭', '📐', '🖼️', '🎬'];
+const menuItems = {
+    'Ocr Tools': toolMetaConfigs.map(tool => ({ 
+      label: tool.name, 
+      icon: randomEmojis[Math.floor(Math.random() * randomEmojis.length)] ,
+    href: `/tools/${tool.slug}`  })),
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background py-4 ">
@@ -69,6 +77,20 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+           {Object.entries(menuItems).map(([label, items]) => (
+                <DropdownMenu
+                  key={label}
+                  label={label}
+                  items={items}
+                  isActive={activeMenu === label}
+                  onOpenChange={(isOpen) => {
+                    setActiveMenu(isOpen ? label : null);
+                  }}
+                />
+              ))}
+
+
+
           {/* {!session  && 
             <div className="flex items-center gap-4">
               <Link href="/login" className="hidden md:inline-flex">

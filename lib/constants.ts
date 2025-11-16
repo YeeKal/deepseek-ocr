@@ -15,6 +15,7 @@ export const Megapixels = 1_000_000;
 export const RUNPOD_MAX_EXECUTION_TIME = 3* 60; // 15 minutes in seconds
 export const PLAYGROUND_SECTION_ID = "toolplayground"
 export const HOW_TO_USE_SECTION_ID = "how-to-use"
+export const DEFAULT_TOOL_COVER_IMAGE = "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-cover.webp"
 
 
 export const SEO_DEFAULT =  {
@@ -31,7 +32,7 @@ export const SEO_DEFAULT =  {
       "ocr api",
       "deepseek ocr paper"
     ],
-    ogImage: "https://cdn.deepseekocr.io/visual-logo/og-image.webp",
+    ogImage: "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
     creator: "@yeekal"
   }
 
