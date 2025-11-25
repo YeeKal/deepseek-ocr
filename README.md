@@ -149,3 +149,6 @@ prisma
 > pnpm add -D prisma
 > pnpm add @prisma/client
 > pnpm prisma generate # 生成 prisma client
+
+vercel deploy build config
+> pnpm prisma generate && pnpm build
