@@ -152,3 +152,8 @@ prisma
 
 vercel deploy build config
 > pnpm prisma generate && pnpm build
+
+## 踩坑记录
+
+1. favicon 保留svg格式
+2. cludflare 关闭 ai crawl control

@@ -1,0 +1,25 @@
+{
+    "title": "Регистрация",
+    "description": "Создайте аккаунт для доступа к нашим мощным моделям ИИ.",
+    "form": {
+        "title": "Регистрация",
+        "alreadyHaveAccount": "Уже есть аккаунт?",
+        "loginLink": "Войти",
+        "nameLabel": "Имя",
+        "namePlaceholder": "Введите ваше имя",
+        "emailLabel": "Email",
+        "emailPlaceholder": "you@example.com",
+        "passwordLabel": "Пароль",
+        "passwordPlaceholder": "********",
+        "passwordHint": "Пароль должен содержать не менее 8 символов",
+        "submitButton": "Зарегистрироваться",
+        "loadingButton": "Загрузка...",
+        "successMessage": "Регистрация успешна! Теперь вы можете войти.",
+        "errors": {
+            "invalidEmail": "Пожалуйста, введите корректный email адрес",
+            "invalidPassword": "Пароль должен содержать не менее 8 символов",
+            "registrationFailed": "Регистрация не удалась",
+            "genericError": "Произошла ошибка при регистрации"
+        }
+    }
+}

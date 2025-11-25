@@ -1,0 +1,178 @@
+{
+    "navigation": {
+        "home": "Главная",
+        "tools": "Инструменты",
+        "about": "О нас",
+        "contact": "Контакты",
+        "login": "Войти",
+        "getStarted": "Начать"
+    },
+    "seo": {
+        "title": "DeepSeek-OCR - Бесплатный, Открытый, Высокопроизводительный OCR инструмент",
+        "description": "DeepSeek-OCR предоставляет передовые модели OCR, поддерживающие преобразование документов в Markdown, распознавание таблиц, рукописного текста и многое другое. Бесплатно, без регистрации.",
+        "keywords": "OCR, DeepSeek, Распознавание текста, PDF в Word, Распознавание таблиц, Распознавание рукописного текста, Бесплатный OCR, Открытый OCR",
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal"
+    },
+    "header": {
+        "playground-label": "Песочница",
+        "join-waitlist": "В лист ожидания",
+        "formula-ocr": "OCR Формул",
+        "ocr-tools": "OCR Инструменты",
+        "switch-language": "Сменить язык"
+    },
+    "footer": {
+        "tagline": "Больше анализа. Меньше вычислений. Демонстрация проекта DeepSeek-OCR.",
+        "copyright": " Все права защищены.",
+        "sections": [
+            {
+                "title": "ПРОЕКТ",
+                "links": [
+                    {
+                        "text": "Официальный GitHub",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR"
+                    },
+                    {
+                        "text": "Научная статья",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf"
+                    },
+                    {
+                        "text": "DeepSeek-AI",
+                        "href": "https://www.deepseek.com/"
+                    }
+                ]
+            },
+            {
+                "title": "ПРАВОВАЯ ИНФОРМАЦИЯ",
+                "links": [
+                    {
+                        "text": "О сайте",
+                        "href": "/about"
+                    },
+                    {
+                        "text": "Контакты",
+                        "href": "/contact"
+                    },
+                    {
+                        "text": "Условия использования",
+                        "href": "/terms"
+                    },
+                    {
+                        "text": "Политика конфиденциальности",
+                        "href": "/privacy"
+                    }
+                ]
+            }
+        ],
+        "friendslinklabel": "ДРУЗЬЯ"
+    },
+    "toolsSection": {
+        "title": "Изучите больше инструментов OCR",
+        "description": "От распознавания формул до извлечения данных из счетов — найдите решение OCR, которое подходит именно вам",
+        "viewAll": "Все инструменты"
+    },
+    "toolPlayground": {
+        "imageUpload": {
+            "label": "Загрузка файла (Изображение или PDF)",
+            "previewAlt": "Предпросмотр",
+            "tabs": {
+                "upload": "Загрузить",
+                "url": "URL"
+            },
+            "dropzone": {
+                "main": "Перетащите, вставьте или нажмите, чтобы загрузить изображение или PDF",
+                "limit": "Максимальный размер файла: {size} МБ",
+                "button": "Выбрать файл"
+            },
+            "urlInput": {
+                "placeholder": "https://example.com/image.png",
+                "load": "Загрузить"
+            },
+            "examples": {
+                "title": "Или попробуйте пример"
+            },
+            "fileSizeError": {
+                "title": "Превышен размер файла",
+                "message": "Размер вашего файла {current} МБ, но текущий лимит {limit} МБ",
+                "proFeaturesTitle": "Pro функции скоро!",
+                "proFeaturesDesc": "Получайте уведомления о запуске увеличенных лимитов, пакетной обработки и других премиум функций OCR.",
+                "tryAgain": "Попробовать снова",
+                "joinWaitlist": "В лист ожидания Pro"
+            },
+            "errors": {
+                "invalidType": "Пожалуйста, загрузите изображение или PDF файл"
+            }
+        },
+        "resultDisplay": {
+            "processing": {
+                "text": "Обработка вашего изображения...",
+                "elapsedTime": "Прошло времени: {time}"
+            },
+            "error": {
+                "title": "Ошибка"
+            },
+            "guide": {
+                "performanceTips": "⚡️ Советы по производительности:",
+                "tip1": "Файлы меньшего размера обрабатываются <strong>быстрее</strong> (сохраняйте разумное разрешение)",
+                "tip2": "Загрузка PDF ограничена <strong>первой страницей</strong>. Поддержка многостраничности — в будущей Pro версии.",
+                "joinWaitlist": "В лист ожидания!",
+                "tip3": "Убедитесь, что изображение хорошо освещено и в фокусе",
+                "tip4": "Для рукописных заметок лучше всего подходит четкий и разборчивый почерк"
+            },
+            "metrics": {
+                "title": "⚡ Метрики производительности",
+                "queueTime": "Время в очереди",
+                "queueTimeDesc": "Время ожидания в очереди",
+                "executionTime": "Время выполнения",
+                "executionTimeDesc": "Длительность обработки",
+                "sec": "сек"
+            },
+            "results": {
+                "title": "Результаты"
+            },
+            "actions": {
+                "copied": "Скопировано",
+                "copy": "Копировать",
+                "download": "Скачать"
+            },
+            "tabs": {
+                "rendered": "Рендер",
+                "raw": "Исходный текст",
+                "visualization": "Визуализация"
+            }
+        },
+        "main": {
+            "features": {
+                "unlimited": "Безлимитно бесплатно",
+                "noLogin": "Без регистрации"
+            },
+            "fileType": {
+                "label": "Тип файла",
+                "image": "Изображение",
+                "pdf": "PDF"
+            },
+            "buttons": {
+                "processing": "Обработка...",
+                "verifying": "Проверка...",
+                "extract": "Извлечь текст"
+            },
+            "turnstile": {
+                "title": "Проверка безопасности",
+                "description": "Пожалуйста, пройдите проверку безопасности, чтобы продолжить.",
+                "loading": "Загрузка проверки...",
+                "initializing": "Инициализация...",
+                "cancel": "Отмена"
+            },
+            "errors": {
+                "title": "Ошибка",
+                "tryAgain": "Попробовать снова",
+                "uploadFirst": "Пожалуйста, сначала загрузите файл",
+                "verificationFailed": "Проверка не удалась. Пожалуйста, проверьте соединение и попробуйте снова."
+            }
+        },
+        "ocrMarkdown": {
+            "loading": "Загрузка...",
+            "failed": "Не удалось отобразить контент."
+        }
+    }
+}
