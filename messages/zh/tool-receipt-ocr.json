@@ -1,0 +1,269 @@
+{
+    "meta": {
+        "slug": "receipt-ocr",
+        "name": "小票识别",
+        "description": "自动从收据中提取数据",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-ocr-cover.webp",
+            "alt": "AI 驱动的收据 OCR 扫描仪从皱巴巴的商店收据中提取商家名称、日期和总金额。"
+        }
+    },
+    "seo": {
+        "title": "免费收据 OCR 扫描仪：自动提取数据到 Excel & JSON",
+        "description": "使用 AI 收据 OCR 自动化费用跟踪。即时从收据中提取商家、总计、日期和行项目。导出为 CSV/JSON。免费，无需注册。99% 准确率。",
+        "keywords": [
+            "收据 ocr",
+            "收据扫描仪",
+            "ocr 收据扫描",
+            "提取收据数据",
+            "收据转 excel",
+            "费用跟踪 ocr",
+            "自动收据扫描",
+            "收据数据提取",
+            "商业费用 ocr",
+            "免费收据扫描仪"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费 AI 收据扫描仪",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "Any (Web-based)",
+                "description": "免费 AI 驱动的收据 OCR 扫描仪，以 99% 的准确率从收据中提取商家、日期、总计和行项目。导出为 Excel、CSV 或 JSON。",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "670"
+                },
+                "featureList": [
+                    "自动收据数据提取",
+                    "商家名称识别",
+                    "交易日期检测",
+                    "总金额解析",
+                    "行项目提取",
+                    "多货币支持",
+                    "导出为 CSV/JSON/Excel",
+                    "批量处理能力"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "AI 驱动的费用自动化",
+        "title": "几秒钟内从收据照片到结构化数据",
+        "tagline": "停止手动输入收据详细信息。我们免费的 AI 收据扫描仪自动提取商家名称、日期、总计甚至行项目——将数小时的费用跟踪转变为几分钟。",
+        "features": [
+            {
+                "icon": "CheckCircleIcon",
+                "text": "提取商家、日期和总计"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "智能格式化"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "处理褪色/皱巴巴的收据"
+            }
+        ]
+    },
+    "playground": {
+        "title": "立即扫描您的第一张收据",
+        "description": "上传任何收据——纸质、数字或照片——观看我们的 AI 即时提取结构化数据。",
+        "guide": {
+            "title": "如何提取收据数据",
+            "description": "拍摄清晰照片或上传数字收据。我们的 AI 将在几秒钟内识别商家、日期、税费和总计等关键字段。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/cash-receipt.webp",
+                "alt": "带有分项购买和总金额的收银机收据示例。",
+                "tip": "现金收据"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/receipt-walmart.webp",
+                "alt": "带有分项购买和总金额的沃尔玛收据示例。",
+                "tip": "沃尔玛收据"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+                "alt": "用于测试 OCR 准确性的皱巴巴商店收据示例",
+                "tip": "皱巴巴/褪色的收据"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "通过 3 个简单步骤数字化收据",
+        "description": "在几秒钟内将纸质混乱转化为有条理的数字数据——无需手动打字。",
+        "steps": [
+            {
+                "icon": "CameraIcon",
+                "title": "1. 拍照或上传收据",
+                "description": "用手机拍摄清晰照片或上传数字收据（JPG、PNG、PDF）。适用于纸质、电子邮件和屏幕截图收据。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "动画展示用户拍摄收据照片并上传。"
+                }
+            },
+            {
+                "icon": "BrainCircuitIcon",
+                "title": "2. AI 自动识别关键字段",
+                "description": "我们的 AI 扫描收据，检测商家名称、交易日期、税额、总计和行项目——即使在褪色或皱巴巴的纸上也是如此。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 高亮显示并从收据中提取商家、日期和总计。"
+                }
+            },
+            {
+                "icon": "ClipboardCopyIcon",
+                "title": "3. 复制、导出或下载数据",
+                "description": "查看提取的数据，然后复制到剪贴板，下载为 CSV/JSON，或直接导出到 Excel。您的费用跟踪已完成。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户将提取的收据数据复制到电子表格。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "适用于每个用例的自动收据处理",
+        "description": "从自由职业者到企业，我们的收据 OCR 消除了手动数据录入并改变了费用管理。",
+        "scenarios": [
+            {
+                "id": "freelancer-tax-prep",
+                "shortTitle": "自由职业者税务准备",
+                "originalTitle": "简化自由职业者的报税季",
+                "tagline": "在几小时内将数月的收据转化为有条理的扣除额。",
+                "description": "您是一名自由设计师，过去一年有 200 多张商业收据。与其花一个周末手动将它们输入电子表格，不如在几秒钟内扫描每张收据。我们的 OCR 自动提取日期、供应商和金额。将所有内容导出为 CSV 并直接导入您的税务软件——不到一小时即可完成税务准备。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-freelancer-tax.webp",
+                    "alt": "自由职业者使用手机扫描仪和笔记本电脑整理商业收据。"
+                }
+            },
+            {
+                "id": "small-business-reimbursements",
+                "shortTitle": "员工报销",
+                "originalTitle": "简化员工费用报销",
+                "tagline": "午餐前处理 50 张员工收据。",
+                "description": "您的办公室经理收到包含团队差旅 50 多张收据的费用报告。员工无需手动验证每一张，而是用手机扫描收据。我们的 OCR 自动提取所有关键数据。您在几分钟内审查并批准，将报销处理从几天缩短为几小时。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-team-reimbursements.webp",
+                    "alt": "办公室经理在电脑上处理员工费用收据。"
+                }
+            },
+            {
+                "id": "accounting-client-onboarding",
+                "shortTitle": "会计师事务所",
+                "originalTitle": "加速客户记账",
+                "tagline": "在一个下午数字化客户的收据盒。",
+                "description": "您是一名会计师，正在为一家拥有 12 个月纸质收据的新餐厅客户办理入职手续。与其为手动数据录入开具 20 多个小时的账单，不如使用批量处理扫描数百张收据。我们的 OCR 为每张收据提取供应商、日期和总计。您在几天而不是几周内交付有条理的账簿，为客户节省数千美元。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-accounting-firm.webp",
+                    "alt": "会计师使用自动 OCR 扫描大量客户收据。"
+                }
+            },
+            {
+                "id": "personal-budget-tracking",
+                "shortTitle": "个人预算",
+                "originalTitle": "自动跟踪个人支出",
+                "tagline": "确切知道您的钱去哪儿了。",
+                "description": "您想坚持每月 500 美元的食品预算，但永远记不住现金购买。购物后拍下每张收据的照片。我们的 OCR 自动提取金额和类别。在月底，您拥有精确的数据显示您花费了 487 美元——无需手动跟踪即可准确达标。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/receipt-ocr/use-cases-personal-budget.webp",
+                    "alt": "人们使用智能手机应用程序扫描收据来跟踪个人开支。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "为什么我们的收据扫描仪优于其他产品",
+        "description": "专为准确性、速度和现实世界的收据条件而构建——我们的 AI 处理费用跟踪的混乱现实。",
+        "items": [
+            {
+                "icon": "RobotIcon",
+                "title": "AI 字段检测",
+                "description": "自动识别商家名称、交易日期、发票号码、税额、小计和总计——无需手动映射。我们的 AI 知道要寻找什么。"
+            },
+            {
+                "icon": "LineChartIcon",
+                "title": "行项目提取",
+                "description": "从分项收据中提取单个产品、数量和价格。非常适合详细的费用分类和库存跟踪。"
+            },
+            {
+                "icon": "WalletIcon",
+                "title": "多货币支持",
+                "description": "识别 USD、EUR、GBP、CAD、AUD 和 20 多种其他货币的货币符号和金额。非常适合国际差旅费用。"
+            },
+            {
+                "icon": "FileJsonIcon",
+                "title": "结构化数据导出",
+                "description": "获取 JSON、CSV 或 Excel 格式的结果。轻松与 QuickBooks、Xero、Expensify 以及任何会计或费用管理系统集成。"
+            },
+            {
+                "icon": "ImageIcon",
+                "title": "处理现实世界条件",
+                "description": "在褪色的热敏纸、皱巴巴的收据、低光照片和倾斜角度上具有卓越的准确性。在数百万张真实世界的收据图片上进行了训练。"
+            },
+            {
+                "icon": "LayersIcon",
+                "title": "批量处理就绪",
+                "description": "专业版用户可以同时扫描 50 多张收据。非常适合每月费用报告、年终会计或大批量费用管理工作流程。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "收据 OCR 问题已解答",
+        "items": [
+            {
+                "question": "你们的 OCR 可以提取哪些收据数据？",
+                "answer": "我们的 AI 提取商家名称、交易日期、发票/收据号码、小计、税额、总金额、付款方式和单个行项目（产品、数量、价格）。我们还会捕获货币符号和小费金额（如果存在）。"
+            },
+            {
+                "question": "收据 OCR 在褪色热敏纸上的准确性如何？",
+                "answer": "我们的 AI 专门针对包括褪色热敏纸在内的真实世界收据进行了训练。即使在长达 6 个月的褪色收据上，我们也能达到 95% 以上的准确率。为了获得最佳结果，请在光线充足的地方拍照，并避免收据上出现阴影。"
+            },
+            {
+                "question": "我可以将提取的收据数据导出到 Excel 吗？",
+                "answer": "可以！直接复制粘贴到 Excel 或 Google Sheets，或下载为 CSV 格式。数据结构化，包含商家、日期、总计、税费和类别列——准备好导入任何电子表格或会计软件。"
+            },
+            {
+                "question": "你们的收据扫描仪处理外币吗？",
+                "answer": "当然！我们的 OCR 识别 25 种以上的货币，包括 USD ($)、EUR (€)、GBP (£)、CAD (C$)、AUD (A$)、JPY (¥) 等。我们捕获货币符号以及金额，以实现准确的国际费用跟踪。"
+            },
+            {
+                "question": "你们的 OCR 可以读取餐厅收据上的手写小费吗？",
+                "answer": "可以！我们先进的 AI 识别手写数字，包括餐厅收据上的小费金额和调整后的总计。我们在清晰的手写内容上达到 85-90% 的准确率，帮助您捕获完整的交易金额。"
+            },
+            {
+                "question": "收据扫描如何帮助税收减免？",
+                "answer": "国税局要求超过 75 美元的扣除额提供收据。我们的 OCR 即时数字化收据，创建可搜索的记录。导出分类费用（餐饮、差旅、办公用品），通过适当的文档使税务准备更快且经得起审计。"
+            },
+            {
+                "question": "你们支持哪些收据格式？",
+                "answer": "我们接受来自手机照片、电子邮件附件或数字收据的 JPG、PNG、PDF 和 HEIC 文件。我们处理标准的 3 英寸热敏收据、长条分项收据、餐厅账单、加油站收据、出租车收据等。"
+            },
+            {
+                "question": "扫描收据时我的财务数据安全吗？",
+                "answer": "完全安全。收据通过加密连接处理，并在提取后立即删除。我们从不存储您的财务数据或图片。我们的隐私优先架构确保您的费用信息保密。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "停止手动数据录入。开始自动化。",
+        "description": "加入 10,000 多名每周节省数小时的自由职业者和企业。免费扫描您的第一张收据——无需注册，无需信用卡，无陷阱。",
+        "button": {
+            "text": "立即扫描您的第一张收据"
+        }
+    }
+}

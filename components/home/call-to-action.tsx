@@ -1,51 +1,42 @@
 'use client'
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button"; // Adjust the import path if needed
-import { MoveRight } from "lucide-react";
-import { pageConfig } from "@/lib/pageconfig";
-const content = pageConfig.cta;
+import { useTranslations } from "next-intl";
 
+export function CTA() {
+  const t = useTranslations("home.cta");
 
   const scrollToForm = () => {
-    const el = document.getElementById(`${content.button.link}`);
+    const link = t("button.link");
+    const el = document.getElementById(link);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
-             
 
-export function CTA() {
-   return (
+  return (
     <section className="w-full py-16 lg:py-16">
       <div className="container mx-auto max-w-5xl px-4">
         {/* The Card-like container for the CTA content */}
         <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-pink-200 via-purple-200 to-teal-200 p-8 text-center shadow-sm md:p-12">
-          
+
           {/* Main Headline */}
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            {content.title}
+            {t("title")}
           </h2>
-          
+
           {/* Descriptive Text */}
           <p className="mt-4 max-w-2xl text-lg text-foreground">
-            {content.description}
+            {t("description")}
           </p>
-          
+
           {/* The Call to Action Button */}
           <div className="mt-8">
-             <button
-                onClick={scrollToForm}
-                className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 rounded-md transition-colors shadow-lg"
-              >
-                {content.button.text}
-              </button>
-            {/* <Button asChild size="lg" className="h-12 px-8 text-base font-medium">
-              <Link href={content.button.link}>
-                {content.button.text}
-                <MoveRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button> */}
+            <button
+              onClick={scrollToForm}
+              className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 rounded-md transition-colors shadow-lg"
+            >
+              {t("button.text")}
+            </button>
           </div>
 
         </div>
@@ -53,3 +44,4 @@ export function CTA() {
     </section>
   );
 }
+

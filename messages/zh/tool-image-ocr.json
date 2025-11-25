@@ -1,0 +1,266 @@
+{
+    "meta": {
+        "slug": "image-ocr",
+        "name": "图片转文字",
+        "description": "即时将任何图片转换为文本",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/image-ocr/image-ocr-cover.webp",
+            "alt": "一个图片文件图标转变为文本文档图标，象征着图片到文本的转换过程。"
+        }
+    },
+    "seo": {
+        "title": "免费图片转文字转换器 | DeepSeekOCR.io",
+        "description": "使用我们免费的在线 OCR 工具即时将任何图片转换为文本。准确地从 JPG、PNG、照片和图片中提取文本，同时保留格式。无需注册。",
+        "keywords": [
+            "图片 OCR",
+            "图片转文字",
+            "图片转文本",
+            "照片转文字",
+            "jpg 转文字",
+            "pic 转文字",
+            "图片转文字转换器",
+            "图片转文字生成器",
+            "ocr 扫描仪"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/image-ocr/image-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "图片转文字转换器",
+                "applicationCategory": "Utilities",
+                "operatingSystem": "Web",
+                "description": "一款免费的在线图片 OCR 工具，可准确地将图片（JPG、PNG 等）转换为可编辑的文本，保留原始布局。",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "creator": {
+                    "@type": "Organization",
+                    "name": "DeepSeekOCR.io"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "879"
+                }
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "图片转文字，即时",
+        "title": "精准的图片转文字",
+        "tagline": "我们免费的图片 OCR 工具从任何图片——JPG、PNG、屏幕截图——中提取文本，并将其转换为可编辑的文本或结构化 Markdown，同时保留原始布局。",
+        "features": [
+            {
+                "icon": "Scan",
+                "text": "无与伦比的 OCR 准确性"
+            },
+            {
+                "icon": "LayoutTemplate",
+                "text": "保留原始格式"
+            },
+            {
+                "icon": "FileImage",
+                "text": "支持所有主要图片格式"
+            }
+        ]
+    },
+    "playground": {
+        "title": "立即试用图片转文字转换器",
+        "description": "拖放您的 JPG、PNG 或照片。无需注册，无麻烦。",
+        "guide": {
+            "title": "工作原理",
+            "description": "上传任何图片文件。我们的 AI 引擎分析视觉数据，识别字符和结构，并在几秒钟内输出干净、可编辑的文本。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+                "tip": "杂货发票",
+                "alt": "即使是皱巴巴或折叠的发票也能很好地工作。"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+                "alt": "布局复杂的文档。",
+                "tip": "研究论文片段"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                "alt": "用于 OCR 的手写方程示例",
+                "tip": "手写数学表达式"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个简单步骤将图片转换为文本",
+        "description": "从图片到可编辑文本只需不到 30 秒。就这么简单。",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "步骤 1：上传您的图片",
+                "description": "点击上传按钮或将您的图片文件（JPG、PNG、WEBP 等）直接拖放到指定区域。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "用户将 JPG 文件拖入图片 OCR 工具的上传框。"
+                }
+            },
+            {
+                "icon": "ScanLine",
+                "title": "步骤 2：开始 OCR 转换",
+                "description": "我们的 AI 将自动扫描图片，识别字符，并处理文本和结构。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示扫描线移动穿过图片，另一侧出现文本。"
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "步骤 3：复制您的文本",
+                "description": "您提取的文本将立即出现。点击复制按钮将其抓取以在任何编辑器或应用程序中使用。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "输出文本框，带有高亮的“复制文本”按钮。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "现实世界的图片 OCR 场景",
+        "description": "了解专业人士和日常用户如何利用准确的文本提取来节省时间并提高生产力。",
+        "scenarios": [
+            {
+                "id": "student-notes-digitization",
+                "shortTitle": "数字化讲座笔记",
+                "originalTitle": "从白板到数字笔记",
+                "tagline": "将课堂照片转换为可搜索的学习资料",
+                "description": "将白板照片和手写笔记转换为结构化 Markdown，以便在 Notion 或 Obsidian 中制作可搜索、可编辑的学习指南。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                    "alt": "学生拍摄讲座白板"
+                }
+            },
+            {
+                "id": "freelancer-invoice-processing",
+                "shortTitle": "自动化发票数据录入",
+                "originalTitle": "一键将收据转为电子表格",
+                "tagline": "从账单中提取关键细节以便轻松记账",
+                "description": "从收据照片中提取日期、金额和供应商到表格 Markdown 中，以便即时导入电子表格和税务工具。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+                    "alt": "自由职业者用手机扫描收据"
+                }
+            },
+            {
+                "id": "pdf-research-recognition",
+                "shortTitle": "解锁扫描的研究 PDF",
+                "originalTitle": "从纸张到可搜索的文献",
+                "tagline": "数字化学术论文以供引用和分析",
+                "description": "从扫描的期刊文章和论文中提取文本到结构化 Markdown 中，以启用关键词搜索和参考文献管理。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+                    "alt": "研究人员处理扫描的学术论文"
+                }
+            },
+            {
+                "id": "legal-document-archiving",
+                "shortTitle": "数字化案件档案",
+                "originalTitle": "将扫描文件转为可搜索档案",
+                "tagline": "解锁旧记录以进行合规和研究",
+                "description": "将扫描的法律文件和合同转换为可搜索的文本层，实现快速关键词搜索和数字合规归档。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/image-ocr/contract-doc.webp",
+                    "alt": "律师助理扫描旧法律文件"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "将图片转换为文本的最智能方式",
+        "description": "我们的功能旨在解决文本提取中最大的头痛问题，每次都提供干净的结果。",
+        "items": [
+            {
+                "icon": "CheckCircle2",
+                "title": "精准的准确性",
+                "description": "利用先进的 AI 模型，我们的工具最大限度地减少错误并正确解释字符、上下文和标点符号，减少您手动编辑的需要。"
+            },
+            {
+                "icon": "FileImage",
+                "title": "广泛的图片格式支持",
+                "description": "我们处理所有常见格式。无论是高分辨率 PNG、标准 JPG 还是现代 WEBP，只需上传它，剩下的交给我们。"
+            },
+            {
+                "icon": "LayoutTemplate",
+                "title": "智能格式保留",
+                "description": "不要丢失原始文档的结构。我们的工具识别列表、段落和间距，以提供有条理且易于阅读的文本。"
+            },
+            {
+                "icon": "WalletCards",
+                "title": "真正免费，无附加条件",
+                "description": "这不是有限的试用。我们的图片转文字转换器对所有人免费。无需注册，无需信用卡，输出上没有水印。"
+            },
+            {
+                "icon": "Languages",
+                "title": "多语言识别",
+                "description": "我们的 OCR 引擎在海量数据集上进行了训练，使其能够自动准确识别和转录 100 多种不同语言的文本。"
+            },
+            {
+                "icon": "GaugeCircle",
+                "title": "快速处理速度",
+                "description": "您的时间很宝贵。我们优化的流程确保您的图片在几秒钟内上传、扫描和转换，即使是高分辨率照片也是如此。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "您的图片 OCR 问题已解答",
+        "items": [
+            {
+                "question": "我可以上传什么图片格式来转换为文本？",
+                "answer": "您可以上传大多数标准图片格式，包括 JPG、JPEG、PNG、BMP 和 WEBP。如果您有不同的格式，请尝试先将其转换为这些格式之一。"
+            },
+            {
+                "question": "将图片转换为文本真的免费吗？",
+                "answer": "是的，我们的在线图片 OCR 工具是 100% 免费的。我们计划将来为重度用户推出高级功能，但核心功能将保持免费。"
+            },
+            {
+                "question": "从照片中提取文本的准确性如何？",
+                "answer": "对于具有标准字体的清晰、高质量图片，准确性极高。模糊照片、复杂背景或高度风格化字体的结果可能会有所不同。"
+            },
+            {
+                "question": "OCR 工具会保留我图片的原始格式吗？",
+                "answer": "我们的工具旨在具有布局感知能力。它识别段落中断、列表和一般结构，以提供比简单的“文字墙”更干净的输出。对于复杂的布局，我们推荐我们的结构化 Markdown 输出。"
+            },
+            {
+                "question": "我可以上传的文件大小有限制吗？",
+                "answer": "对于我们的免费服务，图片文件大小限制为 5MB，以确保所有用户的快速处理。这对于绝大多数图片和屏幕截图来说已经足够了。"
+            },
+            {
+                "question": "我需要注册或提供电子邮件吗？",
+                "answer": "不需要。我们相信提供即时价值。您可以使用我们的图片转文字转换器，无需任何注册或个人信息。"
+            },
+            {
+                "question": "我可以用它将表格图片转换为文本吗？",
+                "answer": "是的，我们的 AI 可以识别图片中的表格。它将尝试以结构化格式提取数据，然后您可以轻松将其复制到 Excel 或 Google Sheets 等电子表格软件中。"
+            },
+            {
+                "question": "我上传的图片安全吗？",
+                "answer": "绝对安全。我们尊重您的隐私。您的图片经过安全处理，并在 OCR 转换完成后不久从我们的服务器中自动删除。"
+            },
+            {
+                "question": "我可以处理多页 PDF 吗？",
+                "answer": "免费层级支持单页 PDF。专业版用户可以处理多达 10 页的批量提取和优先处理。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "准备好从您的图片中解锁文本了吗？",
+        "description": "停止重新打字并开始转换。立即拖放您的图片，在几秒钟内获得快速、准确且格式完美的文本。",
+        "button": {
+            "text": "免费将图片转换为文本"
+        }
+    }
+}

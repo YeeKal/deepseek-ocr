@@ -1,0 +1,263 @@
+{
+    "meta": {
+        "slug": "ocr-scanner",
+        "name": "文档扫描识别",
+        "description": "扫描文档、图片和照片为可编辑文本",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/ocr-scanner-cover.webp",
+            "alt": "文档被数字光束扫描并转换为可编辑文本，象征着 OCR 扫描仪。"
+        }
+    },
+    "seo": {
+        "title": "免费在线 OCR 扫描仪 | 即时扫描图片和文档为文本",
+        "description": "我们免费的 OCR 扫描仪准确地将扫描文档、图片（JPG、PNG）和 PDF 转换为可编辑文本。在几秒钟内在线扫描文本。无需注册。",
+        "keywords": [
+            "ocr 扫描仪",
+            "在线 ocr 扫描仪",
+            "扫描转文本",
+            "文本扫描仪",
+            "扫描文本转 word",
+            "文档扫描仪",
+            "图片转文本",
+            "扫描转文本转换器"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/ocr-scanner/ocr-scanner-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费在线 OCR 扫描仪",
+                "applicationCategory": "Utilities",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "2180"
+                },
+                "featureList": [
+                    "文档扫描",
+                    "图片转文本转换",
+                    "PDF OCR",
+                    "扫描为可编辑文本",
+                    "无需注册"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "您的数字文本扫描仪",
+        "title": "在线 OCR 扫描仪：即时扫描为文本",
+        "tagline": "将您扫描的文档、照片和 PDF 转换为可编辑文本，您可以复制、粘贴并在 Word 或任何编辑器中使用。100% 免费且在线。",
+        "features": [
+            {
+                "icon": "ScanSearch",
+                "text": "准确的文本识别"
+            },
+            {
+                "icon": "FileCode",
+                "text": "支持文档和图片"
+            },
+            {
+                "icon": "ClipboardCopy",
+                "text": "复制到 Word、Docs 等"
+            }
+        ]
+    },
+    "playground": {
+        "title": "试用您的多合一文本扫描仪",
+        "description": "上传扫描文档、屏幕截图或带有文本的照片以开始转换。",
+        "guide": {
+            "title": "工作原理",
+            "description": "上传任何图片或单页 PDF。我们的 AI 驱动扫描仪将阅读文档并在几秒钟内为您提供干净、可编辑的文本。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+                "alt": "布局复杂的文档",
+                "tip": "复杂文档"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+                "tip": "杂货发票",
+                "alt": "即使是皱巴巴或折叠的发票也能很好地工作。"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/scan-book.webp",
+                "alt": "智能手机拍摄的书页照片",
+                "tip": "书页"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何将文本扫描为 Word（或任何编辑器）",
+        "description": "我们直观的工具使您可以轻松地从任何扫描图片中获取可编辑文本。",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "1. 上传您的扫描文件",
+                "description": "您不需要物理扫描仪。只需将文档的照片或 PDF 上传到工具中。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "用户选择扫描的 PDF 文档进行上传。"
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. 让 AI 扫描文本",
+                "description": "点击按钮，我们的 OCR 扫描仪将处理文件，识别所有字符和结构。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "OCR 扫描仪处理文档并识别文本块的动画。"
+                }
+            },
+            {
+                "icon": "ClipboardPaste",
+                "title": "3. 复制并粘贴到 Word",
+                "description": "您的文本已准备就绪！只需复制文本并将其直接粘贴到 Microsoft Word、Google Docs 或您的电子邮件中。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户从工具中复制文本并将其粘贴到 Word 文档中。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从纸张到生产力：现实世界的扫描",
+        "description": "看看我们的在线文本扫描仪如何帮助人们数字化信息并简化他们的工作流程。",
+        "scenarios": [
+            {
+                "id": "office",
+                "shortTitle": "办公文档",
+                "originalTitle": "数字化物理档案和备忘录",
+                "tagline": "让您公司的书面记录可搜索且可访问。",
+                "description": "管理员需要数字化旧客户文件。他们拍摄每份文档的清晰照片，使用 OCR 扫描仪提取文本，并创建可搜索的数字档案，节省数小时的手动重新打字时间。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-office-docu.webp",
+                    "alt": "办公室工作人员将一堆物理文档扫描成数字档案。"
+                }
+            },
+            {
+                "id": "student",
+                "shortTitle": "学生研究",
+                "originalTitle": "扫描图书馆书籍和讲义",
+                "tagline": "快速获取引用和参考文献，无需繁琐的打字。",
+                "description": "图书馆里的学生无法借出参考书。他们拍下相关页面的照片，使用文本扫描仪获取内容，并轻松将引用和引文复制粘贴到他们的研究论文中。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-research.webp",
+                    "alt": "学生用手机拍摄图书馆书页以扫描文本。"
+                }
+            },
+            {
+                "id": "data-entry",
+                "shortTitle": "数据录入",
+                "originalTitle": "从打印列表中提取信息",
+                "tagline": "将打印的目录、发票或列表转换为可用数据。",
+                "description": "数据录入员有一份打印的联系人列表。他们扫描文档，工具提取姓名和号码，然后可以轻松格式化并导入数据库或 CRM，大大减少手动录入。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-data-entry.webp",
+                    "alt": "数据录入专家扫描打印列表以将其导入计算机电子表格。"
+                }
+            },
+            {
+                "id": "legal",
+                "shortTitle": "法律合同",
+                "originalTitle": "使物理合同可搜索",
+                "tagline": "在几秒钟内在扫描的法律文件中找到关键条款和术语。",
+                "description": "律师助理收到一份已签署合同的物理副本。他们使用 OCR 扫描仪创建数字文本版本，允许他们使用 Ctrl+F（查找）即时定位特定术语和条款以进行审查。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-legal-contracts.webp",
+                    "alt": "律师在笔记本电脑上使用在线 OCR 扫描仪审查物理合同。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "更智能、更快速的在线扫描仪",
+        "description": "我们将文本扫描仪设计为数字化文档的最简单、最可靠的方式。",
+        "items": [
+            {
+                "icon": "Scan",
+                "title": "高保真扫描",
+                "description": "我们的 AI 驱动引擎为扫描件和照片中的清晰打印文本提供高精度，最大限度地减少您需要进行的错误和更正。"
+            },
+            {
+                "icon": "Files",
+                "title": "扫描任何东西：PDF、JPG、PNG",
+                "description": "无论您有扫描的 PDF、文档照片还是屏幕截图，我们的多功能工具都可以处理并提取其中的文本。"
+            },
+            {
+                "icon": "FileText",
+                "title": "Word 和 Docs 的可编辑输出",
+                "description": "我们让事情变得简单。扫描后，您将获得干净的文本，可以直接复制并粘贴到 Microsoft Word、Google Docs 或任何其他文字处理器中。"
+            },
+            {
+                "icon": "BadgeDollarSign",
+                "title": "真正免费的在线扫描仪",
+                "description": "这不是试用。我们的文本扫描仪免费使用，没有隐藏费用、水印或激进的追加销售。无需帐户或信用卡。"
+            },
+            {
+                "icon": "LayoutTemplate",
+                "title": "布局识别",
+                "description": "我们的扫描仪足够智能，可以识别段落、列表和一般文档结构，因此您获得有条理的文本，而不是非结构化的文字墙。"
+            },
+            {
+                "icon": "Shield",
+                "title": "隐私保证",
+                "description": "您的文档属于您自己。上传到我们 OCR 扫描仪的所有文件都经过安全处理，并在短时间后从我们的服务器中自动删除。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "您的 OCR 扫描仪问题",
+        "items": [
+            {
+                "question": "什么是 OCR 扫描仪？",
+                "answer": "OCR（光学字符识别）扫描仪是一种工具，可以“读取”图片或扫描文档中的文本，并将其转换为可编辑的数字文本，您可以复制、粘贴和搜索。"
+            },
+            {
+                "question": "如何将文本扫描为 Word？",
+                "answer": "这是一个简单的两步过程：1. 使用我们的工具扫描您的文档并提取文本。2. 点击“复制”按钮，然后将文本直接粘贴到您的 Microsoft Word 文档中。"
+            },
+            {
+                "question": "我需要实际的物理扫描仪才能使用这个吗？",
+                "answer": "不需要！您只需要用智能手机拍摄文档的清晰照片。只需上传照片，我们的工具就会充当您的在线文本扫描仪。"
+            },
+            {
+                "question": "这个在线文本扫描仪免费使用吗？",
+                "answer": "是的，我们的在线 OCR 扫描仪完全免费。我们通过页面广告支持该服务。我们将为有大量需求的各种企业提供高级计划。"
+            },
+            {
+                "question": "我可以上传什么文件类型进行扫描？",
+                "answer": "您可以上传大多数常见的图片格式（JPG、PNG、WEBP）和包含扫描图片的单页 PDF 文件。"
+            },
+            {
+                "question": "扫描转文本转换有多准确？",
+                "answer": "对于具有标准字体的清晰文档，准确性极高。输出质量取决于输入文件的质量——清晰、平坦、光线充足的文档效果最佳。"
+            },
+            {
+                "question": "我扫描的文档是否保密？",
+                "answer": "是的。我们优先考虑您的隐私。您的文件在 OCR 过程完成后不久会从我们的服务器中自动删除。我们不会查看或存储您的文档。"
+            },
+            {
+                "question": "我需要创建帐户才能扫描我的文档吗？",
+                "answer": "不需要。我们的工具专为速度和便利而设计。您可以立即将文档扫描为文本，无需任何注册。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "准备好放弃手动打字了吗？",
+        "description": "在几秒钟内将任何文档或图片扫描为文本。立即开始使用我们免费的在线扫描仪，将您的纸张转换为可编辑的数据。",
+        "button": {
+            "text": "立即扫描为文本 - 它是免费的"
+        }
+    }
+}

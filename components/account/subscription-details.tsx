@@ -4,20 +4,20 @@ import { useState, useEffect } from "react"
 import { useSession } from "next-auth/react"
 import { User } from "next-auth"
 import { formatTier } from "@/lib/utils"
-import { 
-  Card, 
-  CardContent, 
-  CardDescription, 
-  CardFooter, 
-  CardHeader, 
-  CardTitle 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { AlertCircle, Coins, CreditCard, X } from "lucide-react"
 import { toast } from "sonner"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 
 interface UserSubscription {
   credits: number;
@@ -39,18 +39,18 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
   const [subscription, setSubscription] = useState<UserSubscription | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  
+
   // Fetch subscription data
   useEffect(() => {
     const fetchSubscription = async () => {
       try {
         setIsLoading(true)
         const response = await fetch('/api/user/subscription')
-        
+
         if (!response.ok) {
           throw new Error(`Failed to fetch subscription: ${response.statusText}`)
         }
-        
+
         const data = await response.json()
         setSubscription(data)
       } catch (error) {
@@ -60,14 +60,14 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
         setIsLoading(false)
       }
     }
-    
+
     fetchSubscription()
   }, [])
 
   const handleCancelSubscription = async () => {
     setIsCancelling(true)
     setCancelError(null)
-    
+
     try {
       toast.loading('Cancelling subscription...', { id: 'cancel-toast' })
       const response = await fetch('/api/creem/subscription/cancel', {
@@ -77,24 +77,24 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
           subscriptionId: subscription?.subscriptionId
         })
       })
-      
+
       if (!response.ok) {
         throw new Error(`Failed to cancel: ${response.statusText}`)
       }
-      
+
       // Update session to reflect changes
       await update()
-      
+
       // Refresh subscription data
       const subscriptionResponse = await fetch('/api/user/subscription')
       if (subscriptionResponse.ok) {
         const data = await subscriptionResponse.json()
         setSubscription(data)
       }
-      
+
       // Show success toast
       toast.success('Subscription cancelled successfully', { id: 'cancel-toast' })
-      
+
       // Close popover
       setIsPopoverOpen(false)
     } catch (error) {
@@ -119,23 +119,23 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
   // Determine subscription status display
   const getStatusDisplay = () => {
     if (!subscription) return <Badge variant="outline">Loading...</Badge>
-    
+
     if (subscription.subscriptionTier === "FREE") {
       return <Badge variant="outline">Free Plan</Badge>
     }
-    
+
     if (subscription.subscriptionStatus === "CANCELED") {
       return <Badge variant="destructive">Canceled</Badge>
     }
-    
+
     if (subscription.subscriptionStatus === "ACTIVE") {
       return <Badge variant="default">Active</Badge>
     }
-    
+
     if (subscription.subscriptionStatus === "EXPIRED") {
       return <Badge variant="destructive">Expired</Badge>
     }
-    
+
     return <Badge variant="outline">Unknown</Badge>
   }
 
@@ -195,7 +195,7 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                 </Badge>
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <h3 className="text-sm font-medium">Credit Balance</h3>
               <div className="flex items-center gap-2">
@@ -205,11 +205,11 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                 </div>
               </div>
             </div>
-            
+
             {subscription.subscriptionTier !== "FREE" && (
               <>
                 <div className="space-y-2">
-                  <h3 className="text-sm font-medium">{subscription.subscriptionStatus=="CANCELED" ? "Termination Date" : "Next Billing Cycle"}</h3>
+                  <h3 className="text-sm font-medium">{subscription.subscriptionStatus == "CANCELED" ? "Termination Date" : "Next Billing Cycle"}</h3>
                   <div>
                     {subscription.subscriptionExpires ? (
                       <span className="text-muted-foreground">{formatExpirationDate(subscription.subscriptionExpires)}</span>
@@ -218,7 +218,7 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                     )}
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <h3 className="text-sm font-medium">Subscription Status</h3>
                   <div>{getStatusDisplay()}</div>
@@ -237,13 +237,13 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                     )}
                   </div>
                 </div>
-                
-                
+
+
               </>
             )}
           </div>
-          
-          
+
+
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
           {subscription.subscriptionTier === "FREE" ? (
@@ -261,33 +261,33 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                   Manage Subscription
                 </Button>
               </PopoverTrigger>
-              
+
               <PopoverContent className="w-80 p-0" align="center">
                 <div className="p-4 space-y-4">
                   <div className="flex items-center justify-between">
                     <h4 className="font-medium text-sm">Cancel Subscription</h4>
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="h-6 w-6 p-0" 
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-6 w-6 p-0"
                       onClick={() => setIsPopoverOpen(false)}
                     >
                       <X className="h-4 w-4" />
                       <span className="sr-only">Close</span>
                     </Button>
                   </div>
-                  
+
                   <p className="text-sm text-muted-foreground">
                     {`Are you sure you want to cancel your subscription? You will lose access to premium features after current subscription period ends(${formatExpirationDate(subscription.subscriptionExpires)}).`}
                   </p>
-                  
+
                   {isCancelling && (
                     <div className="flex items-center justify-center py-4">
                       <div className="h-6 w-6 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
                       <span className="ml-2 text-sm">Processing cancellation...</span>
                     </div>
                   )}
-                  
+
                   {cancelError && !isCancelling && (
                     <div className="bg-destructive/10 text-destructive rounded-md p-3 text-sm flex items-start gap-2">
                       <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
@@ -297,17 +297,17 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
                       </div>
                     </div>
                   )}
-                  
+
                   <div className="flex justify-end space-x-2">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
                       onClick={() => setIsPopoverOpen(false)}
                       disabled={isCancelling}
                     >
                       Keep
                     </Button>
-                    <Button 
+                    <Button
                       variant="destructive"
                       size="sm"
                       onClick={handleCancelSubscription}
@@ -334,7 +334,7 @@ export function SubscriptionDetails({ user: initialUser }: SubscriptionDetailsPr
               </Link>
             </Button>
           )}
-          
+
           <Button variant="ghost" asChild>
             <Link href="/account">
               Back to Account

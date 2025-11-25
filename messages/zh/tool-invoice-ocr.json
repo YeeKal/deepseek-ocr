@@ -1,0 +1,272 @@
+{
+    "meta": {
+        "slug": "invoice-ocr",
+        "name": "发票识别",
+        "description": "自动提取发票数据",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice-ocr-cover.webp",
+            "alt": "AI 驱动的发票 OCR 扫描仪从商业发票中提取供应商详细信息、发票号码和行项目。"
+        }
+    },
+    "seo": {
+        "title": "免费发票 OCR 扫描仪：自动提取数据到 Excel & QuickBooks",
+        "description": "使用 AI 自动化发票处理。即时从发票中提取供应商、发票号码、日期、行项目和总计。导出为 CSV/JSON/Excel。免费，99% 准确率。",
+        "keywords": [
+            "发票 ocr",
+            "发票扫描仪",
+            "ocr 发票扫描",
+            "提取发票数据",
+            "发票转 excel",
+            "ap 自动化",
+            "应付账款 ocr",
+            "发票处理",
+            "账单 ocr",
+            "自动发票捕获",
+            "免费发票扫描仪"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费 AI 发票扫描仪",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Any (Web-based)",
+                "description": "免费 AI 驱动的发票 OCR 扫描仪，以 99% 的准确率提取供应商详细信息、发票号码、日期、行项目和总计。导出为 Excel、CSV 或 JSON。",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "850"
+                },
+                "featureList": [
+                    "自动发票数据提取",
+                    "供应商名称识别",
+                    "发票号码检测",
+                    "行项目提取（产品、数量、价格）",
+                    "发票日期和截止日期解析",
+                    "税费和折扣计算",
+                    "采购订单号码识别",
+                    "导出为 CSV/JSON/Excel",
+                    "AP 团队的批量处理",
+                    "QuickBooks 集成准备就绪"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "智能 AP 自动化",
+        "title": "永远消除手动发票数据录入",
+        "tagline": "停止花费数小时将发票详细信息输入会计软件。我们的 AI 发票扫描仪自动捕获供应商、发票号码、行项目、金额和截止日期——将数周的 AP 工作转变为几分钟。",
+        "features": [
+            {
+                "icon": "CheckCircleIcon",
+                "text": "提取行项目和总计"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "捕获发票号和采购订单号"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "识别截止日期和条款"
+            }
+        ]
+    },
+    "playground": {
+        "title": "立即处理您的第一张发票",
+        "description": "上传任何发票——PDF、扫描件或照片——观看我们的 AI 在几秒钟内提取完整的发票数据。",
+        "guide": {
+            "title": "如何提取发票数据",
+            "description": "上传您的发票或选择一个示例。我们的 AI 自动识别供应商详细信息、发票号码、行项目和总计。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice1.webp",
+                "alt": "带有行项目和总计的专业服务发票示例",
+                "tip": "专业服务发票"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice2.webp",
+                "alt": "带有多个产品和数量的库存发票示例",
+                "tip": "产品发票"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice3.webp",
+                "alt": "用于测试 OCR 准确性的扫描发票示例",
+                "tip": "扫描的纸质发票"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "通过 3 个步骤自动化发票处理",
+        "description": "在几秒钟内将发票混乱转化为有条理的 AP 数据——无需手动数据录入。",
+        "steps": [
+            {
+                "icon": "UploadIcon",
+                "title": "1. 上传您的发票",
+                "description": "上传 PDF 发票、扫描文档或照片（JPG、PNG、PDF）。适用于电子邮件发票、扫描纸张和手机照片。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "动画展示用户上传发票文档。"
+                }
+            },
+            {
+                "icon": "BrainCircuitIcon",
+                "title": "2. AI 提取完整的发票数据",
+                "description": "我们的 AI 扫描发票，自动检测供应商详细信息、发票号码、采购订单号码、行项目（产品、数量、价格）、税费、折扣和截止日期。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 高亮显示发票上的供应商、发票号码、行项目和总计。"
+                }
+            },
+            {
+                "icon": "ClipboardCopyIcon",
+                "title": "3. 下载或集成您的数据",
+                "description": "将提取的发票数据导出为结构化 CSV、JSON 或 Excel。准备好用于 QuickBooks、Xero、SAP 或任何会计系统。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户下载发票数据并导入会计软件。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "适用于每个企业的智能发票处理",
+        "description": "从 AP 职员到 CFO，我们的发票 OCR 消除了繁琐的数据录入并改变了应付账款工作流程。",
+        "scenarios": [
+            {
+                "id": "ap-clerk-processing",
+                "shortTitle": "AP 职员生产力",
+                "originalTitle": "将您的发票处理速度提高 10 倍",
+                "tagline": "午餐前处理 100 张发票。",
+                "description": "您是一名 AP 职员，每月收到 300 张发票。与其花费 40 小时手动将数据输入 ERP，不如在几秒钟内扫描每张发票。我们的 OCR 自动提取供应商、发票号、行项目和金额。您每天审查并批准 100 多张发票，将一周的工作缩短为一天。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice1.webp",
+                    "alt": "AP 职员使用 AI OCR 自动化处理大量发票"
+                }
+            },
+            {
+                "id": "small-business-owner",
+                "shortTitle": "小企业付款",
+                "originalTitle": "掌握供应商付款",
+                "tagline": "再也不会错过付款截止日期。",
+                "description": "您经营着一家小企业，每月有 50 多张供应商发票。跟踪截止日期让人不知所措。发票到达时扫描每张发票——我们的 OCR 自动捕获截止日期和金额。您获得清晰的付款时间表，避免滞纳金，并保持牢固的供应商关系。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice2.webp",
+                    "alt": "小企业主使用 AI 扫描仪整理供应商发票"
+                }
+            },
+            {
+                "id": "accounting-bookkeeping",
+                "shortTitle": "客户记账",
+                "originalTitle": "自动化客户发票处理",
+                "tagline": "在一天内数字化客户的发票积压。",
+                "description": "您是一名簿记员，正在为一位有 6 个月未付发票的新客户办理入职手续。与其为手动数据录入开具 30 小时的账单，不如使用批量处理一次扫描数百张发票。我们的 OCR 自动提取所有 AP 数据。您在几天而不是几周内交付有条理的财务数据，给您的客户留下深刻印象。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice3.webp",
+                    "alt": "簿记员使用自动 OCR 处理多个客户发票"
+                }
+            },
+            {
+                "id": "enterprise-erp-integration",
+                "shortTitle": "ERP 数据集成",
+                "originalTitle": "将发票数据直接馈送到 ERP 系统",
+                "tagline": "永远消除手动 ERP 数据录入。",
+                "description": "您的企业每月在 10 个地点处理 5,000 多张发票。手动数据录入造成瓶颈和错误。在每个地点扫描发票——我们的 API 就绪 OCR 提取结构化发票数据。直接馈送到 SAP/Oracle，将处理时间减少 90% 并几乎消除键入错误。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice4.webp",
+                    "alt": "企业 AP 团队将 OCR 发票数据集成到 ERP 系统"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "企业级发票 OCR 功能",
+        "description": "专为 AP 自动化打造，我们的发票扫描仪以准确性和智能处理现实世界的复杂性。",
+        "items": [
+            {
+                "icon": "ListTodoIcon",
+                "title": "完整的行项目提取",
+                "description": "从分项发票中提取产品/服务描述、数量、单价和扩展金额。非常适合库存管理和成本分配。"
+            },
+            {
+                "icon": "BadgeDollarSignIcon",
+                "title": "多税种和折扣识别",
+                "description": "识别并计算 GST、VAT、销售税和折扣金额。准确处理具有多种税率和行项目折扣的复杂发票。"
+            },
+            {
+                "icon": "CalendarClockIcon",
+                "title": "截止日期和条款检测",
+                "description": "自动提取发票日期、截止日期和付款条款（Net 30、Net 60 等）。帮助 AP 团队确定付款优先级并避免滞纳金。"
+            },
+            {
+                "icon": "FileKeyIcon",
+                "title": "发票和采购订单号码匹配",
+                "description": "自动捕获发票号码、采购订单号码和参考号码。使发票、采购订单和收据之间的三向匹配无缝衔接。"
+            },
+            {
+                "icon": "BuildingIcon",
+                "title": "供应商信息提取",
+                "description": "自动提取供应商名称、地址、联系方式和税务 ID。在您处理发票时自动建立供应商数据库。"
+            },
+            {
+                "icon": "WebhookIcon",
+                "title": "API 就绪集成",
+                "description": "专业版用户获得 API 访问权限，可直接与 QuickBooks、Xero、SAP、NetSuite 和自定义会计系统集成。真正的规模化 AP 自动化。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "发票 OCR 自动化问题已解答",
+        "items": [
+            {
+                "question": "你们的 OCR 可以自动提取哪些发票数据？",
+                "answer": "我们的 AI 提取供应商名称和地址、发票号码、采购订单号码、发票日期、截止日期、付款条款、行项目（描述、数量、单价、总计）、税额、折扣、运费和应付总额。我们还会捕获供应商税务 ID 和联系信息（如果存在）。"
+            },
+            {
+                "question": "你们的 OCR 可以处理多页发票吗？",
+                "answer": "可以！我们的多页 PDF 支持处理任何长度的发票。我们提取所有页面的行项目，保持运行总计，并将所有内容合并到一个单一的结构化输出中。非常适合详细的服务发票和报表。"
+            },
+            {
+                "question": "AI 如何处理不同的发票格式和布局？",
+                "answer": "我们的 AI 已经在各个供应商和国家的 100,000 多张真实发票上进行了训练。它理解常见的发票模式，并且无论布局如何——无论是干净的 PDF、扫描文档还是智能手机照片——都能以 95% 以上的准确率提取数据。"
+            },
+            {
+                "question": "我可以自动将提取的发票与采购订单匹配吗？",
+                "answer": "绝对可以。我们的 OCR 捕获发票号码和采购订单号码。将结构化数据导出到您的 ERP 系统以进行自动三向匹配（发票、采购订单、收据）。专业版 API 用户可以自动化整个匹配工作流程。"
+            },
+            {
+                "question": "你们的发票 OCR 支持哪些语言和国家？",
+                "answer": "我们支持英语、西班牙语、法语、德语、意大利语和 20 多种语言的发票。识别国际格式，包括 VAT 号码、IBAN 代码和特定国家的税收计算。在北美、欧洲和亚太地区全球使用。"
+            },
+            {
+                "question": "你们的 OCR 可以自动检测重复发票吗？",
+                "answer": "可以！我们的 AI 提取发票号码和日期以识别潜在的重复项。系统在可疑重复发票进入您的 AP 工作流程之前对其进行标记，防止多付和欺诈。有价值的 AP 控制功能。"
+            },
+            {
+                "question": "处理期间发票数据有多安全？",
+                "answer": "企业级安全性。发票在上传期间加密，在隔离容器中处理，并在提取后立即删除。我们符合 SOC 2 标准，从不存储您的发票数据。非常适合敏感的财务文件。"
+            },
+            {
+                "question": "你们的发票 OCR 可以与 QuickBooks 或 Xero 集成吗？",
+                "answer": "当然。将提取的发票数据导出为 CSV/JSON，以便轻松导入 QuickBooks、Xero 或任何会计系统。专业版 API 用户可以构建直接集成以实现真正的 AP 自动化。主要平台的预构建集成即将推出。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "停止手动发票数据录入。开始自动化 AP。",
+        "description": "加入 5,000 多名每周节省 20 多个小时的 AP 专业人士。免费处理您的第一张发票——无需注册，无需信用卡，无需承诺。",
+        "button": {
+            "text": "立即提取您的第一张发票"
+        }
+    }
+}

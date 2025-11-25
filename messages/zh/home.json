@@ -1,0 +1,636 @@
+{
+    "seo": {
+        "title": "DeepSeek-OCR - 免费、开源、高性能 OCR 工具",
+        "description": "DeepSeek-OCR 提供最先进的 OCR 模型，支持文档转 Markdown、表格识别、手写体识别等。免费使用，无需登录。",
+        "keywords": "OCR, DeepSeek, 文字识别, PDF 转 Word, 表格识别, 手写体识别, 免费 OCR, 开源 OCR",
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal"
+    },
+    "hero": {
+        "eyebrow": "体验领先的文档理解技术",
+        "title": "免费 OCR 在线试用",
+        "tagline": "体验领先的文档理解技术。由 DeepSeek OCR 和 PaddleOCR 驱动",
+        "ctaButton": {
+            "text": "立即免费试用",
+            "link": "playground"
+        },
+        "waitlistButton": {
+            "text": "加入专业版等待名单",
+            "link": "/waitlist"
+        },
+        "features": {
+            "f1": "高精度",
+            "f2": "结构化 Markdown",
+            "f3": "保持原排版"
+        }
+    },
+    "demo": {
+        "title": "拖拽、放置，即刻理解",
+        "paddleTagline": "上传图片或 PDF，体验 PaddleOCR-VL 技术的强大功能。",
+        "deepseekTagline": "体验领先的文档理解技术。由 DeepSeek OCR 驱动。",
+        "toggles": {
+            "paddle": "PaddleOCR-VL",
+            "deepseek": "DeepSeek-OCR"
+        },
+        "badges": {
+            "free": "无限免费",
+            "noLogin": "无需登录",
+            "runpod": "由 Runpod 支持"
+        },
+        "upload": {
+            "fileType": "文件类型",
+            "image": "图片",
+            "pdf": "PDF",
+            "button": {
+                "processing": "处理中...",
+                "verifying": "验证中...",
+                "extract": "提取文字"
+            },
+            "error": "请先上传文件",
+            "promptRequired": "此任务类型需要提示词"
+        },
+        "turnstile": {
+            "title": "安全验证",
+            "description": "请完成安全检查以继续。",
+            "loading": "加载验证中...",
+            "initializing": "初始化中...",
+            "cancel": "取消",
+            "error": "验证失败。请检查您的网络连接并重试。"
+        },
+        "serverStatus": {
+            "title": "服务器状态",
+            "coolingDown": "⚡️ 冷却中",
+            "coolingDownMessage": "⚡️ 系统正在冷却。首次请求可能需要约 40 秒启动。",
+            "completed": "已完成",
+            "inProgress": "进行中",
+            "inQueue": "排队中"
+        },
+        "errorDialog": {
+            "title": "错误",
+            "tryAgain": "重试"
+        },
+        "imageUpload": {
+            "labelPaddle": "文件上传 (图片或 PDF)",
+            "labelDeepSeek": "图片上传",
+            "tabs": {
+                "upload": "上传",
+                "url": "URL"
+            },
+            "dragDrop": {
+                "paddle": "拖拽、粘贴或点击上传图片或 PDF",
+                "deepseek": "拖拽、粘贴或点击上传图片"
+            },
+            "maxFileSize": "最大文件大小：{size} MB",
+            "chooseFile": "选择文件",
+            "load": "加载",
+            "tryExample": "或尝试示例",
+            "samples": {
+                "grocery": {
+                    "title": "超市小票",
+                    "description": "即使是皱巴巴或折叠的小票也能很好地识别。"
+                },
+                "math": {
+                    "title": "数字数学片段",
+                    "description": "从复杂的数学公式中精准提取 LaTeX。"
+                },
+                "complex": {
+                    "title": "复杂文档",
+                    "description": "展示在复杂排版文档上的性能。"
+                }
+            },
+            "dialog": {
+                "title": "文件大小超出限制",
+                "description": "您的文件大小为 {currentSize} MB，但当前限制为 {limit} MB",
+                "proFeatures": "专业版功能即将推出！",
+                "notify": "当我们要推出更大的文件大小限制、批量处理和更多高级 OCR 功能时获取通知。",
+                "tryAgain": "重试",
+                "joinWaitlist": "加入专业版等待名单"
+            },
+            "alerts": {
+                "imageOnly": "请上传图片文件",
+                "imageOrPdf": "请上传图片或 PDF 文件"
+            }
+        },
+        "parameterSettings": {
+            "labels": {
+                "modelSize": "模型大小",
+                "taskType": "任务类型",
+                "prompt": "提示词"
+            },
+            "modelSizes": {
+                "tiny": {
+                    "label": "微型 (Tiny)",
+                    "description": "处理速度快，精度较低"
+                },
+                "small": {
+                    "label": "小型 (Small)",
+                    "description": "速度与精度的平衡"
+                },
+                "base": {
+                    "label": "基础 (Base)",
+                    "description": "精度良好，速度适中"
+                },
+                "large": {
+                    "label": "大型 (Large)",
+                    "description": "高精度，处理较慢"
+                },
+                "gundam": {
+                    "label": "高达 (推荐)",
+                    "description": "最佳综合性能"
+                }
+            },
+            "taskTypes": {
+                "docToMarkdown": {
+                    "label": "文档转 Markdown",
+                    "description": "将文档转换为结构化 Markdown"
+                },
+                "generalOcr": {
+                    "label": "通用 OCR",
+                    "description": "提取图片中的所有文字"
+                },
+                "simpleOcr": {
+                    "label": "简单 OCR",
+                    "description": "基础文字提取"
+                },
+                "figureParse": {
+                    "label": "图表解析",
+                    "description": "从图表中提取数据"
+                },
+                "imageDescription": {
+                    "label": "图片描述",
+                    "description": "生成图片描述"
+                },
+                "textLocalization": {
+                    "label": "文本定位",
+                    "description": "定位特定文本 (需要提示词)"
+                },
+                "custom": {
+                    "label": "自定义",
+                    "description": "自定义任务 (需要提示词)"
+                }
+            },
+            "placeholders": {
+                "required": "输入您的自定义提示词...",
+                "optional": "可选的自定义提示词..."
+            }
+        },
+        "resultDisplay": {
+            "processing": "正在处理您的图片...",
+            "warmingUp": "服务器正在预热！首次运行可能需要一点时间。感谢您的耐心等待。",
+            "elapsedTime": "耗时：{time}",
+            "error": "错误",
+            "emptyState": {
+                "title": "准备好见证奇迹了吗？",
+                "description": "上传您自己的文件，或选择我们的示例之一开始。",
+                "quickTip": "小贴士：选择合适的引擎！",
+                "tips": {
+                    "paddle": "选择 PaddleOCR 以获得速度和处理大多数常见文档。",
+                    "deepseek": "切换到 DeepSeek OCR 以在复杂排版上获得最高精度。"
+                },
+                "performanceTitle": "性能贴士",
+                "performanceTips": {
+                    "size": "较小的文件处理更快 (保持合理的分辨率)。",
+                    "tasks": "尝试不同的任务类型 (例如 Markdown) 看看结果有什么变化！",
+                    "pdf": "免费 PDF：仅限第一页。多页支持即将作为专业版功能推出。"
+                },
+                "joinWaitlist": "加入等待名单！"
+            },
+            "metrics": {
+                "title": "性能指标",
+                "queueTime": "排队时间",
+                "queueTimeDesc": "排队等待时间",
+                "executionTime": "执行时间",
+                "executionTimeDesc": "处理时长",
+                "sec": "秒"
+            },
+            "results": "结果",
+            "copy": "复制",
+            "copied": "已复制",
+            "download": "下载",
+            "tabs": {
+                "rendered": "渲染结果",
+                "raw": "原始文本",
+                "visualization": "可视化"
+            }
+        }
+    },
+    "taskAbilities": {
+        "title": "一个工具，多种能力",
+        "description": "DeepSeek-OCR 不仅仅是一个文字提取器。它是一个多功能的视觉模型，能够执行广泛的文档和图像智能任务。",
+        "tasks": [
+            {
+                "key": "formula",
+                "icon": "📝",
+                "title": "免费 OCR",
+                "description": "从任何图片或文档页面提取原始、无格式的文本。非常适合快速数字化和内容提取。",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/wiki-free-ocr.webp",
+                    "output": "https://cdn.deepseekocr.io/home/wiki-free-ocr-res.webp"
+                }
+            },
+            {
+                "key": "pdf",
+                "icon": "📄",
+                "title": "转换为 Markdown",
+                "description": "通过转换为整洁、可读的 Markdown，保留文档的结构，包括标题、列表和表格。",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/doc_markdown.webp",
+                    "output": "https://cdn.deepseekocr.io/home/doc_markdown_layout.webp"
+                }
+            },
+            {
+                "key": "handwriting",
+                "icon": "📈",
+                "title": "图表解析",
+                "description": "超越文本，从图表中提取结构化数据，将视觉信息转化为可用的数据表。",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/2010_homicide_rates.webp",
+                    "output": "https://cdn.deepseekocr.io/home/2010_homicide_rates_-ocr.webp"
+                }
+            },
+            {
+                "key": "image",
+                "icon": "🔍",
+                "title": "定位对象 (Grounding)",
+                "description": "根据您的提示词在图片中查找特定文本或元素，提供精确的边界框坐标。",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/industrial-revolution.webp",
+                    "output": "https://cdn.deepseekocr.io/home/industrial-revolution-locate.webp"
+                }
+            },
+            {
+                "key": "invoice",
+                "icon": "🖼️",
+                "title": "详细图片描述",
+                "description": "作为一个强大的视觉语言模型，为任何图片提供丰富、详细的说明和描述。",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/annisa.webp",
+                    "output": "https://cdn.deepseekocr.io/home/image-describe.webp"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "效率与精度的突破",
+        "description": "DeepSeek-OCR 不仅仅是另一个文字识别工具。它是对机器如何处理视觉信息的根本性重新思考，旨在兼顾强大功能与轻量化。",
+        "items": [
+            {
+                "key": "f1",
+                "emoji": "📦",
+                "title": "上下文光学压缩",
+                "description": "核心创新。我们用一小部分视觉 Token 来表示高分辨率文档，大幅降低计算成本并提高处理速度。"
+            },
+            {
+                "key": "f2",
+                "emoji": "🎯",
+                "title": "最先进的精度",
+                "description": "在复杂基准测试中达到高达 97% 的 OCR 精度。DeepSeek-OCR 在使用显著更少资源的同时超越了领先模型。"
+            },
+            {
+                "key": "f3",
+                "emoji": "📄",
+                "title": "多功能文档解析",
+                "description": "超越纯文本。智能地从复杂排版中提取数据，包括学术论文、财务图表、化学公式和几何图形。"
+            },
+            {
+                "key": "f4",
+                "emoji": "🚀",
+                "title": "为大规模而生",
+                "description": "专为实际部署而设计，单 GPU 每天可处理超过 200,000 页，是数据标注和 LLM 训练的理想选择。"
+            },
+            {
+                "key": "f5",
+                "emoji": "🌍",
+                "title": "全球语言识别",
+                "description": "在覆盖近 100 种语言的庞大数据集上训练，无需更换模型即可从国际文档中准确提取文本。"
+            },
+            {
+                "key": "f6",
+                "emoji": "🧠",
+                "title": "低内存架构",
+                "description": "新颖的 DeepEncoder 设计在处理高分辨率图像的同时保持低激活内存，支持在性能较低的硬件上部署并降低运营成本。"
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从研究到企业：真实世界应用",
+        "description": "DeepSeek-OCR 通过让复杂的文档分析变得触手可及且可扩展，解锁了各行各业的新可能性。",
+        "scenarios": [
+            {
+                "key": "academic-research",
+                "shortTitle": "学术研究",
+                "originalTitle": "加速学术与历史研究",
+                "tagline": "以创纪录的时间数字化整个档案。",
+                "description": "研究人员现在可以以惊人的速度将海量的扫描论文、历史文本和手稿转换为机器可读的文本。该模型处理多样化排版和语言的能力使其成为人文科学和自然科学数据挖掘不可或缺的工具。",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-paper.webp",
+                        "alt": "Academic Research with DeepSeek-OCR"
+                    },
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-manuscript.webp",
+                        "alt": "Historical Manuscript Digitization"
+                    }
+                ]
+            },
+            {
+                "key": "financial-automation",
+                "shortTitle": "金融自动化",
+                "originalTitle": "自动化金融数据提取",
+                "tagline": "将报告转化为结构化数据。",
+                "description": "轻松从密集的财务报告、发票和银行对账单中提取表格、图表和关键数据。高精度和版面感知解析减少了人工数据输入，最大限度地降低了错误，并加速了金融工作流程和分析。",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-research.webp",
+                        "alt": "Financial Report Analysis with DeepSeek-OCR"
+                    }
+                ]
+            },
+            {
+                "key": "llm-data-pipelines",
+                "shortTitle": "LLM 数据管道",
+                "originalTitle": "用高质量数据赋能下一代 AI",
+                "tagline": "LLM 的终极数据源。",
+                "description": "生成用于训练大型语言模型 (LLM) 和视觉语言模型 (VLM) 的海量高质量数据集。DeepSeek-OCR 的高效率使得处理数百万份文档在经济上变得可行，从而创建多样化且丰富的训练语料库。",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/diverse-documents.webp",
+                        "alt": "Diverse Document Processing for LLMs"
+                    }
+                ]
+            },
+            {
+                "key": "digital-archiving",
+                "shortTitle": "数字归档",
+                "originalTitle": "创建高效的数字图书馆",
+                "tagline": "归档、搜索和管理文档。",
+                "description": "将实体文档转化为轻量级、可搜索的数字档案。光学压缩确保存储需求最小化，而高质量的文字提取使每份文档都能被即时发现。",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/old-manu.webp",
+                        "alt": "Digital Archiving with DeepSeek-OCR"
+                    }
+                ]
+            }
+        ]
+    },
+    "diveDeeper": {
+        "title": "面向研究人员和开发者",
+        "description": "探索驱动 DeepSeek-OCR 的技术。阅读完整论文或深入 GitHub 上的开源代码。",
+        "items": {
+            "paper": {
+                "title": "阅读研究论文",
+                "description": "获取模型架构、训练过程和基准测试性能的详细解析。",
+                "link": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf",
+                "icon": "📜"
+            },
+            "code": {
+                "title": "探索源代码",
+                "description": "访问完整的代码库、模型权重，并为光学压缩的未来做出贡献。",
+                "link": "https://github.com/deepseek-ai/DeepSeek-OCR",
+                "icon": "💻"
+            }
+        }
+    },
+    "faq": {
+        "title": "常见问题",
+        "items": [
+            {
+                "question": "什么是 DeepSeek-OCR？",
+                "answer": "DeepSeek-OCR 是一个新的视觉语言模型，专门利用一种称为“上下文光学压缩”的创新技术从文档中识别和提取文本及数据。"
+            },
+            {
+                "question": "“上下文光学压缩”有什么不同？",
+                "answer": "它不是将图片的每个细节都转换为大量的 Token，而是智能地压缩视觉信息。这意味着它可以用比传统模型少 10 倍的数据点来表示一个完整、复杂的页面，从而使其速度极快且高效。"
+            },
+            {
+                "question": "DeepSeek-OCR 是免费使用的吗？",
+                "answer": "是的，该模型是开源的，本站的在线演示也是免费使用的。对于商业或大规模使用，您可以从官方 GitHub 仓库获取模型权重和代码。"
+            },
+            {
+                "question": "有官方 API 吗？",
+                "answer": "目前没有官方托管的 API。但是，该项目是开源的，允许您部署和托管自己的实例。我们建议关注 GitHub 项目以获取有关公共 API 的未来公告。"
+            },
+            {
+                "question": "我可以分析哪些文件类型？",
+                "answer": "底层模型可以处理多种图像格式 (PNG, JPEG, WebP)，并且在 PDF 文档页面上特别有效。在线演示支持直接上传图片和粘贴。"
+            },
+            {
+                "question": "这与 Tesseract 或其他 OCR 库相比如何？",
+                "answer": "DeepSeek-OCR 是一个端到端的深度学习模型，擅长理解表格和图表等复杂排版，而传统 OCR 库通常难以处理这些内容。它的主要优势是在密集、结构化文档上具有卓越的效率和精度。"
+            },
+            {
+                "question": "该模型支持哪些语言？",
+                "answer": "该模型在覆盖近 100 种语言的庞大数据集上进行了训练，使其在多语言文档分析方面非常有效。"
+            },
+            {
+                "question": "它能理解文档结构，而不仅仅是文本吗？",
+                "answer": "当然。这是一个关键优势。它可以将图表解析为结构化数据，理解表格，并识别版面，将其转换为 Markdown 等整洁格式。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "亲身体验差异",
+        "description": "纸上得来终觉浅，绝知此事要躬行。向上滚动到在线试用区，分析您自己的文档，亲眼见证 DeepSeek-OCR 的速度和精度。",
+        "button": {
+            "text": "立即试用演示",
+            "link": "playground"
+        }
+    },
+    "waitlist": {
+        "title": "第一时间获知",
+        "description": "我们正在开发基于 DeepSeek-OCR 的增强工具套件，包括 API 访问和高级功能。加入等待名单，以便在我们发布时收到通知。",
+        "placeholder": "输入您的邮箱地址",
+        "button": "加入等待名单"
+    },
+    "usage": {
+        "title": "从图片到洞察：我们的 OCR 工具包指南",
+        "description": "了解如何只需点击几下，即可将任何图片、PDF 或文档转换为结构化、可用的数据。",
+        "steps": [
+            {
+                "icon": "Upload",
+                "title": "上传图片",
+                "description": "拖拽、粘贴或提供图片 URL。支持所有常见图片格式。"
+            },
+            {
+                "icon": "Settings",
+                "title": "选择模型大小",
+                "description": "从 Tiny 到 Gundam 中选择。我们推荐 Gundam 以获得最佳综合性能，或者根据您的速度/精度需求进行选择。"
+            },
+            {
+                "icon": "FileType",
+                "title": "选择任务类型",
+                "description": "选择合适的任务：文档转换、通用 OCR、图表解析或带有您自己提示词的自定义任务。"
+            },
+            {
+                "icon": "Zap",
+                "title": "处理与导出",
+                "description": "点击处理并等待结果。查看渲染的 Markdown、原始文本或带有边界框的可视化结果。一键复制。"
+            }
+        ],
+        "modelGuide": {
+            "title": "模型大小指南",
+            "items": {
+                "Tiny": "快速预览，简单文字提取",
+                "Small": "通用平衡性能",
+                "Base": "标准文档和表格",
+                "Large": "复杂排版，高精度需求",
+                "Gundam": "最佳综合质量 (推荐)"
+            }
+        },
+        "taskGuide": {
+            "title": "任务类型指南",
+            "items": {
+                "doc_to_markdown": {
+                    "name": "文档转 Markdown",
+                    "use": "学术论文、报告、结构化文档"
+                },
+                "ocr": {
+                    "name": "通用 OCR",
+                    "use": "任何文字提取需求"
+                },
+                "simple_ocr": {
+                    "name": "简单 OCR",
+                    "use": "清晰、直接的文本"
+                },
+                "figure_parse": {
+                    "name": "图表解析",
+                    "use": "图表、图形、示意图"
+                },
+                "image_description": {
+                    "name": "图片描述",
+                    "use": "理解图片内容"
+                },
+                "text_localization": {
+                    "name": "文本定位",
+                    "use": "查找特定文本 (需要提示词)"
+                },
+                "custom": {
+                    "name": "自定义",
+                    "use": "专业任务 (需要提示词)"
+                }
+            }
+        }
+    },
+    "roadmap": {
+        "title": "DeepSeek-OCR 的下一步是什么？",
+        "description": "我们才刚刚开始。以下是我们接下来要构建的内容，旨在让文档理解变得更加强大。",
+        "roadmapData": {
+            "inProgress": {
+                "title": "进行中",
+                "description": "目前正在积极构建和测试。",
+                "features": [
+                    {
+                        "icon": "Zap",
+                        "name": "专业级优先队列",
+                        "description": "付费用户每次都能获得优先处理，享受近乎即时的结果。"
+                    },
+                    {
+                        "icon": "Bot",
+                        "name": "扩展模型库",
+                        "description": "访问针对不同语言和用例的其他专业 OCR 模型。"
+                    },
+                    {
+                        "icon": "Files",
+                        "name": "批量处理",
+                        "description": "直接从 Web 界面一次性上传并处理数百份文档。"
+                    }
+                ]
+            },
+            "planned": {
+                "title": "计划中",
+                "description": "我们设计和构建列表中的下一项。",
+                "features": [
+                    {
+                        "icon": "Code2",
+                        "name": "开发者 API",
+                        "description": "将 DeepSeek-OCR 的全部功能直接集成到您的应用程序和工作流程中。"
+                    },
+                    {
+                        "icon": "FileText",
+                        "name": "高级 PDF 支持",
+                        "description": "处理多页 PDF，同时保留版面、表格和文档结构。"
+                    }
+                ]
+            },
+            "exploring": {
+                "title": "探索中",
+                "description": "我们正在为未来研究的大胆想法。",
+                "features": [
+                    {
+                        "icon": "Users",
+                        "name": "团队协作",
+                        "description": "共享项目、管理文档并与整个团队协作。"
+                    },
+                    {
+                        "icon": "Share2",
+                        "name": "云集成",
+                        "description": "直接连接到 Google Drive、Dropbox 等，自动处理文件。"
+                    },
+                    {
+                        "icon": "BoxSelect",
+                        "name": "高级数据解析",
+                        "description": "使用 AI 自动提取特定的结构化数据，如发票总额或联系方式。"
+                    }
+                ]
+            }
+        },
+        "cta": {
+            "text": "想先体验这些功能吗？",
+            "button": "加入专业版等待名单"
+        }
+    },
+    "footer": {
+        "tagline": "多分析，少计算。DeepSeek-OCR 项目展示。",
+        "copyright": "© 2025 DeepSeekOCR.io. 版权所有。与 DeepSeek-AI 无关。",
+        "sections": [
+            {
+                "title": "项目",
+                "links": [
+                    {
+                        "text": "官方 GitHub",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR"
+                    },
+                    {
+                        "text": "研究论文",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf"
+                    },
+                    {
+                        "text": "DeepSeek-AI",
+                        "href": "https://www.deepseek.com/"
+                    }
+                ]
+            },
+            {
+                "title": "法律",
+                "links": [
+                    {
+                        "text": "关于本站",
+                        "href": "/about"
+                    },
+                    {
+                        "text": "联系我们",
+                        "href": "/contact"
+                    },
+                    {
+                        "text": "服务条款",
+                        "href": "/terms"
+                    },
+                    {
+                        "text": "隐私政策",
+                        "href": "/privacy"
+                    }
+                ]
+            },
+            {
+                "title": "友情链接",
+                "links": [
+                    {
+                        "text": "Runpod",
+                        "href": "https://runpod.io?ref=5kdp9mps"
+                    }
+                ]
+            }
+        ]
+    }
+}

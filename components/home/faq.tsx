@@ -1,13 +1,20 @@
-import { pageConfig } from "@/lib/pageconfig";
+interface FAQProps {
+  title: string
+  items: Array<{
+    question: string
+    answer: string
+  }>
+}
 
-const content = pageConfig.faq;
-
-export default function FAQ() {
+export default function FAQ({
+  title,
+  items
+}: FAQProps) {
   const generateFaqSchema = () => {
     const schema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": content.items.map(item => ({
+      "mainEntity": items.map(item => ({
         "@type": "Question",
         "name": item.question,
         "acceptedAnswer": {
@@ -18,6 +25,7 @@ export default function FAQ() {
     };
     return JSON.stringify(schema);
   };
+
   return (
     <section className="w-full py-20 sm:py-24">
       {/* FAQ Schema for Google Rich Results */}
@@ -26,10 +34,10 @@ export default function FAQ() {
         dangerouslySetInnerHTML={{ __html: generateFaqSchema() }}
       />
       <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900">{content.title}</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900">{title}</h2>
         <div className="mt-12 space-y-4">
-          {content.items.map((item) => (
-            <details key={item.question} className="p-6 border border-gray-200 rounded-lg group">
+          {items.map((item, index) => (
+            <details key={index} className="p-6 border border-gray-200 rounded-lg group">
               <summary className="font-semibold cursor-pointer text-lg text-gray-800 list-none flex justify-between items-center">
                 {item.question}
                 <span className="group-open:rotate-180 transition-transform">▼</span>
@@ -42,3 +50,4 @@ export default function FAQ() {
     </section>
   );
 }
+

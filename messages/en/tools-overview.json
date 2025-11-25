@@ -1,0 +1,42 @@
+{
+    "title": "All Tools",
+    "description": "Explore our suite of free AI-powered OCR tools.",
+    "tools": {
+        "formula-ocr": {
+            "name": "Formula OCR",
+            "description": "Convert math to LaTeX."
+        },
+        "pdf-ocr": {
+            "name": "PDF OCR",
+            "description": "Extract text from PDFs."
+        },
+        "handwriting-ocr": {
+            "name": "Handwriting OCR",
+            "description": "Digitize handwritten notes."
+        },
+        "image-ocr": {
+            "name": "Image OCR",
+            "description": "Extract text from images."
+        },
+        "invoice-ocr": {
+            "name": "Invoice OCR",
+            "description": "Automate invoice data entry."
+        },
+        "receipt-ocr": {
+            "name": "Receipt OCR",
+            "description": "Digitize receipts."
+        },
+        "ai-ocr": {
+            "name": "AI OCR",
+            "description": "Advanced document recognition."
+        },
+        "ocr-scanner": {
+            "name": "OCR Scanner",
+            "description": "Scan documents online."
+        },
+        "passport-ocr": {
+            "name": "Passport OCR",
+            "description": "Extract ID data."
+        }
+    }
+}

@@ -9,7 +9,7 @@ interface FeaturesComponentProps {
 
 const getIcon = (iconName: string) => {
   const IconComponent = Icons[iconName as keyof typeof Icons] as any
-  return IconComponent ? <IconComponent className="w-6 h-6" /> : null
+  return IconComponent ? <IconComponent className="w-6 h-6" /> : <span className="text-2xl leading-none">{iconName}</span>
 }
 
 export default function ToolFeatures({ features }: FeaturesComponentProps) {

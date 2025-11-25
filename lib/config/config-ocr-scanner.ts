@@ -225,8 +225,7 @@ export const ocrScannerConfig: ToolConfig = {
     title: 'Ready to Ditch Manual Typing?',
     description: 'Scan any document or image to text in seconds. Get started with our free online scanner and turn your paper into editable data now.',
     button: {
-      text: 'Scan to Text Now - It\'s Free',
-      link: '#playground',
+      text: 'Scan to Text Now - It\'s Free'
     },
   },
 };

@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import { THEME_COLOR } from "@/lib/constants"
+import { useTranslations } from "next-intl"
 
 type ParameterSettingsProps = {
   modelSize: string
@@ -14,24 +15,6 @@ type ParameterSettingsProps = {
   onPromptChange: (value: string) => void
 }
 
-const MODEL_SIZES = [
-  { value: "Tiny", label: "Tiny", description: "Fast processing, lower accuracy" },
-  { value: "Small", label: "Small", description: "Balanced speed and accuracy" },
-  { value: "Base", label: "Base", description: "Good accuracy, moderate speed" },
-  { value: "Large", label: "Large", description: "High accuracy, slower processing" },
-  { value: "Gundam", label: "Gundam (Recommended)", description: "Best overall performance" },
-]
-
-const TASK_TYPES = [
-  { value: "doc_to_markdown", label: "Document to Markdown", description: "Convert documents to structured markdown" },
-  { value: "general_ocr", label: "General OCR", description: "Extract all text from images" },
-  { value: "simple_ocr", label: "Simple OCR", description: "Basic text extraction" },
-  { value: "figure_parse", label: "Figure Parse", description: "Extract data from charts and figures" },
-  { value: "image_description", label: "Image Description", description: "Generate image descriptions" },
-  { value: "text_localization", label: "Text Localization", description: "Locate specific text (requires prompt)" },
-  { value: "custom", label: "Custom", description: "Custom task (requires prompt)" },
-]
-
 export function ParameterSettings({
   modelSize,
   taskType,
@@ -40,12 +23,31 @@ export function ParameterSettings({
   onTaskTypeChange,
   onPromptChange,
 }: ParameterSettingsProps) {
+  const t = useTranslations('home.demo.parameterSettings')
   const requiresPrompt = taskType === "custom" || taskType === "text_localization"
+
+  const MODEL_SIZES = [
+    { value: "Tiny", label: t('modelSizes.tiny.label'), description: t('modelSizes.tiny.description') },
+    { value: "Small", label: t('modelSizes.small.label'), description: t('modelSizes.small.description') },
+    { value: "Base", label: t('modelSizes.base.label'), description: t('modelSizes.base.description') },
+    { value: "Large", label: t('modelSizes.large.label'), description: t('modelSizes.large.description') },
+    { value: "Gundam", label: t('modelSizes.gundam.label'), description: t('modelSizes.gundam.description') },
+  ]
+
+  const TASK_TYPES = [
+    { value: "doc_to_markdown", label: t('taskTypes.docToMarkdown.label'), description: t('taskTypes.docToMarkdown.description') },
+    { value: "general_ocr", label: t('taskTypes.generalOcr.label'), description: t('taskTypes.generalOcr.description') },
+    { value: "simple_ocr", label: t('taskTypes.simpleOcr.label'), description: t('taskTypes.simpleOcr.description') },
+    { value: "figure_parse", label: t('taskTypes.figureParse.label'), description: t('taskTypes.figureParse.description') },
+    { value: "image_description", label: t('taskTypes.imageDescription.label'), description: t('taskTypes.imageDescription.description') },
+    { value: "text_localization", label: t('taskTypes.textLocalization.label'), description: t('taskTypes.textLocalization.description') },
+    { value: "custom", label: t('taskTypes.custom.label'), description: t('taskTypes.custom.description') },
+  ]
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Model Size</Label>
+        <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('labels.modelSize')}</Label>
         <div className="grid grid-cols-2 gap-1.5">
           {MODEL_SIZES.map((size) => (
             <button
@@ -76,7 +78,7 @@ export function ParameterSettings({
       </div>
 
       <div className="space-y-2">
-        <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Task Type</Label>
+        <Label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{t('labels.taskType')}</Label>
         <div className="grid grid-cols-2 gap-1.5">
           {TASK_TYPES.map((task) => (
             <button
@@ -108,11 +110,11 @@ export function ParameterSettings({
 
       <div className="space-y-1.5">
         <Label htmlFor="prompt" className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-          Prompt {requiresPrompt && <span className="text-destructive">*</span>}
+          {t('labels.prompt')} {requiresPrompt && <span className="text-destructive">*</span>}
         </Label>
         <Textarea
           id="prompt"
-          placeholder={requiresPrompt ? "Enter your custom prompt..." : "Optional custom prompt..."}
+          placeholder={requiresPrompt ? t('placeholders.required') : t('placeholders.optional')}
           value={prompt}
           onChange={(e) => onPromptChange(e.target.value)}
           rows={3}

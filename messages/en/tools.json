@@ -1,0 +1,23 @@
+{
+    "title": "Powerful OCR Tools Suite",
+    "description": "Precise text recognition, data extraction, and content conversion to make information processing effortless and efficient",
+    "seo": {
+        "title": "OCR Tools",
+        "description": "Discover our advanced OCR tools for accurate text recognition, data extraction, and seamless content conversion. Enhance your productivity with DeepSeek OCR's cutting-edge features."
+    },
+    "features":[
+        {
+            "label":"Recognition Accuracy",
+            "stat":"99.9%"
+        },
+        {
+            "label":"Pages Processed",
+            "stat":"1M+"
+        },
+        {
+            "label":"Languages Supported",
+            "stat":"100+"
+        }
+    ]
+   
+}

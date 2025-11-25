@@ -1,0 +1,261 @@
+{
+    "meta": {
+        "slug": "ai-ocr",
+        "name": "AI 智能文字识别",
+        "description": "AI 驱动，从任何图片或 PDF 中提取文本",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-cover.webp",
+            "alt": "抽象图像展示 AI 网络处理文档并提取文本。"
+        }
+    },
+    "seo": {
+        "title": "免费 AI OCR 在线 - 精准且保留布局 | DeepSeekOCR.io",
+        "description": "体验下一代 AI OCR。即时将图片和 PDF 转换为文本或结构化 Markdown，同时保留原始布局。100% 免费，无需注册。",
+        "keywords": [
+            "AI OCR",
+            "在线 OCR",
+            "免费 OCR",
+            "DeepSeek OCR",
+            "保留布局 OCR",
+            "智能文档处理",
+            "图片转文字 AI",
+            "PDF 转文字"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "AI OCR 工具",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Web",
+                "description": "一款免费的在线 AI 驱动 OCR 工具，可从图片和 PDF 中高精度提取文本，保留原始文档的布局和结构。",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "creator": {
+                    "@type": "Organization",
+                    "name": "DeepSeekOCR.io"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "512"
+                }
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "下一代 OCR",
+        "title": "智能 AI OCR：不仅仅是文本提取",
+        "tagline": "我们的 AI 驱动 OCR 不仅仅是阅读文本——它理解结构。以无与伦比的精度提取文本、表格和布局。永久免费，无需注册。",
+        "features": [
+            {
+                "icon": "Sparkles",
+                "text": "最先进的准确率"
+            },
+            {
+                "icon": "FileText",
+                "text": "保留布局引擎"
+            },
+            {
+                "icon": "Languages",
+                "text": "支持 100+ 种语言"
+            }
+        ]
+    },
+    "playground": {
+        "title": "立即试用我们的 AI OCR",
+        "description": "拖放图片或 PDF，查看我们 AI 的实际效果。体验准确性和格式方面的差异。",
+        "guide": {
+            "title": "工作原理",
+            "description": "只需上传您的文件。我们的 AI 由 DeepSeek 和 PaddleOCR 模型混合驱动，将分析文档的结构和文本，在几秒钟内提供干净、可编辑的输出。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+                "alt": "即使是皱巴巴或折叠的发票也能很好地工作",
+                "tip": "折叠的杂货发票"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+                "alt": "用于 OCR 的混合内容复杂文档",
+                "tip": "复杂文档"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                "alt": "用于 OCR 的手写方程示例",
+                "tip": "手写数学表达式"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个简单步骤从图片中提取文本",
+        "description": "我们直观的界面使您可以轻松地将图片和文档转换为可编辑的文本。",
+        "steps": [
+            {
+                "icon": "UploadIcon",
+                "title": "1. 上传您的图片或文档",
+                "description": "拖放、粘贴或选择您的文件（JPG、PNG、PDF）。使用照片、扫描文档或屏幕截图。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "点击选择文件并选择您要提取文本的图片。"
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. 启动 AI 文本识别",
+                "description": "点击“提取文本”，我们的 AI 将立即分析和处理您的文档，保留原始格式。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 处理图片并提取文本。"
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. 复制提取的文本",
+                "description": "您的文本已准备就绪。将其复制到剪贴板或下载为文件。在文档、笔记或任何应用程序中使用它。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户将提取的文本复制到剪贴板。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从杂乱到清晰：现实世界的 AI OCR",
+        "description": "了解 deepseekocr.io 如何将各个领域繁琐的手动数据输入转变为轻松的自动化流程。",
+        "scenarios": [
+            {
+                "id": "researcher",
+                "shortTitle": "研究笔记",
+                "originalTitle": "归档学术论文和教科书页面",
+                "tagline": "让您的学习资料可搜索且可引用。",
+                "description": "一名学生上传了一篇密集的学术期刊文章的 PDF。该工具的 AI OCR 提取文本，保留分栏和标题，允许他们搜索关键词并轻松将引用复制粘贴到他们的研究论文中。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ai-ocr/use-cases-research-notes.webp",
+                    "alt": "AI OCR 从书中提取文本和引用的象征性插图，代表学术研究数字化"
+                }
+            },
+            {
+                "id": "finance",
+                "shortTitle": "发票处理",
+                "originalTitle": "从发票自动化费用报告",
+                "tagline": "在几秒钟内从发票和收据中提取关键数据。",
+                "description": "会计师收到一批扫描的发票 PDF。他们无需手动输入行项目，而是使用 AI OCR 提取数据表，然后可以轻松将其复制到 Excel 或 Google Sheets 中，从而大大减少手动输入错误。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ai-ocr/use-cases-invoice-processing.webp",
+                    "alt": "AI OCR 从财务发票中提取表格数据并将其转换为电子表格格式的抽象插图，用于自动化数据输入"
+                }
+            },
+            {
+                "id": "notes",
+                "shortTitle": "会议笔记",
+                "originalTitle": "数字化白板头脑风暴和手写笔记",
+                "tagline": "确保没有想法丢失，从墨水到行动项。",
+                "description": "在一次富有成效的头脑风暴会议之后，项目经理拍了一张满是手写笔记的白板照片。AI OCR 将潦草的字迹数字化为可编辑的文本，创建一个即时会议摘要，可以共享、搜索并转换为可操作的任务。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ai-ocr/use-cases-handwriting-notes.webp",
+                    "alt": "钢笔的手写墨迹无缝转换为干净、可编辑的数字文本的象征性插图，代表手写 OCR"
+                }
+            },
+            {
+                "id": "marketer",
+                "shortTitle": "内容再利用",
+                "originalTitle": "将信息图转换为博客文章大纲",
+                "tagline": "解锁视觉资产中的文本。",
+                "description": "营销人员有一张流行的信息图。他们使用 AI OCR 提取所有文本和标题，立即为详细的博客文章创建一个结构化的 Markdown 大纲，无需从头开始即可扩展其内容覆盖范围。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ai-ocr/use-cases-marketer.webp",
+                    "alt": "AI OCR 通过将其文本和标题提取到结构化文档中来重新利用营销信息图的抽象插图"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "不仅仅是文字：重要的功能",
+        "description": "我们构建 AI OCR 工具是为了解决文本提取中现实世界的挫败感。这就是我们与众不同的地方。",
+        "items": [
+            {
+                "icon": "PenTool",
+                "title": "结构感知 Markdown 输出",
+                "description": "不仅仅得到一堵文字墙。我们的 AI 识别标题、列表、表格和代码块，将它们导出为干净、结构化的 Markdown。非常适合开发人员、作家和研究人员。"
+            },
+            {
+                "icon": "LayoutTemplate",
+                "title": "保留布局提取",
+                "description": "上传双栏文档，取回尊重原始流的结构化文本。我们的模型理解文件的视觉布局，保留上下文和可读性。"
+            },
+            {
+                "icon": "Zap",
+                "title": "极速且高精度",
+                "description": "由 DeepSeek 和 PaddleOCR 模型组合提供支持，我们以惊人的速度提供最先进的准确性，最大限度地减少手动更正的需求。"
+            },
+            {
+                "icon": "ShieldOff",
+                "title": "无需注册，无隐藏费用",
+                "description": "我们相信透明、易用的工具。免费使用我们的 AI OCR，无需创建帐户或遇到意外的付费墙。没有水印，没有废话。"
+            },
+            {
+                "icon": "FileCheck2",
+                "title": "处理复杂文档和表格",
+                "description": "厌倦了混乱的表格数据？我们的 AI 擅长将表格数据准确提取为您实际可以使用的结构化格式，为您节省数小时的重新格式化时间。"
+            },
+            {
+                "icon": "Languages",
+                "title": "全球语言支持",
+                "description": "从英语和西班牙语到日语和俄语，我们的工具支持 100 多种语言，使其成为全球用户的多功能解决方案。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "常见问题",
+        "items": [
+            {
+                "question": "这个 AI OCR 工具真的免费吗？",
+                "answer": "是的，绝对免费。我们工具的当前版本 100% 免费使用。我们通过不显眼的广告来支持该服务。我们将来会为需要批量处理和 API 访问等高级功能的用户推出专业版计划。"
+            },
+            {
+                "question": "我上传的文件会怎样？它们安全吗？",
+                "answer": "您的隐私是我们的首要任务。文件安全上传，在我们的服务器上处理，然后在短时间后自动删除。我们不会存储或共享您的数据。"
+            },
+            {
+                "question": "我可以上传什么文件格式？",
+                "answer": "您可以上传常见的图片格式，如 PNG、JPG 和 WEBP。对于文档，我们目前支持最大 5MB 的单页 PDF 文件。多页 PDF 支持即将面向专业版用户推出。"
+            },
+            {
+                "question": "文本提取有多准确？",
+                "answer": "我们的工具使用最先进的 AI 模型，为清晰的打印文本提供极高的准确性。手写或非常风格化文本的准确性可能会有所不同，但仍处于领先水平。"
+            },
+            {
+                "question": "它真的能保留文档的原始布局吗？",
+                "answer": "是的，我们的 AI 旨在具有布局感知能力。它识别分栏、标题和列表等元素，以提供反映原始格式的结构化输出（如 Markdown），为您节省大量的重新格式化时间。"
+            },
+            {
+                "question": "我需要创建帐户才能使用该服务吗？",
+                "answer": "不需要。我们希望提供最快、最简单的体验。您可以立即使用该工具，无需任何注册或登录。"
+            },
+            {
+                "question": "支持哪些语言？",
+                "answer": "我们的 OCR 引擎支持 100 多种语言，包括所有主要全球语言。只需上传您的文档，我们的 AI 将自动检测语言。"
+            },
+            {
+                "question": "免费版本有什么限制吗？",
+                "answer": "免费版本非常慷慨，但有一些限制以确保每个人的公平使用。文件大小限制为 5MB，PDF 限制为一页。用户可能会看到广告，并且在流量高峰期需要完成验证码。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "准备好彻底改变您的工作流程了吗？",
+        "description": "停止在手动转录上浪费时间。立即体验 OCR 的未来，在几秒钟内将您的图片和文档转换为结构化、可用的数据。",
+        "button": {
+            "text": "立即试用 AI OCR - 它是免费的"
+        }
+    }
+}

@@ -1,0 +1,261 @@
+{
+    "meta": {
+        "slug": "formula-ocr",
+        "name": "公式识别 (支持 LaTeX)",
+        "description": "即时将图片中的数学方程转换为可编辑的 LaTeX。",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-cover.webp",
+            "alt": "公式识别工具的封面图片，展示了一个复杂的数学方程。"
+        }
+    },
+    "seo": {
+        "title": "免费 AI 公式识别：图片转 LaTeX & 数学方程转换器",
+        "description": "使用我们免费的 AI 驱动公式识别，即时将手写笔记、教科书照片和屏幕截图转换为结构完美、无错误的 LaTeX 和 Markdown。Mathpix 的强大免费替代品。",
+        "keywords": [
+            "公式识别",
+            "数学 ocr",
+            "latex ocr",
+            "方程 ocr",
+            "图片转 latex",
+            "照片转数学方程",
+            "免费 mathpix 替代品"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费 AI 公式识别",
+                "applicationCategory": "ScienceApplication",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "850"
+                },
+                "featureList": [
+                    "手写数学识别",
+                    "LaTeX 和 Markdown 输出",
+                    "矩阵和分数的布局保留",
+                    "无需注册"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "基准验证的数学 OCR",
+        "title": "一键从图片到方程",
+        "tagline": "停止手动输入复杂的公式。我们的 AI 驱动 OCR 准确识别教科书、论文和笔记中的打印和手写数学内容，在几秒钟内提供干净的 LaTeX 和 Markdown 输出。",
+        "features": [
+            {
+                "icon": "CheckCircleIcon",
+                "text": "高精度识别"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "支持 LaTeX & Markdown"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "智能格式化"
+            }
+        ]
+    },
+    "playground": {
+        "title": "拖放并数字化",
+        "description": "上传任何数学方程的图片，几秒钟内获得干净的 LaTeX。",
+        "guide": {
+            "title": "获取即时、准确的 LaTeX",
+            "description": "上传您的方程或选择一个示例以立即数字化复杂的数学内容"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/lag-formula.webp",
+                "alt": "量子引力拉格朗日公式 OCR 示例",
+                "tip": "数字数学片段"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/print-formula-on-book.webp",
+                "alt": "印刷书籍上的公式方程照片 OCR 示例",
+                "tip": "相机扫描的印刷数学内容"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                "alt": "用于 OCR 的手写方程示例",
+                "tip": "手写数学表达式"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个简单步骤将图片转换为 LaTeX",
+        "description": "我们直观的界面使您可以轻松地将数学方程从图片转换为代码。",
+        "steps": [
+            {
+                "icon": "UploadIcon",
+                "title": "1. 上传您的方程图片",
+                "description": "拖放、粘贴或选择您的图片文件（JPG、PNG）。使用教科书照片、屏幕截图或您自己的笔记。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "点击选择文件并选择包含公式的正确图片。"
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. 启动 AI 识别",
+                "description": "点击“提取文本”，我们的 AI 将立即分析和处理数学符号，保留原始结构。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 处理公式。"
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. 复制您的 LaTeX 或 Markdown",
+                "description": "您的方程已准备就绪。复制干净、可编辑的 LaTeX 代码用于您的学术论文，或复制 Markdown 用于您的笔记。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户复制最终的 LaTeX 代码。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从繁琐的任务到轻松的工作流程",
+        "description": "我们的工具专为您每天执行的特定任务而构建。看看我们如何消除您最大的挫折。",
+        "scenarios": [
+            {
+                "id": "whiteboard",
+                "shortTitle": "讲座笔记",
+                "originalTitle": "即时捕捉白板方程",
+                "tagline": "再也不会在快节奏的讲座中错过公式。",
+                "description": "您的教授正在黑板上写复杂的推导。与其手忙脚乱地打字，不如拍张照片。我们的 OCR 将手写方程数字化为干净的 LaTeX，这样您就可以专注于学习，而不是转录。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-handwriting-whiteboard.webp",
+                    "alt": "学生拍摄教授写满数学方程的白板。"
+                }
+            },
+            {
+                "id": "textbook",
+                "shortTitle": "教科书习题",
+                "originalTitle": "几秒钟内数字化教科书习题",
+                "tagline": "将数小时的作业准备时间缩短为几分钟。",
+                "description": "正在设置习题集？与其手动输入教科书中的每个方程，不如拍下页面的照片。我们的工具提取所有公式，保留其结构，以便您可以直接开始解决它们。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                    "alt": "一本打开的物理教科书，其中复杂的公式被高亮显示。"
+                }
+            },
+            {
+                "id": "research",
+                "shortTitle": "研究论文",
+                "originalTitle": "从学术 PDF 中提取公式",
+                "tagline": "无误地将现有研究整合到您的工作中。",
+                "description": "您在一篇 20 年前的 PDF 论文中发现了一个关键方程。不要冒转录错误的风险。截取公式的屏幕截图，我们的工具将为您提供准确的 LaTeX 代码，随时可以在您自己的研究中引用和使用。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-research-paper.webp",
+                    "alt": "屏幕上的研究论文 PDF，其中一个公式被圈出。"
+                }
+            },
+            {
+                "id": "notes",
+                "shortTitle": "数字笔记",
+                "originalTitle": "与数字笔记无缝集成",
+                "tagline": "非常适合 Notion、Obsidian 和 Markdown 爱好者。",
+                "description": "停止与笨拙的公式编辑器搏斗。只需单击一下即可将任何公式转换为干净的 Markdown，并将其直接粘贴到您的数字笔记应用程序中，保持您的工作流程顺畅高效。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/use-cases-digitial-notes.webp",
+                    "alt": "笔记本电脑屏幕显示嵌入数学公式的组织良好的 Notion 页面。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "Mathpix 的强大免费替代品",
+        "description": "我们的工具包含专为准确性、速度和易用性而设计的功能，使其成为满足您所有数学识别需求的完美选择。",
+        "items": [
+            {
+                "icon": "Sparkles",
+                "title": "先进的识别引擎",
+                "description": "由尖端 AI 驱动，我们的工具可以准确解释从简单代数到复杂微积分的所有内容，包括手写笔记。"
+            },
+            {
+                "icon": "BrainCircuit",
+                "title": "基准验证的准确性",
+                "description": "我们的引擎由 PaddleOCR-VL 驱动，经独立验证，在 OmniDocBench v1.0 基准测试中的公式识别准确性方面优于 Mathpix 等领先工具。"
+            },
+            {
+                "icon": "Code2",
+                "title": "原生 LaTeX & Markdown 输出",
+                "description": "获取干净、标准化的 LaTeX 代码，可立即在您的文档中使用，或使用 Markdown 输出用于基于 Web 的笔记。"
+            },
+            {
+                "icon": "Globe",
+                "title": "广泛的语言和符号支持",
+                "description": "我们的底层引擎支持 100 多种语言，确保对来自世界各地的各种字符和数学符号进行稳健的识别。"
+            },
+            {
+                "icon": "ShieldCheck",
+                "title": "安全且私密",
+                "description": "您的图片经过安全处理，不会存储在我们的服务器上。您的学术和个人工作仍然属于您自己。"
+            },
+            {
+                "icon": "Cpu",
+                "title": "由 AI 驱动",
+                "description": "利用领先 AI 研究中使用的相同世界级技术，确保您的方程获得最高质量的结果。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "关于公式识别的常见问题",
+        "items": [
+            {
+                "question": "什么是公式识别？",
+                "answer": "公式识别（光学字符识别）是一种专门的技术，可以识别并将图片中的数学方程转换为可编辑的机器可读格式，如 LaTeX 和 Markdown。"
+            },
+            {
+                "question": "这与 Mathpix 等其他工具相比如何？",
+                "answer": "除了我们慷慨的免费模式外，我们的工具专为卓越的准确性而构建。在独立测试中，我们的底层 PaddleOCR-VL 引擎在 OmniDocBench v1.0 基准测试中的公式识别方面优于 Mathpix。您无需受其他免费层级的限制即可获得最先进的准确性。"
+            },
+            {
+                "question": "免费版本有什么限制？",
+                "answer": "我们的免费工具非常强大，但在处理之前包括简短的安全检查（验证码），并且可能会显示广告以支持该服务。它专为逐个处理文件而设计。"
+            },
+            {
+                "question": "你们提供批量处理或面向开发人员的 API 吗？",
+                "answer": "是的，这些是我们即将推出的专业版计划的关键功能！专业版订阅将提供无广告体验、无验证码、多文件批量处理以及面向开发人员的 API 访问。加入我们的等待名单以获取通知！"
+            },
+            {
+                "question": "获得手写方程准确结果的最佳方法是什么？",
+                "answer": "为了获得最佳结果，请在纯背景上清晰书写，并拍摄光线充足、对焦清晰的照片。虽然我们的 AI 很强大，但尽量减少阴影和模糊将显着提高准确性。"
+            },
+            {
+                "question": "你们提供什么输出格式？",
+                "answer": "我们提供两种主要的高度可移植格式：用于学术出版和专业文档的 LaTeX，以及用于轻松集成到现代笔记应用程序和网站的结构化 Markdown。"
+            },
+            {
+                "question": "我的数据安全吗？",
+                "answer": "绝对安全。我们优先考虑您的隐私。图片通过安全连接上传，在内存中处理，并在转换完成后立即从我们的服务器中永久删除。"
+            },
+            {
+                "question": "这个工具能解决我的数学作业吗？",
+                "answer": "我们的工具是一个识别和转换工具，而不是计算器。它出色地将问题的*图片*转换为可编辑的代码，但它不计算最终答案。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "停止打字。开始转换。",
+        "description": "节省数小时的繁琐工作，专注于真正重要的事情。立即数字化您的第一个方程，体验无缝的工作流程。",
+        "button": {
+            "text": "立即试用公式识别"
+        }
+    }
+}

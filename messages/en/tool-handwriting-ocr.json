@@ -1,0 +1,261 @@
+{
+    "meta": {
+        "slug": "handwriting-ocr",
+        "name": "Handwriting OCR",
+        "description": "Handwritten notes to editable text",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-cover.webp",
+            "alt": "A handwritten note seamlessly transforming into digital, editable text on a screen."
+        }
+    },
+    "seo": {
+        "title": "Free Handwriting to Text Converter | DeepSeekOCR.io",
+        "description": "Instantly convert handwriting to text with our free online OCR. Accurately digitize handwritten notes, journals, and letters. Supports cursive and print. No sign-up needed.",
+        "keywords": [
+            "handwriting ocr",
+            "handwriting to text",
+            "convert handwriting to text",
+            "cursive to text",
+            "handwritten notes scanner",
+            "digitize handwriting",
+            "ocr for handwriting"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Free Handwriting to Text Converter",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "920"
+                },
+                "featureList": [
+                    "Handwritten Note Recognition",
+                    "Cursive and Print Script Support",
+                    "Editable Digital Text Output",
+                    "No Sign-up or Registration Required"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "Your Handwriting, Digitized",
+        "title": "Unlock the Text in Your Handwritten Notes",
+        "tagline": "Our advanced AI converts your handwritten notes, journals, and letters—cursive or print—into clean, editable digital text. Free, fast, and no account needed.",
+        "features": [
+            {
+                "icon": "PenLine",
+                "text": "Advanced Handwritten Recognition"
+            },
+            {
+                "icon": "Zap",
+                "text": "Instant Conversion"
+            },
+            {
+                "icon": "Languages",
+                "text": "Multi-Language Support"
+            }
+        ]
+    },
+    "playground": {
+        "title": "Try the Handwriting to Text Converter",
+        "description": "Upload a photo of your notes and watch our AI digitize them in real-time.",
+        "guide": {
+            "title": "From Ink to Editable Text",
+            "description": "Upload an image of any handwriting. Our AI recognizes the strokes and characters, providing you with text you can actually use."
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                "alt": "Example of clear, printed student lecture notes for OCR.",
+                "tip": "Student Notes"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-letter.webp",
+                "alt": "Example of a cursive letter for handwriting-to-text conversion.",
+                "tip": "Letters"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-whiteboard.webp",
+                "alt": "Example of brainstorming notes on a whiteboard for OCR.",
+                "tip": "Whiteboard Scribbles"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "How to Convert Handwriting to Text in 3 Steps",
+        "description": "Our intuitive process makes digitizing your personal notes effortless and quick.",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "1. Upload Your Handwriting Image",
+                "description": "Drag and drop, paste, or select your image file (JPG, PNG). Use photos of notebooks, letters, or whiteboards.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "Click choose file and select the right image containing the formula."
+                }
+            },
+            {
+                "icon": "Bot",
+                "title": "2. AI Analyzes the Writing",
+                "description": "Our AI model analyzes the image, recognizing characters and words, whether they are printed or in cursive.",
+                "media": {
+                    "type": "gif",
+                    "url": " https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "Animation showing the AI processing and identifying handwritten text."
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. Copy Your Digital Text",
+                "description": "Your transcribed text appears in seconds. Click to copy it for use in your notes app, email, or any document.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "A user copying the final transcribed text from the tool."
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "From Paper Piles to a Digital Archive",
+        "description": "See how our handwriting OCR helps people save time, get organized, and preserve their most important thoughts.",
+        "scenarios": [
+            {
+                "id": "student",
+                "shortTitle": "Student Notes",
+                "originalTitle": "Making Lecture Notes Searchable",
+                "tagline": "Turn pages of notes into a powerful, searchable study tool.",
+                "description": "A university student uploads photos of their entire semester's worth of handwritten lecture notes. The tool digitizes them, creating a searchable archive they can use to instantly find keywords and concepts when studying for exams.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                    "alt": "A student digitizing their lecture notes on a laptop."
+                }
+            },
+            {
+                "id": "writer",
+                "shortTitle": "Journaling & Writing",
+                "originalTitle": "Digitizing a Personal Journal for Easy Editing",
+                "tagline": "Seamlessly move your free-flowing thoughts from pen and paper to your word processor.",
+                "description": "A writer prefers to draft their ideas in a physical journal. They use the handwriting-to-text tool to quickly convert their daily entries into digital text, which they can then easily edit, organize, and integrate into their articles or book chapters.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/writer-journal.webp",
+                    "alt": "A writer's desk with a journal and a laptop showing the transcribed text."
+                }
+            },
+            {
+                "id": "genealogist",
+                "shortTitle": "Family Archives",
+                "originalTitle": "Transcribing Old Family Letters and Records",
+                "tagline": "Preserve your family history by making ancestral documents readable and searchable.",
+                "description": "A genealogist is researching their family tree and has a collection of old, cursive letters from their great-grandmother. They use the OCR tool to transcribe the letters, making them easy to read, share with family, and search for names and dates.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-letter.webp",
+                    "alt": "An old, cursive family letter next to a tablet displaying its digital transcription."
+                }
+            },
+            {
+                "id": "professional",
+                "shortTitle": "Meeting Notes",
+                "originalTitle": "Capturing and Sharing Whiteboard Brainstorms",
+                "tagline": "Ensure no idea is lost after the meeting ends.",
+                "description": "After a productive brainstorming session, a project manager takes a photo of the whiteboard covered in notes. They convert the image to text, creating an instant meeting summary that can be cleaned up and emailed to all participants as actionable items.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-whiteboard.webp",
+                    "alt": "A project manager taking a picture of a whiteboard full of notes after a meeting."
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "The Most Advanced Handwriting Recognition Tool",
+        "description": "We built our tool to understand the nuances of human handwriting, from neat print to flowing cursive.",
+        "items": [
+            {
+                "icon": "PenTool",
+                "title": "Advanced Cursive Recognition",
+                "description": "Our AI is trained on vast datasets of cursive writing, allowing it to accurately interpret connected letters and flowing script that other tools can't handle."
+            },
+            {
+                "icon": "Eraser",
+                "title": "Intelligent Noise Correction",
+                "description": "The tool is designed to perform well even with imperfect images. It intelligently handles shadows, varied lighting, and the texture of the paper to improve accuracy."
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "High Accuracy for Printed Text",
+                "description": "For clear, non-cursive handwriting, our tool delivers exceptionally high accuracy, minimizing the need for any corrections and saving you valuable time."
+            },
+            {
+                "icon": "Lock",
+                "title": "Private and Secure by Design",
+                "description": "Your notes are personal. We respect that. Your uploaded images are processed securely and are permanently deleted from our servers after a short period."
+            },
+            {
+                "icon": "Archive",
+                "title": "Create a Searchable Digital Archive",
+                "description": "Transform your physical notebooks into a powerful, searchable digital library. Find any note from the past in seconds just by searching for a word."
+            },
+            {
+                "icon": "MessageSquareQuote",
+                "title": "Context-Aware Analysis",
+                "description": "The AI doesn't just look at individual letters; it analyzes the context of words and sentences to make better predictions, reducing gibberish and improving overall readability."
+            }
+        ]
+    },
+    "faq": {
+        "title": "Handwriting OCR: Your Questions Answered",
+        "items": [
+            {
+                "question": "How accurate is the handwriting to text conversion?",
+                "answer": "Accuracy is very high for clear, legible handwriting. For messy or complex cursive, it is among the best available but may require some corrections. Image quality is key—good lighting and a clear photo will yield the best results."
+            },
+            {
+                "question": "Can this tool really read cursive handwriting?",
+                "answer": "Yes. Our AI has been specifically trained on a wide variety of cursive styles. While very ornate or older styles of cursive can be challenging, it performs very well on modern cursive writing."
+            },
+            {
+                "question": "Is my data safe when I upload my personal notes?",
+                "answer": "Absolutely. We prioritize your privacy. Files are encrypted during transfer and are automatically deleted from our servers shortly after the transcription is complete. We do not store your notes."
+            },
+            {
+                "question": "Is this handwriting OCR service completely free?",
+                "answer": "Yes, the core functionality is 100% free for single image uploads. This free service is supported by ads. We may offer premium features for batch uploads in the future."
+            },
+            {
+                "question": "What languages does the handwriting recognition support?",
+                "answer": "Our tool supports over 100 languages, with the highest accuracy for languages using the Latin alphabet (like English, Spanish, French, German, etc.)."
+            },
+            {
+                "question": "What's the best way to photograph my notes for good results?",
+                "answer": "For best results, lay the paper on a flat, well-lit surface. Avoid strong shadows. Hold the camera parallel to the page to prevent distortion and ensure the text is in sharp focus."
+            },
+            {
+                "question": "Do I need to sign up for an account?",
+                "answer": "No. You can use the handwriting-to-text converter immediately without any need for registration or providing personal information."
+            },
+            {
+                "question": "Can it convert notes from a lined notebook?",
+                "answer": "Yes, our AI is trained to recognize and ignore common distractions like the lines on ruled paper, focusing only on extracting the handwritten text."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Your Digital Scribe Awaits",
+        "description": "Stop retyping. Start digitizing. Turn your scattered handwritten notes into a powerful, searchable digital library today.",
+        "button": {
+            "text": "Transcribe My Handwriting for Free"
+        }
+    }
+}

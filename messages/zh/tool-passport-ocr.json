@@ -1,0 +1,262 @@
+{
+    "meta": {
+        "slug": "passport-ocr",
+        "name": "护照识别",
+        "description": "免费提取护照详细信息",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport-ocr-cover.webp",
+            "alt": "护照被安全数字系统扫描的图标，象征着护照数据提取。"
+        }
+    },
+    "seo": {
+        "title": "免费护照 OCR 扫描仪：在线提取护照详细信息",
+        "description": "使用我们免费的在线 OCR 工具安全地扫描并提取护照机读区 (MRZ) 的信息。即时获取结构化数据，如姓名、护照号码和有效期。",
+        "keywords": [
+            "护照 ocr",
+            "mrz 扫描仪",
+            "护照扫描仪",
+            "提取护照数据",
+            "在线 ocr 护照",
+            "护照 mrz 阅读器",
+            "身份验证"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/passport-ocr/passport-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费护照 OCR 扫描仪",
+                "applicationCategory": "Utilities",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "1150"
+                },
+                "featureList": [
+                    "MRZ（机读区）数据提取",
+                    "带校验和验证的高精度",
+                    "安全、隐私优先的处理",
+                    "结构化 JSON 输出",
+                    "无需注册"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "安全且自动化的身份验证",
+        "title": "即时护照 OCR 扫描仪",
+        "tagline": "停止输入护照详细信息。我们的 AI 准确读取 MRZ（机读区）以即时提取姓名、号码和日期。安全、免费且无需注册。",
+        "features": [
+            {
+                "icon": "ShieldCheck",
+                "text": "安全且临时的处理"
+            },
+            {
+                "icon": "ScanLine",
+                "text": "高精度 MRZ 扫描"
+            },
+            {
+                "icon": "Languages",
+                "text": "100+ 语言支持"
+            }
+        ]
+    },
+    "playground": {
+        "title": "试用安全护照扫描仪",
+        "description": "上传护照数据页的清晰图片。为了您的隐私和安全，我们建议使用示例图片或经过编辑的副本进行测试。",
+        "guide": {
+            "title": "工作原理",
+            "description": "我们的 AI 专注于护照底部的两行文本（ICAO 标准 MRZ），以确保数据提取的最高准确性和可靠性。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport1.webp",
+                "alt": "显示清晰机读区 (MRZ) 的示例护照数据页。",
+                "tip": "示例护照"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport2.webp",
+                "alt": "稍微倾斜的护照照片，用于测试 OCR 鲁棒性。",
+                "tip": "真实世界照片"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport3.webp",
+                "alt": "用手机拍摄的清晰护照数据页照片。",
+                "tip": "手机拍摄"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个步骤提取护照数据",
+        "description": "在几秒钟内从护照照片转变为结构化、可用的数据。",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "1. 上传清晰的护照图片",
+                "description": "拖放或选择护照主数据页的图片。确保底部的 MRZ 清晰且无眩光。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "用户用手机拍摄光线充足、清晰的示例护照照片。"
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. AI 扫描机读区",
+                "description": "我们的 AI 自动检测 MRZ，扫描两行文本，并使用内部校验和验证数据。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示护照上的 MRZ 被高亮显示并扫描。"
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. 复制结构化数据",
+                "description": "获取提取的信息作为干净、有条理的文本或结构化 JSON，准备用于任何表格或系统。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "最终提取的护照数据显示在干净、结构化的格式中，带有复制按钮。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "通过自动护照扫描简化流程",
+        "description": "了解各行各业如何依靠护照 OCR 来加速运营、减少错误并增强安全性。",
+        "scenarios": [
+            {
+                "id": "travel",
+                "shortTitle": "旅游与酒店",
+                "originalTitle": "加速客人和乘客办理登机手续",
+                "tagline": "消除前台或登机口的繁琐数据录入和排长队。",
+                "description": "酒店接待员使用平板电脑拍摄客人护照的照片。数据被即时提取并自动填写登记表，将办理入住时间从几分钟减少到几秒钟，并最大限度地减少人为错误。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-travel.webp",
+                    "alt": "酒店接待员在入住柜台扫描客人护照。"
+                }
+            },
+            {
+                "id": "fintech",
+                "shortTitle": "金融科技 & KYC",
+                "originalTitle": "自动化客户身份验证 (KYC)",
+                "tagline": "在满足合规要求的同时更快地让新客户入职。",
+                "description": "注册新金融科技应用程序的用户被提示上传护照照片。OCR 工具即时提取他们的详细信息，交叉引用以验证他们的身份并无缝履行 KYC（了解你的客户）义务。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-fintech.webp",
+                    "alt": "用户拿着护照对着手机进行在线身份验证过程。"
+                }
+            },
+            {
+                "id": "hr",
+                "shortTitle": "人力资源",
+                "originalTitle": "确保国际员工入职的准确性",
+                "tagline": "为新员工捕获正确的护照和签证详细信息，没有拼写错误。",
+                "description": "人力资源经理正在为一名来自海外的新员工办理入职手续，扫描他们的护照。该工具准确捕获全名、护照号码和有效期，确保移民和工资单的所有记录从第一天起就是 100% 正确的。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-hr.webp",
+                    "alt": "人力资源专业人员扫描员工护照以填充他们的数字档案。"
+                }
+            },
+            {
+                "id": "personal",
+                "shortTitle": "个人使用",
+                "originalTitle": "准确填写签证和旅行表格",
+                "tagline": "通过复制您的确切详细信息，避免在官方申请上犯下代价高昂的错误。",
+                "description": "在线申请旅行签证的人使用护照 OCR 工具提取自己的信息。然后他们可以直接将详细信息复制并粘贴到申请表中，保证护照号码和日期正确无误。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-personal.webp",
+                    "alt": "一个人在办公桌前填写在线签证申请，在手机上使用 OCR 工具。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "专为准确性、安全性和速度而设计",
+        "description": "我们的护照 OCR 工具采用尖端技术构建，以提供可靠和安全的数据提取。",
+        "items": [
+            {
+                "icon": "ScanLine",
+                "title": "高精度 MRZ 识别",
+                "description": "我们的 AI 经过专门训练，可以读取所有国际护照上的 ICAO 9303 标准机读区 (MRZ)，确保最高水平的准确性。"
+            },
+            {
+                "icon": "ShieldAlert",
+                "title": "隐私优先：您的数据从不存储",
+                "description": "安全是不可协商的。图片在内存中处理，并在 OCR 过程完成后立即从我们的服务器中永久删除。我们从不保存您的护照信息。"
+            },
+            {
+                "icon": "FileJson2",
+                "title": "结构化 JSON 输出",
+                "description": "接收干净、有条理的 JSON 格式数据，解析为逻辑字段（例如，“姓氏”、“护照号码”、“出生日期”）。非常适合开发人员和系统集成。"
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "内置错误检查",
+                "description": "MRZ 包含用于自我验证的校验和数字。我们的工具自动验证这些校验和以标记潜在的误读，并显着提高输出的可靠性。"
+            },
+            {
+                "icon": "Globe2",
+                "title": "符合全球标准",
+                "description": "该工具旨在与来自世界各地的护照配合使用，遵守国际旅行证件 ICAO 标准。"
+            },
+            {
+                "icon": "Server",
+                "title": "业务就绪 API（即将推出）",
+                "description": "使用我们即将推出的开发人员 API，将我们强大的护照扫描技术直接集成到您自己的应用程序、网站或工作流程中。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "关于护照 OCR 的常见问题",
+        "items": [
+            {
+                "question": "上传我的护照图片安全吗？",
+                "answer": "我们非常重视您的安全和隐私。您的图片通过加密连接上传，在内存中处理，然后在提取后立即从我们的服务器中永久删除。没有任何数据被存储。"
+            },
+            {
+                "question": "什么是护照 MRZ？",
+                "answer": "MRZ，即机读区，是护照身份页底部的两行代码。它以标准化格式包含持有人的个人信息，计算机可以快速读取，这就是我们工具扫描的内容。"
+            },
+            {
+                "question": "实际上从护照中提取了什么信息？",
+                "answer": "该工具提取 MRZ 中编码的所有数据，通常包括您的全名、护照号码、国籍、出生日期、性别和护照有效期。"
+            },
+            {
+                "question": "为什么我的护照扫描失败了？",
+                "answer": "扫描失败的最常见原因是图片质量差。确保您的照片清晰、光线充足且不模糊。避免 MRZ 上的眩光，并确保没有手指遮挡两行代码。"
+            },
+            {
+                "question": "你们能读取签证印章或护照上的其他文本吗？",
+                "answer": "不能。此工具高度专业化，仅读取 MRZ。这种专注使其在特定用途上如此快速和准确。"
+            },
+            {
+                "question": "这项服务真的免费吗？",
+                "answer": "是的，我们的在线护照 OCR 工具对个人使用 100% 免费。对于需要处理大量护照的企业，我们将在不久的将来提供带有 API 访问权限的专业版计划。"
+            },
+            {
+                "question": "我上传的护照图片会怎样？",
+                "answer": "它被永久删除。我们有严格的临时处理政策：您的文件仅在处理它的几秒钟内存在于我们的服务器上，然后被不可恢复地擦除。"
+            },
+            {
+                "question": "我可以将其用于我公司的 KYC 流程吗？",
+                "answer": "虽然这个免费工具非常适合演示，但对于商业用途，我们强烈建议注册我们即将推出的 API 等待名单。API 提供了更安全、更无缝的集成到您的业务应用程序中。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "消除手动输入错误并节省时间",
+        "description": "即时安全地扫描并提取护照信息。立即开始使用在线最可靠的免费护照 OCR 工具。",
+        "button": {
+            "text": "免费扫描护照"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "title": "所有工具",
+    "description": "探索我们免费的 AI 驱动 OCR 工具套件。",
+    "tools": {
+        "formula-ocr": {
+            "name": "公式识别 (支持 LaTeX)",
+            "description": "将数学公式转换为 LaTeX。"
+        },
+        "pdf-ocr": {
+            "name": "PDF 转 Markdown",
+            "description": "从 PDF 中提取文本。"
+        },
+        "handwriting-ocr": {
+            "name": "手写体识别",
+            "description": "数字化手写笔记。"
+        },
+        "image-ocr": {
+            "name": "图片转文字",
+            "description": "从图片中提取文本。"
+        },
+        "invoice-ocr": {
+            "name": "发票识别",
+            "description": "自动化发票数据录入。"
+        },
+        "receipt-ocr": {
+            "name": "小票识别",
+            "description": "数字化收据。"
+        },
+        "ai-ocr": {
+            "name": "AI 智能文字识别",
+            "description": "高级文档识别。"
+        },
+        "ocr-scanner": {
+            "name": "文档扫描识别",
+            "description": "在线扫描文档。"
+        },
+        "passport-ocr": {
+            "name": "护照识别",
+            "description": "提取身份证件数据。"
+        }
+    }
+}

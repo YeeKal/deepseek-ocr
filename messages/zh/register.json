@@ -1,0 +1,25 @@
+{
+    "title": "注册",
+    "description": "创建一个帐户以访问我们强大的 AI 模型。",
+    "form": {
+        "title": "注册",
+        "alreadyHaveAccount": "已有帐户？",
+        "loginLink": "登录",
+        "nameLabel": "姓名",
+        "namePlaceholder": "输入您的姓名",
+        "emailLabel": "邮箱",
+        "emailPlaceholder": "you@example.com",
+        "passwordLabel": "密码",
+        "passwordPlaceholder": "********",
+        "passwordHint": "密码长度至少为 8 个字符",
+        "submitButton": "注册",
+        "loadingButton": "加载中...",
+        "successMessage": "注册成功！您现在可以登录了。",
+        "errors": {
+            "invalidEmail": "请输入有效的邮箱地址",
+            "invalidPassword": "密码长度至少为 8 个字符",
+            "registrationFailed": "注册失败",
+            "genericError": "注册过程中发生错误"
+        }
+    }
+}

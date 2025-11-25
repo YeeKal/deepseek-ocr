@@ -1,14 +1,17 @@
 import Footer from "@/components/wrapper/footer";
 import { Header } from "@/components/wrapper/header";
-
-export default function PageWrapper({
+import { getAllToolConfigs } from "@/lib/config/tool-utils";
+import { getLocale } from "next-intl/server";
+export default async function PageWrapper({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+  const toolMetaConfigs = await getAllToolConfigs(locale);
   return (
     <>
-      <Header />
+      <Header toolMetaConfigs={toolMetaConfigs} />
       <main className="min-h-screen pt-[0rem]">
         <div className=" absolute z-[-99] pointer-events-none inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         {children}

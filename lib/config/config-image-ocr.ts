@@ -239,8 +239,7 @@ export const imageOcrConfig: ToolConfig = {
     title: 'Ready to Unlock Text from Your Images?',
     description: 'Stop retyping and start converting. Drag and drop your image now to get fast, accurate, and perfectly formatted text in seconds.',
     button: {
-      text: 'Convert Image to Text for Free',
-      link: '#playground',
+      text: 'Convert Image to Text for Free'
     },
   },
 };

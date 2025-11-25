@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"; // Adjust path
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const modelTiers = [
   {

@@ -1,32 +1,28 @@
-/**
- * Tools Section Container - Display complete tool section on pages
- * Includes title, description, and tools grid
- */
-
-import {ToolsGrid, OCRToolMeta} from "@/components/tool/tools-grid"
-import {toolMetaConfigs} from "@/lib/config/tool-utils"
-import Link from "next/link"
+import { ToolsGrid } from "@/components/tool/tools-grid"
+import { Link } from "@/i18n/routing"
+import { useTranslations } from "next-intl"
+import type { ToolMetaConfig } from "@/lib/config/tool-types"
 
 interface ToolsSectionProps {
-  title?: string
-  description?: string
-  tools?: OCRToolMeta[]
+  tools: ToolMetaConfig[]
   showViewAll?: boolean
 }
 
 export function ToolsSection({
-  title = 'Explore More OCR Tools',
-  description = 'From formula recognition to invoice extraction, find the OCR solution that fits your needs',
-  tools= toolMetaConfigs,
+  tools,
   showViewAll = true,
 }: ToolsSectionProps) {
+  const t = useTranslations('common.toolsSection')
+  const displayTitle = t('title')
+  const displayDescription = t('description')
+
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Title Area */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">{title}</h2>
-          <p className="mt-4 text-lg text-gray-600">{description}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">{displayTitle}</h2>
+          <p className="mt-4 text-lg text-gray-600">{displayDescription}</p>
         </div>
 
         {/* Tools Grid */}
@@ -39,7 +35,7 @@ export function ToolsSection({
               href="/tools"
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-primary bg-transparent text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
             >
-              View All Tools
+              {t('viewAll')}
               <span className="ml-2">→</span>
             </Link>
           </div>

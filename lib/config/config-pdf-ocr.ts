@@ -218,7 +218,6 @@ export const pdfOcrConfig: ToolConfig = {
     description: 'Unlock the text within your scanned documents and PDFs. Save time, reduce errors, and make your information searchable and editable today.',
     button: {
       text: 'Convert Your PDF for Free',
-      link: '#playground',
     },
   },
 };

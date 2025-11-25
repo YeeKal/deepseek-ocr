@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { AvatarCircles } from "@/components/magicui/avatar-circles";
 import { Star } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Button } from "../ui/button";
 const avatars = [
   {

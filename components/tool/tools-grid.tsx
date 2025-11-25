@@ -1,16 +1,14 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import type { ToolConfig } from "@/lib/config/tool-types"
-
-export type OCRToolMeta = ToolConfig["meta"]
+import type { ToolMetaConfig } from "@/lib/config/tool-types"
 
 
 interface ToolsGridProps {
-  tools: OCRToolMeta[]
+  tools: ToolMetaConfig[]
   className?: string
 }
 
@@ -31,7 +29,7 @@ export function ToolsGrid({ tools, className }: ToolsGridProps) {
 }
 
 interface ToolCardProps {
-  tool: OCRToolMeta
+  tool: ToolMetaConfig
 }
 
 /**

@@ -1,4 +1,4 @@
-// components/tool-page/MarkdownRenderer.tsx
+
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'; // For GitHub Flavored Markdown (tables, strikethrough, etc.)
 

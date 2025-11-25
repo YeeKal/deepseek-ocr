@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { RechargePlan, RECHARGES } from "@/lib/ai-tools/products";
 import { toast } from "sonner";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ThirdPartyProviders } from "@/components/auth/third-party-providers"
 
 
@@ -30,44 +30,44 @@ export default function PricingCreem({ content }: { content: string }) {
 
   const features = {
     FREE: [
-        { query: "Monthly Credits: 20",  support: true },
-        { query: "Access to FLUX.1 Schnell Model", support: true },
-        { query: "Access to Dev & Pro & Max Models", support: true },
-        { query: "About 5 images with FLUX.1 Kontext Dev Model",  support: true },
-        { query: "About 20 images Background Remover",  support: true },
-        { query: "Basic Image Editing Tools", support: true },
-        { query: "Artistic Style Transfers", support: true },
-        { query: "Community Support", support: true },
+      { query: "Monthly Credits: 20", support: true },
+      { query: "Access to FLUX.1 Schnell Model", support: true },
+      { query: "Access to Dev & Pro & Max Models", support: true },
+      { query: "About 5 images with FLUX.1 Kontext Dev Model", support: true },
+      { query: "About 20 images Background Remover", support: true },
+      { query: "Basic Image Editing Tools", support: true },
+      { query: "Artistic Style Transfers", support: true },
+      { query: "Community Support", support: true },
     ],
     BASIC: [
-        { query: "Monthly Credits: 1000",  support: true },
-        { query: "About 200 images with FLUX.1 Kontext Dev Model",  support: true },
-        { query: "About 100 images with FLUX.1 Kontext Pro Model",  support: true },
-        { query: "About 1000 images with FLUX.1 Schnell Model",  support: true },
-        { query: "Access to FLUX.1 Schnell Model", support: true },
-        { query: "Access to FLUX.1 Kontext Pro Model", support: true },
-        { query: "Access to FLUX.1 Kontext Max Model", support: true },
-        { query: "Advanced Editing (Inpainting & Local Edits)", support: true },
-        { query: "Artistic Style Transfers", support: true },
-        { query: "High-Resolution Images", support: true },
-        { query: "Character Consistency Tool", support: true },
-        { query: "Commercial Use License", support: true },
-        { query: "Email Support", support: true },
+      { query: "Monthly Credits: 1000", support: true },
+      { query: "About 200 images with FLUX.1 Kontext Dev Model", support: true },
+      { query: "About 100 images with FLUX.1 Kontext Pro Model", support: true },
+      { query: "About 1000 images with FLUX.1 Schnell Model", support: true },
+      { query: "Access to FLUX.1 Schnell Model", support: true },
+      { query: "Access to FLUX.1 Kontext Pro Model", support: true },
+      { query: "Access to FLUX.1 Kontext Max Model", support: true },
+      { query: "Advanced Editing (Inpainting & Local Edits)", support: true },
+      { query: "Artistic Style Transfers", support: true },
+      { query: "High-Resolution Images", support: true },
+      { query: "Character Consistency Tool", support: true },
+      { query: "Commercial Use License", support: true },
+      { query: "Email Support", support: true },
     ],
     PRO: [
-        { query: "Monthly Credits: 4000", support: true },
-        { query: "About 800 images with FLUX.1 Kontext Dev Model",  support: true },
-        { query: "About 400 images with FLUX.1 Kontext Pro Model",  support: true },
-        { query: "About 4000 images with FLUX.1 Schnell Model",  support: true },
-        { query: "Access to FLUX.1 Schnell Model", support: true },
-        { query: "Access to FLUX.1 Kontext Pro Model", support: true },
-        { query: "Access to FLUX.1 Kontext Max Model", support: true },
-        { query: "All Advanced Editing Tools", support: true },
-        { query: "All Artistic & Custom Style Transfers", support: true },
-        { query: "Maximum Resolution Images", support: true },
-        { query: "Character Consistency Tool", support: true },
-        { query: "Full Commercial Use License", support: true },
-        { query: "Priority Email & Chat Support", support: true },
+      { query: "Monthly Credits: 4000", support: true },
+      { query: "About 800 images with FLUX.1 Kontext Dev Model", support: true },
+      { query: "About 400 images with FLUX.1 Kontext Pro Model", support: true },
+      { query: "About 4000 images with FLUX.1 Schnell Model", support: true },
+      { query: "Access to FLUX.1 Schnell Model", support: true },
+      { query: "Access to FLUX.1 Kontext Pro Model", support: true },
+      { query: "Access to FLUX.1 Kontext Max Model", support: true },
+      { query: "All Advanced Editing Tools", support: true },
+      { query: "All Artistic & Custom Style Transfers", support: true },
+      { query: "Maximum Resolution Images", support: true },
+      { query: "Character Consistency Tool", support: true },
+      { query: "Full Commercial Use License", support: true },
+      { query: "Priority Email & Chat Support", support: true },
     ],
   };
 
@@ -130,11 +130,10 @@ export default function PricingCreem({ content }: { content: string }) {
             {TRANS_RECHARGES.map((item: PricingPlan) => (
               <div
                 key={item.code}
-                className={`bg-white relative flex flex-col rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
-                  item.isMostPop
+                className={`bg-white relative flex flex-col rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${item.isMostPop
                     ? "border-slate-600 md:scale-105"
                     : "md:hover:scale-105"
-                }`}
+                  }`}
               >
                 {item.isMostPop && (
                   <p className="absolute right-2 top-0 -translate-y-1/2 font-heading px-2 py-0.5 text-xs max-w-max text-white tracking-[1px] rounded-full bg-primary md:text-sm md:px-3 md:py-1">
@@ -179,11 +178,10 @@ export default function PricingCreem({ content }: { content: string }) {
                     ) : (
                       <Button
                         variant={item.isMostPop ? "default" : "secondary"}
-                        className={`w-full text-xs md:text-sm ${
-                          item.isMostPop
+                        className={`w-full text-xs md:text-sm ${item.isMostPop
                             ? "bg-slate-600 hover:bg-slate-500"
                             : "bg-foreground text-background hover:bg-muted hover:text-muted-foreground"
-                        }`}
+                          }`}
                         onClick={() => handleCheckout(item)}
                         disabled={loading === item.code}
                       >

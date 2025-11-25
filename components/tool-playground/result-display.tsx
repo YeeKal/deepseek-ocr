@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Copy, Check, Sparkles, Download } from "lucide-react"
 import type { OCRResult } from "@/lib/types"
 import OcrMDResult from "./ocr-markdown"
 import type { ToolConfig } from "@/lib/config/tool-types"
+import { Link } from "@/i18n/routing"
 
 type GuideProps = ToolConfig["playground"]["guide"]
 
@@ -18,6 +20,7 @@ type ResultDisplayProps = {
 }
 
 export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisplayProps) {
+  const t = useTranslations("common.toolPlayground.resultDisplay")
   const [copied, setCopied] = useState(false)
   const [elapsedTime, setElapsedTime] = useState(0)
 
@@ -81,9 +84,9 @@ export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisp
       <div className="h-full flex items-center justify-center min-h-[400px]">
         <div className="text-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto" />
-          <p className="text-muted-foreground">Processing your image...</p>
+          <p className="text-muted-foreground">{t("processing.text")}</p>
           <p className="text-sm text-muted-foreground">
-            Elapsed time: {formatTime(elapsedTime)}
+            {t("processing.elapsedTime", { time: formatTime(elapsedTime) })}
           </p>
         </div>
       </div>
@@ -95,7 +98,7 @@ export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisp
       <div className="h-full flex items-center justify-center min-h-[400px]">
         <div className="text-center space-y-2 max-w-md">
           <div className="text-destructive text-4xl mb-4">⚠️</div>
-          <h3 className="font-semibold text-lg">Error</h3>
+          <h3 className="font-semibold text-lg">{t("error.title")}</h3>
           <p className="text-sm text-muted-foreground">{error}</p>
         </div>
       </div>
@@ -122,21 +125,21 @@ export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisp
 
           <div className="pt-4 space-y-2 text-sm text-left mx-auto">
             <p className="text-foreground font-semibold">
-              ⚡️ Performance Tips:
+              {t("guide.performanceTips")}
             </p>
             <ul className="list-disc list-inside space-y-1 pl-4">
-              <li>Smaller files process <strong>faster</strong> (keep resolution reasonable)</li>
+              <li dangerouslySetInnerHTML={{ __html: t.raw("guide.tip1") }} />
 
               {/* -- 新增/替换的提示 -- */}
               <li>
-                PDF uploads are limited to the <strong>first page</strong>. Multi-page support is a coming Pro feature.
+                <span dangerouslySetInnerHTML={{ __html: t.raw("guide.tip2") }} />
                 {/* 假设你的链接样式是主色+下划线 */}
-                <a href="/waitlist" className="text-primary font-medium underline ml-1">
-                  Join the waitlist!
-                </a>
+                <Link href="/waitlist" prefetch={false} className="text-primary font-medium underline ml-1">
+                  {t("guide.joinWaitlist")}
+                </Link>
               </li>
-              <li>Ensure the image has good lighting and is in focus</li>
-              <li>For handwritten notes, clear and distinct writing works best</li>
+              <li>{t("guide.tip3")}</li>
+              <li>{t("guide.tip4")}</li>
 
             </ul>
           </div>
@@ -145,7 +148,7 @@ export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisp
         </div>
       </div>
     )
-   
+
   }
 
 
@@ -154,56 +157,56 @@ export function ResultDisplay({ result, error, isProcessing, guide }: ResultDisp
       {/* Performance Metrics - Always visible */}
       <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 rounded-lg p-5 border border-blue-200/50 dark:border-blue-800/50">
         <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-3 flex items-center gap-2">
-          ⚡ Performance Metrics
+          {t("metrics.title")}
         </h4>
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-white/70 dark:bg-background/70 rounded-lg p-4 backdrop-blur-sm">
-            <div className="text-xs font-medium text-muted-foreground mb-1">Queue Time</div>
+            <div className="text-xs font-medium text-muted-foreground mb-1">{t("metrics.queueTime")}</div>
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
               {result?.delayTime !== undefined ? (result.delayTime / 1000).toFixed(2) : '--'}
-              <span className="text-sm font-normal text-muted-foreground ml-1">sec</span>
+              <span className="text-sm font-normal text-muted-foreground ml-1">{t("metrics.sec")}</span>
             </div>
-            <div className="text-xs text-muted-foreground mt-1">Time waiting in queue</div>
+            <div className="text-xs text-muted-foreground mt-1">{t("metrics.queueTimeDesc")}</div>
           </div>
           <div className="bg-white/70 dark:bg-background/70 rounded-lg p-4 backdrop-blur-sm">
-            <div className="text-xs font-medium text-muted-foreground mb-1">Execution Time</div>
+            <div className="text-xs font-medium text-muted-foreground mb-1">{t("metrics.executionTime")}</div>
             <div className="text-2xl font-bold text-green-600 dark:text-green-400">
               {result?.executionTime !== undefined ? (result.executionTime / 1000).toFixed(2) : '--'}
-              <span className="text-sm font-normal text-muted-foreground ml-1">sec</span>
+              <span className="text-sm font-normal text-muted-foreground ml-1">{t("metrics.sec")}</span>
             </div>
-            <div className="text-xs text-muted-foreground mt-1">Processing duration</div>
+            <div className="text-xs text-muted-foreground mt-1">{t("metrics.executionTimeDesc")}</div>
           </div>
         </div>
       </div>
 
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold">Results</h3>
+        <h3 className="text-xl font-semibold">{t("results.title")}</h3>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={handleCopy} disabled={!result.text_content}>
             {copied ? (
               <>
                 <Check className="mr-2 h-4 w-4" />
-                Copied
+                {t("actions.copied")}
               </>
             ) : (
               <>
                 <Copy className="mr-2 h-4 w-4" />
-                Copy
+                {t("actions.copy")}
               </>
             )}
           </Button>
           <Button variant="outline" size="sm" onClick={handleDownload} disabled={!result.text_content}>
             <Download className="mr-2 h-4 w-4" />
-            Download
+            {t("actions.download")}
           </Button>
         </div>
       </div>
 
       <Tabs defaultValue="rendered" className="w-full">
         <TabsList className={`grid w-full grid-cols-${result.visualization_b64 ? '3' : '2'}`}>
-          <TabsTrigger value="rendered">Rendered</TabsTrigger>
-          <TabsTrigger value="raw">Raw Text</TabsTrigger>
-          {result.visualization_b64 && <TabsTrigger value="visualization">Visualization</TabsTrigger>}
+          <TabsTrigger value="rendered">{t("tabs.rendered")}</TabsTrigger>
+          <TabsTrigger value="raw">{t("tabs.raw")}</TabsTrigger>
+          {result.visualization_b64 && <TabsTrigger value="visualization">{t("tabs.visualization")}</TabsTrigger>}
         </TabsList>
 
         <TabsContent value="rendered" className="mt-4">

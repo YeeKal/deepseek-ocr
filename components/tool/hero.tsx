@@ -2,7 +2,7 @@
 import type { ToolConfig } from "@/lib/config/tool-types"
 import { Button } from "@/components/ui/button"
 import * as Icons from "lucide-react"
-import {PLAYGROUND_SECTION_ID} from "@/lib/constants"
+import { PLAYGROUND_SECTION_ID } from "@/lib/constants"
 import { scrollToPlayground } from "@/lib/utils"
 
 type HeroProps = ToolConfig["hero"]
@@ -14,7 +14,7 @@ interface HeroComponentProps {
 const getIcon = (iconName?: string) => {
   if (!iconName) return null
   const IconComponent = Icons[iconName as keyof typeof Icons] as any
-  return IconComponent ? <IconComponent className="w-5 h-5" /> : null
+  return IconComponent ? <IconComponent className="w-5 h-5" /> : <span className="text-xl leading-none">{iconName}</span>
 }
 
 export default function ToolHero({ hero }: HeroComponentProps) {
@@ -46,7 +46,7 @@ export default function ToolHero({ hero }: HeroComponentProps) {
 
         {/* CTA Button */}
         <Button onClick={() => scrollToPlayground(PLAYGROUND_SECTION_ID)}
-         size="lg" className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
+          size="lg" className="text-base md:text-lg px-6 md:px-8 py-3 md:py-4">
           Try Now
         </Button>
       </div>

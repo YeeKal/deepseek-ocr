@@ -217,8 +217,7 @@ export const passportOcrConfig: ToolConfig = {
     title: 'Eliminate Manual Entry Errors and Save Time',
     description: 'Securely scan and extract passport information in an instant. Get started now with the most reliable free passport OCR tool online.',
     button: {
-      text: 'Scan a Passport for Free',
-      link: '#playground',
+      text: 'Scan a Passport for Free'
     },
   },
 };

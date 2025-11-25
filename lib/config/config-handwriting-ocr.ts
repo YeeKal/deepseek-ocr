@@ -216,8 +216,7 @@ export const handwritingOcrConfig: ToolConfig = {
     title: 'Your Digital Scribe Awaits',
     description: 'Stop retyping. Start digitizing. Turn your scattered handwritten notes into a powerful, searchable digital library today.',
     button: {
-      text: 'Transcribe My Handwriting for Free',
-      link: '#playground',
+      text: 'Transcribe My Handwriting for Free'
     },
   },
 };

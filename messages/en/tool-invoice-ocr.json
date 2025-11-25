@@ -1,0 +1,272 @@
+{
+    "meta": {
+        "slug": "invoice-ocr",
+        "name": "Invoice OCR",
+        "description": "Extract invoice data automatically",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice-ocr-cover.webp",
+            "alt": "AI-powered invoice OCR scanner extracting vendor details, invoice number, and line items from a business invoice."
+        }
+    },
+    "seo": {
+        "title": "Free Invoice OCR Scanner: Auto-Extract Data to Excel & QuickBooks",
+        "description": "Automate invoice processing with AI. Extract vendor, invoice number, dates, line items, and totals from invoices instantly. Export to CSV/JSON/Excel. Free, 99% accuracy.",
+        "keywords": [
+            "invoice ocr",
+            "invoice scanner",
+            "ocr invoice scanning",
+            "extract invoice data",
+            "invoice to excel",
+            "ap automation",
+            "accounts payable ocr",
+            "invoice processing",
+            "bill ocr",
+            "automated invoice capture",
+            "free invoice scanner"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Free AI Invoice Scanner",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Any (Web-based)",
+                "description": "Free AI-powered invoice OCR scanner that extracts vendor details, invoice numbers, dates, line items, and totals with 99% accuracy. Export to Excel, CSV, or JSON.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "850"
+                },
+                "featureList": [
+                    "Automated Invoice Data Extraction",
+                    "Vendor Name Recognition",
+                    "Invoice Number Detection",
+                    "Line Item Extraction (Products, QTY, Price)",
+                    "Invoice Date & Due Date Parsing",
+                    "Tax & Discount Calculation",
+                    "PO Number Recognition",
+                    "Export to CSV/JSON/Excel",
+                    "Batch Processing for AP Teams",
+                    "QuickBooks Integration Ready"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "Intelligent AP Automation",
+        "title": "Eliminate Manual Invoice Data Entry Forever",
+        "tagline": "Stop spending hours typing invoice details into accounting software. Our AI Invoice Scanner captures vendors, invoice numbers, line items, amounts, and due dates automatically—turning weeks of AP work into minutes.",
+        "features": [
+            {
+                "icon": "CheckCircleIcon",
+                "text": "Extracts Line Items & Totals"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "Captures Invoice # & PO #"
+            },
+            {
+                "icon": "CheckCircleIcon",
+                "text": "Identifies Due Dates & Terms"
+            }
+        ]
+    },
+    "playground": {
+        "title": "Process Your First Invoice Now",
+        "description": "Upload any invoice—PDF, scanned, or photo—and watch our AI extract complete invoice data in seconds.",
+        "guide": {
+            "title": "How to Extract Invoice Data",
+            "description": "Upload your invoice or select an example. Our AI identifies vendor details, invoice number, line items, and totals automatically."
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice1.webp",
+                "alt": "Example of a professional services invoice with line items and totals",
+                "tip": "Professional Services Invoices"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice2.webp",
+                "alt": "Example of an inventory invoice with multiple products and quantities",
+                "tip": "Product Invoices"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice3.webp",
+                "alt": "Example of a scanned invoice to test OCR accuracy",
+                "tip": "Scanned Paper Invoices"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "Automate Invoice Processing in 3 Steps",
+        "description": "Transform invoice chaos into organized AP data in seconds—no manual data entry required.",
+        "steps": [
+            {
+                "icon": "UploadIcon",
+                "title": "1. Upload Your Invoice",
+                "description": "Upload PDF invoices, scanned documents, or photos (JPG, PNG, PDF). Works with emailed invoices, scanned paper, and mobile photos.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "Animation showing a user uploading an invoice document."
+                }
+            },
+            {
+                "icon": "BrainCircuitIcon",
+                "title": "2. AI Extracts Complete Invoice Data",
+                "description": "Our AI scans the invoice, detects vendor details, invoice number, PO number, line items (product, QTY, price), tax, discounts, and due dates automatically.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "Animation showing AI highlighting vendor, invoice number, line items, and totals on invoice."
+                }
+            },
+            {
+                "icon": "ClipboardCopyIcon",
+                "title": "3. Download or Integrate Your Data",
+                "description": "Export extracted invoice data as structured CSV, JSON, or Excel. Ready for QuickBooks, Xero, SAP, or any accounting system.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "Animation showing user downloading invoice data and importing to accounting software."
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "Intelligent Invoice Processing for Every Business",
+        "description": "From AP clerks to CFOs, our Invoice OCR eliminates tedious data entry and transforms accounts payable workflows.",
+        "scenarios": [
+            {
+                "id": "ap-clerk-processing",
+                "shortTitle": "AP Clerk Productivity",
+                "originalTitle": "10x Your Invoice Processing Speed",
+                "tagline": "Process 100 invoices before lunch.",
+                "description": "You are an AP clerk receiving 300 invoices monthly. Instead of spending 40 hours manually keying data into your ERP, scan each invoice in seconds. Our OCR extracts vendor, invoice #, line items, and amounts automatically. You review and approve 100+ invoices daily, cutting a week's work to a single day.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice1.webp",
+                    "alt": "AP clerk processing large volume of invoices with AI OCR automation"
+                }
+            },
+            {
+                "id": "small-business-owner",
+                "shortTitle": "Small Business Payments",
+                "originalTitle": "Stay on Top of Vendor Payments",
+                "tagline": "Never miss a payment deadline again.",
+                "description": "You run a small business with 50+ vendor invoices monthly. Keeping track of due dates is overwhelming. Scan each invoice as it arrives—our OCR captures due dates and amounts automatically. You get a clear payment schedule, avoid late fees, and maintain strong vendor relationships.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice2.webp",
+                    "alt": "Small business owner organizing vendor invoices with AI scanner"
+                }
+            },
+            {
+                "id": "accounting-bookkeeping",
+                "shortTitle": "Client Bookkeeping",
+                "originalTitle": "Automate Client Invoice Processing",
+                "tagline": "Digitize a client's invoice backlog in one day.",
+                "description": "You are a bookkeeper onboarding a new client with 6 months of unpaid invoices. Instead of billing 30 hours for manual data entry, use batch processing to scan hundreds of invoices at once. Our OCR extracts all AP data automatically. You deliver organized financials in days, not weeks, impressing your client.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice3.webp",
+                    "alt": "Bookkeeper processing multiple client invoices with automated OCR"
+                }
+            },
+            {
+                "id": "enterprise-erp-integration",
+                "shortTitle": "ERP Data Integration",
+                "originalTitle": "Feed Invoice Data Directly to ERP Systems",
+                "tagline": "Eliminate manual ERP data entry forever.",
+                "description": "Your enterprise processes 5,000+ invoices monthly across 10 locations. Manual data entry creates bottlenecks and errors. Scan invoices at each location—our API-ready OCR extracts structured invoice data. Feed directly to SAP/Oracle, reducing processing time by 90% and virtually eliminating keying errors.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice4.webp",
+                    "alt": "Enterprise AP team integrating OCR invoice data into ERP system"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "Enterprise-Grade Invoice OCR Features",
+        "description": "Built for AP automation, our Invoice Scanner handles real-world complexity with accuracy and intelligence.",
+        "items": [
+            {
+                "icon": "ListTodoIcon",
+                "title": "Complete Line Item Extraction",
+                "description": "Extracts product/service descriptions, quantities, unit prices, and extended amounts from itemized invoices. Perfect for inventory management and cost allocation."
+            },
+            {
+                "icon": "BadgeDollarSignIcon",
+                "title": "Multi-Tax & Discount Recognition",
+                "description": "Identifies and calculates GST, VAT, sales tax, and discount amounts. Handles complex invoices with multiple tax rates and line-item discounts accurately."
+            },
+            {
+                "icon": "CalendarClockIcon",
+                "title": "Due Date & Terms Detection",
+                "description": "Automatically extracts invoice dates, due dates, and payment terms (Net 30, Net 60, etc.). Helps AP teams prioritize payments and avoid late fees."
+            },
+            {
+                "icon": "FileKeyIcon",
+                "title": "Invoice & PO Number Matching",
+                "description": "Captures invoice numbers, PO numbers, and reference numbers automatically. Makes three-way matching between invoice, PO, and receipt seamless."
+            },
+            {
+                "icon": "BuildingIcon",
+                "title": "Vendor Information Extraction",
+                "description": "Extracts vendor names, addresses, contact details, and tax IDs automatically. Builds vendor database automatically as you process invoices."
+            },
+            {
+                "icon": "WebhookIcon",
+                "title": "API-Ready for Integration",
+                "description": "Pro users get API access for direct integration with QuickBooks, Xero, SAP, NetSuite, and custom accounting systems. True AP automation at scale."
+            }
+        ]
+    },
+    "faq": {
+        "title": "Invoice OCR Automation Questions Answered",
+        "items": [
+            {
+                "question": "What invoice data can your OCR extract automatically?",
+                "answer": "Our AI extracts vendor name and address, invoice number, PO number, invoice date, due date, payment terms, line items (description, quantity, unit price, total), tax amounts, discounts, shipping charges, and total amount due. We also capture vendor tax IDs and contact information when present."
+            },
+            {
+                "question": "Can your OCR process invoices with multiple pages?",
+                "answer": "Yes! Our multi-page PDF support processes invoices of any length. We extract line items across all pages, maintain running totals, and consolidate everything into a single structured output. Perfect for detailed service invoices and statements."
+            },
+            {
+                "question": "How does AI handle different invoice formats and layouts?",
+                "answer": "Our AI has been trained on 100,000+ real invoices across vendors and countries. It understands common invoice patterns and can extract data regardless of layout—whether it is a clean PDF, scanned document, or smartphone photo with 95%+ accuracy."
+            },
+            {
+                "question": "Can I automatically match extracted invoices to purchase orders?",
+                "answer": "Absolutely. Our OCR captures both invoice numbers and PO numbers. Export the structured data to your ERP system for automated three-way matching (invoice, PO, receipt). Pro API users can automate the entire matching workflow."
+            },
+            {
+                "question": "What languages and countries does your invoice OCR support?",
+                "answer": "We support invoices in English, Spanish, French, German, Italian, and 20+ languages. Recognizes international formats including VAT numbers, IBAN codes, and country-specific tax calculations. Used globally across North America, Europe, and Asia-Pacific."
+            },
+            {
+                "question": "Can your OCR detect duplicate invoices automatically?",
+                "answer": "Yes! Our AI extracts invoice numbers and dates to identify potential duplicates. The system flags suspected duplicate invoices before they enter your AP workflow, preventing overpayments and fraud. Valuable AP control feature."
+            },
+            {
+                "question": "How secure is invoice data during processing?",
+                "answer": "Enterprise-grade security. Invoices are encrypted during upload, processed in isolated containers, and deleted immediately after extraction. We are SOC 2 compliant and never store your invoice data. Perfect for sensitive financial documents."
+            },
+            {
+                "question": "Can your invoice OCR integrate with QuickBooks or Xero?",
+                "answer": "Definitely. Export extracted invoice data as CSV/JSON for easy import to QuickBooks, Xero, or any accounting system. Pro API users can build direct integrations for true AP automation. Pre-built integrations launching soon for major platforms."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Stop Manual Invoice Data Entry. Start Automating AP.",
+        "description": "Join 5,000+ AP professionals saving 20+ hours per week. Process your first invoice free—no signup, no credit card, no commitment.",
+        "button": {
+            "text": "Extract Your First Invoice Now"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "title": "Contact Us",
+    "description": "Contact us for support, questions, or feedback.",
+    "seo": {
+         "title": "Contact deepseekocr.io | Support, Inquiries & Feedback",
+    "description": "Contact deepseekocr.io for support, questions, or feedback on our AI chat and visual artifact generation platform. We're here to help you!"
+ },
+    "header": {
+        "title": "Get in Touch with ",
+        "subtitle": "We're here to help! Whether you have a question, a brilliant idea, or need support, reach out to us."
+    },
+    "inquiries": {
+        "title": "General Inquiries & Support",
+        "description": "For questions, feature requests, technical support, or feedback.",
+        "responseData": "Please email us directly. We aim to respond within 24-48 business hours.",
+        "faqText": "Before reaching out, you might find your answer on our",
+        "faqLink": "FAQ Page"
+    },
+    "form": {
+        "title": "Send Us a Message",
+        "description": "Fill out the form below and we'll get back to you.",
+        "nameLabel": "Your Name",
+        "namePlaceholder": "Ada Lovelace",
+        "emailLabel": "Your Email",
+        "emailPlaceholder": "ada@example.com",
+        "subjectLabel": "Subject",
+        "subjectPlaceholder": "Question about artifacts",
+        "messageLabel": "Your Message",
+        "messagePlaceholder": "I have a question about...",
+        "submitButton": "Send Message",
+        "successMessage": "Thank you for your message! We'll get back to you soon."
+    }
+}

@@ -1,0 +1,555 @@
+{
+    "home.seo": {
+        "title": "DeepSeek-OCR - Free, Open Source, High Performance OCR Tool",
+        "description": "DeepSeek-OCR provides state-of-the-art OCR models, supporting document to markdown, table recognition, handwriting recognition and more. Free to use, no login required.",
+        "keywords": "OCR, DeepSeek, Text Recognition, PDF to Word, Table Recognition, Handwriting Recognition, Free OCR, Open Source OCR",
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal"
+    },
+    "home.hero": {
+        "eyebrow": "Experience a Leading Document Understanding Technology",
+        "title": "Free OCR Playground",
+        "tagline": "Experience a Leading Document Understanding Technology. Powered by DeepSeek OCR and PaddleOCR",
+        "ctaButton": {
+            "text": "Try for Free Now",
+            "link": "playground"
+        },
+        "waitlistButton": {
+            "text": "Join Pro features Waitlist",
+            "link": "/waitlist"
+        },
+        "features": {
+            "f1": "High accuracy",
+            "f2": "Structured Markdown",
+            "f3": "Layout Aware"
+        }
+    },
+    "home.demo": {
+        "title": "Try the Interactive Demo",
+        "paddleTagline": "Experience a Leading Document Understanding Technology. Powered by PaddleOCR.",
+        "deepseekTagline": "Experience a Leading Document Understanding Technology. Powered by DeepSeek OCR.",
+        "toggles": {
+            "paddle": "PaddleOCR-VL",
+            "deepseek": "DeepSeek-OCR"
+        },
+        "badges": {
+            "free": "Unlimited Free",
+            "noLogin": "No Login Required",
+            "runpod": "Support by Runpod"
+        },
+        "upload": {
+            "fileType": "File Type",
+            "image": "Image",
+            "pdf": "PDF",
+            "button": {
+                "processing": "Processing...",
+                "verifying": "Verifying...",
+                "extract": "Extract Text"
+            },
+            "error": "Please upload a file first",
+            "promptRequired": "Prompt is required for this task type"
+        },
+        "turnstile": {
+            "title": "Security Verification",
+            "description": "Please complete the security check to proceed.",
+            "loading": "Loading verification...",
+            "initializing": "Initializing...",
+            "cancel": "Cancel",
+            "error": "Verification failed. Please check your connection and try again."
+        },
+        "serverStatus": {
+            "title": "Server status",
+            "coolingDown": "⚡️ Cooling down",
+            "coolingDownMessage": "⚡️ System is cooling down. First request may take ~40 seconds to start.",
+            "completed": "Completed",
+            "inProgress": "In Progress",
+            "inQueue": "In Queue"
+        },
+        "errorDialog": {
+            "title": "Error",
+            "tryAgain": "Try Again"
+        }
+    },
+    "home.taskAbilities": {
+        "title": "One Tool, Multiple Abilities",
+        "description": "DeepSeek-OCR is more than just a text extractor. It's a versatile vision model capable of performing a wide range of document and image intelligence tasks.",
+        "tasks": [
+            {
+                "key": "formula",
+                "icon": "📝",
+                "title": "Free OCR",
+                "description": "Extracts raw, unformatted text from any image or document page. Perfect for quick digitization and content extraction.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/wiki-free-ocr.webp",
+                    "output": "https://cdn.deepseekocr.io/home/wiki-free-ocr-res.webp"
+                }
+            },
+            {
+                "key": "pdf",
+                "icon": "📄",
+                "title": "Convert to Markdown",
+                "description": "Preserves the document's structure, including headings, lists, and tables, by converting it into clean, readable Markdown.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/doc_markdown.webp",
+                    "output": "https://cdn.deepseekocr.io/home/doc_markdown_layout.webp"
+                }
+            },
+            {
+                "key": "handwriting",
+                "icon": "📈",
+                "title": "Parse Figure",
+                "description": "Goes beyond text to extract structured data from charts and graphs, turning visual information into usable data tables.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/2010_homicide_rates.webp",
+                    "output": "https://cdn.deepseekocr.io/home/2010_homicide_rates_-ocr.webp"
+                }
+            },
+            {
+                "key": "image",
+                "icon": "🔍",
+                "title": "Locate Object (Grounding)",
+                "description": "Finds specific text or elements within an image based on your prompt, providing precise bounding box coordinates.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/industrial-revolution.webp",
+                    "output": "https://cdn.deepseekocr.io/home/industrial-revolution-locate.webp"
+                }
+            },
+            {
+                "key": "invoice",
+                "icon": "🖼️",
+                "title": "Detailed Image Description",
+                "description": "Functions as a powerful Vision-Language Model, providing rich, detailed captions and descriptions for any image.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/annisa.webp",
+                    "output": "https://cdn.deepseekocr.io/home/image-describe.webp"
+                }
+            },
+            {
+                "key": "receipt",
+                "icon": "🧾",
+                "title": "Receipt OCR",
+                "description": "Extract key information from receipts.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/receipt.webp",
+                    "output": "https://cdn.deepseekocr.io/home/receipt-res.webp"
+                }
+            },
+            {
+                "key": "ai",
+                "icon": "🤖",
+                "title": "AI OCR",
+                "description": "Advanced AI-powered OCR.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/ai.webp",
+                    "output": "https://cdn.deepseekocr.io/home/ai-res.webp"
+                }
+            },
+            {
+                "key": "scanner",
+                "icon": "📷",
+                "title": "Scanner OCR",
+                "description": "Scan documents with ease.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/scanner.webp",
+                    "output": "https://cdn.deepseekocr.io/home/scanner-res.webp"
+                }
+            },
+            {
+                "key": "passport",
+                "icon": "🛂",
+                "title": "Passport OCR",
+                "description": "Extract data from passports.",
+                "images": {
+                    "input": "https://cdn.deepseekocr.io/home/passport.webp",
+                    "output": "https://cdn.deepseekocr.io/home/passport-res.webp"
+                }
+            }
+        ]
+    },
+    "home.features": {
+        "title": "A Breakthrough in Efficiency and Accuracy",
+        "description": "DeepSeek-OCR isn't just another text recognition tool. It's a fundamental rethinking of how machines process visual information, built to be both powerful and lightweight.",
+        "items": [
+            {
+                "key": "f1",
+                "emoji": "📦",
+                "title": "Contexts Optical Compression",
+                "description": "The core innovation. We represent high-resolution documents with a fraction of the vision tokens, dramatically reducing computational costs and increasing processing speed."
+            },
+            {
+                "key": "f2",
+                "emoji": "🎯",
+                "title": "State-of-the-Art Accuracy",
+                "description": "Achieve up to 97% OCR precision on complex benchmarks. DeepSeek-OCR surpasses leading models while using significantly fewer resources."
+            },
+            {
+                "key": "f3",
+                "emoji": "📄",
+                "title": "Versatile Document Parsing",
+                "description": "Go beyond plain text. Intelligently extract data from complex layouts, including academic papers, financial charts, chemical formulas, and geometric figures."
+            },
+            {
+                "key": "f4",
+                "emoji": "🚀",
+                "title": "Built for Massive Scale",
+                "description": "Engineered for real-world deployment, capable of processing over 200,000 pages per day on a single GPU, making it ideal for large-scale data annotation and LLM training."
+            },
+            {
+                "key": "f5",
+                "emoji": "🌍",
+                "title": "Global Language Recognition",
+                "description": "Trained on a vast dataset covering nearly 100 languages, allowing for accurate text extraction from international documents without changing models."
+            },
+            {
+                "key": "f6",
+                "emoji": "🧠",
+                "title": "Low-Memory Architecture",
+                "description": "The novel DeepEncoder design processes high-resolution images while maintaining low activation memory, enabling deployment on less powerful hardware and reducing operational costs."
+            }
+        ]
+    },
+    "home.useCases": {
+        "title": "From Research to Enterprise: Real-World Applications",
+        "description": "DeepSeek-OCR unlocks new possibilities across industries by making sophisticated document analysis accessible and scalable.",
+        "scenarios": [
+            {
+                "key": "academic-research",
+                "shortTitle": "Academic Research",
+                "originalTitle": "Accelerating Academic & Historical Research",
+                "tagline": "Digitize entire archives in record time.",
+                "description": "Researchers can now convert vast libraries of scanned papers, historical texts, and manuscripts into machine-readable text with incredible speed. The model's ability to handle diverse layouts and languages makes it an indispensable tool for data mining in the humanities and sciences.",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-paper.webp",
+                        "alt": "Academic Research with DeepSeek-OCR"
+                    },
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-manuscript.webp",
+                        "alt": "Historical Manuscript Digitization"
+                    }
+                ]
+            },
+            {
+                "key": "financial-automation",
+                "shortTitle": "Financial Automation",
+                "originalTitle": "Automating Financial Data Extraction",
+                "tagline": "Turn reports into structured data.",
+                "description": "Effortlessly extract tables, charts, and key figures from dense financial reports, invoices, and bank statements. The high accuracy and layout-aware parsing reduce manual data entry, minimize errors, and accelerate financial workflows and analysis.",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/ocr-research.webp",
+                        "alt": "Financial Report Analysis with DeepSeek-OCR"
+                    }
+                ]
+            },
+            {
+                "key": "llm-data-pipelines",
+                "shortTitle": "LLM Data Pipelines",
+                "originalTitle": "Powering Next-Gen AI with Quality Data",
+                "tagline": "The ultimate data source for LLMs.",
+                "description": "Generate vast, high-quality datasets for training Large Language Models (LLMs) and Vision-Language Models (VLMs). DeepSeek-OCR's efficiency makes it economically viable to process millions of documents, creating diverse and rich training corpora.",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/diverse-documents.webp",
+                        "alt": "Diverse Document Processing for LLMs"
+                    }
+                ]
+            },
+            {
+                "key": "digital-archiving",
+                "shortTitle": "Digital Archiving",
+                "originalTitle": "Creating Efficient Digital Libraries",
+                "tagline": "Archive, search, and manage documents.",
+                "description": "Transform physical documents into a lightweight, searchable digital archive. The optical compression ensures that storage requirements are minimized while the high-quality text extraction makes every document instantly discoverable.",
+                "images": [
+                    {
+                        "src": "https://cdn.deepseekocr.io/home/old-manu.webp",
+                        "alt": "Digital Archiving with DeepSeek-OCR"
+                    }
+                ]
+            }
+        ]
+    },
+    "home.diveDeeper": {
+        "title": "For Researchers and Developers",
+        "description": "Explore the technology that powers DeepSeek-OCR. Read the full paper or dive into the open-source code on GitHub.",
+        "items": {
+            "paper": {
+                "title": "Read The Research Paper",
+                "description": "Get a detailed breakdown of the model architecture, training process, and benchmark performance.",
+                "link": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf",
+                "icon": "📜"
+            },
+            "code": {
+                "title": "Explore The Source Code",
+                "description": "Access the complete codebase, model weights, and contribute to the future of optical compression.",
+                "link": "https://github.com/deepseek-ai/DeepSeek-OCR",
+                "icon": "💻"
+            }
+        }
+    },
+    "home.faq": {
+        "title": "Frequently Asked Questions",
+        "items": {
+            "q1": {
+                "question": "What is DeepSeek-OCR?",
+                "answer": "DeepSeek-OCR is a new vision-language model that specializes in recognizing and extracting text and data from documents using an innovative technique called 'Contexts Optical Compression'."
+            },
+            "q2": {
+                "question": "What makes 'Contexts Optical Compression' different?",
+                "answer": "Instead of converting every detail of an image into a large number of tokens, it intelligently compresses the visual information. This means it can represent a full, complex page with up to 10x fewer data points than traditional models, making it incredibly fast and efficient."
+            },
+            "q3": {
+                "question": "Is DeepSeek-OCR free to use?",
+                "answer": "Yes, the model is open-source and the live demo on this site is free to use. For commercial or large-scale use, you can access the model weights and code from the official GitHub repository."
+            },
+            "q4": {
+                "question": "Is there an official API available?",
+                "answer": "Currently, there is no official hosted API. However, the project is open-source, allowing you to deploy and host your own instance. We recommend following the GitHub project for future announcements about a public API."
+            },
+            "q5": {
+                "question": "What file types can I analyze?",
+                "answer": "The underlying model can process a wide range of image formats (PNG, JPEG, WebP) and is particularly effective on pages from PDF documents. The live demo supports direct image uploads and pastes."
+            },
+            "q6": {
+                "question": "How does this compare to Tesseract or other OCR libraries?",
+                "answer": "DeepSeek-OCR is an end-to-end deep learning model that excels at understanding complex layouts, like tables and charts, which traditional OCR libraries often struggle with. Its primary advantage is superior efficiency and accuracy on dense, structured documents."
+            },
+            "q7": {
+                "question": "What languages does the model support?",
+                "answer": "The model was trained on a massive dataset covering nearly 100 languages, making it highly effective for multilingual document analysis."
+            },
+            "q8": {
+                "question": "Can it understand document structure, not just text?",
+                "answer": "Absolutely. This is a key strength. It can parse charts into structured data, understand tables, and recognize layouts, converting them into clean formats like Markdown."
+            }
+        }
+    },
+    "home.cta": {
+        "title": "Experience the Difference Yourself",
+        "description": "Reading about it is one thing, but seeing it in action is another. Scroll back up to the playground and analyze your own document to witness the speed and accuracy of DeepSeek-OCR firsthand.",
+        "button": {
+            "text": "Try the Demo Now",
+            "link": "playground"
+        }
+    },
+    "home.waitlist": {
+        "title": "Join the Waitlist",
+        "description": "Our premium features are coming soon. Join the waitlist to be the first to know.",
+        "placeholder": "Enter your email address",
+        "button": "Join",
+        "success": "Thanks for joining! We'll be in touch soon."
+    },
+    "home.usage": {
+        "title": "From Image to Insight: A Guide to Our OCR Toolkit",
+        "description": "Learn how to convert any image, PDF, or document into structured, usable data in just a few clicks.",
+        "steps": {
+            "s1": {
+                "title": "Upload Image",
+                "description": "Drag & drop, paste, or provide a URL to your image. Supports all common image formats."
+            },
+            "s2": {
+                "title": "Select Model Size",
+                "description": "Choose from Tiny to Gundam. We recommend Gundam for best overall performance, or select based on your speed/accuracy needs."
+            },
+            "s3": {
+                "title": "Choose Task Type",
+                "description": "Select the appropriate task: document conversion, general OCR, figure parsing, or custom tasks with your own prompt."
+            },
+            "s4": {
+                "title": "Process & Export",
+                "description": "Click Process and wait for results. View rendered markdown, raw text, or visualization with bounding boxes. Copy with one click."
+            }
+        },
+        "modelGuide": {
+            "title": "Model Size Guide",
+            "items": {
+                "Tiny": "Quick previews, simple text extraction",
+                "Small": "Balanced performance for general use",
+                "Base": "Standard documents and forms",
+                "Large": "Complex layouts, high accuracy needs",
+                "Gundam": "Best overall quality (recommended)"
+            }
+        },
+        "taskGuide": {
+            "title": "Task Type Guide",
+            "items": {
+                "doc_to_markdown": {
+                    "name": "Document to Markdown",
+                    "use": "Academic papers, reports, structured documents"
+                },
+                "ocr": {
+                    "name": "General OCR",
+                    "use": "Any text extraction needs"
+                },
+                "simple_ocr": {
+                    "name": "Simple OCR",
+                    "use": "Clean, straightforward text"
+                },
+                "figure_parse": {
+                    "name": "Figure Parse",
+                    "use": "Charts, graphs, diagrams"
+                },
+                "image_description": {
+                    "name": "Image Description",
+                    "use": "Understanding image content"
+                },
+                "text_localization": {
+                    "name": "Text Localization",
+                    "use": "Finding specific text (requires prompt)"
+                },
+                "custom": {
+                    "name": "Custom",
+                    "use": "Specialized tasks (requires prompt)"
+                }
+            }
+        }
+    },
+    "home.roadmap": {
+        "title": "The Future of DeepSeek OCR",
+        "description": "We're just getting started. Here’s a look at what we’re building next to make document understanding even more powerful.",
+        "inProgress": {
+            "title": "In Progress",
+            "date": "Q4 2024",
+            "description": "Actively being built and tested now.",
+            "features": [
+                {
+                    "key": "priorityQueue",
+                    "name": "Pro-Tier Priority Queue",
+                    "description": "Paid users get priority processing for near-instant results, every time."
+                },
+                {
+                    "key": "modelLibrary",
+                    "name": "Expanded Model Library",
+                    "description": "Access other specialized OCR models for different languages and use-cases."
+                },
+                {
+                    "key": "batchProcessing",
+                    "name": "Batch Processing",
+                    "description": "Upload and process hundreds of documents in a single go, right from the web interface."
+                },
+                {
+                    "key": "apiOptimization",
+                    "name": "API Optimization",
+                    "description": "Improving API response times and efficiency."
+                }
+            ]
+        },
+        "planned": {
+            "title": "Planned",
+            "date": "Q1 2025",
+            "description": "Next on our list to design and build.",
+            "features": [
+                {
+                    "key": "api",
+                    "name": "Developer API",
+                    "description": "Integrate the full power of DeepSeek-OCR directly into your applications and workflows."
+                },
+                {
+                    "key": "pdfSupport",
+                    "name": "Advanced PDF Support",
+                    "description": "Process multi-page PDFs while preserving layouts, tables, and document structure."
+                },
+                {
+                    "key": "multiLanguage",
+                    "name": "Multi-Language Support",
+                    "description": "Support for over 100 languages."
+                },
+                {
+                    "key": "tableAnalysis",
+                    "name": "Advanced Table Analysis",
+                    "description": "Extract complex tables with high precision."
+                },
+                {
+                    "key": "handwriting",
+                    "name": "Handwriting Recognition",
+                    "description": "Recognize handwritten text."
+                },
+                {
+                    "key": "mobileApp",
+                    "name": "Mobile App",
+                    "description": "Scan documents on the go."
+                }
+            ]
+        },
+        "exploring": {
+            "title": "Exploring",
+            "date": "Q2 2025",
+            "description": "Big ideas we're researching for the future.",
+            "features": [
+                {
+                    "key": "collaboration",
+                    "name": "Team Collaboration",
+                    "description": "Share projects, manage documents, and collaborate with your entire team."
+                },
+                {
+                    "key": "integrations",
+                    "name": "Cloud Integrations",
+                    "description": "Connect directly to Google Drive, Dropbox, and more to process files automatically."
+                },
+                {
+                    "key": "dataParsing",
+                    "name": "Advanced Data Parsing",
+                    "description": "Use AI to automatically extract specific structured data, like invoice totals or contact info."
+                }
+            ]
+        },
+        "cta": {
+            "text": "Want access to these features first?",
+            "button": "Join the Pro Waitlist"
+        }
+    },
+    "home.footer": {
+        "tagline": "Analyze More. Compute Less. A showcase for the DeepSeek-OCR project.",
+        "copyright": "© 2025 DeepSeekOCR.io. All rights reserved. Not affiliated with DeepSeek-AI.",
+        "sections": [
+            {
+                "title": "PROJECT",
+                "links": [
+                    {
+                        "text": "Official GitHub",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR"
+                    },
+                    {
+                        "text": "Research Paper",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf"
+                    },
+                    {
+                        "text": "DeepSeek-AI",
+                        "href": "https://www.deepseek.com/"
+                    }
+                ]
+            },
+            {
+                "title": "LEGAL",
+                "links": [
+                    {
+                        "text": "About This Site",
+                        "href": "/about"
+                    },
+                    {
+                        "text": "Contact",
+                        "href": "/contact"
+                    },
+                    {
+                        "text": "Terms of Service",
+                        "href": "/terms"
+                    },
+                    {
+                        "text": "Privacy Policy",
+                        "href": "/privacy"
+                    }
+                ]
+            },
+            {
+                "title": "FRIENDS",
+                "links": [
+                    {
+                        "text": "Runpod",
+                        "href": "https://runpod.io?ref=5kdp9mps"
+                    }
+                ]
+            }
+        ]
+    }
+}

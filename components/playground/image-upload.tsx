@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback,useRef } from "react"
+import { useState, useCallback, useRef } from "react"
 import { Upload, LinkIcon, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,27 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { MaxUploadImageSize } from "@/lib/constants"
-
-const sampleImages = [
-  {
-    id: 1,
-    url: "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp", // 去掉空格
-    title: "Grocery Invoice", // Fold Receipt
-    description: "Works well even with crumpled or folded invoices."
-  },
-  {
-    id: 2,
-    url: "https://cdn.deepseekocr.io/tools/formula-ocr/lag-formula.webp",  // 去掉空格
-    title: "Digital Math Snippets",
-    description: "Accurately extracts latex from complex math equations."
-  },
-  {
-    id: 3,
-    url: "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp", // 去掉空格
-    title: "Complex Document",
-    description: "Showcases performance on documents with complex layouts."
-  }
-]
+import { useTranslations } from "next-intl"
 
 type ImageUploadProps = {
   onImageChange: (source: { type: "url" | "base64"; value: string } | null) => void
@@ -38,6 +18,7 @@ type ImageUploadProps = {
 }
 
 export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deepseekocr" }: ImageUploadProps) {
+  const t = useTranslations('home.demo.imageUpload')
   const [preview, setPreview] = useState<string | null>(null)
   const [urlInput, setUrlInput] = useState("")
   const [isDragging, setIsDragging] = useState(false)
@@ -45,27 +26,48 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
   const [fileSizeError, setFileSizeError] = useState("")
   const fileInputRef = useRef<HTMLInputElement>(null)
 
+  const sampleImages = [
+    {
+      id: 1,
+      url: "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+      title: t('samples.grocery.title'),
+      description: t('samples.grocery.description')
+    },
+    {
+      id: 2,
+      url: "https://cdn.deepseekocr.io/tools/formula-ocr/lag-formula.webp",
+      title: t('samples.math.title'),
+      description: t('samples.math.description')
+    },
+    {
+      id: 3,
+      url: "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+      title: t('samples.complex.title'),
+      description: t('samples.complex.description')
+    }
+  ]
+
   const handleFileUpload = useCallback(
     (file: File) => {
       // Check file size (in MB)
       const fileSizeInMB = file.size / (1024 * 1024)
       if (fileSizeInMB > MaxUploadImageSize) {
-        setFileSizeError(`Your file is ${fileSizeInMB.toFixed(2)} MB, but the current limit is ${MaxUploadImageSize} MB`)
+        setFileSizeError(t('dialog.description', { currentSize: fileSizeInMB.toFixed(2), limit: MaxUploadImageSize }))
         setShowFileSizeDialog(true)
         if (fileInputRef.current) {
-    fileInputRef.current.value = ""  // 这是被允许的：清空当前选中，但不能设特定值
-  }
+          fileInputRef.current.value = ""
+        }
         return
       }
 
       // For DeepSeekOCR, only accept images
       if (ocrEngine === "deepseekocr" && !file.type.startsWith("image/")) {
-        alert("Please upload an image file")
+        alert(t('alerts.imageOnly'))
         return
       }
       // For PaddleOCRVL, accept both images and PDFs
       if (ocrEngine === "paddleocrvl" && !file.type.startsWith("image/") && file.type !== "application/pdf") {
-        alert("Please upload an image or PDF file")
+        alert(t('alerts.imageOrPdf'))
         return
       }
 
@@ -80,15 +82,15 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
         const base64 = e.target?.result as string
         const base64Data = base64.split(",")[1]
         setPreview(base64)
-        onImageChange({ type: "base64", value: base64Data})
+        onImageChange({ type: "base64", value: base64Data })
       }
       reader.readAsDataURL(file)
     },
-    [onImageChange, onFileTypeChange, ocrEngine],
+    [onImageChange, onFileTypeChange, ocrEngine, t],
   )
 
-  const handleDrop = useCallback( 
-    (e: React.DragEvent) => { 
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
       e.preventDefault()
       setIsDragging(false)
 
@@ -123,34 +125,32 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
     onImageChange({ type: "url", value: urlInput })
   }
 
-   const handleSampleImageClick = (sample: typeof sampleImages[0]) => {
-    // 1. 直接设置预览
+  const handleSampleImageClick = (sample: typeof sampleImages[0]) => {
     setPreview(sample.url)
-    // 2. 直接通知父组件，并附上示例标题
-    onImageChange({ type: "url", value: sample.url,  })
+    onImageChange({ type: "url", value: sample.url })
   }
 
   const clearImage = () => {
     setPreview(null)
     setUrlInput("")
     onImageChange(null)
-     if (fileInputRef.current) {
-    fileInputRef.current.value = ""
-  }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
   }
 
   return (
     <div className="space-y-4">
       <div className="flex gap-2 items-center">
-      <Label>{ocrEngine === "paddleocrvl" ? "File Upload (Image or PDF)" : "Image Upload"}</Label>
-      <a
-        href="#how-to-use"
-        className="inline-flex items-center  shadow-sm transition-all hover:shadow-md"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </a>
+        <Label>{ocrEngine === "paddleocrvl" ? t('labelPaddle') : t('labelDeepSeek')}</Label>
+        <a
+          href="#how-to-use"
+          className="inline-flex items-center  shadow-sm transition-all hover:shadow-md"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
       </div>
 
       {preview ? (
@@ -167,15 +167,14 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
       ) : (
         <Tabs defaultValue="upload" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="upload">Upload</TabsTrigger>
-            <TabsTrigger value="url">URL</TabsTrigger>
+            <TabsTrigger value="upload">{t('tabs.upload')}</TabsTrigger>
+            <TabsTrigger value="url">{t('tabs.url')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="upload" className="space-y-4">
             <div
-              className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                isDragging ? "border-primary bg-primary/5" : "border-border"
-              }`}
+              className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${isDragging ? "border-primary bg-primary/5" : "border-border"
+                }`}
               onDrop={handleDrop}
               onDragOver={(e) => {
                 e.preventDefault()
@@ -186,10 +185,10 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
             >
               <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
               <p className="text-sm text-muted-foreground mb-1">
-                Drag & drop, paste, or click to upload {ocrEngine === "paddleocrvl" ? "an image or PDF" : "an image"}
+                {ocrEngine === "paddleocrvl" ? t('dragDrop.paddle') : t('dragDrop.deepseek')}
               </p>
               <p className="text-xs text-muted-foreground">
-                Maximum file size: {MaxUploadImageSize} MB
+                {t('maxFileSize', { size: MaxUploadImageSize })}
               </p>
               <Input
                 ref={fileInputRef}
@@ -204,7 +203,7 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
               />
               <Button asChild variant="secondary">
                 <label htmlFor="file-upload" className="cursor-pointer">
-                  Choose File
+                  {t('chooseFile')}
                 </label>
               </Button>
             </div>
@@ -224,57 +223,57 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
                   }}
                 />
               </div>
-              <Button onClick={handleUrlSubmit}>Load</Button>
+              <Button onClick={handleUrlSubmit}>{t('load')}</Button>
             </div>
           </TabsContent>
         </Tabs>
       )}
 
-        <div className="">
-            <h3 className="text-center text-sm font-medium text-muted-foreground mb-4">
-              Or try an example
-            </h3>
-            <div className="grid grid-cols-3 gap-4">
-              {sampleImages.map((sample) => (
-                <TooltipProvider key={sample.id} delayDuration={100}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        className="cursor-pointer group block text-center"
-                        onClick={() => handleSampleImageClick(sample)} // 确保调用的是修复后的函数
-                      >
-                        <div className="aspect-video rounded-lg overflow-hidden border bg-muted relative transition-all group-hover:shadow-lg group-hover:border-primary">
-                          <img 
-                            src={sample.url} 
-                            alt={sample.title}
-                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        </div>
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{sample.description}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              ))}
-            </div>
-          </div>
+      <div className="">
+        <h3 className="text-center text-sm font-medium text-muted-foreground mb-4">
+          {t('tryExample')}
+        </h3>
+        <div className="grid grid-cols-3 gap-4">
+          {sampleImages.map((sample) => (
+            <TooltipProvider key={sample.id} delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="cursor-pointer group block text-center"
+                    onClick={() => handleSampleImageClick(sample)}
+                  >
+                    <div className="aspect-video rounded-lg overflow-hidden border bg-muted relative transition-all group-hover:shadow-lg group-hover:border-primary">
+                      <img
+                        src={sample.url}
+                        alt={sample.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{sample.description}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
+      </div>
 
       {/* File Size Error Dialog */}
       <Dialog open={showFileSizeDialog} onOpenChange={setShowFileSizeDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-xl text-rose-500">File Size Exceeded</DialogTitle>
+            <DialogTitle className="text-xl text-rose-500">{t('dialog.title')}</DialogTitle>
             <DialogDescription className="text-sm text-muted-foreground mt-2">
               {fileSizeError}
             </DialogDescription>
             <DialogDescription className="text-sm text-muted-foreground mt-4 pt-2">
-              <strong>Pro Features Coming Soon!</strong>
+              <strong>{t('dialog.proFeatures')}</strong>
             </DialogDescription>
             <DialogDescription className="text-sm text-muted-foreground mt-4 pb-2">
-              Get notified when we launch higher file size limits, batch processing, and more premium OCR features.
+              {t('dialog.notify')}
             </DialogDescription>
 
           </DialogHeader>
@@ -282,10 +281,11 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
             <Button
               variant="outline"
               onClick={() => {
-                setShowFileSizeDialog(false)}}
+                setShowFileSizeDialog(false)
+              }}
               className="sm:mr-auto"
             >
-              Try Again
+              {t('dialog.tryAgain')}
             </Button>
             <Button
               onClick={() => {
@@ -296,7 +296,7 @@ export function ImageUpload({ onImageChange, onFileTypeChange, ocrEngine = "deep
               }}
               className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
             >
-              Join Pro Features Waitlist
+              {t('dialog.joinWaitlist')}
             </Button>
           </DialogFooter>
         </DialogContent>

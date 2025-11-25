@@ -256,6 +256,6 @@ export const receiptOcrConfig: ToolConfig = {
   cta: {
     title: 'Stop Manual Data Entry. Start Automating.',
     description: 'Join 10,000+ freelancers and businesses saving hours every week. Scan your first receipt free—no signup, no credit card, no catch.',
-    button: { text: 'Scan Your First Receipt Now', link: '#playground' }
+    button: { text: 'Scan Your First Receipt Now' }
   }
 };

@@ -1,0 +1,261 @@
+{
+    "meta": {
+        "slug": "handwriting-ocr",
+        "name": "手写体识别",
+        "description": "将手写笔记转换为可编辑文本",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-cover.webp",
+            "alt": "手写笔记在屏幕上无缝转换为数字、可编辑文本。"
+        }
+    },
+    "seo": {
+        "title": "免费手写转文本转换器 | DeepSeekOCR.io",
+        "description": "使用我们免费的在线 OCR 即时将手写内容转换为文本。准确数字化手写笔记、日记和信件。支持草书和印刷体。无需注册。",
+        "keywords": [
+            "手写识别",
+            "手写转文本",
+            "转换手写为文本",
+            "草书转文本",
+            "手写笔记扫描仪",
+            "数字化手写",
+            "手写 ocr"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "免费手写转文本转换器",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "920"
+                },
+                "featureList": [
+                    "手写笔记识别",
+                    "草书和印刷体支持",
+                    "可编辑数字文本输出",
+                    "无需注册或登录"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "您的手写内容，数字化",
+        "title": "解锁手写笔记中的文本",
+        "tagline": "我们先进的 AI 将您的手写笔记、日记和信件——无论是草书还是印刷体——转换为干净、可编辑的数字文本。免费、快速，无需帐户。",
+        "features": [
+            {
+                "icon": "PenLine",
+                "text": "先进的手写识别"
+            },
+            {
+                "icon": "Zap",
+                "text": "即时转换"
+            },
+            {
+                "icon": "Languages",
+                "text": "多语言支持"
+            }
+        ]
+    },
+    "playground": {
+        "title": "试用手写转文本转换器",
+        "description": "上传您的笔记照片，观看我们的 AI 实时将其数字化。",
+        "guide": {
+            "title": "从墨水到可编辑文本",
+            "description": "上传任何手写内容的图片。我们的 AI 识别笔画和字符，为您提供实际可以使用的文本。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                "alt": "用于 OCR 的清晰印刷学生讲座笔记示例。",
+                "tip": "学生笔记"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-letter.webp",
+                "alt": "用于手写转文本转换的草书信件示例。",
+                "tip": "信件"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-whiteboard.webp",
+                "alt": "用于 OCR 的白板头脑风暴笔记示例。",
+                "tip": "白板涂鸦"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个步骤将手写内容转换为文本",
+        "description": "我们直观的流程使数字化您的个人笔记变得轻松快捷。",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "1. 上传您的手写图片",
+                "description": "拖放、粘贴或选择您的图片文件（JPG、PNG）。使用笔记本、信件或白板的照片。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "点击选择文件并选择包含公式的正确图片。"
+                }
+            },
+            {
+                "icon": "Bot",
+                "title": "2. AI 分析书写内容",
+                "description": "我们的 AI 模型分析图片，识别字符和单词，无论是印刷体还是草书。",
+                "media": {
+                    "type": "gif",
+                    "url": " https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 处理并识别手写文本。"
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. 复制您的数字文本",
+                "description": "您的转录文本在几秒钟内出现。点击复制以在您的笔记应用程序、电子邮件或任何文档中使用。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "用户从工具中复制最终转录文本。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从纸堆到数字档案",
+        "description": "看看我们的手写 OCR 如何帮助人们节省时间、更有条理并保存他们最重要的想法。",
+        "scenarios": [
+            {
+                "id": "student",
+                "shortTitle": "学生笔记",
+                "originalTitle": "让讲座笔记可搜索",
+                "tagline": "将几页笔记变成强大的、可搜索的学习工具。",
+                "description": "一名大学生上传了他们整个学期的手写讲座笔记照片。该工具将它们数字化，创建一个可搜索的档案，他们可以用它在准备考试时立即查找关键词和概念。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+                    "alt": "一名学生在笔记本电脑上数字化他们的讲座笔记。"
+                }
+            },
+            {
+                "id": "writer",
+                "shortTitle": "日记 & 写作",
+                "originalTitle": "数字化个人日记以便轻松编辑",
+                "tagline": "无缝地将您流畅的想法从纸笔转移到文字处理器。",
+                "description": "一位作家喜欢在实体日记中起草他们的想法。他们使用手写转文本工具快速将他们的每日条目转换为数字文本，然后可以轻松编辑、组织并集成到他们的文章或书籍章节中。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/writer-journal.webp",
+                    "alt": "作家的桌子上放着一本日记和一台显示转录文本的笔记本电脑。"
+                }
+            },
+            {
+                "id": "genealogist",
+                "shortTitle": "家庭档案",
+                "originalTitle": "转录旧家庭信件和记录",
+                "tagline": "通过使祖先文件可读和可搜索来保存您的家族历史。",
+                "description": "一位系谱学家正在研究他们的家谱，并收藏了曾祖母的旧草书信件。他们使用 OCR 工具转录信件，使其易于阅读、与家人分享并搜索姓名和日期。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-letter.webp",
+                    "alt": "一封旧的草书家庭信件旁边是一台显示其数字转录的平板电脑。"
+                }
+            },
+            {
+                "id": "professional",
+                "shortTitle": "会议笔记",
+                "originalTitle": "捕捉和分享白板头脑风暴",
+                "tagline": "确保会议结束后没有想法丢失。",
+                "description": "在一次富有成效的头脑风暴会议之后，项目经理拍了一张满是笔记的白板照片。他们将图片转换为文本，创建一个即时会议摘要，可以整理并通过电子邮件发送给所有参与者作为可操作的项目。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/handwriting-ocr/handwriting-ocr-whiteboard.webp",
+                    "alt": "项目经理在会议后拍摄一张满是笔记的白板照片。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "最先进的手写识别工具",
+        "description": "我们构建工具是为了理解人类手写的细微差别，从整洁的印刷体到流畅的草书。",
+        "items": [
+            {
+                "icon": "PenTool",
+                "title": "先进的草书识别",
+                "description": "我们的 AI 在大量草书数据集上进行了训练，使其能够准确解释其他工具无法处理的连笔字母和流畅脚本。"
+            },
+            {
+                "icon": "Eraser",
+                "title": "智能噪声校正",
+                "description": "该工具旨在即使在图像不完美的情况下也能表现良好。它智能地处理阴影、不同的光照和纸张纹理，以提高准确性。"
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "印刷文本的高精度",
+                "description": "对于清晰的非草书手写内容，我们的工具提供极高的准确性，最大限度地减少任何更正的需要，为您节省宝贵的时间。"
+            },
+            {
+                "icon": "Lock",
+                "title": "设计私密且安全",
+                "description": "您的笔记是私人的。我们尊重这一点。您上传的图片经过安全处理，并在短时间后从我们的服务器中永久删除。"
+            },
+            {
+                "icon": "Archive",
+                "title": "创建可搜索的数字档案",
+                "description": "将您的实体笔记本变成强大的、可搜索的数字图书馆。只需搜索一个单词，即可在几秒钟内找到过去的任何笔记。"
+            },
+            {
+                "icon": "MessageSquareQuote",
+                "title": "上下文感知分析",
+                "description": "AI 不仅仅看单个字母；它分析单词和句子的上下文以做出更好的预测，减少乱码并提高整体可读性。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "手写识别：您的问题已解答",
+        "items": [
+            {
+                "question": "手写转文本转换有多准确？",
+                "answer": "对于清晰、易读的手写内容，准确性非常高。对于凌乱或复杂的草书，它是目前最好的之一，但可能需要一些更正。图像质量是关键——良好的光照和清晰的照片将产生最佳结果。"
+            },
+            {
+                "question": "这个工具真的能阅读草书手写内容吗？",
+                "answer": "是的。我们的 AI 已经针对各种草书风格进行了专门训练。虽然非常华丽或旧式的草书可能具有挑战性，但它在现代草书书写上表现非常好。"
+            },
+            {
+                "question": "我上传个人笔记时我的数据安全吗？",
+                "answer": "绝对安全。我们优先考虑您的隐私。文件在传输过程中加密，并在转录完成后不久从我们的服务器中自动删除。我们不会存储您的笔记。"
+            },
+            {
+                "question": "这项手写 OCR 服务完全免费吗？",
+                "answer": "是的，单张图片上传的核心功能是 100% 免费的。这项免费服务由广告支持。我们将来可能会为批量上传提供高级功能。"
+            },
+            {
+                "question": "手写识别支持哪些语言？",
+                "answer": "我们的工具支持 100 多种语言，其中使用拉丁字母（如英语、西班牙语、法语、德语等）的语言准确率最高。"
+            },
+            {
+                "question": "为了获得好结果，拍摄笔记的最佳方式是什么？",
+                "answer": "为了获得最佳结果，请将纸张放在平坦、光线充足的表面上。避免强烈的阴影。保持相机与页面平行，以防止变形并确保文本清晰对焦。"
+            },
+            {
+                "question": "我需要注册帐户吗？",
+                "answer": "不需要。您可以立即使用手写转文本转换器，无需任何注册或提供个人信息。"
+            },
+            {
+                "question": "它可以转换横线笔记本上的笔记吗？",
+                "answer": "是的，我们的 AI 经过训练可以识别并忽略常见的干扰，如横线纸上的线条，只专注于提取手写文本。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "您的数字抄写员在等待",
+        "description": "停止重新打字。开始数字化。立即将您零散的手写笔记变成强大的、可搜索的数字图书馆。",
+        "button": {
+            "text": "免费转录我的手写内容"
+        }
+    }
+}

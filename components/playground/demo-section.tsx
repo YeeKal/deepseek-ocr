@@ -7,6 +7,7 @@ import { ParameterSettings } from "@/components/playground/parameter-settings"
 import { ResultDisplay } from "@/components/playground/result-display"
 import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants"
 import type { OCRResult } from "@/lib/types"
+import { useTranslations } from "next-intl"
 
 
 export type HealthStatus = {
@@ -20,10 +21,12 @@ export type HealthStatus = {
   workers: {
     idle: number
     running: number
+    workers: number
   }
 }
 
 export function DemoSection() {
+  const t = useTranslations('home.demo')
   const [ocrEngine, setOcrEngine] = useState<"paddleocrvl" | "deepseekocr">("paddleocrvl")
   const [imageSource, setImageSource] = useState<{ type: "url" | "base64"; value: string } | null>(null)
   const [fileType, setFileType] = useState<"image" | "pdf">("image")
@@ -200,13 +203,13 @@ export function DemoSection() {
 
   const handleProcess = async () => {
     if (!imageSource) {
-      handleError("Please upload a file first")
+      handleError(t('upload.error'))
       return
     }
 
     // Check prompt requirement only for DeepSeekOCR
     if (ocrEngine === "deepseekocr" && (taskType === "custom" || taskType === "text_localization") && !prompt.trim()) {
-      handleError("Prompt is required for this task type")
+      handleError(t('upload.promptRequired'))
       return
     }
 
@@ -350,7 +353,7 @@ export function DemoSection() {
   const handleTurnstileError = () => {
     setIsVerifying(false);
     setShowTurnstile(false); // Close the modal on error
-    handleError("Verification failed. Please check your connection and try again.")
+    handleError(t('turnstile.error'))
   }
 
   // The rest of the component's JSX remains exactly the same...
@@ -360,11 +363,11 @@ export function DemoSection() {
         <div className="max-w-7xl mx-auto space-y-8">
           {/* ... (all your existing JSX for the page layout, cards, etc.) ... */}
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold"> Drag, Drop, and Understand</h2>
+            <h2 className="text-4xl md:text-5xl font-bold"> {t('title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {ocrEngine === "paddleocrvl"
-                ? "Upload an image or PDF and experience the power of PaddleOCR-VL technology"
-                : "Upload an image and experience the power of DeepSeek-OCR technology"
+                ? t('paddleTagline')
+                : t('deepseekTagline')
               }
             </p>
 
@@ -379,11 +382,11 @@ export function DemoSection() {
                     setPrompt("")
                   }}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "paddleocrvl"
-                      ? "bg-background shadow-sm text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                    ? "bg-background shadow-sm text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                     }`}
                 >
-                  PaddleOCR-VL
+                  {t('toggles.paddle')}
                 </button>
                 <button
                   onClick={() => {
@@ -392,11 +395,11 @@ export function DemoSection() {
                     setError(null)
                   }}
                   className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "deepseekocr"
-                      ? "bg-background shadow-sm text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                    ? "bg-background shadow-sm text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                     }`}
                 >
-                  DeepSeek-OCR
+                  {t('toggles.deepseek')}
                 </button>
               </div>
             </div>
@@ -406,13 +409,13 @@ export function DemoSection() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="font-semibold">Unlimited Free</span>
+                <span className="font-semibold">{t('badges.free')}</span>
               </div>
               <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                <span className="font-semibold">No Login Required</span>
+                <span className="font-semibold">{t('badges.noLogin')}</span>
               </div>
               <a
                 href="https://runpod.io?ref=5kdp9mps"
@@ -423,7 +426,7 @@ export function DemoSection() {
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
                   <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
                 </svg>
-                <span className="font-semibold text-sm">Support by Runpod</span>
+                <span className="font-semibold text-sm">{t('badges.runpod')}</span>
               </a>
             </div>
           </div>
@@ -442,7 +445,7 @@ export function DemoSection() {
                   <div className="flex items-center gap-4">
                     <div className="space-y-1">
                       <label className="text-xs font-semibold uppercase tracking-wider block">
-                        File Type
+                        {t('upload.fileType')}
                       </label>
 
                     </div>
@@ -456,7 +459,7 @@ export function DemoSection() {
                           onChange={() => setFileType("image")}
                           className="h-4 w-4 text-primary focus:ring-primary"
                         />
-                        <span className="text-sm font-medium">Image</span>
+                        <span className="text-sm font-medium">{t('upload.image')}</span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
@@ -467,7 +470,7 @@ export function DemoSection() {
                           onChange={() => setFileType("pdf")}
                           className="h-4 w-4 text-primary focus:ring-primary"
                         />
-                        <span className="text-sm font-medium">PDF</span>
+                        <span className="text-sm font-medium">{t('upload.pdf')}</span>
                       </label>
                     </div>
                   </div>
@@ -478,7 +481,7 @@ export function DemoSection() {
                   disabled={!imageSource || isProcessing || isVerifying}
                   className="w-full py-3 px-4 rounded-lg font-medium bg-primary text-primary-foreground  text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isProcessing ? 'Processing...' : (isVerifying ? 'Verifying...' : 'Extract Text')}
+                  {isProcessing ? t('upload.button.processing') : (isVerifying ? t('upload.button.verifying') : t('upload.button.extract'))}
                 </button>
                 {/* Only show parameter settings for DeepSeekOCR */}
                 {ocrEngine === "deepseekocr" && (
@@ -503,14 +506,14 @@ export function DemoSection() {
             <Card className="grid lg:grid-cols-2 gap-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
               <div>
                 <div className="flex items-center gap-x-10 mb-2">
-                  <h3 className="text-sm font-semibold">Server status</h3>
+                  <h3 className="text-sm font-semibold">{t('serverStatus.title')}</h3>
                   {healthStatus.workers.running === 0 && (
-                    <span className="text-xs text-rose-500">⚡️ Cooling down</span>
+                    <span className="text-xs text-rose-500">{t('serverStatus.coolingDown')}</span>
                   )}
                 </div>
                 {healthStatus.workers.running === 0 && (
                   <div className="mb-3 p-2  rounded text-xs text-purple-800 dark:text-amber-200">
-                    ⚡️ System is cooling down. First request may take ~40 seconds to start.
+                    {t('serverStatus.coolingDownMessage')}
                   </div>
                 )}
               </div>
@@ -519,19 +522,19 @@ export function DemoSection() {
                   <div className="text-lg font-bold text-emerald-500">
                     {(healthStatus.jobs.completed + 1024).toLocaleString()}
                   </div>
-                  <div className="text-xs text-muted-foreground">Completed</div>
+                  <div className="text-xs text-muted-foreground">{t('serverStatus.completed')}</div>
                 </div>
                 <div className="flex-1">
                   <div className="text-lg font-bold text-blue-500">
                     {healthStatus.jobs.inProgress}
                   </div>
-                  <div className="text-xs text-muted-foreground">In Progress</div>
+                  <div className="text-xs text-muted-foreground">{t('serverStatus.inProgress')}</div>
                 </div>
                 <div className="flex-1">
                   <div className="text-lg font-bold text-amber-500">
                     {healthStatus.jobs.inQueue}
                   </div>
-                  <div className="text-xs text-muted-foreground">In Queue</div>
+                  <div className="text-xs text-muted-foreground">{t('serverStatus.inQueue')}</div>
                 </div>
               </div>
             </Card>
@@ -544,14 +547,14 @@ export function DemoSection() {
       {showTurnstile && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold mb-4">Security Verification</h3>
+            <h3 className="text-xl font-semibold mb-4">{t('turnstile.title')}</h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Please complete the security check to proceed.
+              {t('turnstile.description')}
             </p>
             <div id="turnstile-container" className="flex justify-center mb-4 min-h-[65px]">
               {!turnstileLoaded && (
                 <div className="h-full flex items-center justify-center text-sm text-muted-foreground">
-                  {typeof window !== 'undefined' ? 'Loading verification...' : 'Initializing...'}
+                  {typeof window !== 'undefined' ? t('turnstile.loading') : t('turnstile.initializing')}
                 </div>
               )}
             </div>
@@ -563,7 +566,7 @@ export function DemoSection() {
                 }}
                 className="px-4 py-2 text-sm border border-border rounded-md hover:bg-accent"
               >
-                Cancel
+                {t('turnstile.cancel')}
               </button>
             </div>
           </div>
@@ -574,7 +577,7 @@ export function DemoSection() {
       {showErrorDialog && error && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold text-red-500 mb-4">Error</h3>
+            <h3 className="text-xl font-semibold text-red-500 mb-4">{t('errorDialog.title')}</h3>
             <p className="text-sm text-muted-foreground mb-6">{error}</p>
             <div className="flex gap-3 justify-end">
               {/* <button
@@ -589,7 +592,7 @@ export function DemoSection() {
                 }}
                 className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
               >
-                Try Again
+                {t('errorDialog.tryAgain')}
               </button>
             </div>
           </div>

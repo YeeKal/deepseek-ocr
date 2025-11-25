@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 
 interface MenuItem {
   label: string;
@@ -67,7 +68,8 @@ export default function DropdownMenu({
           <div className="py-2">
            {items.map((item, index) => (
               item.href ? (
-                <a
+                <Link
+                  prefetch={false}
                   key={index}
                   href={item.href}
                   className="block w-full px-4 py-3 text-left hover:bg-secondary transition-colors text-foreground text-sm flex items-center justify-between group relative"
@@ -91,7 +93,7 @@ export default function DropdownMenu({
                     )}
                   </span>
                   <div className="h-0.5 bg-green-500 absolute bottom-0 left-0 w-0 group-hover:w-full transition-all duration-300" />
-                </a>
+                </Link>
               ) : (
                 <button
                   key={index}

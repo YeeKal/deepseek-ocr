@@ -1,0 +1,178 @@
+{
+    "navigation": {
+        "home": "首页",
+        "tools": "工具",
+        "about": "关于我们",
+        "contact": "联系我们",
+        "login": "登录",
+        "getStarted": "开始使用"
+    },
+    "seo": {
+        "title": "DeepSeek-OCR - 免费、开源、高性能 OCR 工具",
+        "description": "DeepSeek-OCR 提供最先进的 OCR 模型，支持文档转 Markdown、表格识别、手写体识别等。免费使用，无需登录。",
+        "keywords": "OCR, DeepSeek, 文字识别, PDF 转 Word, 表格识别, 手写体识别, 免费 OCR, 开源 OCR",
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal"
+    },
+    "header": {
+        "playground-label": "在线试用",
+        "join-waitlist": "加入等待名单",
+        "formula-ocr": "公式识别 (支持 LaTeX)",
+        "ocr-tools": "OCR 工具",
+        "switch-language": "切换语言"
+    },
+    "footer": {
+        "tagline": "多分析，少计算。DeepSeek-OCR 项目展示。",
+        "copyright": " 版权所有。",
+        "sections": [
+            {
+                "title": "项目",
+                "links": [
+                    {
+                        "text": "官方 GitHub",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR"
+                    },
+                    {
+                        "text": "研究论文",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf"
+                    },
+                    {
+                        "text": "DeepSeek-AI",
+                        "href": "https://www.deepseek.com/"
+                    }
+                ]
+            },
+            {
+                "title": "法律",
+                "links": [
+                    {
+                        "text": "关于本站",
+                        "href": "/about"
+                    },
+                    {
+                        "text": "联系我们",
+                        "href": "/contact"
+                    },
+                    {
+                        "text": "服务条款",
+                        "href": "/terms"
+                    },
+                    {
+                        "text": "隐私政策",
+                        "href": "/privacy"
+                    }
+                ]
+            }
+        ],
+        "friendslinklabel": "友情链接"
+    },
+    "toolsSection": {
+        "title": "探索更多 OCR 工具",
+        "description": "从公式识别到发票提取，找到适合您需求的 OCR 解决方案",
+        "viewAll": "查看所有工具"
+    },
+    "toolPlayground": {
+        "imageUpload": {
+            "label": "文件上传（图片或 PDF）",
+            "previewAlt": "预览",
+            "tabs": {
+                "upload": "上传",
+                "url": "URL"
+            },
+            "dropzone": {
+                "main": "拖拽、粘贴或点击上传图片或 PDF",
+                "limit": "最大文件大小：{size} MB",
+                "button": "选择文件"
+            },
+            "urlInput": {
+                "placeholder": "https://example.com/image.png",
+                "load": "加载"
+            },
+            "examples": {
+                "title": "或尝试示例"
+            },
+            "fileSizeError": {
+                "title": "文件大小超出限制",
+                "message": "您的文件大小为 {current} MB，但当前限制为 {limit} MB",
+                "proFeaturesTitle": "专业版功能即将推出！",
+                "proFeaturesDesc": "获取通知，当我们推出更高的文件大小限制、批量处理等更多高级 OCR 功能。",
+                "tryAgain": "重试",
+                "joinWaitlist": "加入专业版功能等待名单"
+            },
+            "errors": {
+                "invalidType": "请上传图片或 PDF 文件"
+            }
+        },
+        "resultDisplay": {
+            "processing": {
+                "text": "正在处理您的图片...",
+                "elapsedTime": "已用时间：{time}"
+            },
+            "error": {
+                "title": "错误"
+            },
+            "guide": {
+                "performanceTips": "⚡️ 性能提示：",
+                "tip1": "较小的文件处理<strong>更快</strong>（保持分辨率适中）",
+                "tip2": "PDF 上传限制为<strong>第一页</strong>。多页支持是即将推出的专业版功能。",
+                "joinWaitlist": "加入等待名单！",
+                "tip3": "确保图像光线充足且对焦清晰",
+                "tip4": "对于手写笔记，清晰可辨的书写效果最佳"
+            },
+            "metrics": {
+                "title": "⚡ 性能指标",
+                "queueTime": "队列时间",
+                "queueTimeDesc": "在队列中等待的时间",
+                "executionTime": "执行时间",
+                "executionTimeDesc": "处理持续时间",
+                "sec": "秒"
+            },
+            "results": {
+                "title": "结果"
+            },
+            "actions": {
+                "copied": "已复制",
+                "copy": "复制",
+                "download": "下载"
+            },
+            "tabs": {
+                "rendered": "渲染",
+                "raw": "原始文本",
+                "visualization": "可视化"
+            }
+        },
+        "main": {
+            "features": {
+                "unlimited": "无限免费",
+                "noLogin": "无需登录"
+            },
+            "fileType": {
+                "label": "文件类型",
+                "image": "图片",
+                "pdf": "PDF"
+            },
+            "buttons": {
+                "processing": "处理中...",
+                "verifying": "验证中...",
+                "extract": "提取文本"
+            },
+            "turnstile": {
+                "title": "安全验证",
+                "description": "请完成安全检查以继续。",
+                "loading": "加载验证中...",
+                "initializing": "初始化中...",
+                "cancel": "取消"
+            },
+            "errors": {
+                "title": "错误",
+                "tryAgain": "重试",
+                "uploadFirst": "请先上传文件",
+                "verificationFailed": "验证失败。请检查您的连接并重试。"
+            }
+        },
+        "ocrMarkdown": {
+            "loading": "加载中...",
+            "failed": "内容渲染失败。"
+        }
+    }
+}

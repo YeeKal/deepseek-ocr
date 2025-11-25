@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useCallback,useRef } from "react"
+import { useState, useCallback, useRef } from "react"
+import { useTranslations } from "next-intl"
 import { Upload, LinkIcon, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { MaxUploadImageSize } from "@/lib/constants"
 import type { ToolConfig } from "@/lib/config/tool-types"
-import {HOW_TO_USE_SECTION_ID} from "@/lib/constants"
+import { HOW_TO_USE_SECTION_ID } from "@/lib/constants"
 
 type ImageUploadExampleimagesProps = ToolConfig["playground"]["exampleImages"]
 
@@ -39,6 +40,7 @@ type ImageUploadProps = {
 }
 
 export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: ImageUploadProps) {
+  const t = useTranslations("common.toolPlayground.imageUpload")
   const [preview, setPreview] = useState<string | null>(null)
   const [urlInput, setUrlInput] = useState("")
   const [isDragging, setIsDragging] = useState(false)
@@ -51,18 +53,18 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
       // Check file size (in MB)
       const fileSizeInMB = file.size / (1024 * 1024)
       if (fileSizeInMB > MaxUploadImageSize) {
-        setFileSizeError(`Your file is ${fileSizeInMB.toFixed(2)} MB, but the current limit is ${MaxUploadImageSize} MB`)
+        setFileSizeError(t("fileSizeError.message", { current: fileSizeInMB.toFixed(2), limit: MaxUploadImageSize }))
         setShowFileSizeDialog(true)
         if (fileInputRef.current) {
-    fileInputRef.current.value = ""  // 这是被允许的：清空当前选中，但不能设特定值
-  }
+          fileInputRef.current.value = ""  // 这是被允许的：清空当前选中，但不能设特定值
+        }
         return
       }
 
 
       // For PaddleOCRVL, accept both images and PDFs
       if (!file.type.startsWith("image/") && file.type !== "application/pdf") {
-        alert("Please upload an image or PDF file")
+        alert(t("errors.invalidType"))
         return
       }
 
@@ -77,15 +79,15 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
         const base64 = e.target?.result as string
         const base64Data = base64.split(",")[1]
         setPreview(base64)
-        onImageChange({ type: "base64", value: base64Data})
+        onImageChange({ type: "base64", value: base64Data })
       }
       reader.readAsDataURL(file)
     },
     [onImageChange, onFileTypeChange],
   )
 
-  const handleDrop = useCallback( 
-    (e: React.DragEvent) => { 
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
       e.preventDefault()
       setIsDragging(false)
 
@@ -120,41 +122,41 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
     onImageChange({ type: "url", value: urlInput })
   }
 
-   const handleSampleImageClick = (sample: typeof sampleImages[0]) => {
+  const handleSampleImageClick = (sample: typeof sampleImages[0]) => {
     // 1. 直接设置预览
     setPreview(sample.url)
     // 2. 直接通知父组件，并附上示例标题
-    onImageChange({ type: "url", value: sample.url,  })
+    onImageChange({ type: "url", value: sample.url, })
   }
 
   const clearImage = () => {
     setPreview(null)
     setUrlInput("")
     onImageChange(null)
-     if (fileInputRef.current) {
-    fileInputRef.current.value = ""
-  }
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ""
+    }
   }
 
   return (
     <div className="space-y-4">
       <div className="flex gap-2 items-center">
-      <Label>{"File Upload (Image or PDF)"}</Label>
-      <a
-        href={`#${HOW_TO_USE_SECTION_ID}`}
-        className="inline-flex items-center  shadow-sm transition-all hover:shadow-md"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </a>
+        <Label>{t("label")}</Label>
+        <a
+          href={`#${HOW_TO_USE_SECTION_ID}`}
+          className="inline-flex items-center  shadow-sm transition-all hover:shadow-md"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
       </div>
 
       {preview ? (
         <div className="relative">
           <img
             src={preview || "/placeholder.svg"}
-            alt="Preview"
+            alt={t("previewAlt")}
             className="w-full h-64 object-contain rounded-lg border bg-muted"
           />
           <Button size="icon" variant="destructive" className="absolute top-2 right-2" onClick={clearImage}>
@@ -164,15 +166,14 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
       ) : (
         <Tabs defaultValue="upload" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="upload">Upload</TabsTrigger>
-            <TabsTrigger value="url">URL</TabsTrigger>
+            <TabsTrigger value="upload">{t("tabs.upload")}</TabsTrigger>
+            <TabsTrigger value="url">{t("tabs.url")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="upload" className="space-y-4">
             <div
-              className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                isDragging ? "border-primary bg-primary/5" : "border-border"
-              }`}
+              className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${isDragging ? "border-primary bg-primary/5" : "border-border"
+                }`}
               onDrop={handleDrop}
               onDragOver={(e) => {
                 e.preventDefault()
@@ -183,10 +184,10 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
             >
               <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
               <p className="text-sm text-muted-foreground mb-1">
-                Drag & drop, paste, or click to upload an image or PDF
+                {t("dropzone.main")}
               </p>
               <p className="text-xs text-muted-foreground">
-                Maximum file size: {MaxUploadImageSize} MB
+                {t("dropzone.limit", { size: MaxUploadImageSize })}
               </p>
               <Input
                 ref={fileInputRef}
@@ -201,7 +202,7 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
               />
               <Button asChild variant="secondary">
                 <label htmlFor="file-upload" className="cursor-pointer">
-                  Choose File
+                  {t("dropzone.button")}
                 </label>
               </Button>
             </div>
@@ -212,7 +213,7 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
               <div className="relative flex-1">
                 <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
-                  placeholder="https://example.com/image.png"
+                  placeholder={t("urlInput.placeholder")}
                   value={urlInput}
                   onChange={(e) => setUrlInput(e.target.value)}
                   className="pl-10"
@@ -221,57 +222,57 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
                   }}
                 />
               </div>
-              <Button onClick={handleUrlSubmit}>Load</Button>
+              <Button onClick={handleUrlSubmit}>{t("urlInput.load")}</Button>
             </div>
           </TabsContent>
         </Tabs>
       )}
 
-        <div className="">
-            <h3 className="text-center text-sm font-medium text-muted-foreground mb-4">
-              Or try an example
-            </h3>
-            <div className="grid grid-cols-3 gap-4">
-              {(exampleImages ? exampleImages: sampleImages).map((sample,index) => (
-                <TooltipProvider key={index} delayDuration={100}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        className="cursor-pointer group block text-center"
-                        onClick={() => handleSampleImageClick(sample)} // 确保调用的是修复后的函数
-                      >
-                        <div className="aspect-video rounded-lg overflow-hidden border bg-muted relative transition-all group-hover:shadow-lg group-hover:border-primary">
-                          <img 
-                            src={sample.url} 
-                            alt={sample.alt}
-                            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        </div>
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{sample.tip}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              ))}
-            </div>
-          </div>
+      <div className="">
+        <h3 className="text-center text-sm font-medium text-muted-foreground mb-4">
+          {t("examples.title")}
+        </h3>
+        <div className="grid grid-cols-3 gap-4">
+          {(exampleImages ? exampleImages : sampleImages).map((sample, index) => (
+            <TooltipProvider key={index} delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    className="cursor-pointer group block text-center"
+                    onClick={() => handleSampleImageClick(sample)} // 确保调用的是修复后的函数
+                  >
+                    <div className="aspect-video rounded-lg overflow-hidden border bg-muted relative transition-all group-hover:shadow-lg group-hover:border-primary">
+                      <img
+                        src={sample.url}
+                        alt={sample.alt}
+                        className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    </div>
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{sample.tip}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
+      </div>
 
       {/* File Size Error Dialog */}
       <Dialog open={showFileSizeDialog} onOpenChange={setShowFileSizeDialog}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-xl text-rose-500">File Size Exceeded</DialogTitle>
+            <DialogTitle className="text-xl text-rose-500">{t("fileSizeError.title")}</DialogTitle>
             <DialogDescription className="text-sm text-muted-foreground mt-2">
               {fileSizeError}
             </DialogDescription>
             <DialogDescription className="text-sm text-muted-foreground mt-4 pt-2">
-              <strong>Pro Features Coming Soon!</strong>
+              <strong>{t("fileSizeError.proFeaturesTitle")}</strong>
             </DialogDescription>
             <DialogDescription className="text-sm text-muted-foreground mt-4 pb-2">
-              Get notified when we launch higher file size limits, batch processing, and more premium OCR features.
+              {t("fileSizeError.proFeaturesDesc")}
             </DialogDescription>
 
           </DialogHeader>
@@ -279,10 +280,11 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
             <Button
               variant="outline"
               onClick={() => {
-                setShowFileSizeDialog(false)}}
+                setShowFileSizeDialog(false)
+              }}
               className="sm:mr-auto"
             >
-              Try Again
+              {t("fileSizeError.tryAgain")}
             </Button>
             <Button
               onClick={() => {
@@ -293,7 +295,7 @@ export function ImageUpload({ onImageChange, onFileTypeChange, exampleImages }: 
               }}
               className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700"
             >
-              Join Pro Features Waitlist
+              {t("fileSizeError.joinWaitlist")}
             </Button>
           </DialogFooter>
         </DialogContent>

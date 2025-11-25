@@ -1,24 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-
-import { pageConfig } from "@/lib/pageconfig";
-
-
-const content = pageConfig.hero;
-
-
+import { useRouter } from '@/i18n/routing';
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("home.hero");
   const [loading] = useState(false);
-  // Replace these with your real auth/state logic as needed
   const router = useRouter();
 
   const scrollToForm = () => {
-    const el = document.getElementById(`${content.ctaButton.link}`);
+    const link = t("ctaButton.link");
+    const el = document.getElementById(link);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -36,15 +30,15 @@ export default function Hero() {
             className="space-y-6"
           >
             {/* <div className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-primary/10 text-primary mb-4">
-              {content.eyebrow}
+              {t("eyebrow")}
             </div> */}
 
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              {content.title}
+              {t("title")}
             </h1>
 
             <p className="mt-6 text-xl text-foreground md:text-2xl max-w-3xl mx-auto">
-              {content.tagline}
+              {t("tagline")}
             </p>
 
             <motion.div
@@ -57,15 +51,15 @@ export default function Hero() {
                 onClick={scrollToForm}
                 className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 rounded-md transition-colors shadow-lg"
               >
-                {loading ? "Loading..." : `${content.ctaButton.text}`}
+                {loading ? "Loading..." : t("ctaButton.text")}
               </button>
               <button
                 onClick={() => {
-                  router.push(`${content.waitlistButton.link}`);
+                  router.push(t("waitlistButton.link"));
                 }}
                 className="inline-flex items-center justify-center h-14 px-8 text-lg font-medium border border-border text-foreground hover:bg-muted rounded-md transition-colors bg-background shadow-lg"
               >
-                {content.waitlistButton.text}
+                {t("waitlistButton.text")}
               </button>
             </motion.div>
 
@@ -77,17 +71,15 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                {content.features.f1}
-
+                {t("features.f1")}
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                {content.features.f2}
-
+                {t("features.f2")}
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                {content.features.f3}
+                {t("features.f3")}
               </div>
             </motion.div>
           </motion.div>
@@ -96,3 +88,4 @@ export default function Hero() {
     </section>
   );
 }
+

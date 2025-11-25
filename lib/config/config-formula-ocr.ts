@@ -206,6 +206,6 @@ features: {
   cta: {
     title: 'Stop Typing. Start Converting.',
     description: 'Save hours of tedious work and focus on what truly matters. Digitize your first equation now and experience a seamless workflow.',
-    button: { text: 'Try Formula OCR Now', link: '#playground' }
+    button: { text: 'Try Formula OCR Now' }
   }
 };

@@ -1,44 +1,53 @@
-"use client";
-
-import Link from "next/link";
+'use client'
+import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import {Box, Blocks, Radical, Scan } from "lucide-react";
-import { PageContent, LOGO_URL, BRAND_NAME } from "@/lib/constants";
+import { Box, Blocks, Radical } from "lucide-react";
+import { LOGO_URL, BRAND_NAME } from "@/lib/constants";
 import Image from "next/image";
 import AccountWrapper from "./account";
 import { useSession } from "next-auth/react";
-import { toolMetaConfigs } from "@/lib/config/tool-utils";
 import DropdownMenu from "@/components/wrapper/custom-dropdown";
-export function Header() {
-  const headerData = PageContent.header;
+import { ToolMetaConfig } from "@/lib/config/tool-types";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "./language-switcher";
+
+interface HeaderProps {
+  toolMetaConfigs?: ToolMetaConfig[];
+}
+
+export function Header({ toolMetaConfigs }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {data:session } = useSession();
+  const { data: session } = useSession();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const t = useTranslations('common.header');
+  const ocrToolsLabel = t('ocr-tools');
+
 
   const navText = [
     {
-      label: "Playground",
+      label: t("playground-label"),
       href: "/#playground",
       icon: <Box className="mr-2 h-4 w-4"></Box>,
     },
     {
-      label: "Join Waitlist",
+      label: t("join-waitlist"),
       href: "/waitlist",
       icon: <Blocks className="mr-2 h-4 w-4"></Blocks>,
     },
     {
-      label: "Formula OCR",
+      label: t("formula-ocr"),
       href: "/tools/formula-ocr",
       icon: <Radical className="mr-2 h-4 w-4"></Radical>,
     },
   ];
   const randomEmojis = ['🛠️', '🎨', '✨', '🤖', '🎯', '🗑️', '🎭', '📐', '🖼️', '🎬'];
-const menuItems = {
-    'Ocr Tools': toolMetaConfigs.map(tool => ({ 
-      label: tool.name, 
-      icon: randomEmojis[Math.floor(Math.random() * randomEmojis.length)] ,
-    href: `/tools/${tool.slug}`  })),
+  const menuItems = {
+    [ocrToolsLabel]: toolMetaConfigs?.map(tool => ({
+      label: tool.name,
+      icon: randomEmojis[Math.floor(Math.random() * randomEmojis.length)],
+      href: `/tools/${tool.slug}`
+    })),
   };
 
   return (
@@ -77,17 +86,17 @@ const menuItems = {
               {item.label}
             </Link>
           ))}
-           {Object.entries(menuItems).map(([label, items]) => (
-                <DropdownMenu
-                  key={label}
-                  label={label}
-                  items={items}
-                  isActive={activeMenu === label}
-                  onOpenChange={(isOpen) => {
-                    setActiveMenu(isOpen ? label : null);
-                  }}
-                />
-              ))}
+          {Object.entries(menuItems).map(([label, items]) => (
+            <DropdownMenu
+              key={label}
+              label={label}
+              items={items ?? []}
+              isActive={activeMenu === label}
+              onOpenChange={(isOpen) => {
+                setActiveMenu(isOpen ? label : null);
+              }}
+            />
+          ))}
 
 
 
@@ -101,6 +110,7 @@ const menuItems = {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           {/* <ThemeToggle /> */}
 
           {/* Mobile Menu Button - Hidden on large screens */}
@@ -148,7 +158,7 @@ const menuItems = {
             )}
           </Button>
         </div>
-        {         session?.user && <AccountWrapper user={session.user} />
+        {session?.user && <AccountWrapper user={session.user} />
 
         }
       </div>
@@ -170,12 +180,6 @@ const menuItems = {
                 {item.label}
               </Link>
             ))}
-
-          {/* <div className="flex flex-col items-center  gap-4">
-            <Link href="/login" className="">
-              <Button variant="ghost">Login</Button>
-            </Link>
-          </div> */}
           </nav>
         </div>
       )}

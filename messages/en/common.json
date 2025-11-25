@@ -1,0 +1,178 @@
+{
+    "navigation": {
+        "home": "Home",
+        "tools": "Tools",
+        "about": "About",
+        "contact": "Contact",
+        "login": "Login",
+        "getStarted": "Get Started"
+    },
+    "seo": {
+        "title": "DeepSeek-OCR - Free, Open Source, High Performance OCR Tool",
+        "description": "DeepSeek-OCR provides state-of-the-art OCR models, supporting document to markdown, table recognition, handwriting recognition and more. Free to use, no login required.",
+        "keywords": "OCR, DeepSeek, Text Recognition, PDF to Word, Table Recognition, Handwriting Recognition, Free OCR, Open Source OCR",
+        "ogImage": "https://cdn.deepseekocr.io/tools/ai-ocr/ai-ocr-og.webp",
+        "creator": "@yeekal"
+    },
+    "header": {
+        "playground-label": "Playground",
+        "join-waitlist": "Join Waitlist",
+        "formula-ocr": "Formula OCR",
+        "ocr-tools": "OCR Tools",
+        "switch-language": "Switch Language"
+    },
+    "footer": {
+        "tagline": "Analyze More. Compute Less. A showcase for the DeepSeek-OCR project.",
+        "copyright": " All rights reserved.",
+        "sections": [
+            {
+                "title": "PROJECT",
+                "links": [
+                    {
+                        "text": "Official GitHub",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR"
+                    },
+                    {
+                        "text": "Research Paper",
+                        "href": "https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf"
+                    },
+                    {
+                        "text": "DeepSeek-AI",
+                        "href": "https://www.deepseek.com/"
+                    }
+                ]
+            },
+            {
+                "title": "LEGAL",
+                "links": [
+                    {
+                        "text": "About This Site",
+                        "href": "/about"
+                    },
+                    {
+                        "text": "Contact",
+                        "href": "/contact"
+                    },
+                    {
+                        "text": "Terms of Service",
+                        "href": "/terms"
+                    },
+                    {
+                        "text": "Privacy Policy",
+                        "href": "/privacy"
+                    }
+                ]
+            }
+        ],
+        "friendslinklabel": "FRIENDS"
+    },
+    "toolsSection": {
+        "title": "Explore More OCR Tools",
+        "description": "From formula recognition to invoice extraction, find the OCR solution that fits your needs",
+        "viewAll": "View All Tools"
+    },
+    "toolPlayground": {
+        "imageUpload": {
+            "label": "File Upload (Image or PDF)",
+            "previewAlt": "Preview",
+            "tabs": {
+                "upload": "Upload",
+                "url": "URL"
+            },
+            "dropzone": {
+                "main": "Drag & drop, paste, or click to upload an image or PDF",
+                "limit": "Maximum file size: {size} MB",
+                "button": "Choose File"
+            },
+            "urlInput": {
+                "placeholder": "https://example.com/image.png",
+                "load": "Load"
+            },
+            "examples": {
+                "title": "Or try an example"
+            },
+            "fileSizeError": {
+                "title": "File Size Exceeded",
+                "message": "Your file is {current} MB, but the current limit is {limit} MB",
+                "proFeaturesTitle": "Pro Features Coming Soon!",
+                "proFeaturesDesc": "Get notified when we launch higher file size limits, batch processing, and more premium OCR features.",
+                "tryAgain": "Try Again",
+                "joinWaitlist": "Join Pro Features Waitlist"
+            },
+            "errors": {
+                "invalidType": "Please upload an image or PDF file"
+            }
+        },
+        "resultDisplay": {
+            "processing": {
+                "text": "Processing your image...",
+                "elapsedTime": "Elapsed time: {time}"
+            },
+            "error": {
+                "title": "Error"
+            },
+            "guide": {
+                "performanceTips": "⚡️ Performance Tips:",
+                "tip1": "Smaller files process <strong>faster</strong> (keep resolution reasonable)",
+                "tip2": "PDF uploads are limited to the <strong>first page</strong>. Multi-page support is a coming Pro feature.",
+                "joinWaitlist": "Join the waitlist!",
+                "tip3": "Ensure the image has good lighting and is in focus",
+                "tip4": "For handwritten notes, clear and distinct writing works best"
+            },
+            "metrics": {
+                "title": "⚡ Performance Metrics",
+                "queueTime": "Queue Time",
+                "queueTimeDesc": "Time waiting in queue",
+                "executionTime": "Execution Time",
+                "executionTimeDesc": "Processing duration",
+                "sec": "sec"
+            },
+            "results": {
+                "title": "Results"
+            },
+            "actions": {
+                "copied": "Copied",
+                "copy": "Copy",
+                "download": "Download"
+            },
+            "tabs": {
+                "rendered": "Rendered",
+                "raw": "Raw Text",
+                "visualization": "Visualization"
+            }
+        },
+        "main": {
+            "features": {
+                "unlimited": "Unlimited Free",
+                "noLogin": "No Login Required"
+            },
+            "fileType": {
+                "label": "File Type",
+                "image": "Image",
+                "pdf": "PDF"
+            },
+            "buttons": {
+                "processing": "Processing...",
+                "verifying": "Verifying...",
+                "extract": "Extract Text"
+            },
+            "turnstile": {
+                "title": "Security Verification",
+                "description": "Please complete the security check to proceed.",
+                "loading": "Loading verification...",
+                "initializing": "Initializing...",
+                "cancel": "Cancel"
+            },
+            "errors": {
+                "title": "Error",
+                "tryAgain": "Try Again",
+                "uploadFirst": "Please upload a file first",
+                "verificationFailed": "Verification failed. Please check your connection and try again."
+            }
+        },
+        "ocrMarkdown": {
+            "loading": "Loading...",
+            "failed": "Failed to render content."
+        }
+    }
+}

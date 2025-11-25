@@ -7,8 +7,7 @@ type StructuredData = {
   [key: string]: any; // 其他属性
 };
 
-export interface ToolConfig {
-  meta:{ // 元数据，主要用于预览
+export type ToolMetaConfig = { // 元数据，主要用于预览
     slug: string; // 与上面slug相同，用于元数据引用
     name: string; // 工具名称，例如 "Formula OCR"
     description: string; // 简短描述，用于预览
@@ -17,6 +16,10 @@ export interface ToolConfig {
       alt: string;
     };
   }
+
+
+export interface ToolConfig {
+  meta:ToolMetaConfig;
   seo: {
     title: string; // 页面标题，60个字符以内
     description: string; // 页面描述，160个字符以内
@@ -103,7 +106,6 @@ how_to: {
     description: string;
     button: {
       text: string;
-      link: string;
     };
   };
 }

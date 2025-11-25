@@ -1,0 +1,261 @@
+{
+    "meta": {
+        "slug": "pdf-ocr",
+        "name": "PDF 转 Markdown",
+        "description": "将 PDF 和扫描文档转换为文本",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/pdf-ocr/pdf-ocr-cover.webp",
+            "alt": "一个 PDF 文件图标平滑过渡为可编辑文本文档图标，代表 PDF 到文本的转换。"
+        }
+    },
+    "seo": {
+        "title": "免费 PDF OCR：在线将 PDF 转换为文本 | DeepSeekOCR.io",
+        "description": "使用我们免费的在线 OCR 工具准确地将 PDF 转换为文本。我们的 AI 驱动文档 OCR 保留格式并提取表格。单页 PDF 无需注册。",
+        "keywords": [
+            "PDF OCR",
+            "转换 pdf 为文本",
+            "文档 ocr",
+            "pdf 转文本",
+            "免费 pdf ocr",
+            "在线文档扫描仪",
+            "从 pdf 提取文本",
+            "扫描文档 ocr"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/pdf-ocr/pdf-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "PDF 转文本转换器 (OCR)",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Web",
+                "description": "一款免费的在线 AI 驱动文档 OCR 工具，可将单页 PDF 和扫描文档转换为可编辑的结构化文本，同时保留布局。",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "creator": {
+                    "@type": "Organization",
+                    "name": "DeepSeekOCR.io"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "1245"
+                }
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "轻松的文档数字化",
+        "title": "智能 PDF OCR",
+        "tagline": "将您的 PDF 和扫描文档转换为可编辑文本或结构化 Markdown。我们的 AI 保留原始布局，包括分栏和表格。单页文档 100% 免费。",
+        "features": [
+            {
+                "icon": "FileScan",
+                "text": "高保真文档扫描"
+            },
+            {
+                "icon": "LayoutTemplate",
+                "text": "保留复杂布局"
+            },
+            {
+                "icon": "Table",
+                "text": "准确的表格提取"
+            }
+        ]
+    },
+    "playground": {
+        "title": "立即试用 PDF 转文本转换器",
+        "description": "拖放单页 PDF 或扫描文档图片以查看实际效果。体验布局感知的差异。",
+        "guide": {
+            "title": "工作原理",
+            "description": "上传您的文档。我们的 AI 引擎读取扫描文本并分析结构，将其转换为干净、可用的文本或 Markdown，同时保持格式完整。"
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/invoice-ocr/invoice1.webp",
+                "alt": "PDF 格式的商业发票 OCR 示例。",
+                "tip": "提取发票数据"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+                "alt": "多栏科学研究论文的扫描页面。",
+                "tip": "数字化学术论文"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/image-ocr/contract-doc.webp",
+                "alt": "用于文本提取的扫描法律文件片段。",
+                "tip": "使合同可搜索"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "如何通过 3 个简单步骤从 PDF 中提取文本",
+        "description": "我们直观的界面使将您的 PDF 文档转换为可编辑文本变得完全轻松。",
+        "steps": [
+            {
+                "icon": "UploadIcon",
+                "title": "1. 上传您的 PDF 文档",
+                "description": "拖放您的 PDF 文件或点击选择。支持扫描 PDF、数字化文档和多页文件。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "点击选择文件并选择您要提取文本的 PDF。"
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. AI 分析每一页",
+                "description": "点击“提取文本”，我们的 AI 将处理您 PDF 的每一页，识别文本同时保留原始布局和结构。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "动画展示 AI 处理 PDF 文档的每一页。"
+                }
+            },
+            {
+                "icon": "FileText",
+                "title": "3. 下载或复制您的文本",
+                "description": "您提取的文本已准备就绪。下载为文本文件或可搜索 PDF，或直接复制到剪贴板以立即使用。",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "动画展示用户从 PDF 下载提取的文本。"
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "从静态文档到动态数据",
+        "description": "了解我们的 PDF OCR 工具如何消除手动数据录入并解锁困在文档中的信息。",
+        "scenarios": [
+            {
+                "id": "legal",
+                "shortTitle": "法律文件",
+                "originalTitle": "使扫描合同可搜索",
+                "tagline": "在任何扫描的法律文件中快速查找关键条款和术语。",
+                "description": "律师助理需要审查一份 50 页的扫描合同，但只需要查找与终止相关的条款。与其阅读整个文档，不如对关键页面进行 OCR，使文本即时可搜索并可复制用于他们的报告。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-legal-contracts.webp",
+                    "alt": "一张桌子上放着法律文件、木槌和一台显示 OCR 工具的笔记本电脑。"
+                }
+            },
+            {
+                "id": "finance",
+                "shortTitle": "财务报告",
+                "originalTitle": "从 PDF 财务报表中提取数据",
+                "tagline": "将财务报告中的表格转换为可用的电子表格数据。",
+                "description": "分析师收到扫描 PDF 格式的季度收益报告。他们使用 PDF OCR 工具提取关键数据表，然后可以直接将其粘贴到 Excel 中进行分析，节省超过一小时的手动数据录入时间。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-data-entry.webp",
+                    "alt": "金融分析师在一个屏幕上从 PDF 报告中提取表格，并将其粘贴到另一个屏幕上的电子表格中。"
+                }
+            },
+            {
+                "id": "academic",
+                "shortTitle": "学术研究",
+                "originalTitle": "数字化历史档案和文本",
+                "tagline": "使原始来源文档和旧文献可搜索。",
+                "description": "一位历史学家正在研究 19 世纪的扫描信件集。通过使用文档 OCR，他们将信件图片转换为数字文本，允许他们搜索整个集合中的特定姓名、日期和地点。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ocr-scanner/use-cases-research.webp",
+                    "alt": "一份旧的历史文件被扫描，其文本出现在电脑屏幕上。"
+                }
+            },
+            {
+                "id": "office",
+                "shortTitle": "办公室行政",
+                "originalTitle": "归档备忘录和内部文档",
+                "tagline": "为您基于纸张的工作流程创建可搜索的数字档案。",
+                "description": "办公室经理的任务是数字化多年的打印内部备忘录。他们将文档扫描为 PDF，并使用 OCR 工具创建基于文本的版本，使公司的整个内部通信历史即时可搜索。",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/ai-ocr/use-cases-marketer.webp",
+                    "alt": "办公室工作人员将一堆备忘录扫描到电脑中。"
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "您会喜欢的高级文档 OCR 功能",
+        "description": "我们专注于解决文档转换中最令人沮丧的部分，以提供一个真正有效的工具。",
+        "items": [
+            {
+                "icon": "ScanSearch",
+                "title": "高保真扫描文档识别",
+                "description": "我们的 OCR 针对扫描文档进行了优化，有效处理光照、页面倾斜和打印质量的变化，以提供尽可能最准确的结果。"
+            },
+            {
+                "icon": "Columns",
+                "title": "保留布局转换",
+                "description": "厌倦了生成单一文字墙的 OCR 工具？我们识别分栏、段落和标题，以保持原始文档的可读性和结构。"
+            },
+            {
+                "icon": "Table",
+                "title": "准确的表格数据提取",
+                "description": "停止手动重新创建表格。我们的 AI 识别 PDF 中的表格结构，并以干净的格式提取数据，您可以将其复制到任何电子表格中。"
+            },
+            {
+                "icon": "ShieldQuestion",
+                "title": "透明免费，无诱饵推销",
+                "description": "我们的工具对单页 PDF 真正免费。我们不会索要您的信用卡或用隐藏限制给您惊喜。对于多页 PDF，请加入我们即将推出的专业版计划的等待名单！"
+            },
+            {
+                "icon": "Languages",
+                "title": "全球文档支持",
+                "description": "从德语的商业合同到日语的历史文本，我们的工具可以高精度识别和处理 100 多种语言的文档。"
+            },
+            {
+                "icon": "Trash2",
+                "title": "隐私聚焦处理",
+                "description": "我们知道您的文档很敏感。所有上传的文件都经过安全处理，并在转换完成后从我们的服务器中永久删除。"
+            }
+        ]
+    },
+    "faq": {
+        "title": "PDF & 文档 OCR：常见问题",
+        "items": [
+            {
+                "question": "我可以转换多页 PDF 文档吗？",
+                "answer": "我们目前的免费工具针对单页 PDF 或单个文档图片进行了优化。我们正在努力开发支持批量处理和多页 PDF 的专业版。您可以注册等待名单以获取通知！"
+            },
+            {
+                "question": "这项文档 OCR 服务真的免费吗？",
+                "answer": "是的，转换单页文档 100% 免费。没有隐藏费用或注册要求。该服务由页面广告支持。"
+            },
+            {
+                "question": "它如何处理低质量的扫描文档？",
+                "answer": "虽然更高质量的扫描总是会产生更好的结果，但我们的 AI 经过训练可以处理常见的缺陷，如页面倾斜、阴影和浅色笔迹。在更清晰的文档上准确性会更高。"
+            },
+            {
+                "question": "我上传的商业或法律文件安全吗？",
+                "answer": "是的。我们优先考虑您的隐私和安全。您的文件在上传期间加密，并在处理后不久从我们的服务器中自动永久删除。"
+            },
+            {
+                "question": "它可以准确地从 PDF 中提取表格吗？",
+                "answer": "是的，这是我们的关键功能之一。我们的 AI 经过专门训练，可以识别文档中的行和列，并以结构化的方式提取数据，您可以轻松在其他应用程序中使用。"
+            },
+            {
+                "question": "PDF OCR 和普通 PDF 转换器有什么区别？",
+                "answer": "普通 PDF 转换器通常仅适用于从文本文档创建的 PDF（基于文本的 PDF）。我们的 OCR 工具适用于扫描 PDF，其中文本被“困”在图像层中，并将其数字化为真实的、可编辑的文本。"
+            },
+            {
+                "question": "你们提供什么输出格式？",
+                "answer": "我们提供两种方便的输出：干净的纯文本以便在任何地方轻松粘贴，以及结构化 Markdown，它保留了标题、粗体文本、列表和表格等格式。"
+            },
+            {
+                "question": "我的 PDF 有文件大小限制吗？",
+                "answer": "为了确保所有用户的快速免费服务，我们目前在免费工具上对每个文档的文件大小限制为 5MB。"
+            }
+        ]
+    },
+    "cta": {
+        "title": "停止重新打字。开始转换。",
+        "description": "解锁扫描文档和 PDF 中的文本。立即节省时间、减少错误并使您的信息可搜索和可编辑。",
+        "button": {
+            "text": "免费转换您的 PDF"
+        }
+    }
+}

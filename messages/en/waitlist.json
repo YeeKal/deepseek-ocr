@@ -1,0 +1,44 @@
+{
+  "seo": {
+    "title": "Join the DeepSeek-OCR Pro Waitlist",
+    "description": "Get early access and a special discount on our upcoming Pro features: API access, batch processing, priority queue, PDF support, and more."
+  },
+  "badge": "Limited Early-Bird Offer",
+  "title": "Unlock the Full Power of Document Understanding",
+  "description": "We're launching a Pro version of DeepSeek OCR with powerful features for developers and power users. Join the waitlist to get notified first and receive an exclusive early-bird discount.",
+  "formTitle": "Secure Your Spot",
+  "loadingLabel": "Loading...",
+  "backLabel": "Back Home",
+  "features": [
+    {
+      "icon": "Zap",
+      "name": "Higher Priority Queue",
+      "description": "Your requests will be processed first. Skip the line and get results in seconds, even during peak hours."
+    },
+    {
+      "icon": "Files",
+      "name": "Batch Processing",
+      "description": "Upload and process multiple files at once. Perfect for handling large volumes of documents efficiently."
+    },
+    {
+      "icon": "Code2",
+      "name": "Full API Access",
+      "description": "Integrate our cutting-edge OCR directly into your applications and workflows with a simple, powerful API."
+    },
+    {
+      "icon": "FileText",
+      "name": "Advanced Format Support (PDF)",
+      "description": "Process entire PDF documents while preserving the original structure and formatting for perfect conversions."
+    },
+    {
+      "icon": "Boxes",
+      "name": "Access to More OCR Models",
+      "description": "Choose from a selection of specialized OCR engines, including PaddleOCR and others, for optimal results on any task."
+    },
+    {
+      "icon": "Sparkles",
+      "name": "And Many More...",
+      "description": "We're constantly adding new features like enhanced data extraction, team collaboration, and more."
+    }
+  ]
+}

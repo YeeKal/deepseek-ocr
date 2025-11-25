@@ -231,8 +231,7 @@ export const aiOcrConfig: ToolConfig = {
     title: 'Ready to Revolutionize Your Workflow?',
     description: 'Stop wasting time on manual transcription. Experience the future of OCR today and turn your images and documents into structured, usable data in seconds.',
     button: {
-      text: 'Try AI OCR Now - It\'s Free',
-      link: '#playground',
+      text: 'Try AI OCR Now - It\'s Free'
     },
   },
 };

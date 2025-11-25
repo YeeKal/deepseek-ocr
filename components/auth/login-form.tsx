@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 import { signIn } from "next-auth/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ThirdPartyProviders } from "./third-party-providers"
-import {callbackLink} from "@/lib/constants"
+import { callbackLink } from "@/lib/constants"
 // Environment check to determine if in development mode
 const isDevelopment = process.env.NODE_ENV === "development"
 
@@ -24,14 +24,14 @@ export function LoginForm() {
     if (isDevelopment) {
       const timestamp = new Date().toISOString().split('T')[1].split('.')[0]
       const logMessage = `[Auth Log] ${message}`
-      
+
       // Log to console with appropriate method
       if (isError) {
         console.error(logMessage)
       } else {
         console.log(logMessage)
       }
-      
+
       // Add to UI logs
       setLogs(prev => [...prev, `${timestamp} - ${message}`])
     }
@@ -56,19 +56,19 @@ export function LoginForm() {
     try {
       addLog("Calling signIn with credentials")
       console.log("About to call signIn with credentials", { email })
-      
+
       const result = await signIn("credentials", {
         redirect: false,
         email,
         password,
       })
-      
+
       console.log("SignIn result:", result)
       addLog(`SignIn result status: ${result?.status}, error: ${result?.error || 'none'}`)
 
       if (!result?.ok) {
         addLog(`Login failed with error: ${result?.error}`, true)
-        
+
         // Handle different error types
         if (result?.error === "User not found") {
           setError("No account found with this email address")
@@ -133,7 +133,7 @@ export function LoginForm() {
             <label htmlFor="password" className="text-sm font-medium">
               Password
             </label>
-            
+
           </div>
           <Input
             id="password"
@@ -146,14 +146,14 @@ export function LoginForm() {
           />
         </div>
 
-        <Button 
-          type="submit" 
-          className="w-full" 
+        <Button
+          type="submit"
+          className="w-full"
           disabled={isLoading}
         >
           {isLoading ? "Loading..." : "Login"}
         </Button>
-        
+
         {isDevelopment && logs.length > 0 && (
           <div className="mt-4 p-2 text-xs bg-gray-100 dark:bg-gray-800 rounded overflow-auto max-h-40">
             <div className="font-bold mb-1">Debug Log:</div>

@@ -1,12 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useTranslations } from "next-intl"
 import { Card } from "@/components/ui/card"
 import { ImageUpload } from "@/components/tool-playground/image-upload"
 import { ResultDisplay } from "@/components/tool-playground/result-display"
 import { THEME_COLOR } from "@/lib/constants"
 import type { OCRResult } from "@/lib/types"
-import {PLAYGROUND_SECTION_ID} from "@/lib/constants"
+import { PLAYGROUND_SECTION_ID } from "@/lib/constants"
 import type { ToolConfig } from "@/lib/config/tool-types"
 
 type PlaygroundProps = ToolConfig["playground"]
@@ -15,7 +16,8 @@ export interface ToolPlaygroundProps {
   playground: PlaygroundProps
 }
 
-export function ToolPlayground({playground}: ToolPlaygroundProps) {
+export function ToolPlayground({ playground }: ToolPlaygroundProps) {
+  const t = useTranslations("common.toolPlayground.main")
   const [imageSource, setImageSource] = useState<{ type: "url" | "base64"; value: string } | null>(null)
   const [fileType, setFileType] = useState<"image" | "pdf">("image")
   const [isProcessing, setIsProcessing] = useState(false)
@@ -166,7 +168,7 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
 
   const handleProcess = async () => {
     if (!imageSource) {
-      handleError("Please upload a file first")
+      handleError(t("errors.uploadFirst"))
       return
     }
 
@@ -176,7 +178,7 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
     setIsVerifying(true)
     setShowTurnstile(true)
   }
-  
+
   const handleProcessWithToken = async (token: string) => {
     setTurnstileToken(null);
 
@@ -235,7 +237,7 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
   const handleTurnstileError = () => {
     setIsVerifying(false);
     setShowTurnstile(false);
-    handleError("Verification failed. Please check your connection and try again.")
+    handleError(t("errors.verificationFailed"))
   }
 
   return (
@@ -253,59 +255,59 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="font-semibold">Unlimited Free</span>
+                <span className="font-semibold">{t("features.unlimited")}</span>
               </div>
               <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                <span className="font-semibold">No Login Required</span>
+                <span className="font-semibold">{t("features.noLogin")}</span>
               </div>
-              </div>
+            </div>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-6">
             <Card className="p-6 space-y-4">
               <div className="space-y-4">
-                  <ImageUpload
-                    onImageChange={setImageSource}
-                    onFileTypeChange={handleFileTypeChange}
-                    exampleImages={playground.exampleImages}
-                  />
+                <ImageUpload
+                  onImageChange={setImageSource}
+                  onFileTypeChange={handleFileTypeChange}
+                  exampleImages={playground.exampleImages}
+                />
 
-                  {/* File Type Selection */}
-                  <div className="flex items-center gap-4">
-                    <div className="space-y-1">
-                      <label className="text-xs font-semibold uppercase tracking-wider block">
-                        File Type
-                      </label>
-                    </div>
-                    <div className="flex flex-1 flex-row justify-center space-x-6">
-
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="fileType"
-                          value="image"
-                          checked={fileType === "image"}
-                          onChange={() => setFileType("image")}
-                          className="h-4 w-4 text-primary focus:ring-primary"
-                        />
-                        <span className="text-sm font-medium">Image</span>
-                      </label>
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="fileType"
-                          value="pdf"
-                          checked={fileType === "pdf"}
-                          onChange={() => setFileType("pdf")}
-                          className="h-4 w-4 text-primary focus:ring-primary"
-                        />
-                        <span className="text-sm font-medium">PDF</span>
-                      </label>
-                    </div>
+                {/* File Type Selection */}
+                <div className="flex items-center gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold uppercase tracking-wider block">
+                      {t("fileType.label")}
+                    </label>
                   </div>
+                  <div className="flex flex-1 flex-row justify-center space-x-6">
+
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="fileType"
+                        value="image"
+                        checked={fileType === "image"}
+                        onChange={() => setFileType("image")}
+                        className="h-4 w-4 text-primary focus:ring-primary"
+                      />
+                      <span className="text-sm font-medium">{t("fileType.image")}</span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="fileType"
+                        value="pdf"
+                        checked={fileType === "pdf"}
+                        onChange={() => setFileType("pdf")}
+                        className="h-4 w-4 text-primary focus:ring-primary"
+                      />
+                      <span className="text-sm font-medium">{t("fileType.pdf")}</span>
+                    </label>
+                  </div>
+                </div>
 
                 <button
                   onClick={handleProcess}
@@ -316,12 +318,12 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
                     color: 'white',
                   }}
                 >
-                  {isProcessing ? 'Processing...' : (isVerifying ? 'Verifying...' : 'Extract Text')}
+                  {isProcessing ? t("buttons.processing") : (isVerifying ? t("buttons.verifying") : t("buttons.extract"))}
                 </button>
               </div>
             </Card>
             <Card className="p-6">
-              <ResultDisplay result={result} error={error} isProcessing={isProcessing} guide={playground.guide}/>
+              <ResultDisplay result={result} error={error} isProcessing={isProcessing} guide={playground.guide} />
             </Card>
           </div>
 
@@ -332,14 +334,14 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
       {showTurnstile && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold mb-4">Security Verification</h3>
+            <h3 className="text-xl font-semibold mb-4">{t("turnstile.title")}</h3>
             <p className="text-sm text-muted-foreground mb-6">
-              Please complete the security check to proceed.
+              {t("turnstile.description")}
             </p>
             <div id="turnstile-container" className="flex justify-center mb-4 min-h-[65px]">
               {!turnstileLoaded && (
                 <div className="h-full flex items-center justify-center text-sm text-muted-foreground">
-                  {typeof window !== 'undefined' ? 'Loading verification...' : 'Initializing...'}
+                  {typeof window !== 'undefined' ? t("turnstile.loading") : t("turnstile.initializing")}
                 </div>
               )}
             </div>
@@ -362,7 +364,7 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
       {showErrorDialog && error && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold text-red-500 mb-4">Error</h3>
+            <h3 className="text-xl font-semibold text-red-500 mb-4">{t("errors.title")}</h3>
             <p className="text-sm text-muted-foreground mb-6">{error}</p>
             <div className="flex gap-3 justify-end">
               {/* <button
@@ -377,7 +379,7 @@ export function ToolPlayground({playground}: ToolPlaygroundProps) {
                 }}
                 className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
               >
-                Try Again
+                {t("errors.tryAgain")}
               </button>
             </div>
           </div>

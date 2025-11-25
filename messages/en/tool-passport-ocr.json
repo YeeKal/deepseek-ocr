@@ -1,0 +1,262 @@
+{
+    "meta": {
+        "slug": "passport-ocr",
+        "name": "Passport OCR",
+        "description": "Free Extract Passport Details",
+        "cover": {
+            "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport-ocr-cover.webp",
+            "alt": "An icon of a passport being scanned by a secure digital system, symbolizing passport data extraction."
+        }
+    },
+    "seo": {
+        "title": "Free Passport OCR Scanner: Extract Passport Details Online",
+        "description": "Securely scan and extract information from a passport's Machine-Readable Zone (MRZ) with our free online OCR tool. Get structured data like name, passport number, and expiry date instantly.",
+        "keywords": [
+            "passport ocr",
+            "mrz scanner",
+            "passport scanner",
+            "extract passport data",
+            "ocr passport online",
+            "passport mrz reader",
+            "identity verification"
+        ],
+        "ogImage": "https://cdn.deepseekocr.io/tools/passport-ocr/passport-ocr-og.webp",
+        "creator": "@yeekal",
+        "structuredData": [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Free Passport OCR Scanner",
+                "applicationCategory": "Utilities",
+                "operatingSystem": "Any (Web-based)",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.9",
+                    "reviewCount": "1150"
+                },
+                "featureList": [
+                    "MRZ (Machine-Readable Zone) Data Extraction",
+                    "High Accuracy with Checksum Validation",
+                    "Secure, Privacy-First Processing",
+                    "Structured JSON Output",
+                    "No Sign-up Required"
+                ]
+            }
+        ]
+    },
+    "hero": {
+        "eyebrow": "Secure & Automated Identity Verification",
+        "title": "Instant Passport OCR Scanner",
+        "tagline": "Stop typing passport details. Our AI accurately reads the MRZ (Machine-Readable Zone) to instantly extract names, numbers, and dates. Secure, free, and no registration needed.",
+        "features": [
+            {
+                "icon": "ShieldCheck",
+                "text": "Secure & Ephemeral Processing"
+            },
+            {
+                "icon": "ScanLine",
+                "text": "High-Accuracy MRZ Scanning"
+            },
+            {
+                "icon": "Languages",
+                "text": "100+ Language Support"
+            }
+        ]
+    },
+    "playground": {
+        "title": "Try the Secure Passport Scanner",
+        "description": "Upload a clear image of a passport's data page. For your privacy and security, we recommend using a sample image or a redacted copy for testing.",
+        "guide": {
+            "title": "How it Works",
+            "description": "Our AI focuses on the two lines of text at the bottom of the passport (the ICAO standard MRZ) to ensure the highest accuracy and reliability for data extraction."
+        },
+        "exampleImages": [
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport1.webp",
+                "alt": "A sample passport data page showing a clear Machine-Readable Zone (MRZ).",
+                "tip": "Sample Passport"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport2.webp",
+                "alt": "A photo of a passport at a slight angle to test OCR robustness.",
+                "tip": "Real-World Photo"
+            },
+            {
+                "url": "https://cdn.deepseekocr.io/tools/passport-ocr/passport3.webp",
+                "alt": "A clear photo of a passport data page taken with a mobile phone.",
+                "tip": "Mobile Capture"
+            }
+        ]
+    },
+    "how_to": {
+        "title": "How to Extract Passport Data in 3 Steps",
+        "description": "Go from a passport photo to structured, usable data in seconds.",
+        "steps": [
+            {
+                "icon": "UploadCloud",
+                "title": "1. Upload a Clear Passport Image",
+                "description": "Drag & drop or select an image of the passport's main data page. Ensure the MRZ at the bottom is clear and without glare.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+                    "alt": "A user taking a well-lit, clear photo of a sample passport with their phone."
+                }
+            },
+            {
+                "icon": "Cpu",
+                "title": "2. AI Scans the Machine-Readable Zone",
+                "description": "Our AI automatically detects the MRZ, scans the two lines of text, and validates the data using internal checksums.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+                    "alt": "Animation showing the MRZ on a passport being highlighted and scanned."
+                }
+            },
+            {
+                "icon": "ClipboardCopy",
+                "title": "3. Copy the Structured Data",
+                "description": "Get the extracted information as clean, organized text or structured JSON, ready for any form or system.",
+                "media": {
+                    "type": "gif",
+                    "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+                    "alt": "The final extracted passport data shown in a clean, structured format with a copy button."
+                }
+            }
+        ]
+    },
+    "useCases": {
+        "title": "Streamline Processes with Automated Passport Scanning",
+        "description": "Discover how industries rely on passport OCR to speed up operations, reduce errors, and enhance security.",
+        "scenarios": [
+            {
+                "id": "travel",
+                "shortTitle": "Travel & Hospitality",
+                "originalTitle": "Accelerating Guest and Passenger Check-ins",
+                "tagline": "Eliminate manual data entry and long queues at the front desk or boarding gate.",
+                "description": "A hotel receptionist uses a tablet to snap a photo of a guest's passport. The data is instantly extracted and auto-fills the registration form, reducing check-in time from minutes to seconds and minimizing human error.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-travel.webp",
+                    "alt": "A hotel receptionist scanning a guest's passport at the check-in counter."
+                }
+            },
+            {
+                "id": "fintech",
+                "shortTitle": "Fintech & KYC",
+                "originalTitle": "Automating Customer Identity Verification (KYC)",
+                "tagline": "Onboard new customers faster while meeting compliance requirements.",
+                "description": "A user signing up for a new fintech app is prompted to upload a picture of their passport. The OCR tool instantly extracts their details, cross-referencing them to verify their identity and fulfill KYC (Know Your Customer) obligations seamlessly.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-fintech.webp",
+                    "alt": "A user holding their passport up to a phone for an online identity verification process."
+                }
+            },
+            {
+                "id": "hr",
+                "shortTitle": "Human Resources",
+                "originalTitle": "Ensuring Accuracy in International Employee Onboarding",
+                "tagline": "Capture correct passport and visa details for new hires without typos.",
+                "description": "An HR manager onboarding a new employee from overseas scans their passport. The tool accurately captures the full name, passport number, and expiry date, ensuring all records for immigration and payroll are 100% correct from day one.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-hr.webp",
+                    "alt": "An HR professional scanning an employee's passport to populate their digital file."
+                }
+            },
+            {
+                "id": "personal",
+                "shortTitle": "Personal Use",
+                "originalTitle": "Filling Out Visa and Travel Forms Accurately",
+                "tagline": "Avoid costly mistakes on official applications by copying your exact details.",
+                "description": "Someone applying for a travel visa online uses the Passport OCR tool to extract their own information. They can then copy and paste the details directly into the application form, guaranteeing the passport number and dates are correct.",
+                "image": {
+                    "url": "https://cdn.deepseekocr.io/tools/passport-ocr/use-cases-personal.webp",
+                    "alt": "A person at their desk filling out an online visa application, using the OCR tool on their phone."
+                }
+            }
+        ]
+    },
+    "features": {
+        "title": "Designed for Accuracy, Security, and Speed",
+        "description": "Our Passport OCR tool is built with cutting-edge technology to provide reliable and safe data extraction.",
+        "items": [
+            {
+                "icon": "ScanLine",
+                "title": "High-Accuracy MRZ Recognition",
+                "description": "Our AI is specifically trained to read the ICAO 9303 standard Machine-Readable Zone (MRZ) found on all international passports, ensuring the highest level of accuracy."
+            },
+            {
+                "icon": "ShieldAlert",
+                "title": "Privacy First: Your Data is Never Stored",
+                "description": "Security is non-negotiable. Images are processed in memory and are permanently deleted the moment the OCR process is complete. We never save your passport information."
+            },
+            {
+                "icon": "FileJson2",
+                "title": "Structured JSON Output",
+                "description": "Receive data in a clean, organized JSON format, parsed into logical fields (e.g., \"surname\", \"passport_number\", \"date_of_birth\"). Perfect for developers and system integration."
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "Built-in Error Checking",
+                "description": "The MRZ contains checksum digits for self-validation. Our tool automatically verifies these checksums to flag potential misreads and significantly increase the reliability of the output."
+            },
+            {
+                "icon": "Globe2",
+                "title": "Global Standard Compliant",
+                "description": "The tool is designed to work with passports from all over the world, adhering to the international ICAO standards for travel documents."
+            },
+            {
+                "icon": "Server",
+                "title": "Business-Ready API (Coming Soon)",
+                "description": "Integrate our powerful passport scanning technology directly into your own applications, websites, or workflows with our upcoming developer API."
+            }
+        ]
+    },
+    "faq": {
+        "title": "Frequently Asked Questions about Passport OCR",
+        "items": [
+            {
+                "question": "Is it safe to upload an image of my passport?",
+                "answer": "We take your security and privacy extremely seriously. Your image is uploaded via an encrypted connection, processed in memory, and then permanently deleted from our servers immediately after extraction. No data is ever stored."
+            },
+            {
+                "question": "What is a Passport MRZ?",
+                "answer": "The MRZ, or Machine-Readable Zone, is the two-line code at the bottom of the passport's identity page. It contains the holder's personal information in a standardized format that can be read quickly by computers, which is what our tool scans."
+            },
+            {
+                "question": "What information is actually extracted from the passport?",
+                "answer": "The tool extracts all the data encoded in the MRZ, which typically includes your full name, passport number, nationality, date of birth, sex, and the passport's expiry date."
+            },
+            {
+                "question": "Why did my passport scan fail?",
+                "answer": "The most common reasons for a failed scan are poor image quality. Ensure your photo is clear, well-lit, and not blurry. Avoid glare on the MRZ, and make sure no fingers are covering the two lines of code."
+            },
+            {
+                "question": "Can you read visa stamps or other text on the passport?",
+                "answer": "No. This tool is highly specialized to only read the MRZ. This focus is what allows it to be so fast and accurate for its specific purpose."
+            },
+            {
+                "question": "Is this service truly free?",
+                "answer": "Yes, our online passport OCR tool is 100% free for individual use. For businesses that need to process a high volume of passports, we will be offering a Pro plan with API access in the near future."
+            },
+            {
+                "question": "What happens to my uploaded passport image?",
+                "answer": "It is permanently deleted. We have a strict ephemeral processing policy: your file exists on our server only for the few seconds it takes to process it, and then it is irretrievably erased."
+            },
+            {
+                "question": "Can I use this for my business's KYC process?",
+                "answer": "While this free tool is great for demonstration, for commercial use we strongly recommend signing up for our upcoming API waitlist. An API provides a more secure and seamless integration into your business application."
+            }
+        ]
+    },
+    "cta": {
+        "title": "Eliminate Manual Entry Errors and Save Time",
+        "description": "Securely scan and extract passport information in an instant. Get started now with the most reliable free passport OCR tool online.",
+        "button": {
+            "text": "Scan a Passport for Free"
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { parseMarkdownWithMath } from '@/lib/markdown';
 
 
@@ -10,6 +11,7 @@ import { parseMarkdownWithMath } from '@/lib/markdown';
  */
 
 export default function OcrMDResult({ content }: { content: string }) {
+  const t = useTranslations('common.toolPlayground.ocrMarkdown');
   const [html, setHtml] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -27,19 +29,19 @@ export default function OcrMDResult({ content }: { content: string }) {
       })
       .catch((err) => {
         console.error('Markdown parsing failed:', err);
-        setHtml('<p>Failed to render content.</p>');
+        setHtml(`<p>${t('failed')}</p>`);
       })
       .finally(() => {
         setLoading(false);
       });
   }, [content]); // 依赖 content，当 OCR 结果更新时重新渲染
 
-  if (loading) return <div className="skeleton">Loading...</div>;
+  if (loading) return <div className="skeleton">{t('loading')}</div>;
 
   return (
 
     <article className="prose prose-md max-w-none dark:prose-invert bg-muted/30 rounded-lg p-6 max-h-[600px] overflow-y-auto" dangerouslySetInnerHTML={{ __html: html }}>
-              </article>
+    </article>
 
   );
 }

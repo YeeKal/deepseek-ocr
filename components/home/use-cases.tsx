@@ -1,22 +1,26 @@
-"use client"
-
 import Image from "next/image"
-import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { getBadgeColor } from "@/lib/utils"
-import {ImageDetail} from "@/lib/types"
-import { pageConfig } from "@/lib/pageconfig";
 import { ImageParam } from "@/lib/types"
 
+interface UseCasesProps {
+  title: string
+  description: string
+  scenarios: Array<{
+    key: string
+    shortTitle: string
+    originalTitle: string
+    tagline: string
+    description: string
+    images: ImageParam[]
+  }>
+}
 
-const content = pageConfig.useCases;
-
-interface  ImageSectionProps{
+interface ImageSectionProps {
   images: ImageParam[]
 }
 
 function ImageSection({ images }: ImageSectionProps) {
-
   const getGridLayout = (count: number) => {
     switch (count) {
       case 1:
@@ -44,11 +48,11 @@ function ImageSection({ images }: ImageSectionProps) {
       if (index === 0) return "col-span-2 row-span-2 aspect-square" // 2/3 width, full height
       return "col-span-1 row-span-1 aspect-square" // 1/3 width, half height
     }
-    if(total === 4){
+    if (total === 4) {
       if (index === 0) return "col-span-3 row-span-3 aspect-square" // 2/3 width, full height
       return "col-span-1 row-span-1 aspect-square" // 1/3 width, half height
     }
-    if(total === 5){
+    if (total === 5) {
       if (index === 0) return "col-span-2 row-span-2 aspect-square" // 2/3 width, full 
       if (index === 1) return "col-span-2 row-span-2 aspect-square" // 2/3 width, full height
       return "col-span-1 row-span-1 aspect-square" // 1/3 width, half height
@@ -75,28 +79,32 @@ function ImageSection({ images }: ImageSectionProps) {
   )
 }
 
-export default function UseCases() {
+export default function UseCases({
+  title,
+  description,
+  scenarios
+}: UseCasesProps) {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 py-20">
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">{content.title}</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-4">{title}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          {content.description}
+          {description}
         </p>
       </div>
 
       <div className="space-y-24">
-        {content.scenarios.map((scenario, index) => {
+        {scenarios.map((scenario, index) => {
           const isEven = index % 2 === 0
 
           return (
-            <div key={scenario.id} className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
+            <div key={scenario.key} className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
               {/* Text Content */}
-              <div className={` ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+              <div className={`${isEven ? "lg:order-1" : "lg:order-2"}`}>
                 <div className="space-y-6">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3">
-                      <Badge variant="outline" className={`text-xs ${getBadgeColor(index)} `}>
+                      <Badge variant="outline" className={`text-xs ${getBadgeColor(index)}`}>
                         {scenario.shortTitle}
                       </Badge>
                     </div>

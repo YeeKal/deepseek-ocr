@@ -257,6 +257,6 @@ export const invoiceOcrConfig: ToolConfig = {
   cta: {
     title: 'Stop Manual Invoice Data Entry. Start Automating AP.',
     description: 'Join 5,000+ AP professionals saving 20+ hours per week. Process your first invoice free—no signup, no credit card, no commitment.',
-    button: { text: 'Extract Your First Invoice Now', link: '#playground' }
+    button: { text: 'Extract Your First Invoice Now' }
   }
 };
