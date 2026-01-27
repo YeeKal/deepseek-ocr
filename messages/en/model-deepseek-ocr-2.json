@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "slug": "deepseek-ocr-2",
+    "name": "DeepSeek-OCR-2",
+    "description": "Featuring Visual Causal Flow",
+    "cover": {
+      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+      "alt": "Visualization of DeepSeek-OCR-2's Visual Causal Flow architecture analyzing a complex document layout."
+    }
+  },
+  "seo": {
+    "title": "DeepSeek-OCR-2 Online - Visual Causal Flow & Structured Markdown | DeepSeekOCR.io",
+    "description": "Try DeepSeek-OCR-2, the open-source model that reads like a human. Convert complex PDFs, formulas, and tables into perfect Markdown using DeepEncoder V2 technology.",
+    "keywords": [
+      "DeepSeek-OCR-2",
+      "Visual Causal Flow",
+      "DeepEncoder V2",
+      "Document Understanding Model",
+      "PDF to Markdown",
+      "LaTeX OCR",
+      "Complex Layout OCR",
+      "Table Extraction AI"
+    ],
+    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+    "creator": "@yeekal",
+    "structuredData": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DeepSeek-OCR-2 Online Tool",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "An advanced AI OCR tool utilizing DeepEncoder V2 and Visual Causal Flow to extract structured data from complex documents with human-like reading logic.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "DeepSeekOCR.io"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.95",
+          "reviewCount": "320"
+        }
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "Free Next-Gen OCR Model",
+    "title": "DeepSeek-OCR-2: True Visual Causal Flow",
+    "tagline": "State-of-the-art OCR and document AI that “reads” like a human — with logical order, structured output, and layout awareness.",
+    "features": [
+      {
+        "icon": "BrainCircuit",
+        "text": "Visual Causal Flow"
+      },
+      {
+        "icon": "Sigma",
+        "text": "Advanced LaTeX Formulas"
+      },
+      {
+        "icon": "LayoutTemplate",
+        "text": "Multi-Column Parsing"
+      }
+    ]
+  },
+  "playground": {
+    "title": "Try DeepSeek-OCR-2 free online",
+    "description": "Upload your most challenging documents—research papers, magazines, or financial reports—and watch the 'Visual Causal Flow' reconstruct them perfectly.",
+    "guide": {
+      "title": "How to test V2 capabilities",
+      "description": "Upload a file with a non-standard layout (like a magazine or a paper with wrapped text). DeepSeek-OCR-2 will demonstrate its ability to follow the logical reading order rather than just scanning left-to-right."
+    },
+    "exampleImages": [
+      {
+        "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+        "alt": "Works well even with crumpled or folded invoices",
+        "tip": "Folded Grocery Invoice"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+        "alt": "Complex Document with Mixed Content for OCR",
+        "tip": "Complex Document"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+        "alt": "Example of a handwritten equation for OCR",
+        "tip": "Handwritten Mathematical Expressions"
+      }
+    ]
+  },
+  "how_to": {
+    "title": "Experience Visual Causal Flow in 3 Steps",
+    "description": "See how DeepEncoder V2 transforms raw pixels into structured knowledge.",
+    "steps": [
+      {
+        "icon": "ScanEye",
+        "title": "1. Visual Tokenization",
+        "description": "Upload your document. The model compresses the image into highly efficient visual tokens (approx. 256 tokens per 1024x1024 view) using the new DeepEncoder V2.",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+          "alt": "Visualizing image compression into tokens"
+        }
+      },
+      {
+        "icon": "GitMerge",
+        "title": "2. Causal Reordering",
+        "description": "Unlike traditional OCR, the model effectively 'looks' at the document to determine the logical reading path, dynamically reordering tokens based on semantic context.",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+          "alt": "Diagram showing the model reordering visual tokens logically"
+        }
+      },
+      {
+        "icon": "FileJson",
+        "title": "3. Structured Output",
+        "description": "Receive your output in clean Markdown or JSON, with tables, headers, and formulas perfectly preserved and formatted for immediate use.",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+          "alt": "Final Markdown output displayed in a code editor"
+        }
+      }
+    ]
+  },
+  "useCases": {
+    "title": "Solving Complex Document Challenges",
+    "description": "DeepSeek-OCR-2 goes beyond simple text recognition. It solves the \"gibberish output\" problem inherent in complex, real-world documents.",
+    "scenarios": [
+      {
+        "id": "academic-research",
+        "shortTitle": "Academic Papers",
+        "originalTitle": "Parsing Scientific Literature with Heavy Formulas",
+        "tagline": "From PDF to LaTeX-Ready Markdown",
+        "description": "Researchers often struggle to copy formulas from PDFs. DeepSeek-OCR-2 accurately identifies and converts complex mathematical equations into LaTeX format within Markdown, maintaining the two-column reading order perfectly.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case1.webp",
+          "alt": "Converting a scientific paper with equations to markdown"
+        }
+      },
+      {
+        "id": "financial-data",
+        "shortTitle": "Financial Reports",
+        "originalTitle": "Extracting Data from Borderless & Nested Tables",
+        "tagline": "No More Broken CSVs",
+        "description": "Financial tables are notoriously difficult for standard OCR due to invisible borders and merged cells. DeepSeek-OCR-2 understands the \"causal\" relationship of table headers and data, outputting clean Markdown tables ready for analysis.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case2.webp",
+          "alt": "Extracting a complex financial balance sheet into a structured table"
+        }
+      },
+      {
+        "id": "legacy-media",
+        "shortTitle": "Newspapers & Magazines",
+        "originalTitle": "Digitizing Non-Linear Layouts",
+        "tagline": "Respecting the Reading Flow",
+        "description": "Newspapers often have text wrapping around images or spanning multiple columns irregularly. DeepSeek-OCR-2's \"Visual Causal Flow\" traces the logical reading path, ensuring the output text follows the story, not just the geometric line.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case3.webp",
+          "alt": "Digitizing an old newspaper layout with complex text flow"
+        }
+      },
+      {
+        "id": "llm-training",
+        "shortTitle": "LLM Data Pre-processing",
+        "originalTitle": "Creating High-Quality Corpora for RAG",
+        "tagline": "Fueling AI with Structured Data",
+        "description": "Garbage in, garbage out. For developers building RAG systems, DeepSeek-OCR-2 provides the highest quality structured data extraction, preserving headers, lists, and semantic blocks, which is crucial for accurate LLM retrieval.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case4.webp",
+          "alt": "Preparing unstructured PDF data for Vector Database ingestion"
+        }
+      }
+    ]
+  },
+  "features": {
+    "title": "Why Upgrade to DeepSeek-OCR-2?",
+    "description": "Significant architectural shifts make V2 a powerhouse for document intelligence compared to Generation 1.",
+    "items": [
+      {
+        "icon": "Cpu",
+        "title": "DeepEncoder V2 Architecture",
+        "description": "Replaces the static CLIP encoder with an LLM-style architecture, enabling the model to dynamically 'reason' about visual content before generating text."
+      },
+      {
+        "icon": "Network",
+        "title": "Visual Causal Flow",
+        "description": "The model reorders visual tokens based on semantics. It knows that a caption belongs to the image, and a column continues at the bottom, mimicking human reading patterns."
+      },
+      {
+        "icon": "Zap",
+        "title": "Extreme Token Efficiency",
+        "description": "Processes a 1024x1024 high-res image using only ~256 visual tokens, making it significantly faster and more cost-effective for long documents than GPT-4o."
+      },
+      {
+        "icon": "Table",
+        "title": "Intelligent Table Parsing",
+        "description": "Achieves a 3.73% performance gain on benchmarks like OmniDocBench, specifically excelling at tables without explicit borders."
+      },
+      {
+        "icon": "Languages",
+        "title": "100+ Languages & Handwriting",
+        "description": "Seamlessly handles multilingual documents and can decipher legible handwriting, treating them with the same structural logic as printed text."
+      },
+      {
+        "icon": "FileCode",
+        "title": "Native Markdown & LaTeX",
+        "description": "Directly outputs structured formats. No post-processing needed to get headers, bold text, or mathematical formulas ready for your editor."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Technical FAQ & Comparison",
+    "items": [
+      {
+        "question": "What is the main difference between DeepSeek-OCR-2 and the first version?",
+        "answer": "The core difference is the **DeepEncoder V2**. While V1 used a standard vision encoder, V2 uses an LLM-style encoder that allows for 'Visual Causal Flow'. This means V2 is much better at understanding complex layouts (like newspapers) and logical reading orders, achieving higher accuracy on difficult benchmarks."
+      },
+      {
+        "question": "What is 'Visual Causal Flow'?",
+        "answer": "It is a novel architectural paradigm where the model doesn't just scan an image from top-left to bottom-right. Instead, it creates a 'causal' link between visual elements, allowing it to follow the semantic flow of a document (e.g., reading column A entirely before jumping to column B), just like a human does."
+      },
+      {
+        "question": "Is DeepSeek-OCR-2 free to use on this site?",
+        "answer": "Yes, deepseekocr.io provides free access to the DeepSeek-OCR-2 model for standard usage. We believe in making high-end document intelligence accessible."
+      },
+      {
+        "question": "How does it handle mathematical formulas?",
+        "answer": "It is exceptional at it. DeepSeek-OCR-2 detects mathematical expressions and converts them directly into LaTeX format (e.g., $\\sum_{i=0}^n$) embedded within the text, making it ideal for academic and scientific digitization."
+      },
+      {
+        "question": "Does it support tables without borders?",
+        "answer": "Yes. Because it uses visual understanding rather than just line detection, it can infer the structure of a table based on the alignment of text, effectively parsing 'borderless' tables common in financial reports."
+      },
+      {
+        "question": "Can I use the output for RAG (Retrieval-Augmented Generation)?",
+        "answer": "Absolutely. In fact, that is one of its primary design goals. By outputting structured Markdown (headers, lists, tables), it provides much better 'chunks' for LLMs compared to raw text output from standard OCR tools."
+      },
+      {
+        "question": "What file formats are supported?",
+        "answer": "We support JPG, PNG, WEBP, and PDF. For the free tier, files are processed one page at a time to ensure maximum speed for all users."
+      },
+      {
+        "question": "Is my data safe?",
+        "answer": "Yes. Files processed through our online tool are used strictly for the OCR inference and are deleted immediately after processing. We do not use user submissions to train our models."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Experience the Future of Document Parsing",
+    "description": "Don't struggle with broken layouts and gibberish text. Let DeepSeek-OCR-2 analyze your documents with human-like understanding.",
+    "button": {
+      "text": "Try DeepSeek-OCR-2 Free",
+      "link": "#playground"
+    }
+  }
+}

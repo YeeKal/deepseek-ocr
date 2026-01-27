@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "slug": "deepseek-ocr-2",
+    "name": "DeepSeek-OCR-2",
+    "description": "具有视觉因果流 (Visual Causal Flow) 特性",
+    "cover": {
+      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+      "alt": "DeepSeek-OCR-2 视觉因果流架构分析复杂文档版面的可视化展示。"
+    }
+  },
+  "seo": {
+    "title": "DeepSeek-OCR-2 在线版 - 视觉因果流与结构化 Markdown | DeepSeekOCR.io",
+    "description": "即刻体验 DeepSeek-OCR-2，这是一款像人类一样阅读的开源模型。利用 DeepEncoder V2 技术，将复杂的 PDF、公式和表格转换为完美的结构化 Markdown。",
+    "keywords": [
+      "DeepSeek-OCR-2",
+      "视觉因果流",
+      "DeepEncoder V2",
+      "文档理解模型",
+      "PDF转Markdown",
+      "LaTeX OCR",
+      "复杂版面 OCR",
+      "表格提取 AI"
+    ],
+    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+    "creator": "@yeekal",
+    "structuredData": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DeepSeek-OCR-2 在线工具",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "一款先进的 AI OCR 工具，利用 DeepEncoder V2 和视觉因果流技术，以类似人类的阅读逻辑从复杂文档中提取结构化数据。",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "DeepSeekOCR.io"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.95",
+          "reviewCount": "320"
+        }
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "免费的下一代 OCR 模型",
+    "title": "DeepSeek-OCR-2: 真正的视觉因果流",
+    "tagline": "最先进的 OCR 和文档 AI，像人类一样“阅读”——具备逻辑顺序、结构化输出和版面感知能力。",
+    "features": [
+      {
+        "icon": "BrainCircuit",
+        "text": "视觉因果流"
+      },
+      {
+        "icon": "Sigma",
+        "text": "高级 LaTeX 公式"
+      },
+      {
+        "icon": "LayoutTemplate",
+        "text": "多栏版面解析"
+      }
+    ]
+  },
+  "playground": {
+    "title": "免费在线试用 DeepSeek-OCR-2",
+    "description": "上传您最具挑战性的文档——学术论文、杂志或财务报表——观看“视觉因果流”如何完美重构它们。",
+    "guide": {
+      "title": "如何测试 V2 的能力",
+      "description": "上传一个非标准版面的文件（如杂志或带有环绕文本的论文）。DeepSeek-OCR-2 将展示其遵循逻辑阅读顺序而非仅仅从左到右扫描的能力。"
+    },
+    "exampleImages": [
+      {
+        "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+        "alt": "即使是皱巴巴或折叠的发票也能很好地处理",
+        "tip": "折叠的购物小票"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+        "alt": "混合内容的复杂文档 OCR",
+        "tip": "复杂文档"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+        "alt": "手写方程 OCR 示例",
+        "tip": "手写数学表达式"
+      }
+    ]
+  },
+  "how_to": {
+    "title": "3步体验视觉因果流",
+    "description": "了解 DeepEncoder V2 如何将原始像素转化为结构化知识。",
+    "steps": [
+      {
+        "icon": "ScanEye",
+        "title": "1. 视觉 Token 化",
+        "description": "上传您的文档。模型使用新的 DeepEncoder V2 将图像压缩为高效的视觉 Token（1024x1024 视图仅需约 256 个 Token）。",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+          "alt": "可视化图像压缩为 Token 的过程"
+        }
+      },
+      {
+        "icon": "GitMerge",
+        "title": "2. 因果重排序",
+        "description": "与传统 OCR 不同，该模型有效地“观察”文档以确定逻辑阅读路径，并根据语义上下文动态重新排序 Token。",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+          "alt": "展示模型按逻辑重新排序视觉 Token 的图解"
+        }
+      },
+      {
+        "icon": "FileJson",
+        "title": "3. 结构化输出",
+        "description": "获得干净的 Markdown 或 JSON 输出，表格、标题和公式均被完美保留并格式化，可直接使用。",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+          "alt": "在代码编辑器中显示的最终 Markdown 输出"
+        }
+      }
+    ]
+  },
+  "useCases": {
+    "title": "解决复杂文档挑战",
+    "description": "DeepSeek-OCR-2 超越了简单的文本识别。它解决了现实世界复杂文档中固有的“乱码输出”问题。",
+    "scenarios": [
+      {
+        "id": "academic-research",
+        "shortTitle": "学术论文",
+        "originalTitle": "解析包含大量公式的科学文献",
+        "tagline": "从 PDF 到 LaTeX 就绪的 Markdown",
+        "description": "研究人员经常难以从 PDF 中复制公式。DeepSeek-OCR-2 能准确识别并将复杂的数学方程转换为 Markdown 中的 LaTeX 格式，完美保持双栏阅读顺序。",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case1.webp",
+          "alt": "将带有方程的科学论文转换为 Markdown"
+        }
+      },
+      {
+        "id": "financial-data",
+        "shortTitle": "财务报告",
+        "originalTitle": "提取无边框和嵌套表格数据",
+        "tagline": "告别破碎的 CSV",
+        "description": "由于不可见的边框和合并单元格，财务表格对于标准 OCR 来说非常困难。DeepSeek-OCR-2 理解表头和数据的“因果”关系，输出干净的 Markdown 表格以便分析。",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case2.webp",
+          "alt": "将复杂的财务资产负债表提取为结构化表格"
+        }
+      },
+      {
+        "id": "legacy-media",
+        "shortTitle": "报刊杂志",
+        "originalTitle": "数字化非线性版面",
+        "tagline": "尊重阅读流",
+        "description": "报纸的文本经常环绕图片或不规则地跨越多栏。DeepSeek-OCR-2 的“视觉因果流”追踪逻辑阅读路径，确保输出文本跟随故事发展，而不仅仅是几何线条。",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case3.webp",
+          "alt": "数字化具有复杂文本流的旧报纸版面"
+        }
+      },
+      {
+        "id": "llm-training",
+        "shortTitle": "LLM 数据预处理",
+        "originalTitle": "为 RAG 创建高质量语料库",
+        "tagline": "用结构化数据为 AI 提供燃料",
+        "description": "垃圾进，垃圾出。对于构建 RAG 系统的开发者，DeepSeek-OCR-2 提供最高质量的结构化数据提取，保留标题、列表和语义块，这对 LLM 的准确检索至关重要。",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/case4.webp",
+          "alt": "准备非结构化 PDF 数据以用于向量数据库摄入"
+        }
+      }
+    ]
+  },
+  "features": {
+    "title": "为什么要升级到 DeepSeek-OCR-2？",
+    "description": "与第一代相比，重大的架构转变为 V2 带来了强大的文档智能能力。",
+    "items": [
+      {
+        "icon": "Cpu",
+        "title": "DeepEncoder V2 架构",
+        "description": "用 LLM 风格的架构取代了静态 CLIP 编码器，使模型能够在生成文本之前动态地“推理”视觉内容。"
+      },
+      {
+        "icon": "Network",
+        "title": "视觉因果流",
+        "description": "模型根据语义重新排序视觉 Token。它知道说明文字属于图片，栏目在底部继续，模仿人类的阅读模式。"
+      },
+      {
+        "icon": "Zap",
+        "title": "极致的 Token 效率",
+        "description": "处理 1024x1024 高分辨率图像仅需约 256 个视觉 Token，使其比 GPT-4o 处理长文档时更快且更具成本效益。"
+      },
+      {
+        "icon": "Table",
+        "title": "智能表格解析",
+        "description": "在 OmniDocBench 等基准测试中获得 3.73% 的性能提升，特别擅长处理没有明确边框的表格。"
+      },
+      {
+        "icon": "Languages",
+        "title": "100+ 语言与手写体",
+        "description": "无缝处理多语言文档，并能解读清晰的手写体，将其视为与打印文本相同的结构逻辑。"
+      },
+      {
+        "icon": "FileCode",
+        "title": "原生 Markdown 与 LaTeX",
+        "description": "直接输出结构化格式。无需后期处理即可获得标题、粗体文本或可供编辑器使用的数学公式。"
+      }
+    ]
+  },
+  "faq": {
+    "title": "技术问答与对比",
+    "items": [
+      {
+        "question": "DeepSeek-OCR-2 与第一代的主要区别是什么？",
+        "answer": "核心区别在于 **DeepEncoder V2**。V1 使用标准视觉编码器，而 V2 使用 LLM 风格的编码器，支持“视觉因果流”。这意味着 V2 在理解复杂版面（如报纸）和逻辑阅读顺序方面表现更好，在困难基准测试中实现了更高的准确率。"
+      },
+      {
+        "question": "什么是“视觉因果流”？",
+        "answer": "这是一种新的架构范式，模型不仅仅是从左上到右下扫描图像。相反，它在视觉元素之间建立“因果”链接，使其能够遵循文档的语义流（例如，先读完 A 栏再跳到 B 栏），就像人类一样。"
+      },
+      {
+        "question": "在本站使用 DeepSeek-OCR-2 是免费的吗？",
+        "answer": "是的，deepseekocr.io 提供免费的 DeepSeek-OCR-2 模型标准使用权限。我们致力于让高端文档智能触手可及。"
+      },
+      {
+        "question": "它如何处理数学公式？",
+        "answer": "它在这方面表现出色。DeepSeek-OCR-2 能检测数学表达式并将其直接转换为嵌入在文本中的 LaTeX 格式（例如 $\\sum_{i=0}^n$），非常适合学术和科学数字化。"
+      },
+      {
+        "question": "它支持无边框表格吗？",
+        "answer": "支持。因为它使用视觉理解而不仅仅是线条检测，它可以根据文本的对齐方式推断表格结构，有效解析财务报告中常见的“无边框”表格。"
+      },
+      {
+        "question": "我可以用输出结果进行 RAG（检索增强生成）吗？",
+        "answer": "当然。事实上，这是其主要设计目标之一。通过输出结构化的 Markdown（标题、列表、表格），它为 LLM 提供了比标准 OCR 工具的原始文本好得多的“数据块”。"
+      },
+      {
+        "question": "支持哪些文件格式？",
+        "answer": "我们支持 JPG, PNG, WEBP 和 PDF。对于免费层级，文件将逐页处理以确保所有用户的最大速度。"
+      },
+      {
+        "question": "我的数据安全吗？",
+        "answer": "安全。通过我们在线工具处理的文件仅用于 OCR 推理，处理后立即删除。我们不使用用户提交的内容来训练我们的模型。"
+      }
+    ]
+  },
+  "cta": {
+    "title": "体验文档解析的未来",
+    "description": "不要再纠结于破碎的版面和乱码文本。让 DeepSeek-OCR-2 以类似人类的理解力分析您的文档。",
+    "button": {
+      "text": "免费试用 DeepSeek-OCR-2",
+      "link": "#playground"
+    }
+  }
+}
