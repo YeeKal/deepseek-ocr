@@ -17,7 +17,7 @@ import { getMessages } from "@/i18n/get-messages";
 
 
 interface Params {
-//   slug: string;
+  model: string;
   locale: Locale;
 }
 
@@ -25,26 +25,24 @@ type Props = {
   params: Promise<Params>;
 };
 
-// export async function generateStaticParams(): Promise<Params[]> {
-//     const toolMetaConfigs = await getAllToolConfigs(defaultLocale);
- 
-//   return locales.flatMap(locale =>
-//     toolMetaConfigs
-//       .filter(tool => tool.slug)
-//       .map(tool => ({
-//         locale,
-//         slug: tool.slug!,
-//       }))
-//   );
-// }
+export async function generateStaticParams(): Promise<Params[]> {
+    // const toolMetaConfigs = await getAllToolConfigs(defaultLocale);
+  const models=["deepseek-ocr-2","paddleocr-vl-1-5"]
+  return locales.flatMap(locale =>
+    models.map(model => ({
+        locale,
+        model: model,
+      }))
+  );
+}
 
 // For SEO Metadata using Next.js 13+ App Router
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const { locale } = await params;
-   const slug = "deepseek-ocr-2";
+  const {model, locale } = await params;
+   const slug = model;
    console.log("Generating metadata for slug:", slug, "and locale:", locale);
     const m = await getMessages(locale, `model-${slug}`);
     const toolData = (m as any)[`model-${slug}`];
@@ -92,8 +90,8 @@ const generateFaqSchema = (faqItems: { question: string; answer: string }[]) => 
 
 
 export default async function ToolPage({ params }: Props) {
-  const { locale } = await params;
-   const slug = "deepseek-ocr-2";
+  const {model, locale } = await params;
+   const slug = model;
   setRequestLocale(locale);
 
   const m = await getMessages(locale, `model-${slug}`);

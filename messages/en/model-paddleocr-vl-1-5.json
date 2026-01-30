@@ -1,0 +1,344 @@
+{
+  "meta": {
+    "slug": "paddleocr-vl-1.5",
+    "name": "PaddleOCR VL 1.5",
+    "description": "Next-Gen Vision-Language OCR with Real-World Robustness",
+    "cover": {
+      "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/og.webp",
+      "alt": "PaddleOCR VL 1.5 processing distorted documents with polygon detection and seal recognition."
+    }
+  },
+  "seo": {
+    "title": "PaddleOCR VL 1.5 Online - 94.5% Accuracy & Real-Scene Robustness",
+    "description": "Experience PaddleOCR VL 1.5: SOTA 94.5% accuracy on OmniDocBench. Handles skewed, warped, and screen-captured documents with polygon detection, seal recognition & text spotting. Free to try.",
+    "keywords": [
+      "PaddleOCR VL 1.5",
+      "Document Layout Analysis",
+      "Fast OCR API",
+      "Table to Markdown",
+      "Multilingual OCR",
+      "Seal Recognition",
+      "Text Spotting",
+      "Real5-OmniDocBench",
+      "Polygon Detection",
+      "Distorted Document OCR",
+      "Screen Photo OCR",
+      "PP-DocLayoutV3"
+    ],
+    "ogImage": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/og.webp",
+    "creator": "@yeekal",
+    "structuredData": [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PaddleOCR VL 1.5 Online Tool",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "A next-generation Vision-Language OCR tool achieving 94.5% SOTA accuracy with real-world robustness for skewed, warped, and screen-captured documents.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "DeepSeekOCR.io"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "280"
+        }
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "NEW: SOTA 94.5% Accuracy",
+    "title": "PaddleOCR VL 1.5: Real-World Ready OCR",
+    "tagline": "The ultimate efficiency champion upgraded. Handles skewed, warped & screen-captured documents with polygon detection, seal recognition, and blazing 50x faster speed than heavy models.",
+    "features": [
+      {
+        "icon": "Zap",
+        "text": "50x Faster than DeepSeek"
+      },
+      {
+        "icon": "Target",
+        "text": "Skewed Detection"
+      },
+      {
+        "icon": "Stamp",
+        "text": "Seal Recognition"
+      }
+    ]
+  },
+  "playground": {
+    "title": "Test PaddleOCR VL 1.5 Power",
+    "description": "Upload skewed invoices, warped receipts, or screen-captured documents. Experience polygon-based detection, seal extraction, and lightning-fast inference.",
+    "guide": {
+      "title": "Best use cases for PaddleOCR VL 1.5",
+      "description": "Perfect for high-volume tasks, distorted documents (skewed/warped), seal verification, and end-to-end text spotting. For extremely degraded historical manuscripts, switch to DeepSeek OCR."
+    },
+    "exampleImages": [
+       {
+        "url": "https://cdn.deepseekocr.io/home/sample-grocery-receipt.webp",
+        "alt": "Works well even with crumpled or folded invoices",
+        "tip": "Folded Grocery Invoice"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/home/general_formula_recognition_001.webp",
+        "alt": "Complex Document with Mixed Content for OCR",
+        "tip": "Complex Document"
+      },
+      {
+        "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-handwritten.webp",
+        "alt": "Example of a handwritten equation for OCR",
+        "tip": "Handwritten Mathematical Expressions"
+      }
+    ]
+  },
+  "how_to": {
+    "title": "From Distorted Image to Structured Data",
+    "description": "Leverage PP-DocLayoutV3 and polygon detection for real-world document challenges.",
+    "steps": [
+      {
+        "icon": "UploadCloud",
+        "title": "1. Instant Upload",
+        "description": "Upload any document - even skewed, warped, or screen-captured. The lightweight 0.9B model initializes in milliseconds with no cold-start delays.",
+       "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step1.gif",
+          "alt": "Visualizing image compression into tokens"
+        }
+      },
+      {
+        "icon": "ScanLine",
+        "title": "2. PP-DocLayoutV3 Analysis",
+        "description": "Our upgraded layout engine uses polygon detection to precisely locate text regions even on skewed or curved surfaces. Simultaneously identifies seals, tables, and reading order.",
+        "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step2.gif",
+          "alt": "Diagram showing the model reordering visual tokens logically"
+        }
+      },
+      {
+        "icon": "FileType2",
+        "title": "3. Rich Markdown Export",
+        "description": "Get structured output with extracted text, table data, and recognized seal content. Perfect for RAG pipelines, invoice processing, and contract verification.",
+       "media": {
+          "type": "image",
+          "url": "https://cdn.deepseekocr.io/tools/formula-ocr/formula-ocr-step3.gif",
+          "alt": "Final Markdown output displayed in a code editor"
+        }
+      }
+    ]
+  },
+  "useCases": {
+    "title": "Built for Real-World Challenges",
+    "description": "While DeepSeek OCR handles edge cases, PaddleOCR VL 1.5 dominates daily operations with its new Real5 robustness: Scanning, Skew, Warping, Screen Photo & Illumination.",
+    "scenarios": [
+      {
+        "id": "invoice-automation",
+        "shortTitle": "AP Automation",
+        "originalTitle": "High-Volume Invoice Processing",
+        "tagline": "Skewed & Crumpled? No Problem",
+        "description": "Real invoices arrive folded, skewed, or crumpled. PaddleOCR VL 1.5's polygon detection handles these distortions effortlessly, extracting vendor details and line items at $0.001/page - 30x cheaper than alternatives. The new seal recognition also verifies invoice authenticity.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case1.webp",
+          "alt": "Processing skewed invoices with polygon detection"
+        }
+      },
+      {
+        "id": "contract-verification",
+        "shortTitle": "Contract Verification",
+        "originalTitle": "Seal Recognition & Contract Parsing",
+        "tagline": "NEW: Extract Official Seals",
+        "description": "Legal documents require seal verification. PaddleOCR VL 1.5's new seal recognition capability accurately extracts red stamps from contracts, certificates, and official documents - even with curved text and overlapping backgrounds.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case2.webp",
+          "alt": "Extracting red seal from contract document"
+        }
+      },
+      {
+        "id": "mobile-expense",
+        "shortTitle": "Mobile Expense Reports",
+        "originalTitle": "Screen Photo & Mobile Receipt OCR",
+        "tagline": "Handles Moiré & Glare",
+        "description": "Employees snap photos of receipts with their phones - often creating screen glare, moiré patterns, or skew angles. Real5 training makes PaddleOCR VL 1.5 immune to these artifacts, accurately extracting data from mobile-captured images.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case3.webp",
+          "alt": "Processing mobile photo of receipt with glare"
+        }
+      },
+      {
+        "id": "text-spotting",
+        "shortTitle": "Text Spotting",
+        "originalTitle": "End-to-End Detection + Recognition",
+        "tagline": "NEW: Precise Text Localization",
+        "description": "Need both text content AND exact location? The new text spotting feature outputs 4-point quadrilateral coordinates for every text block. Perfect for form automation, ID card scanning, and document redaction workflows.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case4.webp",
+          "alt": "Text spotting with bounding quadrilaterals"
+        }
+      },
+      {
+        "id": "rag-knowledge-base",
+        "shortTitle": "RAG Data Pipelines",
+        "originalTitle": "Building Large-Scale Knowledge Bases",
+        "tagline": "Clean Markdown for LLMs",
+        "description": "Feeding LLMs requires clean, structured text. PaddleOCR VL 1.5 converts corporate archives into layout-aware Markdown with 94.5% SOTA accuracy, ensuring your RAG system understands headers, tables, and hierarchies without hallucinating.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case5.webp",
+          "alt": "Converting PDF archives into Vector Database chunks"
+        }
+      },
+      {
+        "id": "global-logistics",
+        "shortTitle": "Cross-Border Logistics",
+        "originalTitle": "Multilingual Waybill Scanning",
+        "tagline": "Mastering Asian & Western Scripts",
+        "description": "Logistics documents mix English with CJK scripts. PaddleOCR's heritage ensures superior accuracy on mixed-script documents. The 1.5 upgrade adds robustness to warped shipping labels and customs forms.",
+        "image": {
+          "url": "https://cdn.deepseekocr.io/models/paddleocr-vl-1-5/case6.webp",
+          "alt": "Scanning a shipping label with mixed languages"
+        }
+      }
+    ]
+  },
+  "features": {
+    "title": "What's New in PaddleOCR VL 1.5?",
+    "description": "The definitive upgrade achieving 94.5% SOTA accuracy with real-world robustness.",
+    "items": [
+      {
+        "icon": "Trophy",
+        "title": "94.5% SOTA Accuracy",
+        "description": "Achieves new state-of-the-art on OmniDocBench v1.5, surpassing Qwen3-VL-235B and Gemini-3 Pro despite being 260x smaller."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Real5 Robustness",
+        "description": "Trained on 5 real-world scenarios: Scanning, Skew, Warping, Screen Photography & Illumination. 91.66% accuracy on skewed documents vs 77.47% in V1."
+      },
+      {
+        "icon": "Hexagon",
+        "title": "Polygon Detection (PP-DocLayoutV3)",
+        "description": "Goes beyond rectangles with multi-point bounding boxes. Precisely captures text on skewed, warped, or curved surfaces without background noise."
+      },
+      {
+        "icon": "Stamp",
+        "title": "NEW: Seal Recognition",
+        "description": "Extract official seals and stamps from contracts, certificates, and invoices. Handles curved text, blur, and background interference. NED 0.138 vs Qwen3-VL's 0.382."
+      },
+      {
+        "icon": "Scan",
+        "title": "NEW: Text Spotting",
+        "description": "End-to-end detection + recognition with 4-point quadrilateral output. Get both text content and precise spatial coordinates in one pass."
+      },
+      {
+        "icon": "Rocket",
+        "title": "Blazing Fast Inference",
+        "description": "0.9B ultra-compact architecture. Typical response under 2 seconds - 10-20x faster than heavy models. No cold-start delays."
+      },
+      {
+        "icon": "Coins",
+        "title": "Ultra-Low Cost",
+        "description": "Only $0.001 per page via API - 30x cheaper than DeepSeek OCR. Perfect for high-volume processing without breaking the bank."
+      },
+      {
+        "icon": "Table2",
+        "title": "Enhanced Table Recognition",
+        "description": "92.76% TEDS score on tables. Handles merged cells, spanning headers, and borderless tables with intelligent structure reconstruction."
+      },
+      {
+        "icon": "FileCode",
+        "title": "Structure-Aware Markdown",
+        "description": "Understands page layout, outputting valid Markdown respecting headers, lists, tables, and logical reading order."
+      },
+      {
+        "icon": "Globe2",
+        "title": "Multilingual Excellence",
+        "description": "80+ languages with industry-leading CJK (Chinese, Japanese, Korean) + English mixed-script accuracy."
+      }
+    ]
+  },
+  "comparison": {
+    "title": "PaddleOCR VL 1.5 vs DeepSeek OCR",
+    "description": "Choose the right tool for your use case. Both models excel in different scenarios.",
+    "table": {
+      "headers": ["Feature", "PaddleOCR VL 1.5", "DeepSeek OCR"],
+      "rows": [
+        ["Parameters", "0.9B (Ultra-lightweight)", "3B (Heavyweight)"],
+        ["OmniDocBench v1.5", "94.5% (SOTA)", "87.01%"],
+        ["Inference Speed", "~2 seconds", "10-20 seconds"],
+        ["Cost per Page", "~$0.001", "~$0.03"],
+        ["Cold Start", "None (instant)", "+60s possible"],
+        ["Skewed Documents", "Excellent (Polygon detection)", "Good"],
+        ["Seal Recognition", "Yes (NEW)", "No"],
+        ["Text Spotting", "Yes (4-point quadrilateral)", "Limited"],
+        ["Extreme Handwriting", "Good", "Excellent (Best in class)"],
+        ["Crumpled/Damaged", "Very Good", "Excellent"],
+        ["Best For", "High-volume daily operations", "Edge cases & extreme degradation"]
+      ]
+    }
+  },
+  "faq": {
+    "title": "Common Questions",
+    "items": [
+      {
+        "question": "What's new in PaddleOCR VL 1.5 vs the previous version?",
+        "answer": "PaddleOCR VL 1.5 brings major upgrades: (1) 94.5% SOTA accuracy on OmniDocBench v1.5, (2) Real5 robustness for skewed/warped/screen-captured documents, (3) PP-DocLayoutV3 with polygon detection, (4) NEW seal recognition capability, (5) NEW text spotting with 4-point coordinates. It outperforms 235B-parameter models at 0.9B size."
+      },
+      {
+        "question": "How is PaddleOCR VL 1.5 different from DeepSeek OCR?",
+        "answer": "Think sports car vs heavy-duty truck. **PaddleOCR VL 1.5** (0.9B) is the efficiency champion: 50x faster, 30x cheaper, handles 90% of documents including skewed/warped ones with polygon detection, plus seal recognition. **DeepSeek OCR** (3B) is the precision specialist for extreme cases: historical manuscripts, severe damage, artistic cursive - but slower and pricier."
+      },
+      {
+        "question": "What is 'Real5' robustness?",
+        "answer": "Real5 refers to 5 real-world distortion scenarios: Scanning artifacts, Skew (high-angle tilt), Warping (curved/folded pages), Screen Photography (moiré patterns), and Illumination (uneven lighting). PaddleOCR VL 1.5 is specifically trained on these scenarios, achieving 92.05% overall accuracy vs 85.54% in V1."
+      },
+      {
+        "question": "What is polygon detection and why does it matter?",
+        "answer": "Traditional OCR uses rectangular boxes that fail on skewed/warped documents, capturing background noise. Polygon detection uses multi-point shapes (quadrilaterals) that tightly hug text regions at any angle. This means accurate extraction from photos of crumpled receipts, tilted invoices, or curved book pages."
+      },
+      {
+        "question": "How does seal recognition work?",
+        "answer": "PaddleOCR VL 1.5 can detect and extract text from official seals/stamps (red circles on contracts, certificates). It handles curved text following the seal's circumference, blur, and background interference. Recognition accuracy (NED 0.138) beats even 235B-parameter models."
+      },
+      {
+        "question": "What is text spotting?",
+        "answer": "Text spotting combines detection (where is the text?) and recognition (what does it say?) in one step. Unlike standard OCR that only outputs text, spotting returns 4-point coordinates for each text block. Perfect for form field extraction, ID scanning, and redaction workflows."
+      },
+      {
+        "question": "Is PaddleOCR VL 1.5 free to use?",
+        "answer": "Yes! On deepseekocr.io, you can use PaddleOCR VL 1.5 for free with standard file limits. It's our default engine for general tasks due to its speed and low cost. No signup required for basic usage."
+      },
+      {
+        "question": "Does it support handwriting?",
+        "answer": "Yes, strong support for legible handwriting in forms and documents. For historical manuscripts or artistic cursive, DeepSeek OCR remains the better choice."
+      },
+      {
+        "question": "Can I use the output for LLM/RAG training?",
+        "answer": "Absolutely. The 94.5% accuracy and layout-aware Markdown output ensures clean, structured data for RAG systems. Headers, tables, and hierarchies are preserved so LLMs understand document structure without hallucinating."
+      },
+      {
+        "question": "What languages are supported?",
+        "answer": "80+ languages with exceptional CJK (Chinese, Japanese, Korean) + English mixed-script performance. Also supports French, German, Spanish, Arabic, and many more."
+      },
+      {
+        "question": "Is there an API available?",
+        "answer": "Yes! We're launching a low-cost API via RapidAPI. At ~$0.001/page, it's 30x cheaper than premium alternatives, making high-volume OCR economically viable for any business."
+      },
+      {
+        "question": "When should I choose DeepSeek OCR over PaddleOCR VL 1.5?",
+        "answer": "Choose DeepSeek OCR for: severely degraded historical documents, manuscripts with artistic cursive, extreme physical damage (torn/burned), or when you need the absolute highest accuracy regardless of cost/speed. For everything else - especially high-volume operations - PaddleOCR VL 1.5 is the smarter choice."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Experience the Next-Gen OCR Today",
+    "description": "94.5% SOTA accuracy. Real-world robustness. Seal recognition. Try PaddleOCR VL 1.5 for free - no signup required.",
+    "button": {
+      "text": "Start Scanning for Free",
+      "link": "#playground"
+    }
+  }
+}

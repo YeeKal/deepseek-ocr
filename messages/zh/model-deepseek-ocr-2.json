@@ -4,7 +4,7 @@
     "name": "DeepSeek-OCR-2",
     "description": "具有视觉因果流 (Visual Causal Flow) 特性",
     "cover": {
-      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/deepseek-ocr-og.webp",
       "alt": "DeepSeek-OCR-2 视觉因果流架构分析复杂文档版面的可视化展示。"
     }
   },
@@ -21,7 +21,7 @@
       "复杂版面 OCR",
       "表格提取 AI"
     ],
-    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/deepseek-ocr-og.webp",
     "creator": "@yeekal",
     "structuredData": [
       {

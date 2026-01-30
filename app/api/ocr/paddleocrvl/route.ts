@@ -1,7 +1,7 @@
 // pages/api/parse-document.ts
 import { type NextRequest, NextResponse } from "next/server"
 
-import {BAIDU_AI_STUDIO_API_URL, MaxUploadImageSize} from '@/lib/constants';
+import {BAIDU_AI_STUDIO_API_URL_PaddleOCR_VL_1_5, MaxUploadImageSize} from '@/lib/constants';
 import {verifyTurnstileToken} from '@/lib/ocr/turnstile';
 
 import { URL } from 'url';
@@ -9,7 +9,8 @@ import { Buffer } from 'buffer';
 
 // 从环境变量中获取配置，更安全、更灵活
 const API_TOKEN = process.env.BAIDU_AI_STUDIO_API_TOKEN;
-const API_URL = BAIDU_AI_STUDIO_API_URL;
+// const API_URL = BAIDU_AI_STUDIO_API_URL;
+const API_URL = BAIDU_AI_STUDIO_API_URL_PaddleOCR_VL_1_5;
 const MAX_FILE_SIZE_BYTES = MaxUploadImageSize * 1024 * 1024; // 5 MB
 
 export interface PageResult {

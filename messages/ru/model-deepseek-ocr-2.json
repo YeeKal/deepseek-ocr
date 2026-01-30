@@ -4,7 +4,7 @@
     "name": "DeepSeek-OCR-2",
     "description": "С технологией Visual Causal Flow",
     "cover": {
-      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+      "url": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/deepseek-ocr-og.webp",
       "alt": "Визуализация архитектуры Visual Causal Flow модели DeepSeek-OCR-2, анализирующей сложный макет документа."
     }
   },
@@ -21,7 +21,7 @@
       "OCR сложных макетов",
       "AI извлечение таблиц"
     ],
-    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/og.webp",
+    "ogImage": "https://cdn.deepseekocr.io/models/deepseek-ocr-2/deepseek-ocr-og.webp",
     "creator": "@yeekal",
     "structuredData": [
       {
