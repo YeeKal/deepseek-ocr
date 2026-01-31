@@ -47,6 +47,82 @@ export const THEME_COLOR = {
 export const callbackLink = "/account"
 export const DefaultCustomSign = "flux-kontext"
 
+// ==========================================
+// Google AdSense 广告配置
+// ==========================================
+
+// AdSense 发布者 ID (从环境变量读取)
+export const GOOGLE_ADSENSE_ID = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID || "";
+
+/**
+ * 广告位 Slot ID 配置
+ * 
+ * 广告类型说明：
+ * - 自适应广告 (auto): 根据容器自动调整尺寸，推荐用于内容区
+ * - 固定尺寸广告: 指定特定尺寸，用于特定位置
+ * 
+ * 常用广告尺寸：
+ * - 摩天大楼 (Skyscraper): 160x600, 300x600 - 垂直放置
+ * - 横幅 (Banner): 728x90, 970x90, 320x50(移动端) - 水平放置  
+ * - 矩形 (Rectangle): 300x250, 336x280 - 内容区内嵌
+ * - 大型移动横幅: 320x100
+ * 
+ * 注意：请先在 Google AdSense 后台创建对应的广告单元，
+ * 然后将生成的 data-ad-slot 值填入下方配置
+ */
+export const ADSENSE_SLOTS = {
+  // --- 首页广告位 ---
+  
+  // 桌面端两侧摩天大楼悬浮广告
+  // 尺寸：160x600 或 300x600 (垂直自适应)
+  // 位置：首页左右两侧固定悬浮
+  HOMEPAGE_SKYSCRAPER_LEFT: "9565358500",      // 左侧摩天大楼
+  HOMEPAGE_SKYSCRAPER_RIGHT: "6100356833",     // 右侧摩天大楼
+  
+  // 顶部横幅广告
+  // 尺寸：728x90 (桌面) / 320x50 (移动) - 水平自适应
+  // 位置：Hero 区域下方
+  HOMEPAGE_BANNER_TOP: "",
+  
+  // 底部横幅广告
+  // 尺寸：728x90 (桌面) / 320x50 (移动) - 水平自适应
+  // 位置：页面底部
+  HOMEPAGE_BANNER_BOTTOM: "9373786818",
+  
+  // Playground 区域广告
+  // 尺寸：自适应矩形 (300x250 / 336x280)
+  // 位置：DemoSection 和 UsageSection 之间
+  HOMEPAGE_PLAYGROUND_INLINE: "",
+  
+  // Tools 区域广告
+  // 尺寸：自适应矩形
+  // 位置：ToolsSection 上方
+  HOMEPAGE_TOOLS_INLINE: "",
+  
+  // --- 工具页广告位 ---
+  
+  // 工具页顶部横幅
+  TOOL_BANNER_TOP: "",
+  
+  // 工具页中部广告
+  TOOL_INLINE: "",
+  
+  // 工具页底部横幅
+  TOOL_BANNER_BOTTOM: "",
+} as const;
+
+// 广告显示控制
+export const ADSENSE_CONFIG = {
+  // 是否启用广告
+  ENABLED: process.env.NODE_ENV === "production",
+  
+  // 摩天大楼显示断点 (xl: 1280px)
+  SKYSCRAPER_BREAKPOINT: "xl",
+  
+  // 广告加载延迟 (毫秒)，避免影响首屏加载
+  LOAD_DELAY: 1000,
+} as const;
+
 export const PageContent = {
   seo: {
     name: "Schedule 1",
