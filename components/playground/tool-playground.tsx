@@ -178,7 +178,6 @@ export function ToolPlayground() {
     setResult(null)
 
     try {
-      // PaddleOCRVL - Direct API call
       const response = await fetch("/api/ocr/paddleocrvl", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -196,10 +195,44 @@ export function ToolPlayground() {
       }
 
       const data = await response.json()
-      // Convert PaddleOCRVL response to OCRResult format
+
+      // Fetch and parse JSONL from returned URL
+      const jsonlResponse = await fetch(data.jsonlUrl)
+      if (!jsonlResponse.ok) {
+        throw new Error(`Failed to fetch results, status: ${jsonlResponse.status}`)
+      }
+
+      const jsonlText = await jsonlResponse.text()
+      const lines = jsonlText.trim().split("\n").filter((line: string) => line.trim())
+
+      if (lines.length === 0) {
+        throw new Error("No results found in response")
+      }
+
+      const firstLine = JSON.parse(lines[0])
+      const layoutResults = firstLine?.result?.layoutParsingResults
+
+      if (!layoutResults || !Array.isArray(layoutResults) || layoutResults.length === 0) {
+        throw new Error("No layout results found")
+      }
+
+      const resultPage = layoutResults[0]
+      const replaceMarkdownImagePaths = (text: string, imageMap: Record<string, string>) => {
+        return text.replace(
+          /(<img\s[^>]*?\bsrc\s*=\s*["'])([^"']+)(["'][^>]*>)/gi,
+          (match, pre, srcValue, post) => {
+            const newUrl = imageMap[srcValue];
+            return newUrl ? `${pre}${newUrl}${post}` : match;
+          }
+        );
+      };
+
       const ocrResult: OCRResult = {
-        text_content: data.processedMarkdown,
-        visualization_b64: data.layoutImageUrl,
+        text_content: replaceMarkdownImagePaths(
+          resultPage.markdown?.text || "",
+          resultPage.markdown?.images || {},
+        ),
+        visualization_b64: resultPage.outputImages?.layout_order_res,
         delayTime: data.delayTime,
         executionTime: data.executionTime,
       }
