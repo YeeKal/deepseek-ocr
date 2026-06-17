@@ -291,13 +291,42 @@ export async function POST(request: NextRequest) {
             throw new Error("Job did not complete within timeout");
         }
 
-        const end_final = performance.now();
+        // 6. Fetch and parse JSONL from the URL
+        const https = await import('https');
+        const jsonlText = await new Promise<string>((resolve, reject) => {
+            https.get(jsonlUrl, { timeout: 30000, family: 4 }, (res) => {
+                if (res.statusCode !== 200) {
+                    reject(new Error(`Failed to fetch JSONL: ${res.statusCode}`));
+                    return;
+                }
+                let data = '';
+                res.on('data', (chunk) => data += chunk);
+                res.on('end', () => resolve(data));
+            }).on('error', reject).on('timeout', () => reject(new Error('JSONL fetch timeout')));
+        });
 
-        console.info(`Job completed, returning jsonlUrl to frontend`);
+        const lines = jsonlText.trim().split('\n').filter(line => line.trim());
+        if (lines.length === 0) {
+            throw new Error("No results found in JSONL");
+        }
+
+        const firstLine = JSON.parse(lines[0]);
+        const layoutResults = firstLine?.result?.layoutParsingResults;
+
+        if (!Array.isArray(layoutResults) || layoutResults.length === 0) {
+            throw new Error("No layout results found");
+        }
+
+        const resultPage = layoutResults[0];
+        const imageMap = resultPage.markdown?.images || {};
+        const processedMarkdown = replaceMarkdownImagePaths(resultPage.markdown?.text || "", imageMap);
+
+        const end_final = performance.now();
         console.info(`Total cost: ${end_final - start} ms\n`);
 
         return NextResponse.json({
-            jsonlUrl,
+            processedMarkdown,
+            layoutImageUrl: resultPage.outputImages?.layout_order_res || null,
             delayTime: end_loadfile - start,
             executionTime: end_final - start,
         });
