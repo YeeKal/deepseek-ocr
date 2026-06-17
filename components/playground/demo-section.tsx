@@ -1,611 +1,721 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback } from "react" // Import useCallback
-import { Card } from "@/components/ui/card"
-import { ImageUpload } from "@/components/playground/image-upload"
-import { ParameterSettings } from "@/components/playground/parameter-settings"
-import { ResultDisplay } from "@/components/playground/result-display"
-import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants"
-import type { OCRResult } from "@/lib/types"
-import { useTranslations } from "next-intl"
-
+import { useState, useEffect, useCallback } from "react"; // Import useCallback
+import { Card } from "@/components/ui/card";
+import { ImageUpload } from "@/components/playground/image-upload";
+import { ParameterSettings } from "@/components/playground/parameter-settings";
+import { ResultDisplay } from "@/components/playground/result-display";
+import { RUNPOD_MAX_EXECUTION_TIME } from "@/lib/constants";
+import type { OCRResult } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 export type HealthStatus = {
-  jobs: {
-    completed: number
-    failed: number
-    inProgress: number
-    inQueue: number
-    retried: number
-  }
-  workers: {
-    idle: number
-    running: number
-    workers: number
-  }
-}
+    jobs: {
+        completed: number;
+        failed: number;
+        inProgress: number;
+        inQueue: number;
+        retried: number;
+    };
+    workers: {
+        idle: number;
+        running: number;
+        workers: number;
+    };
+};
 
 export function DemoSection() {
-  const t = useTranslations('home.demo')
-  const [ocrEngine, setOcrEngine] = useState<"paddleocrvl" | "deepseekocr">("paddleocrvl")
-  const [imageSource, setImageSource] = useState<{ type: "url" | "base64"; value: string } | null>(null)
-  const [fileType, setFileType] = useState<"image" | "pdf">("image")
-  const [modelSize, setModelSize] = useState<string>("Gundam")
-  const [taskType, setTaskType] = useState<string>("doc_to_markdown")
-  const [prompt, setPrompt] = useState<string>("")
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [result, setResult] = useState<OCRResult | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const [jobId, setJobId] = useState<string | null>(null)
-  const [healthStatus, setHealthStatus] = useState<HealthStatus | null>(null)
+    const t = useTranslations("home.demo");
+    const [ocrEngine, setOcrEngine] = useState<"paddleocrvl" | "deepseekocr">(
+        "paddleocrvl",
+    );
+    const [imageSource, setImageSource] = useState<{
+        type: "url" | "base64";
+        value: string;
+    } | null>(null);
+    const [fileType, setFileType] = useState<"image" | "pdf">("image");
+    const [modelSize, setModelSize] = useState<string>("Gundam");
+    const [taskType, setTaskType] = useState<string>("doc_to_markdown");
+    const [prompt, setPrompt] = useState<string>("");
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [result, setResult] = useState<OCRResult | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [jobId, setJobId] = useState<string | null>(null);
+    const [healthStatus, setHealthStatus] = useState<HealthStatus | null>(null);
 
-  // --- Turnstile State ---
-  const [showTurnstile, setShowTurnstile] = useState<boolean>(false)
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
-  const [turnstileLoaded, setTurnstileLoaded] = useState<boolean>(false)
-  const [isVerifying, setIsVerifying] = useState<boolean>(false)
+    // --- Turnstile State ---
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const [turnstileLoaded, setTurnstileLoaded] = useState<boolean>(false);
 
-  // Load Turnstile script with better error handling
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Check if already loaded
-      if (typeof window.turnstile !== 'undefined') {
-        setTurnstileLoaded(true);
-        return;
-      }
-
-      // Check if script is already being loaded
-      if (document.querySelector('script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]')) {
-        // Wait for it to load
-        const checkInterval = setInterval(() => {
-          if (typeof window.turnstile !== 'undefined') {
-            clearInterval(checkInterval);
-            setTurnstileLoaded(true);
-          }
-        }, 100);
-
-        const timeout = setTimeout(() => {
-          clearInterval(checkInterval);
-          setTurnstileLoaded(false);
-        }, 5000);
-
-        return () => {
-          clearInterval(checkInterval);
-          clearTimeout(timeout);
-        };
-      }
-
-      const script = document.createElement('script');
-      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-      script.async = true;
-      script.defer = true;
-
-      const timeout = setTimeout(() => {
-        console.error('Turnstile script load timeout');
-        setTurnstileLoaded(false);
-      }, 5000);
-
-      script.onload = () => {
-        clearTimeout(timeout);
-        setTurnstileLoaded(true);
-      };
-
-      script.onerror = () => {
-        clearTimeout(timeout);
-        console.error('Turnstile script failed to load');
-        setTurnstileLoaded(false);
-      };
-
-      document.head.appendChild(script);
-
-      return () => {
-        clearTimeout(timeout);
-        if (script.parentNode) {
-          document.head.removeChild(script);
-        }
-      };
-    }
-  }, []);
-
-  // Render/cleanup Turnstile widget when modal is shown/hidden
-  useEffect(() => {
-    let widgetId: string | null = null;
-
-    if (showTurnstile && turnstileLoaded && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
-      // Clear container first
-      const container = document.getElementById('turnstile-container');
-      if (container) {
-        container.innerHTML = '';
-
-        try {
-          widgetId = window.turnstile.render('#turnstile-container', {
-            sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
-            size: 'normal',
-            callback: (token: string) => {
-              handleTurnstileSuccess(token);
-            },
-            'error-callback': (errorCode: string) => {
-              console.error("Turnstile verification error with code:", errorCode);
-              handleTurnstileError();
-            },
-            'expired-callback': () => {
-              console.log("Turnstile verification expired");
-              setTurnstileToken(null);
-            },
-            'unsupported-callback': () => {
-              console.error("Turnstile unsupported browser");
-              handleTurnstileError();
-            },
-          });
-        } catch (error) {
-          console.error("Error rendering Turnstile widget:", error);
-          handleTurnstileError();
-        }
-      }
-    }
-
-    // Cleanup function
-    return () => {
-      if (widgetId && typeof window !== 'undefined' && typeof window.turnstile !== 'undefined') {
-        try {
-          window.turnstile.remove(widgetId);
-        } catch (e) {
-          console.warn('Failed to remove Turnstile widget:', e);
-        }
-      }
-    };
-  }, [showTurnstile, turnstileLoaded]);
-
-  // Fetch health status (no changes)
-  useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const response = await fetch("/api/freedemo/runpod/health")
-        if (response.ok) {
-          const data = await response.json()
-          setHealthStatus(data)
-        }
-      } catch (err) {
-        console.error("Failed to fetch health status:", err)
-      }
-    }
-    fetchHealth()
-    const interval = setInterval(fetchHealth, 10000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // --- Logic to handle submission after token is received ---
-  useEffect(() => {
-    // This effect triggers when a new token is received from the Turnstile callback.
-    if (turnstileToken) {
-      // Immediately start the process with the new token.
-      handleProcessWithToken(turnstileToken);
-    }
-  }, [turnstileToken]); // Dependency array ensures this only runs when turnstileToken changes.
-
-  // Auto-detect file type when image source changes (for URL)
-  useEffect(() => {
-    if (imageSource?.type === "url" && imageSource.value) {
-      // Detect from URL
-      const url = imageSource.value.toLowerCase()
-      if (url.includes(".pdf") || url.includes("%2epdf")) {
-        setFileType("pdf")
-      } else {
-        setFileType("image")
-      }
-    }
-  }, [imageSource])
-
-  // Handle file type change from ImageUpload component
-  const handleFileTypeChange = (detectedType: "image" | "pdf") => {
-    setFileType(detectedType)
-  }
-
-  const handleProcess = async () => {
-    if (!imageSource) {
-      handleError(t('upload.error'))
-      return
-    }
-
-    // Check prompt requirement only for DeepSeekOCR
-    if (ocrEngine === "deepseekocr" && (taskType === "custom" || taskType === "text_localization") && !prompt.trim()) {
-      handleError(t('upload.promptRequired'))
-      return
-    }
-
-    if (isVerifying || isProcessing) return
-
-    // Both engines need Turnstile verification
-    setIsVerifying(true)
-    setShowTurnstile(true)
-  }
-
-  const handleProcessWithToken = async (token: string) => {
-    // --- MODIFIED: Reset token immediately to prevent reuse ---
-    setTurnstileToken(null);
-
-    setIsProcessing(true)
-    setError(null)
-    setResult(null)
-    setJobId(null)
-
-    try {
-      if (ocrEngine === "paddleocrvl") {
-        // PaddleOCRVL - Direct API call
-        const response = await fetch("/api/ocr/paddleocrvl", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fileBase64: imageSource?.type === "base64" ? imageSource.value : undefined,
-            fileUrl: imageSource?.type === "url" ? imageSource.value : undefined,
-            fileType: fileType,
-            turnstileToken: token,
-          }),
-        })
-
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || "Failed to process file")
-        }
-
-        const data = await response.json()
-        // Convert PaddleOCRVL response to OCRResult format
-        const ocrResult: OCRResult = {
-          text_content: data.processedMarkdown,
-          visualization_b64: data.layoutImageUrl,
-          delayTime: data.delayTime,
-          executionTime: data.executionTime,
-        }
-        setResult(ocrResult)
-        setIsProcessing(false)
-      } else {
-        // DeepSeekOCR - RunPod with polling
-        const runResponse = await fetch("/api/freedemo/runpod/run", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            input: {
-              input_source: imageSource,
-              task_type: taskType,
-              prompt: prompt.trim() || "",
-              model_size: modelSize,
-              output_options: {
-                include_bounding_boxes: true,
-                include_visualization: true,
-              },
-            },
-            turnstileToken: token, // Use the passed token
-          }),
-        })
-
-        if (!runResponse.ok) {
-          const errorData = await runResponse.json()
-          throw new Error(errorData.error || "Failed to submit task")
-        }
-
-        const runData = await runResponse.json()
-        const { id: submittedJobId } = runData
-        setJobId(submittedJobId)
-
-        // Polling logic remains the same...
-        const pollStatus = async (jobId: string) => {
-          const maxAttempts = RUNPOD_MAX_EXECUTION_TIME
-          let attempts = 0
-          const poll = async () => {
-            attempts++
-            try {
-              const statusResponse = await fetch(
-                `/api/freedemo/runpod/status?job_id=${encodeURIComponent(jobId)}`
-              )
-              if (!statusResponse.ok) {
-                const errorData = await statusResponse.json()
-                throw new Error(errorData.error || "Failed to check status")
-              }
-              const statusData = await statusResponse.json()
-              if (statusData.status === "COMPLETED") {
-                const output = statusData.output
-                const result: OCRResult = { ...output, delayTime: statusData.delayTime, executionTime: statusData.executionTime }
-                setResult(result)
-                setIsProcessing(false)
-                setJobId(null)
-                return
-              }
-              if (statusData.status === "FAILED") {
-                throw new Error("Task failed to complete")
-              }
-              if (attempts < maxAttempts) {
-                setTimeout(poll, 1000)
-              } else {
-                throw new Error("Task timeout - maximum wait time exceeded")
-              }
-            } catch (err) {
-              setIsProcessing(false)
-              setJobId(null)
-              handleError(err instanceof Error ? err.message : "An unexpected error occurred")
+    // Load Turnstile script and auto-render widget
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            if (typeof window.turnstile !== "undefined") {
+                setTurnstileLoaded(true);
+                renderTurnstile();
+                return;
             }
-          }
-          poll()
+
+            if (
+                document.querySelector(
+                    'script[src="https://challenges.cloudflare.com/turnstile/v0/api.js"]',
+                )
+            ) {
+                const checkInterval = setInterval(() => {
+                    if (typeof window.turnstile !== "undefined") {
+                        clearInterval(checkInterval);
+                        setTurnstileLoaded(true);
+                        renderTurnstile();
+                    }
+                }, 100);
+
+                const timeout = setTimeout(() => {
+                    clearInterval(checkInterval);
+                    setTurnstileLoaded(false);
+                }, 5000);
+
+                return () => {
+                    clearInterval(checkInterval);
+                    clearTimeout(timeout);
+                };
+            }
+
+            const script = document.createElement("script");
+            script.src =
+                "https://challenges.cloudflare.com/turnstile/v0/api.js";
+            script.async = true;
+            script.defer = true;
+
+            const timeout = setTimeout(() => {
+                console.error("Turnstile script load timeout");
+                setTurnstileLoaded(false);
+            }, 5000);
+
+            script.onload = () => {
+                clearTimeout(timeout);
+                setTurnstileLoaded(true);
+                renderTurnstile();
+            };
+
+            script.onerror = () => {
+                clearTimeout(timeout);
+                console.error("Turnstile script failed to load");
+                setTurnstileLoaded(false);
+            };
+
+            document.head.appendChild(script);
+
+            return () => {
+                clearTimeout(timeout);
+                if (script.parentNode) {
+                    document.head.removeChild(script);
+                }
+            };
         }
-        pollStatus(submittedJobId)
-      }
-    } catch (err) {
-      setIsProcessing(false)
-      setJobId(null)
-      handleError(err instanceof Error ? err.message : "An unexpected error occurred")
-    }
-  }
+    }, []);
 
-  const [showErrorDialog, setShowErrorDialog] = useState(false)
+    const renderTurnstile = () => {
+        if (
+            typeof window === "undefined" ||
+            typeof window.turnstile === "undefined"
+        )
+            return;
 
-  const handleError = (errorMessage: string) => {
-    setError(errorMessage)
-    setShowErrorDialog(true)
-  }
+        const container = document.getElementById("turnstile-widget");
+        if (!container) return;
 
-  // --- MODIFIED: handleTurnstileSuccess is now simpler ---
-  const handleTurnstileSuccess = (token: string) => {
-    console.log("Turnstile verification successful:", token.slice(0, 10) + "...");
-    setIsVerifying(false);
-    setShowTurnstile(false); // Close the modal
-    setTurnstileToken(token); // Set the token, which will trigger the useEffect for submission
-  }
+        container.innerHTML = "";
 
-  const handleTurnstileError = () => {
-    setIsVerifying(false);
-    setShowTurnstile(false); // Close the modal on error
-    handleError(t('turnstile.error'))
-  }
+        try {
+            window.turnstile.render("#turnstile-widget", {
+                sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
+                size: "flexible",
+                callback: (token: string) => {
+                    console.log("Turnstile verified");
+                    setTurnstileToken(token);
+                },
+                "expired-callback": () => {
+                    console.log("Turnstile expired, refreshing");
+                    setTurnstileToken(null);
+                    renderTurnstile();
+                },
+                "error-callback": () => {
+                    console.error("Turnstile error");
+                    setTurnstileToken(null);
+                },
+            });
+        } catch (error) {
+            console.error("Error rendering Turnstile widget:", error);
+        }
+    };
 
-  // The rest of the component's JSX remains exactly the same...
-  return (
-    <>
-      <section id="playground" className="min-h-screen px-4 py-20">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {/* ... (all your existing JSX for the page layout, cards, etc.) ... */}
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold"> {t('title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {ocrEngine === "paddleocrvl"
-                ? t('paddleTagline')
-                : t('deepseekTagline')
-              }
-            </p>
+    // Fetch health status (no changes)
+    useEffect(() => {
+        const fetchHealth = async () => {
+            try {
+                const response = await fetch("/api/freedemo/runpod/health");
+                if (response.ok) {
+                    const data = await response.json();
+                    setHealthStatus(data);
+                }
+            } catch (err) {
+                console.error("Failed to fetch health status:", err);
+            }
+        };
+        fetchHealth();
+        const interval = setInterval(fetchHealth, 10000);
+        return () => clearInterval(interval);
+    }, []);
 
-            {/* OCR Engine Toggle */}
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <div className="flex items-center gap-2 px-1 py-1 bg-muted rounded-lg">
-                <button
-                  onClick={() => {
-                    setOcrEngine("paddleocrvl")
-                    setResult(null)
-                    setError(null)
-                    setPrompt("")
-                  }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "paddleocrvl"
-                    ? "bg-background shadow-sm text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                    }`}
-                >
-                  {t('toggles.paddle')}
-                </button>
-                <button
-                  onClick={() => {
-                    setOcrEngine("deepseekocr")
-                    setResult(null)
-                    setError(null)
-                  }}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${ocrEngine === "deepseekocr"
-                    ? "bg-background shadow-sm text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                    }`}
-                >
-                  {t('toggles.deepseek')}
-                </button>
-              </div>
-            </div>
+    // Auto-detect file type when image source changes (for URL)
+    useEffect(() => {
+        if (imageSource?.type === "url" && imageSource.value) {
+            // Detect from URL
+            const url = imageSource.value.toLowerCase();
+            if (url.includes(".pdf") || url.includes("%2epdf")) {
+                setFileType("pdf");
+            } else {
+                setFileType("image");
+            }
+        }
+    }, [imageSource]);
 
-            <div className="flex items-center justify-center gap-2 md:gap-4 mt-4 text-sm">
-              <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="font-semibold">{t('badges.free')}</span>
-              </div>
-              <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                <span className="font-semibold">{t('badges.noLogin')}</span>
-              </div>
-              <a
-                href="https://runpod.io?ref=5kdp9mps"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-2 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-200">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
-                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-                </svg>
-                <span className="font-semibold text-sm">{t('badges.runpod')}</span>
-              </a>
-            </div>
-          </div>
+    // Handle file type change from ImageUpload component
+    const handleFileTypeChange = (detectedType: "image" | "pdf") => {
+        setFileType(detectedType);
+    };
 
-          <div className="grid lg:grid-cols-2 gap-6">
-            <Card className="p-6 space-y-4">
-              <div className="space-y-4">
-                <ImageUpload
-                  onImageChange={setImageSource}
-                  onFileTypeChange={handleFileTypeChange}
-                  ocrEngine={ocrEngine}
-                />
+    const handleProcess = async () => {
+        if (!imageSource) {
+            handleError(t("upload.error"));
+            return;
+        }
 
-                {/* File Type Selection for PaddleOCRVL */}
-                {ocrEngine === "paddleocrvl" && (
-                  <div className="flex items-center gap-4">
-                    <div className="space-y-1">
-                      <label className="text-xs font-semibold uppercase tracking-wider block">
-                        {t('upload.fileType')}
-                      </label>
+        if (
+            ocrEngine === "deepseekocr" &&
+            (taskType === "custom" || taskType === "text_localization") &&
+            !prompt.trim()
+        ) {
+            handleError(t("upload.promptRequired"));
+            return;
+        }
 
+        if (isProcessing || !turnstileToken) {
+            handleError(t("turnstile.error"));
+            return;
+        }
+
+        handleProcessWithToken(turnstileToken);
+    };
+
+    const replaceMarkdownImagePaths = (
+        markdownText: string,
+        imageMap: Record<string, string>,
+    ): string => {
+        return markdownText.replace(
+            /(<img\s[^>]*?\bsrc\s*=\s*["'])([^"']+)(["'][^>]*>)/gi,
+            (match, pre, srcValue, post) => {
+                const newUrl = imageMap[srcValue];
+                return newUrl ? `${pre}${newUrl}${post}` : match;
+            },
+        );
+    };
+
+    const handleProcessWithToken = async (token: string) => {
+        setIsProcessing(true);
+        setError(null);
+        setResult(null);
+        setJobId(null);
+
+        try {
+            if (ocrEngine === "paddleocrvl") {
+                const response = await fetch("/api/ocr/paddleocrvl", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        fileBase64:
+                            imageSource?.type === "base64"
+                                ? imageSource.value
+                                : undefined,
+                        fileUrl:
+                            imageSource?.type === "url"
+                                ? imageSource.value
+                                : undefined,
+                        fileType: fileType,
+                        turnstileToken: token,
+                    }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(
+                        errorData.error || "Failed to process file",
+                    );
+                }
+
+                const data = await response.json();
+
+                // Fetch and parse JSONL from returned URL
+                const jsonlResponse = await fetch(data.jsonlUrl);
+                if (!jsonlResponse.ok) {
+                    throw new Error(
+                        `Failed to fetch results, status: ${jsonlResponse.status}`,
+                    );
+                }
+
+                const jsonlText = await jsonlResponse.text();
+                const lines = jsonlText
+                    .trim()
+                    .split("\n")
+                    .filter((line: string) => line.trim());
+
+                if (lines.length === 0) {
+                    throw new Error("No results found in response");
+                }
+
+                const firstLine = JSON.parse(lines[0]);
+                const layoutResults = firstLine?.result?.layoutParsingResults;
+
+                if (
+                    !layoutResults ||
+                    !Array.isArray(layoutResults) ||
+                    layoutResults.length === 0
+                ) {
+                    throw new Error("No layout results found");
+                }
+
+                const resultPage = layoutResults[0];
+                const ocrResult: OCRResult = {
+                    text_content: replaceMarkdownImagePaths(
+                        resultPage.markdown?.text || "",
+                        resultPage.markdown?.images || {},
+                    ),
+                    visualization_b64:
+                        resultPage.outputImages?.layout_order_res,
+                    delayTime: data.delayTime,
+                    executionTime: data.executionTime,
+                };
+                setResult(ocrResult);
+                setIsProcessing(false);
+
+                // Token is consumed, refresh for next use
+                setTurnstileToken(null);
+                renderTurnstile();
+            } else {
+                // DeepSeekOCR - RunPod with polling
+                const runResponse = await fetch("/api/freedemo/runpod/run", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        input: {
+                            input_source: imageSource,
+                            task_type: taskType,
+                            prompt: prompt.trim() || "",
+                            model_size: modelSize,
+                            output_options: {
+                                include_bounding_boxes: true,
+                                include_visualization: true,
+                            },
+                        },
+                        turnstileToken: token, // Use the passed token
+                    }),
+                });
+
+                if (!runResponse.ok) {
+                    const errorData = await runResponse.json();
+                    throw new Error(errorData.error || "Failed to submit task");
+                }
+
+                const runData = await runResponse.json();
+                const { id: submittedJobId } = runData;
+                setJobId(submittedJobId);
+
+                // Polling logic remains the same...
+                const pollStatus = async (jobId: string) => {
+                    const maxAttempts = RUNPOD_MAX_EXECUTION_TIME;
+                    let attempts = 0;
+                    const poll = async () => {
+                        attempts++;
+                        try {
+                            const statusResponse = await fetch(
+                                `/api/freedemo/runpod/status?job_id=${encodeURIComponent(jobId)}`,
+                            );
+                            if (!statusResponse.ok) {
+                                const errorData = await statusResponse.json();
+                                throw new Error(
+                                    errorData.error || "Failed to check status",
+                                );
+                            }
+                            const statusData = await statusResponse.json();
+                            if (statusData.status === "COMPLETED") {
+                                const output = statusData.output;
+                                const result: OCRResult = {
+                                    ...output,
+                                    delayTime: statusData.delayTime,
+                                    executionTime: statusData.executionTime,
+                                };
+                                setResult(result);
+                                setIsProcessing(false);
+                                setJobId(null);
+                                // Token is consumed, refresh for next use
+                                setTurnstileToken(null);
+                                renderTurnstile();
+                                return;
+                            }
+                            if (statusData.status === "FAILED") {
+                                throw new Error("Task failed to complete");
+                            }
+                            if (attempts < maxAttempts) {
+                                setTimeout(poll, 1000);
+                            } else {
+                                throw new Error(
+                                    "Task timeout - maximum wait time exceeded",
+                                );
+                            }
+                        } catch (err) {
+                            setIsProcessing(false);
+                            setJobId(null);
+                            // Refresh token on error so user can retry
+                            setTurnstileToken(null);
+                            renderTurnstile();
+                            handleError(
+                                err instanceof Error
+                                    ? err.message
+                                    : "An unexpected error occurred",
+                            );
+                        }
+                    };
+                    poll();
+                };
+                pollStatus(submittedJobId);
+            }
+        } catch (err) {
+            setIsProcessing(false);
+            setJobId(null);
+            // Refresh token on error so user can retry
+            setTurnstileToken(null);
+            renderTurnstile();
+            handleError(
+                err instanceof Error
+                    ? err.message
+                    : "An unexpected error occurred",
+            );
+        }
+    };
+
+    const [showErrorDialog, setShowErrorDialog] = useState(false);
+
+    const handleError = (errorMessage: string) => {
+        setError(errorMessage);
+        setShowErrorDialog(true);
+    };
+
+    // The rest of the component's JSX remains exactly the same...
+    return (
+        <>
+            <section id="playground" className="min-h-screen px-4 py-20">
+                <div className="max-w-7xl mx-auto space-y-8">
+                    {/* ... (all your existing JSX for the page layout, cards, etc.) ... */}
+                    <div className="text-center space-y-4">
+                        <h2 className="text-4xl md:text-5xl font-bold">
+                            {" "}
+                            {t("title")}
+                        </h2>
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                            {ocrEngine === "paddleocrvl"
+                                ? t("paddleTagline")
+                                : t("deepseekTagline")}
+                        </p>
+
+                        {/* OCR Engine Toggle */}
+                        <div className="flex items-center justify-center gap-4 mt-6">
+                            <div className="flex items-center gap-2 px-1 py-1 bg-muted rounded-lg">
+                                <button
+                                    onClick={() => {
+                                        setOcrEngine("paddleocrvl");
+                                        setResult(null);
+                                        setError(null);
+                                        setPrompt("");
+                                    }}
+                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                                        ocrEngine === "paddleocrvl"
+                                            ? "bg-background shadow-sm text-foreground"
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
+                                >
+                                    {t("toggles.paddle")}
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setOcrEngine("deepseekocr");
+                                        setResult(null);
+                                        setError(null);
+                                    }}
+                                    className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                                        ocrEngine === "deepseekocr"
+                                            ? "bg-background shadow-sm text-foreground"
+                                            : "text-muted-foreground hover:text-foreground"
+                                    }`}
+                                >
+                                    {t("toggles.deepseek")}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex items-center justify-center gap-2 md:gap-4 mt-4 text-sm">
+                            <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-full shadow-lg">
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M5 13l4 4L19 7"
+                                    />
+                                </svg>
+                                <span className="font-semibold">
+                                    {t("badges.free")}
+                                </span>
+                            </div>
+                            <div className="inline-flex items-center px-2 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full shadow-lg">
+                                <svg
+                                    className="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                    />
+                                </svg>
+                                <span className="font-semibold">
+                                    {t("badges.noLogin")}
+                                </span>
+                            </div>
+                            <a
+                                href="https://runpod.io?ref=5kdp9mps"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-2 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-400 hover:to-purple-500 transition-all duration-200"
+                            >
+                                <svg
+                                    className="w-4 h-4"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="10"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        fill="none"
+                                    />
+                                    <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
+                                </svg>
+                                <span className="font-semibold text-sm">
+                                    {t("badges.runpod")}
+                                </span>
+                            </a>
+                        </div>
                     </div>
-                    <div className="flex flex-1 flex-row justify-center space-x-6">
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="fileType"
-                          value="image"
-                          checked={fileType === "image"}
-                          onChange={() => setFileType("image")}
-                          className="h-4 w-4 text-primary focus:ring-primary"
-                        />
-                        <span className="text-sm font-medium">{t('upload.image')}</span>
-                      </label>
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="fileType"
-                          value="pdf"
-                          checked={fileType === "pdf"}
-                          onChange={() => setFileType("pdf")}
-                          className="h-4 w-4 text-primary focus:ring-primary"
-                        />
-                        <span className="text-sm font-medium">{t('upload.pdf')}</span>
-                      </label>
+
+                    <div className="grid lg:grid-cols-2 gap-6">
+                        <Card className="p-6 space-y-4">
+                            <div className="space-y-4">
+                                <ImageUpload
+                                    onImageChange={setImageSource}
+                                    onFileTypeChange={handleFileTypeChange}
+                                    ocrEngine={ocrEngine}
+                                />
+
+                                {/* File Type Selection for PaddleOCRVL */}
+                                {ocrEngine === "paddleocrvl" && (
+                                    <div className="flex items-center gap-4">
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-semibold uppercase tracking-wider block">
+                                                {t("upload.fileType")}
+                                            </label>
+                                        </div>
+                                        <div className="flex flex-1 flex-row justify-center space-x-6">
+                                            <label className="flex items-center gap-2 cursor-pointer">
+                                                <input
+                                                    type="radio"
+                                                    name="fileType"
+                                                    value="image"
+                                                    checked={
+                                                        fileType === "image"
+                                                    }
+                                                    onChange={() =>
+                                                        setFileType("image")
+                                                    }
+                                                    className="h-4 w-4 text-primary focus:ring-primary"
+                                                />
+                                                <span className="text-sm font-medium">
+                                                    {t("upload.image")}
+                                                </span>
+                                            </label>
+                                            <label className="flex items-center gap-2 cursor-pointer">
+                                                <input
+                                                    type="radio"
+                                                    name="fileType"
+                                                    value="pdf"
+                                                    checked={fileType === "pdf"}
+                                                    onChange={() =>
+                                                        setFileType("pdf")
+                                                    }
+                                                    className="h-4 w-4 text-primary focus:ring-primary"
+                                                />
+                                                <span className="text-sm font-medium">
+                                                    {t("upload.pdf")}
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+
+                                <button
+                                    onClick={handleProcess}
+                                    disabled={
+                                        !imageSource ||
+                                        isProcessing ||
+                                        !turnstileToken
+                                    }
+                                    className="w-full py-3 px-4 rounded-lg font-medium bg-primary text-primary-foreground  text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isProcessing
+                                        ? t("upload.button.processing")
+                                        : !turnstileToken
+                                          ? t("upload.button.verifying")
+                                          : t("upload.button.extract")}
+                                </button>
+
+                                {/* Turnstile widget below button */}
+                                <div className="flex justify-center py-2">
+                                    <div id="turnstile-widget"></div>
+                                </div>
+                                {/* Only show parameter settings for DeepSeekOCR */}
+                                {ocrEngine === "deepseekocr" && (
+                                    <ParameterSettings
+                                        modelSize={modelSize}
+                                        taskType={taskType}
+                                        prompt={prompt}
+                                        onModelSizeChange={setModelSize}
+                                        onTaskTypeChange={setTaskType}
+                                        onPromptChange={setPrompt}
+                                    />
+                                )}
+                            </div>
+                        </Card>
+                        <Card className="p-6">
+                            <ResultDisplay
+                                result={result}
+                                error={error}
+                                isProcessing={isProcessing}
+                                runningWorkerNumber={
+                                    healthStatus?.workers.running || 0
+                                }
+                            />
+                        </Card>
                     </div>
-                  </div>
-                )}
 
-                <button
-                  onClick={handleProcess}
-                  disabled={!imageSource || isProcessing || isVerifying}
-                  className="w-full py-3 px-4 rounded-lg font-medium bg-primary text-primary-foreground  text-sm transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isProcessing ? t('upload.button.processing') : (isVerifying ? t('upload.button.verifying') : t('upload.button.extract'))}
-                </button>
-                {/* Only show parameter settings for DeepSeekOCR */}
-                {ocrEngine === "deepseekocr" && (
-                  <ParameterSettings
-                    modelSize={modelSize}
-                    taskType={taskType}
-                    prompt={prompt}
-                    onModelSizeChange={setModelSize}
-                    onTaskTypeChange={setTaskType}
-                    onPromptChange={setPrompt}
-                  />
-                )}
-              </div>
-            </Card>
-            <Card className="p-6">
-              <ResultDisplay result={result} error={error} isProcessing={isProcessing} runningWorkerNumber={healthStatus?.workers.running || 0} />
-            </Card>
-          </div>
+                    {/* Only show health status for DeepSeekOCR */}
+                    {ocrEngine === "deepseekocr" && healthStatus && (
+                        <Card className="grid lg:grid-cols-2 gap-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
+                            <div>
+                                <div className="flex items-center gap-x-10 mb-2">
+                                    <h3 className="text-sm font-semibold">
+                                        {t("serverStatus.title")}
+                                    </h3>
+                                    {healthStatus.workers.running === 0 && (
+                                        <span className="text-xs text-rose-500">
+                                            {t("serverStatus.coolingDown")}
+                                        </span>
+                                    )}
+                                </div>
+                                {healthStatus.workers.running === 0 && (
+                                    <div className="mb-3 p-2  rounded text-xs text-purple-800 dark:text-amber-200">
+                                        {t("serverStatus.coolingDownMessage")}
+                                    </div>
+                                )}
+                            </div>
+                            <div className="flex gap-3 text-center">
+                                <div className="flex-1">
+                                    <div className="text-lg font-bold text-emerald-500">
+                                        {(
+                                            healthStatus.jobs.completed + 1024
+                                        ).toLocaleString()}
+                                    </div>
+                                    <div className="text-xs text-muted-foreground">
+                                        {t("serverStatus.completed")}
+                                    </div>
+                                </div>
+                                <div className="flex-1">
+                                    <div className="text-lg font-bold text-blue-500">
+                                        {healthStatus.jobs.inProgress}
+                                    </div>
+                                    <div className="text-xs text-muted-foreground">
+                                        {t("serverStatus.inProgress")}
+                                    </div>
+                                </div>
+                                <div className="flex-1">
+                                    <div className="text-lg font-bold text-amber-500">
+                                        {healthStatus.jobs.inQueue}
+                                    </div>
+                                    <div className="text-xs text-muted-foreground">
+                                        {t("serverStatus.inQueue")}
+                                    </div>
+                                </div>
+                            </div>
+                        </Card>
+                    )}
+                </div>
+            </section>
 
-          {/* Only show health status for DeepSeekOCR */}
-          {ocrEngine === "deepseekocr" && healthStatus && (
-            <Card className="grid lg:grid-cols-2 gap-6 p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50">
-              <div>
-                <div className="flex items-center gap-x-10 mb-2">
-                  <h3 className="text-sm font-semibold">{t('serverStatus.title')}</h3>
-                  {healthStatus.workers.running === 0 && (
-                    <span className="text-xs text-rose-500">{t('serverStatus.coolingDown')}</span>
-                  )}
-                </div>
-                {healthStatus.workers.running === 0 && (
-                  <div className="mb-3 p-2  rounded text-xs text-purple-800 dark:text-amber-200">
-                    {t('serverStatus.coolingDownMessage')}
-                  </div>
-                )}
-              </div>
-              <div className="flex gap-3 text-center">
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-emerald-500">
-                    {(healthStatus.jobs.completed + 1024).toLocaleString()}
-                  </div>
-                  <div className="text-xs text-muted-foreground">{t('serverStatus.completed')}</div>
-                </div>
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-blue-500">
-                    {healthStatus.jobs.inProgress}
-                  </div>
-                  <div className="text-xs text-muted-foreground">{t('serverStatus.inProgress')}</div>
-                </div>
-                <div className="flex-1">
-                  <div className="text-lg font-bold text-amber-500">
-                    {healthStatus.jobs.inQueue}
-                  </div>
-                  <div className="text-xs text-muted-foreground">{t('serverStatus.inQueue')}</div>
-                </div>
-              </div>
-            </Card>
-          )}
-
-        </div>
-      </section>
-
-      {/* Turnstile Verification Dialog (JSX remains the same) */}
-      {showTurnstile && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold mb-4">{t('turnstile.title')}</h3>
-            <p className="text-sm text-muted-foreground mb-6">
-              {t('turnstile.description')}
-            </p>
-            <div id="turnstile-container" className="flex justify-center mb-4 min-h-[65px]">
-              {!turnstileLoaded && (
-                <div className="h-full flex items-center justify-center text-sm text-muted-foreground">
-                  {typeof window !== 'undefined' ? t('turnstile.loading') : t('turnstile.initializing')}
-                </div>
-              )}
-            </div>
-            <div className="flex gap-3 justify-end">
-              <button
-                onClick={() => {
-                  setShowTurnstile(false);
-                  setIsVerifying(false);
-                }}
-                className="px-4 py-2 text-sm border border-border rounded-md hover:bg-accent"
-              >
-                {t('turnstile.cancel')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Error Dialog (no changes) */}
-      {showErrorDialog && error && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-xl font-semibold text-red-500 mb-4">{t('errorDialog.title')}</h3>
-            <p className="text-sm text-muted-foreground mb-6">{error}</p>
-            <div className="flex gap-3 justify-end">
-              {/* <button
+            {/* Error Dialog (no changes) */}
+            {showErrorDialog && error && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                    <div className="bg-background rounded-lg p-6 max-w-md w-full mx-4">
+                        <h3 className="text-xl font-semibold text-red-500 mb-4">
+                            {t("errorDialog.title")}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-6">
+                            {error}
+                        </p>
+                        <div className="flex gap-3 justify-end">
+                            {/* <button
                 onClick={() => setShowErrorDialog(false)}
                 className="px-4 py-2 text-sm border border-border rounded-md hover:bg-accent"
               >
                 Cancel
               </button> */}
-              <button
-                onClick={() => {
-                  setShowErrorDialog(false)
-                }}
-                className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
-              >
-                {t('errorDialog.tryAgain')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
-  )
+                            <button
+                                onClick={() => {
+                                    setShowErrorDialog(false);
+                                }}
+                                className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90"
+                            >
+                                {t("errorDialog.tryAgain")}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
+    );
 }
 
 // Ensure window types are declared globally if you haven't already
 declare global {
-  interface Window {
-    turnstile: any;
-    onTurnstileLoaded?: () => void;
-  }
+    interface Window {
+        turnstile: any;
+        onTurnstileLoaded?: () => void;
+    }
 }
